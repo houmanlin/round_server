@@ -2,6 +2,7 @@
   <el-table
       :data="tableData"
       border
+      :height="500"
       style="width: 100%">
 
     <template v-for="(item, index) in tableHeader" >
@@ -10,7 +11,7 @@
           type="selection"
           width="55">
       </el-table-column>
-      <el-table-column
+      <el-table-column align="center"
           v-if="index == 0"
           fixed="left"
           label="编号"
@@ -21,6 +22,7 @@
 
 
       <el-table-column
+          align="center"
           :key="index"
           v-if="item.label != '操作'"
           :prop="item.prop"
@@ -29,6 +31,7 @@
           @click="checkOrderInfo(item)"
           :label="item.label"/>
       <el-table-column
+          align="center"
           :key="index"
           v-else
           fixed="right"
@@ -115,5 +118,6 @@ export default {
 <style scoped>
   .upload-demo{
     display: inline-block;
+    margin-right: 10px;
   }
 </style>

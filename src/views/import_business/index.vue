@@ -8,7 +8,7 @@
 
 
     <!------------- 数据表格  --------------->
-    <components_table :table-header="table_header" @onOperator="tableOperator"/>
+    <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" @onOperator="tableOperator"/>
     <el-pagination
         class="pagination"
         layout="prev, pager, next"
@@ -29,15 +29,15 @@
     <domesticDelivery ref="domesticDelivery"/>
     <submitCarInfo ref="submitCarInfo"/>
     <submitCustomsTransit ref="submitCustomsTransit"/>
-    <orderInfoDialog ref="orderInfoDialog"/>
+    <orderInfoDialog ref="orderInfoDialog" :orderInfo="orderInfo"/>
   </div>
 </template>
 
 <script>
 import search from "./components/searchComponent";
 import operatorGroup from "./components/operatorButtonGroup";
-import components_table from "@/components/Table/tableComponents";
-import {IMPORT_BUSINESS_TABLE} from "@/config/tableData";
+import components_table from "./components/componentsTable";
+import {HOSE_BILL_TABLE, IMPORT_BUSINESS_TABLE} from "@/config/tableData";
 import clearanceGoods from "@/views/import_business/submit_dialog/clearance_goods";
 import inspect from "@/views/import_business/submit_dialog/inspect";
 import returnSale from "@/views/import_business/submit_dialog/return_sale";
@@ -67,7 +67,9 @@ export default {
   },
   data() {
     return {
+      orderInfo: {},
       table_header: IMPORT_BUSINESS_TABLE,      //表格表头信息
+      house_bill_table_header: HOSE_BILL_TABLE,      //表格表头信息
     }
   },
 
@@ -78,6 +80,7 @@ export default {
      * 提交重置
      */
     tableOperator(row, operator_key){
+      this.orderInfo = row
       this.$refs["orderInfoDialog"].dialogVisible = true
     },
     /**

@@ -162,6 +162,34 @@ const BUSINESS_BILLING_TABLE = [
         prop: "date"
     },
     {
+        label: "分单项/次",
+        prop: "date"
+    },
+    {
+        label: "计费重量/kg",
+        prop: "date"
+    },
+    {
+        label: "查验/次",
+        prop: "date"
+    },
+    {
+        label: "退单/次",
+        prop: "date"
+    },
+    {
+        label: "转关/次",
+        prop: "date"
+    },
+    {
+        label: "运输（有境内监管）/次",
+        prop: "date"
+    },
+    {
+        label: "运输（无境内监管）/次",
+        prop: "date"
+    },
+    {
         label: "操作",
         prop: [ "上传文件" , "下载文件"]
     },
@@ -276,11 +304,40 @@ const IMPORT_BUSINESS_TABLE = [
     },
 ]
 
+// 进出口业务表格头
+const HOSE_BILL_TABLE = [
+    {
+        label: "分单号",
+        prop: "username"
+    },
+    {
+        label: "分单件数",
+        prop: "date"
+    },
+    {
+        label: "分单毛重",
+        prop: "date"
+    },
+    {
+        label: "分单提交",
+        prop: "date"
+    },
+    {
+        label: "分单计费重量",
+        prop: "date"
+    },
+    {
+        label: "收货人",
+        prop: "date"
+    }
+]
+
 module.exports = {
     SYSTEM_LOG_TABLE,
     USER_MANAGE_TABLE,
     DICTIONARY_TABLE,
     CLIENT_MANAGE_TABLE,
     BUSINESS_BILLING_TABLE,
-    IMPORT_BUSINESS_TABLE
+    IMPORT_BUSINESS_TABLE,
+    HOSE_BILL_TABLE
 }

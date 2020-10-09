@@ -67,10 +67,7 @@ const ORDER_TYPE_GROUP = [
     },
 ]
 const TRADE_TYPE_GROUP = [
-    {
-        value: 0,
-        label: '全部'
-    },
+
     {
         value: 1,
         label: '0110'
