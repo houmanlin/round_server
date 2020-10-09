@@ -38,8 +38,8 @@
           <el-form-item label="航班号">
             <el-input v-model="mast_info.flight_number" placeholder="请输入航班号"></el-input>
           </el-form-item>
-          <el-form-item label="目的港">
-            <el-input v-model="mast_info.destination" placeholder="请输入目的港"></el-input>
+          <el-form-item label="目的地">
+            <el-input v-model="mast_info.destination" placeholder="请输入目的地"></el-input>
           </el-form-item>
           <el-form-item label="航班日期">
             <el-date-picker
