@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/customs_sys_web_2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README-zh.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/article.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/mock-server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/remote-search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/role/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/role/routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mock/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/404_images/404.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/404_images/404_cloud.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Breadcrumb/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/GithubCorner/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Hamburger/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/PanThumb/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SvgIcon/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Table/tableComponents.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TextHoverEffect/Mallki.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/orderType.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/tableData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/svg/dashboard.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/svg/example.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/svg/eye-open.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/svg/eye.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/svg/form.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/svg/link.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/svg/nested.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/svg/password.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/svg/table.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/svg/tree.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/svg/user.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/icons/svgo.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/components/AppMain.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/components/Navbar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/components/Sidebar/FixiOSBug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/components/Sidebar/Item.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/components/Sidebar/Link.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/components/Sidebar/Logo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/components/Sidebar/SidebarItem.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/components/Sidebar/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/components/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layout/mixin/ResizeHandler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/permission.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/settings.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/getters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/modules/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/modules/settings.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/modules/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/element-ui.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/index.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/mixin.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/sidebar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/transition.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/get-page-title.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/validate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/404.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/business_billing/components/operatorButtonGroup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/business_billing/components/searchComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/business_billing/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/client/add_client.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/client/components/operatorButtonGroup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/client/components/searchComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/client/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dashboard/components/BarChart.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dashboard/components/BoxCard.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dashboard/components/LineChart.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dashboard/components/PanelGroup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dashboard/components/PieChart.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dashboard/components/RaddarChart.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dashboard/components/TodoList/Todo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dashboard/components/TodoList/index.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dashboard/components/TodoList/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dashboard/components/TransactionTable.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dashboard/components/mixins/resize.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dashboard/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dictionary/add_dictionary.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dictionary/components/operatorButtonGroup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dictionary/components/searchComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/dictionary/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/expense/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/components/componentsTable.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/components/operatorButtonGroup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/components/orderInfoDialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/components/searchComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/clearance_goods.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/domestic_delivery.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/domestic_delivery_goods.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/green_light.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/inspect.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/return_sale.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/return_sale_succ.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/return_workhouse.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/submit_car_info.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/submit_customs_transit.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/login/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/system_log/components/searchComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/system_log/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/user_manage/add_user.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/user_manage/components/operatorButtonGroup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/user_manage/components/resetPassDialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/user_manage/components/searchComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/user_manage/edit_password.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/user_manage/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/components/Breadcrumb.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/components/Hamburger.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/components/SvgIcon.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/utils/formatTime.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/utils/param2Obj.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/utils/parseTime.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit/utils/validate.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue.config.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1iJmqF7r7UEb5YDvNs3Dxchqb2w" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/views/user_manage" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/views/dictionary/components" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/views/user_manage" />
+      <recent name="$PROJECT_DIR$/src/views/import_business/submit_dialog" />
+      <recent name="$PROJECT_DIR$/src/views/import_business" />
+      <recent name="$PROJECT_DIR$/src/views/business_billing" />
+      <recent name="$PROJECT_DIR$/src/views/client" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="" />
+      <created>1601634257987</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601634257987</updated>
+      <workItem from="1601634259039" duration="1469000" />
+      <workItem from="1602045531445" duration="2921000" />
+      <workItem from="1602071751034" duration="13488000" />
+      <workItem from="1602086273616" duration="7054000" />
+      <workItem from="1602137007723" duration="8751000" />
+      <workItem from="1602164598003" duration="1567000" />
+      <workItem from="1602219337634" duration="20419000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="471" y="132" key="RollbackChangesDialog" timestamp="1602260878057">
+      <screen x="0" y="23" width="1440" height="799" />
+    </state>
+    <state x="471" y="132" key="RollbackChangesDialog/0.23.1440.799@0.23.1440.799" timestamp="1602260878057" />
+    <state x="229" y="61" key="SettingsEditor" timestamp="1602069475466">
+      <screen x="0" y="23" width="1440" height="799" />
+    </state>
+    <state x="229" y="61" key="SettingsEditor/0.23.1440.799@0.23.1440.799" timestamp="1602069475466" />
+    <state x="421" y="148" width="598" height="548" key="find.popup" timestamp="1602260173361">
+      <screen x="0" y="23" width="1440" height="799" />
+    </state>
+    <state x="421" y="148" width="598" height="548" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602260173361" />
+    <state x="385" y="146" width="670" height="676" key="search.everywhere.popup" timestamp="1602260273130">
+      <screen x="0" y="23" width="1440" height="799" />
+    </state>
+    <state x="385" y="146" width="670" height="676" key="search.everywhere.popup/0.23.1440.799@0.23.1440.799" timestamp="1602260273130" />
+    <state x="450" y="266" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1602260916827">
+      <screen x="0" y="23" width="1440" height="799" />
+    </state>
+    <state x="450" y="266" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1440.799@0.23.1440.799" timestamp="1602260916827" />
+  </component>
+</project>
