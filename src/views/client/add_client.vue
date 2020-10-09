@@ -3,9 +3,7 @@
     <el-form-item label="用户名">
       <el-input v-model="codeData.CODE_DIV"></el-input>
     </el-form-item>
-    <el-form-item label="客户编码" v-if="id <= 0">
-      <el-input v-model="codeData.CODE_CD"></el-input>
-    </el-form-item>
+
     <el-form-item label="是否使用">
       <el-switch v-model="codeData.is_use">
       </el-switch>

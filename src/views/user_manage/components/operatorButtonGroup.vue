@@ -2,22 +2,18 @@
   <div class="search_container">
 
     <!--  功能  -->
-    <el-button class="operator_button" type="primary" @click="operatorUser('新增')">新增</el-button>
+    <el-button class="operator_button dark_green" type="primary" @click="operatorUser('新增')">新增</el-button>
 
     <!--  功能  -->
-    <el-button class="operator_button" type="primary" @click="operatorUser('修改')">修改</el-button>
+    <el-button class="operator_button" type="warning" @click="operatorUser('修改')">修改</el-button>
 
     <!--  功能  -->
-    <el-button class="operator_button" type="primary" @click="operatorUser('删除')">删除</el-button>
+    <el-button class="operator_button" type="danger" @click="operatorUser('删除')">删除</el-button>
 
     <!--  功能  -->
-    <el-button class="operator_button" type="primary" @click="operatorUser('重置')">重置密码</el-button>
+    <el-button class="operator_button" type="danger" @click="operatorUser('重置')">重置密码</el-button>
 
-    <!--  功能  -->
-    <el-button class="operator_button" type="primary" @click="operatorUser('启用')">启用</el-button>
 
-    <!--  功能  -->
-    <el-button class="operator_button" type="primary" @click="operatorUser('禁用')">禁用</el-button>
   </div>
 </template>
 
@@ -51,7 +47,7 @@ export default {
 <style scoped>
   .search_container{
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
   .operator_button{
     margin-right: 15px;

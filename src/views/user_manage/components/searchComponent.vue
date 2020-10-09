@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import {ORDER_TYPE_GROUP} from "@/config/orderType";
+import {ORDER_TYPE_GROUP} from "@/config/selectData";
 
 export default {
   name: "searchComponents",

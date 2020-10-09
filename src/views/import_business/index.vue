@@ -9,7 +9,13 @@
 
     <!------------- 数据表格  --------------->
     <components_table :table-header="table_header" @onOperator="tableOperator"/>
-
+    <el-pagination
+        class="pagination"
+        layout="prev, pager, next"
+        :total="1000"
+        @current-change="checkPage"
+    >
+    </el-pagination>
 
     <!--  各种对话框  -->
 
@@ -83,6 +89,9 @@ export default {
         return
       }
       this.$refs[operator_key].dialogVisible = true
+    },
+    checkPage(){
+
     }
 
   }

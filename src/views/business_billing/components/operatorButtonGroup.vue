@@ -35,7 +35,7 @@ export default {
 <style scoped>
   .search_container{
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
   .operator_button{
     margin-right: 15px;

@@ -35,7 +35,23 @@
           label="操作"
           width="150">
         <template slot-scope="scope">
-          <el-button v-if="item.label == '操作'" v-for="(operator_item, indexs) in item.prop" :key="indexs" @click="handleClick(scope.row, operator_item)" type="text" size="small">{{operator_item}}</el-button>
+          <template v-if="item.label == '操作'">
+            <el-upload
+              class="upload-demo"
+              ref="upload"
+              action="https://jsonplaceholder.typicode.com/posts/"
+              v-for="(operator_item, indexs) in item.prop"
+              :key="indexs"
+              @click="handleClick(scope.row, operator_item)"
+              v-if="operator_item == '上传' || operator_item == '上传文件'"
+              :auto-upload="false">
+            <el-button  type="text"
+                        size="small">{{operator_item}}</el-button>
+          </el-upload>
+            <el-button v-if="operator_item != '上传' && operator_item != '上传文件'" v-for="(operator_item, indexs) in item.prop" :key="indexs" @click="handleClick(scope.row, operator_item)" type="text" size="small">{{operator_item}}</el-button>
+
+          </template>
+
         </template>
       </el-table-column>
     </template>
@@ -95,3 +111,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  .upload-demo{
+    display: inline-block;
+  }
+</style>

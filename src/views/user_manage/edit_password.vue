@@ -11,7 +11,7 @@
       <el-input v-model="userData.sure_password" placeholder="请输入确认密码"></el-input>
     </el-form-item>
     <el-form-item class="create_user">
-      <el-button type="primary" @click="onSubmit">修改</el-button>
+      <el-button type="warning" @click="onSubmit">修改</el-button>
       <el-button @click="$router.back()">返回</el-button>
     </el-form-item>
   </el-form>

@@ -9,7 +9,7 @@
             type="textarea"
             maxlength="1000000"
             v-model="mast_order_number"
-            placeholder="请输入主单号"
+            placeholder="可批量输入，通过换行符（回车）区分多条数据"
         />
       </el-col>
 
@@ -19,14 +19,14 @@
             type="textarea"
             maxlength="1000000"
             v-model="house_order_number"
-            placeholder="请输入分单号"
+            placeholder="可批量输入，通过换行符（回车）区分多条数据"
         />
       </el-col>
 
       <!--  名称查询输入框  -->
       <el-col :span="5" class="search_input" >
         <el-input
-            placeholder="请输入航班号"
+            placeholder="可批量输入，通过换行符（回车）区分多条数据"
             type="textarea"
             maxlength="1000000"
             v-model="house_order_number"
@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import {ORDER_TYPE_GROUP} from "@/config/orderType";
+import {ORDER_TYPE_GROUP} from "@/config/selectData";
 
 export default {
   name: "searchComponents",

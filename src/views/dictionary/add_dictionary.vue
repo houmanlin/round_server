@@ -13,16 +13,8 @@
       <el-input v-model="codeData.tagmeme_num"></el-input>
     </el-form-item>
     <el-form-item label="是否使用">
-      <el-select v-model="value" placeholder="请选择是否使用">
-        <el-option
-            label="禁用"
-            value="0">
-        </el-option>
-        <el-option
-            label="启用"
-            value="1">
-        </el-option>
-      </el-select>
+      <el-switch v-model="codeData.is_use">
+      </el-switch>
     </el-form-item>
     <el-form-item class="create_user">
       <el-button type="primary" @click="onSubmit">立即创建</el-button>

@@ -4,14 +4,9 @@
 
     <!--  名称查询输入框  -->
     <el-col :span="4">
-      <el-select v-model="field_value" filterable placeholder="请输入字段名">
-        <el-option
-          v-for="item in field_list"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-        </el-option>
-      </el-select>
+      <el-input v-model="field_value" placeholder="请输入字段名">
+
+      </el-input>
     </el-col>
 
 

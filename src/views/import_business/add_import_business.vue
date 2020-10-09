@@ -4,7 +4,10 @@
     <el-form :inline="true" :model="mast_info" size="medium" label-width="80px" label-position="left" class="demo-form-inline">
 
       <el-form-item label="客户">
-        <el-input v-model="mast_info.client_name" placeholder="请输入客户"></el-input>
+        <el-select v-model="mast_info.client_name" filterable placeholder="请输入字段名">
+          <el-option label="通关代理" value="1"></el-option>
+          <el-option label="贸易代理" value="2"></el-option>
+        </el-select>
       </el-form-item>
 
       <el-form-item label="主单类型">
@@ -58,7 +61,14 @@
             <el-input v-model="mast_info.mast_expense" placeholder="请输入主单计费量"></el-input>
           </el-form-item>
           <el-form-item label="贸易方式">
-            <el-input v-model="mast_info.trade_type" placeholder="请输入贸易方式"></el-input>
+            <el-select filterable v-model="mast_info.trade_type" placeholder="请选择贸易方式">
+              <el-option
+                  v-for="item in trade_type_list"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value">
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-form>
       </div>
@@ -197,10 +207,12 @@
 </template>
 
 <script>
+import { TRADE_TYPE_GROUP } from '@/config/selectData'
 export default {
   name: "add_import_business",
   data(){
     return{
+      trade_type_list         : TRADE_TYPE_GROUP,
       mast_info:{
         client_name           : "",       //客户类型
         mast_type             : "",       //主单类型
@@ -216,9 +228,6 @@ export default {
         mast_expense          : "",       //主单费用
         trade_type            : "",       //贸易方式
         house_bill            : [
-          {host_bill_order: '', house_bill_number: "", house_bill_weight:"", house_bill_volume: "", house_bill_expense: "", receiver: ""},
-          {host_bill_order: '', house_bill_number: "", house_bill_weight:"", house_bill_volume: "", house_bill_expense: "", receiver: ""},
-          {host_bill_order: '', house_bill_number: "", house_bill_weight:"", house_bill_volume: "", house_bill_expense: "", receiver: ""},
           {host_bill_order: '', house_bill_number: "", house_bill_weight:"", house_bill_volume: "", house_bill_expense: "", receiver: ""},
 
         ],                                //分单信息

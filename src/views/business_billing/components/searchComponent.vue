@@ -8,7 +8,7 @@
         type="textarea"
         maxlength="10000"
         v-model="master_bill_number"
-        placeholder="请输入主单号"/>
+        placeholder="可批量输入，通过换行符（回车）区分多条数据"/>
     </el-col>
 
 
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import {ORDER_TYPE_GROUP} from "@/config/orderType";
+import {ORDER_TYPE_GROUP} from "@/config/selectData";
 
 export default {
   name: "searchComponents",

@@ -48,7 +48,7 @@ const USER_MANAGE_TABLE = [
     },
     {
         label: "操作",
-        prop: ["启用", "删除"]
+        prop: ["启用", "禁用"]
     },
 ]
 
@@ -115,6 +115,10 @@ const CLIENT_MANAGE_TABLE = [
     {
         label: "是否可用",
         prop: "date"
+    },
+    {
+        label: "操作",
+        prop: ["启用", "禁用"]
     },
 ]
 
