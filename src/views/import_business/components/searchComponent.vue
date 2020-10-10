@@ -61,10 +61,14 @@
       <el-col :span="4" :offset="1">
         <el-select filterable v-model="operator_type" placeholder="请选择状态">
           <el-option
-              v-for="item in operator_type_list"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
+
+              label="杨哥"
+              value="0">
+          </el-option>
+          <el-option
+
+              label="吕哥"
+              value="1">
           </el-option>
         </el-select>
       </el-col>

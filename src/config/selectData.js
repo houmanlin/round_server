@@ -65,6 +65,10 @@ const ORDER_TYPE_GROUP = [
 
 const SYSTEM_LOG_STATUS_GROUP = [
     {
+        value: -1,
+        label: '全部'
+    },
+    {
         value: 0,
         label: '录入业务数据'
     },

@@ -4,6 +4,7 @@
     <components_table :tableHeader="tableHeader"/>
     <el-pagination
       class="pagination"
+      :pager-count="20"
       layout="prev, pager, next"
       :total="1000"
       @current-change="checkPage"
