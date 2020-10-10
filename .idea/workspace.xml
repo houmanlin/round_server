@@ -11,7 +11,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="init">
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/selectData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/selectData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/modules/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/client/components/searchComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/client/components/searchComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/dictionary/add_dictionary.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dictionary/add_dictionary.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/dictionary/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dictionary/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/componentsTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/componentsTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/operatorButtonGroup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/operatorButtonGroup.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/orderInfoDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/orderInfoDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/import_business/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/system_log/components/searchComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system_log/components/searchComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user_manage/add_user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user_manage/add_user.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user_manage/components/resetPassDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user_manage/components/resetPassDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user_manage/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user_manage/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +93,7 @@
       <workItem from="1602086273616" duration="7054000" />
       <workItem from="1602137007723" duration="8751000" />
       <workItem from="1602164598003" duration="1567000" />
-      <workItem from="1602219337634" duration="29316000" />
+      <workItem from="1602219337634" duration="34718000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1602261146043</created>
@@ -99,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602273250626</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="init">
+      <created>1602273319479</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1602273319479</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,18 +153,22 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="229" y="61" key="SettingsEditor/0.23.1440.799@0.23.1440.799" timestamp="1602069475466" />
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602273253151">
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602273322053">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602273253151" />
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602273322053" />
     <state x="511" y="163" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1602267768183">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="511" y="163" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.23.1440.799@0.23.1440.799" timestamp="1602267768183" />
-    <state x="421" y="148" width="648" height="612" key="find.popup" timestamp="1602273303179">
+    <state x="421" y="148" width="648" height="612" key="find.popup" timestamp="1602300086413">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="421" y="148" width="648" height="612" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602273303179" />
+    <state x="421" y="148" width="648" height="612" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602300086413" />
+    <state x="0" y="23" width="1438" height="797" key="recent.locations.popup" timestamp="1602298247233">
+      <screen x="0" y="23" width="1440" height="799" />
+    </state>
+    <state x="0" y="23" width="1438" height="797" key="recent.locations.popup/0.23.1440.799@0.23.1440.799" timestamp="1602298247233" />
     <state x="385" y="146" width="670" height="676" key="search.everywhere.popup" timestamp="1602260273130">
       <screen x="0" y="23" width="1440" height="799" />
     </state>

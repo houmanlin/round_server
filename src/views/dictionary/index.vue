@@ -9,7 +9,13 @@
 
     <!------------- 数据表格  --------------->
     <components_table :table-header="table_header"/>
-
+    <el-pagination
+        class="pagination"
+        layout="prev, pager, next"
+        :total="1000"
+        @current-change="checkPage"
+    >
+    </el-pagination>
   </div>
 </template>
 
@@ -45,6 +51,9 @@ export default {
     editDictionary: function () {
       this.$router.push({path: "add_dictionary", query: {id: 1}})
     },
+    checkPage(){
+
+    }
   }
 }
 </script>

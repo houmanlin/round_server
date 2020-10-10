@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import {ORDER_TYPE_GROUP} from "@/config/selectData";
+import {SYSTEM_LOG_STATUS_GROUP} from "@/config/selectData";
 
 export default {
   name: "searchComponents",
@@ -39,7 +39,7 @@ export default {
       operator            : "",                   // 操作员
       operator_date       : "",                   // 操作时间
       operator_type       : "",                   // 操作类型
-      operator_type_list  : ORDER_TYPE_GROUP,     // 操作类型列表
+      operator_type_list  : SYSTEM_LOG_STATUS_GROUP,     // 操作类型列表
     }
   }
 }

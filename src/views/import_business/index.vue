@@ -8,7 +8,7 @@
 
 
     <!------------- 数据表格  --------------->
-    <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" @onOperator="tableOperator"/>
+    <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" @onTableOperator="tableOperatorGroup" @onOperator="tableOperator"/>
     <el-pagination
         class="pagination"
         layout="prev, pager, next"
@@ -30,6 +30,7 @@
     <submitCarInfo ref="submitCarInfo"/>
     <submitCustomsTransit ref="submitCustomsTransit"/>
     <orderInfoDialog ref="orderInfoDialog" :orderInfo="orderInfo"/>
+    <orderMaterialDialog ref="orderMaterialDialog" :orderInfo="orderInfo"/>
   </div>
 </template>
 
@@ -49,6 +50,7 @@ import domesticDelivery from "@/views/import_business/submit_dialog/domestic_del
 import submitCarInfo from "@/views/import_business/submit_dialog/submit_car_info";
 import submitCustomsTransit from "@/views/import_business/submit_dialog/submit_customs_transit";
 import orderInfoDialog from "@/views/import_business/components/orderInfoDialog";
+import orderMaterialDialog from "@/views/import_business/components/orderMaterialDialog";
 export default {
   components:{ search,
     components_table,
@@ -63,7 +65,8 @@ export default {
     submitCarInfo,
     submitCustomsTransit,
     domesticDeliveryGoods,
-    orderInfoDialog
+    orderInfoDialog,
+    orderMaterialDialog
   },
   data() {
     return {
@@ -92,6 +95,13 @@ export default {
         return
       }
       this.$refs[operator_key].dialogVisible = true
+    },
+    tableOperatorGroup(operator){
+
+      if (operator.operator_key == '查看'){
+        this.$refs["orderMaterialDialog"].dialogVisible = true
+      }
+
     },
     checkPage(){
 

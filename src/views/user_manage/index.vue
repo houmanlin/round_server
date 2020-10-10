@@ -19,7 +19,7 @@
     </el-pagination>
 
     <!----------------  重置密码提示面板 ------------>
-<!--    <reset_pass_dialog ref="dialog" @onResetPassword="submitReset"/>-->
+    <reset_pass_dialog ref="dialog" @onResetPassword="submitReset"/>
   </div>
 </template>
 
@@ -45,7 +45,13 @@ export default {
      */
     resetPass(){
 
-      // this.$refs["dialog"].dialog_form_visible = !this.$refs["dialog"].dialog_form_visible
+      this.$refs["dialog"].dialog_form_visible = !this.$refs["dialog"].dialog_form_visible
+    },
+    submitReset(){
+      this.$message({
+        message: '成功重置密码',
+        type: 'success'
+      });
     },
     /***
      * 提交重置

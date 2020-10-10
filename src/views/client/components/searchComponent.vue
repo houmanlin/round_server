@@ -8,7 +8,7 @@
     </el-col>
     <!--  名称查询输入框  -->
     <el-col :span="4" :offset="1">
-      <el-input v-model="serial_number" filterable placeholder="请输入编号"/>
+      <el-input v-model="serial_number" filterable placeholder="请输入编码"/>
     </el-col>
 
 

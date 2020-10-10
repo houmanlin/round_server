@@ -1,10 +1,10 @@
 <template>
   <el-form ref="form" :model="codeData" label-width="100px" class="view_container">
     <el-form-item label="CODE DIV">
-      <el-input v-model="codeData.CODE_DIV" :readonly="id > 0"></el-input>
+      <el-input v-model="codeData.CODE_DIV" :disabled="id > 0"></el-input>
     </el-form-item>
     <el-form-item label="CODE CD">
-      <el-input v-model="codeData.CODE_CD" :readonly="id > 0"></el-input>
+      <el-input v-model="codeData.CODE_CD" :disabled="id > 0"></el-input>
     </el-form-item>
     <el-form-item label="CODE 名称">
       <el-input v-model="codeData.CODE_name"></el-input>
@@ -71,5 +71,8 @@ export default {
   justify-content: space-around;
   align-items: center;
   margin: 20px auto;
+}
+.readonly_dom{
+  background: #cccccc;
 }
 </style>

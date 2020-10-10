@@ -67,20 +67,7 @@
     </el-form>
 
 
-    <div class="order_flow">
-      <div class="order_flow_title">流程</div>
-      <el-collapse v-model="activeNames" @change="handleChange" class="order_flow_content">
-        <el-collapse-item title="提交报关" name="1">
-          <div>
-            <el-image
-                style="width: 100px; height: 100px"
-                src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-                fit="fill"></el-image>
-          </div>
-          <div>备注:在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
-        </el-collapse-item>
-      </el-collapse>
-    </div>
+
 
 
     <span slot="footer" class="dialog-footer">
@@ -113,26 +100,11 @@ export default {
 
 <style scoped>
   .order_info_list{
-    height: 130px;
+    height: 300px;
     overflow-y: auto;
   }
   .form_value{
     width: 150px;
   }
-  .order_flow{
-    width: 100%;
-    height: 300px;
-    overflow-y: auto;
-    border:1px solid #b8b8b8;
-    border-radius: 10px;
-  }
-  .order_flow_title{
-    background: #cccccc;
-    padding: 10px 0;
-    text-indent: 10px;
-  }
-  .order_flow_content{
-    width: 90%;
-    margin: 0 auto;
-  }
+
 </style>

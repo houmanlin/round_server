@@ -2,6 +2,7 @@
   <el-table
       :data="tableData"
       border
+      @cell-dblclick="double_click"
       style="width: 100%">
 
     <template v-for="(item, index) in tableHeader" >
@@ -140,10 +141,16 @@ export default {
     }
   },
   methods:{
-    checkOrderInfo(e){
-      this.$emit("onOperator", e)
+    checkOrderInfo(row, key){
+      this.$emit("onTableOperator", {table_data:row, operator_key:key})
     },
+    double_click(row, column, cell, event){
 
+      if (!column.label || column.label == "操作"){
+        return
+      }
+      this.$emit("onOperator", arguments)
+    }
   }
 
 }

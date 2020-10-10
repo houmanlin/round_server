@@ -3,9 +3,7 @@
     <el-form-item label="用户名">
       <el-input v-model="userData.user_name" placeholder="请输入用户名称"></el-input>
     </el-form-item>
-    <el-form-item label="密码">
-      <el-input v-model="userData.password" placeholder="请输入用户密码"></el-input>
-    </el-form-item>
+  
     <el-form-item label="真实姓名">
       <el-input v-model="userData.real_name" placeholder="请输入真实姓名"></el-input>
     </el-form-item>

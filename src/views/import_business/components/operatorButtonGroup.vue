@@ -58,8 +58,10 @@ export default {
   }
   .button_yellow{
     background: #ffc307;
+    border-color: #ffc307;
   }
   .dark_green{
     background: darkgreen;
+    border-color: darkgreen;
   }
 </style>

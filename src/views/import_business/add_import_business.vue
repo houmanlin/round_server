@@ -5,8 +5,8 @@
 
       <el-form-item label="客户">
         <el-select v-model="mast_info.client_name" filterable placeholder="请输入字段名">
-          <el-option label="通关代理" value="1"></el-option>
-          <el-option label="贸易代理" value="2"></el-option>
+          <el-option label="杨哥" value="1"></el-option>
+          <el-option label="吕哥" value="2"></el-option>
         </el-select>
       </el-form-item>
 

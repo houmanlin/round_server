@@ -69,6 +69,7 @@ const actions = {
         commit('SET_AVATAR', avatar)
         resolve(data)
       }).catch(error => {
+        // debugger
         const  data  = {
           roles: ['admin'],
           introduction: 'I am a super administrator',
