@@ -24,7 +24,7 @@
 
     <!--    -->
     <el-col :span="6" :offset="1">
-      <el-button type="primary">查询</el-button>
+      <el-button type="primary" @click="selectData">查询</el-button>
     </el-col>
   </el-row>
 </template>
@@ -40,6 +40,15 @@ export default {
       operator_date       : "",                   // 操作时间
       operator_type       : "",                   // 操作类型
       operator_type_list  : SYSTEM_LOG_STATUS_GROUP,     // 操作类型列表
+    }
+  },
+  methods:{
+    selectData(){
+      this.$emit("getSelectData", {
+        operator            : this.operator,         // 操作员
+        operator_date       : this.operator_date,    // 操作时间
+        operator_type       : this.operator_type,    // 操作类型
+      })
     }
   }
 }

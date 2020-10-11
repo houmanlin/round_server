@@ -1,7 +1,7 @@
 <template>
   <div class="view_container">
     <!---------------   搜索  ----------------->
-    <search/>
+    <search @onSelectData="getSelectFiled"/>
 
     <!-----------  用户的增删改查按钮  ---------->
     <operatorGroup @onAddData="addUser" @onEditData="editUser" @onRemoveData="removeUser"/>
@@ -45,6 +45,8 @@ export default {
       page_config     : {},                     // 分页配置
       getSelectList   : [],                     // 获取表格多选
       ids_str         : "",                     // 多个ID拼接结果
+      real_name       : "",                     // 真实姓名
+      user_name       : "",                     // 用户名称
     }
   },
   created() {
@@ -60,6 +62,8 @@ export default {
       let data = {
         limit:this.page_config.limit,
         page:this.page_config.current,
+        realName: this.real_name,
+        username: this.user_name,
       }
       getUserList(data).then(res=>{
         this.page_config = getPages(res.data);
@@ -103,7 +107,14 @@ export default {
      * 修改用户信息
      */
     editUser(){
-      this.$router.push({path:"add_user", query:{id:1}})
+      if(this.getSelectList.length != 1){
+        this.$message.warning("只能修改一条数据")
+        return
+      }
+      this.$router.push({
+        path:"add_user",
+        query:{id:this.getSelectList[0].id}
+      })
     },
     /**
      * 切换分页
@@ -166,6 +177,10 @@ export default {
       removeUserPass(data).then(res=>{
         this.$message.success(res.message)
       })
+    },
+    getSelectFiled(data){
+      this.real_name = data.real_name
+      this.user_name = data.user_name
     }
   }
 }

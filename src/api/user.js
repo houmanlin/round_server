@@ -19,8 +19,9 @@ export function getInfo(token) {
 
 export function logout() {
   return request({
-    url: '/vue-admin-template/user/logout',
-    method: 'post'
+    url: '/sysAccount/logout',
+    method: 'post',
+    data
   })
 }
 
@@ -65,7 +66,7 @@ export function removeUserPass(data) {
   data = getParams(data)
   return request({
     url: '/sysAccount/delete',
-    method: 'POST',
+    method: 'DELETE',
     data
   })
 }

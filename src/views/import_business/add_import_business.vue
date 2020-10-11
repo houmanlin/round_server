@@ -3,19 +3,20 @@
     <div class="aviation_title">航空主单录入</div>
     <el-form :inline="true" :model="mast_info" size="medium" label-width="80px" label-position="left" class="demo-form-inline">
 
-      <el-form-item label="客户">
+      <el-form-item label="一级客户">
+        <el-select v-model="mast_info.client_name" filterable placeholder="请输入字段名">
+          <el-option label="杨哥" value="1"></el-option>
+          <el-option label="吕哥" value="2"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="二级客户">
         <el-select v-model="mast_info.client_name" filterable placeholder="请输入字段名">
           <el-option label="杨哥" value="1"></el-option>
           <el-option label="吕哥" value="2"></el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item label="主单类型">
-        <el-select filterable v-model="mast_info.mast_type" placeholder="请选择主单类型">
-          <el-option label="通关代理" value="1"></el-option>
-          <el-option label="贸易代理" value="2"></el-option>
-        </el-select>
-      </el-form-item>
+
       <el-form-item label="报关口岸">
 
         <el-input v-model="mast_info.clearance_port" placeholder="请输入报关口岸"></el-input>
@@ -112,6 +113,13 @@
           <div class="form_item">
             <span>收件人</span>
             <el-input v-model="mast_info.receiver" placeholder="请输入收件人"></el-input>
+          </div>
+          <div class="form_item">
+            <span>贸易类型</span>
+            <el-select filterable v-model="mast_info.mast_type" placeholder="请选择主单类型">
+              <el-option label="通关代理" value="1"></el-option>
+              <el-option label="贸易代理" value="2"></el-option>
+            </el-select>
           </div>
           <!-- 操作-->
           <div class="form_item last_form_item">
@@ -280,16 +288,15 @@ export default {
     margin-top: 15px;
   }
   .house_bill_content>.form_item{
-    width: calc(95% / 6);
+    width: calc(95% / 7);
     display: flex;
     justify-items: center;
     align-items: center;
     margin-right: 10px;
   }
   .form_item>span{
-    width: 50%;
+    width: 70%;
     font-size: 14px;
-
     vertical-align: middle;
     float: left;
     color: #606266;

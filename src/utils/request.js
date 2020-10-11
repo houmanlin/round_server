@@ -1,7 +1,10 @@
 import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
-import { getToken } from '@/utils/auth'
+import {getToken, removeToken} from '@/utils/auth'
+import VueRouter from "vue-router";
+import {exitUser} from "@/utils/utils";
+
 
 // create an axios instance
 const service = axios.create({
@@ -59,13 +62,24 @@ service.interceptors.response.use(
     }
   },
   error => {
-    console.log('err' + error) // for debug
-    Message({
-      message: error.message,
-      type: 'error',
-      duration: 5 * 1000
-    })
+    if (error.toString() == "Error: Request failed with status code 401"){
+      removeToken()
+      Message({
+        message: "用户已失效",
+        type: 'error',
+        duration: 5 * 1000
+      })
+      // window.location.reload()
+    }else{
+      Message({
+        message: error.message,
+        type: 'error',
+        duration: 5 * 1000
+      })
+    }
     return Promise.reject(error)
+
+
   }
 )
 

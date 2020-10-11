@@ -3,6 +3,7 @@
       :data="tableData"
       border
       @cell-dblclick="double_click"
+      height="400"
       style="width: 100%">
 
     <template v-for="(item, index) in tableHeader" >
@@ -65,7 +66,7 @@
           v-if="item.label != '操作'"
           :prop="item.prop"
           show-overflow-tooltip
-          width="300"
+          min-width="200"
           @click="checkOrderInfo(item)"
           :label="item.label"/>
       <el-table-column
@@ -122,6 +123,38 @@ export default {
         shop: '王小虎夫妻店',
         shopId: '10333'
       }, {
+        id: '12987125',
+        name: '好滋好味鸡蛋仔',
+        category: '江浙小吃、小吃零食',
+        desc: '荷兰优质淡奶，奶香浓而不腻',
+        address: '上海市普陀区真北路',
+        shop: '王小虎夫妻店',
+        shopId: '10333'
+      },{
+        id: '12987125',
+        name: '好滋好味鸡蛋仔',
+        category: '江浙小吃、小吃零食',
+        desc: '荷兰优质淡奶，奶香浓而不腻',
+        address: '上海市普陀区真北路',
+        shop: '王小虎夫妻店',
+        shopId: '10333'
+      },{
+        id: '12987125',
+        name: '好滋好味鸡蛋仔',
+        category: '江浙小吃、小吃零食',
+        desc: '荷兰优质淡奶，奶香浓而不腻',
+        address: '上海市普陀区真北路',
+        shop: '王小虎夫妻店',
+        shopId: '10333'
+      },{
+        id: '12987125',
+        name: '好滋好味鸡蛋仔',
+        category: '江浙小吃、小吃零食',
+        desc: '荷兰优质淡奶，奶香浓而不腻',
+        address: '上海市普陀区真北路',
+        shop: '王小虎夫妻店',
+        shopId: '10333'
+      },{
         id: '12987125',
         name: '好滋好味鸡蛋仔',
         category: '江浙小吃、小吃零食',

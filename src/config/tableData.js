@@ -3,19 +3,19 @@ const SYSTEM_LOG_TABLE = [
 
     {
         label: "操作时间",
-        prop: "date"
+        prop: "busDate"
     },
     {
         label: "操作人员账户",
-        prop: "name"
+        prop: "updateBy"
     },
     {
         label: "操作类型",
-        prop: "province"
+        prop: "opertype_text"
     },
     {
         label: "操作内容",
-        prop: "zip"
+        prop: "operContent"
     },
 ]
 
@@ -138,7 +138,11 @@ const BUSINESS_BILLING_TABLE = [
         prop: "date"
     },
     {
-        label: "客户名称",
+        label: "一级客户",
+        prop: "date"
+    },
+    {
+        label: "二级客户",
         prop: "date"
     },
     {
@@ -199,7 +203,11 @@ const BUSINESS_BILLING_TABLE = [
 // 进出口业务表格头
 const IMPORT_BUSINESS_TABLE = [
     {
-        label: "客户名称",
+        label: "一级客户",
+        prop: "username"
+    },
+    {
+        label: "二级客户",
         prop: "username"
     },
     {

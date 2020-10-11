@@ -20,4 +20,6 @@ function getPages(origin_data) {
     return page_config;
 }
 
+
+
 module.exports = {getParams, getPages}

@@ -28,7 +28,7 @@
           v-if="item.label != '操作'"
           :prop="item.prop"
           show-overflow-tooltip
-          width="300"
+          min-width="180"
           @click="checkOrderInfo(item)"
           :label="item.label"/>
       <el-table-column
@@ -94,4 +94,6 @@ export default {
     display: inline-block;
     margin-right: 10px;
   }
+
+
 </style>

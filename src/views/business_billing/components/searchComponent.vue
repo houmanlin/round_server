@@ -3,12 +3,17 @@
 
 
     <!--  名称查询输入框  -->
-    <el-col :span="4">
-      <el-input
-        type="textarea"
-        maxlength="10000"
-        v-model="master_bill_number"
-        placeholder="可批量输入，通过换行符（回车）区分多条数据"/>
+    <el-col :span="6">
+
+      <el-form ref="form" :model="clearanceData" label-width="80px" class="form_list">
+        <el-form-item label="车辆型号">
+          <el-input
+            type="textarea"
+            maxlength="10000"
+            v-model="clearanceData.master_bill_number"
+            placeholder="可批量输入，通过换行符（回车）区分多条数据"/>
+        </el-form-item>
+      </el-form>
     </el-col>
 
 
@@ -34,7 +39,9 @@ export default {
   name: "searchComponents",
   data(){
     return{
-      master_bill_number    : "",                   // 操作员
+      clearanceData:{
+        master_bill_number    : "",                   // 操作员
+      },
       operator_type_list    : ORDER_TYPE_GROUP,     // 操作类型列表
     }
   },
