@@ -46,7 +46,7 @@ export default {
       getSelectList   : [],                     // 获取表格多选
       ids_str         : "",                     // 多个ID拼接结果
       real_name       : "",                     // 真实姓名
-      user_name       : "",                     // 用户名称
+      username        : "",                     // 用户名称
     }
   },
   created() {
@@ -63,7 +63,7 @@ export default {
         limit:this.page_config.limit,
         page:this.page_config.current,
         realName: this.real_name,
-        username: this.user_name,
+        username: this.username,
       }
       getUserList(data).then(res=>{
         this.page_config = getPages(res.data);
@@ -179,8 +179,10 @@ export default {
       })
     },
     getSelectFiled(data){
-      this.real_name = data.real_name
-      this.user_name = data.user_name
+      this.real_name = data.real_name;
+      this.user_name = data.user_name;
+      this.page_config.current = 1;
+      this.getData();
     }
   }
 }

@@ -17,7 +17,8 @@ export function getInfo(token) {
   })
 }
 
-export function logout() {
+export function logout(data) {
+  data = getParams(data)
   return request({
     url: '/sysAccount/logout',
     method: 'post',
@@ -67,6 +68,15 @@ export function removeUserPass(data) {
   return request({
     url: '/sysAccount/delete',
     method: 'DELETE',
+    data
+  })
+}
+
+export function editUserPass(data) {
+  data = getParams(data)
+  return request({
+    url: '/sysAccount/changePassword',
+    method: 'POST',
     data
   })
 }

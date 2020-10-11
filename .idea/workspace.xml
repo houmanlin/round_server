@@ -11,36 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="init">
-      <change afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/static/fonts/element-icons.535877f5.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/static/fonts/element-icons.732389de.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/static/img/404.a57b6f31.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/static/img/404_cloud.0f4bc32b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/sys_log.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/table" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.prod" beforeDir="false" afterPath="$PROJECT_DIR$/.env.production" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/customs_sys_web_2.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/tableComponents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/tableComponents.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/tableData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/tableData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/modules/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/business_billing/components/searchComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/business_billing/components/searchComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/componentsTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/componentsTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/searchComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/searchComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system_log/components/searchComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system_log/components/searchComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system_log/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system_log/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/user_manage/components/searchComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user_manage/components/searchComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/validate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user_manage/edit_password.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user_manage/edit_password.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/user_manage/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user_manage/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -203,10 +177,10 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="511" y="163" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.23.1440.799@0.23.1440.799" timestamp="1602267768183" />
-    <state x="421" y="148" width="648" height="640" key="find.popup" timestamp="1602405321764">
+    <state x="198" y="137" width="648" height="640" key="find.popup" timestamp="1602417313121">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="421" y="148" width="648" height="640" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602405321764" />
+    <state x="198" y="137" width="648" height="640" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602417313121" />
     <state x="0" y="23" width="1438" height="797" key="recent.locations.popup" timestamp="1602298247233">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
