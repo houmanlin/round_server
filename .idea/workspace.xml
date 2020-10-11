@@ -10,15 +10,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="开始对接业务计费">
-      <change afterPath="$PROJECT_DIR$/src/api/import_bussiness.js" afterDir="false" />
+    <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="添加订单完事了">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/customer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/tableData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/tableData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/import_bussiness.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/import_bussiness.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/componentsTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/componentsTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/searchComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/searchComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602440915010</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="添加订单完事了">
+      <created>1602451383878</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1602451383878</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,7 +200,8 @@
     <MESSAGE value="修改" />
     <MESSAGE value="系统管理完成" />
     <MESSAGE value="开始对接业务计费" />
-    <option name="LAST_COMMIT_MESSAGE" value="开始对接业务计费" />
+    <MESSAGE value="添加订单完事了" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加订单完事了" />
   </component>
   <component name="WindowStateProjectService">
     <state x="427" y="231" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602390758872">
@@ -213,10 +216,10 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="229" y="61" key="SettingsEditor/0.23.1440.799@0.23.1440.799" timestamp="1602069475466" />
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602441014042">
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602451391937">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602441014042" />
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602451391937" />
     <state x="511" y="163" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1602267768183">
       <screen x="0" y="23" width="1440" height="799" />
     </state>

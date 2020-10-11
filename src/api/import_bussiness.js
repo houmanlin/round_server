@@ -24,6 +24,7 @@ export function addOrder(data) {
     return request({
         url: "/busMain/save",
         method: "POST",
-        data
+        data,
+        headers: {"content-Type": "application/json"}
     })
 }

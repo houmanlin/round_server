@@ -328,7 +328,7 @@ export default {
         mainVolume:this.mast_info.mast_volume,
         remark:this.mast_info.marks,
         tradeNo:this.mast_info.tradeNo,
-        productionSaleUnit:this.mast_info.productionSaleUnit,
+        productionSaleUnit:this.mast_info.sale_monad,
       }
       addOrder(data).then(res=>{
           this.message.success("成功");
