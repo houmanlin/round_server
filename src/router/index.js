@@ -34,7 +34,7 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/import_business',
-    name: 'import_business',
+    name: 'import_business_manage',
     meta: { title: '进出口业务管理', icon: 'el-icon-box' },
     children: [
       {
@@ -92,13 +92,7 @@ export const constantRoutes = [
         meta: { title: '添加用户' },
         hidden: true
       },
-      {
-        path: 'add_user',
-        name: 'add_user',
-        component: () => import('@/views/user_manage/add_user'),
-        meta: { title: '添加用户' },
-        hidden: true
-      },
+
       {
         path: 'dictionary_config',
         name: 'dictionary_config',

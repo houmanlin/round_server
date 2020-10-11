@@ -36,7 +36,16 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    proxy: {
+      '/api': {
+        target: 'http://www.baidu.com/api',
+        changeOrigin: true, // 允许websockets跨域
+        // ws: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    } // 代理转发配置，用于调试环境
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that

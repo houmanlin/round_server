@@ -12,7 +12,7 @@
 
     <el-pagination
         class="pagination"
-        :pager-count="20"
+        :pagerCount="21"
         layout="prev, pager, next"
         :total="1000"
         @current-change="checkPage"

@@ -1,17 +1,17 @@
 <template>
   <el-form ref="form" :model="userData" label-width="80px" class="view_container">
     <el-form-item label="用户名">
-      <el-input v-model="userData.user_name" placeholder="请输入用户名称"></el-input>
+      <el-input v-model="userData.username" placeholder="请输入用户名称"></el-input>
     </el-form-item>
-  
+
     <el-form-item label="真实姓名">
-      <el-input v-model="userData.real_name" placeholder="请输入真实姓名"></el-input>
+      <el-input v-model="userData.realName" placeholder="请输入真实姓名"></el-input>
     </el-form-item>
     <el-form-item label="职位">
-      <el-input v-model="userData.job_name" placeholder="请输入职位名称"></el-input>
+      <el-input v-model="userData.position" placeholder="请输入职位名称"></el-input>
     </el-form-item>
     <el-form-item label="是否可用">
-      <el-switch v-model="userData.is_use">
+      <el-switch v-model="userData.isEnable">
       </el-switch>
     </el-form-item>
     <el-form-item class="create_user">
@@ -22,16 +22,18 @@
 </template>
 
 <script>
+import {registerUser} from "@/api/user";
+
 export default {
   name: "add",
   data(){
     return{
       userData:{
-        user_name: "",
-        real_name: "",
-        job_name:  "",
-        password:  "",
-        is_use:    true,
+        realName     : "",
+        username     : "",
+        position     : "",
+        password     : "qwerty",
+        isEnable     : true,
       }
     }
   },
@@ -48,7 +50,10 @@ export default {
      * 创建提交
      */
     onSubmit(e){
-      debugger
+      this.userData.isEnable = this.userData.isEnable ? 1 : 0;
+      registerUser(this.userData).then(res=>{
+        this.$message.success(res.message)
+      })
     }
   }
 }

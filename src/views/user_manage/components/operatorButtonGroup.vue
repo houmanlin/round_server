@@ -10,8 +10,6 @@
     <!--  功能  -->
     <el-button class="operator_button" type="danger" @click="operatorUser('删除')">删除</el-button>
 
-    <!--  功能  -->
-    <el-button class="operator_button" type="danger" @click="operatorUser('重置')">重置密码</el-button>
 
 
   </div>
@@ -38,7 +36,7 @@ export default {
      * @param operator  操作关键字
      */
     operatorUser(operator){
-      this.$emit('on' + this.operator_convert[operator])
+      this.$emit('on' + this.operator_convert[operator] + 'Data')
     }
   }
 }

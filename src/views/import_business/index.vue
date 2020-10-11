@@ -11,7 +11,7 @@
     <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" @onTableOperator="tableOperatorGroup" @onOperator="tableOperator"/>
     <el-pagination
         class="pagination"
-        :pager-count="20"
+        :pagerCount="21"
         layout="prev, pager, next"
         :total="1000"
         @current-change="checkPage"

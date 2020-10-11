@@ -28,27 +28,27 @@ const USER_MANAGE_TABLE = [
     },
     {
         label: "真实姓名",
-        prop: "date"
+        prop: "realName"
     },
     {
         label: "职位",
-        prop: "date"
+        prop: "position"
     },
     {
         label: "创建时间",
-        prop: "date"
+        prop: "createDate"
     },
     {
         label: "创建人",
-        prop: "date"
+        prop: "createBy"
     },
     {
         label: "是否可用",
-        prop: "date"
+        prop: "enable_text"
     },
     {
         label: "操作",
-        prop: ["启用", "禁用"]
+        prop: ["启用", "禁用", "重置密码"]
     },
 ]
 

@@ -11,15 +11,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="init">
+      <change afterPath="$PROJECT_DIR$/.env.prod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/user_manage/components/delUserDialog.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/selectData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/selectData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/article.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/mock-server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/remote-search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/role/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/role/routes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mock/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/tableComponents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/tableComponents.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/tableData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/tableData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permission.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/permission.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/modules/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/business_billing/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/business_billing/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/client/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/client/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/dictionary/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/dictionary/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/searchComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/searchComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/login/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/system_log/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system_log/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user_manage/add_user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user_manage/add_user.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user_manage/components/operatorButtonGroup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user_manage/components/operatorButtonGroup.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/user_manage/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user_manage/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue.config.js" afterDir="false" />
     </list>
@@ -31,8 +51,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -48,7 +68,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/views/user_manage" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -61,15 +81,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/views/dictionary/components" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$/src/views/user_manage/components" />
       <recent name="$PROJECT_DIR$/src/views/user_manage" />
       <recent name="$PROJECT_DIR$/src/views/import_business/submit_dialog" />
       <recent name="$PROJECT_DIR$/src/views/import_business" />
-      <recent name="$PROJECT_DIR$/src/views/business_billing" />
-      <recent name="$PROJECT_DIR$/src/views/client" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/views/dictionary/components" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -86,7 +107,8 @@
       <workItem from="1602086273616" duration="7054000" />
       <workItem from="1602137007723" duration="8751000" />
       <workItem from="1602164598003" duration="1567000" />
-      <workItem from="1602219337634" duration="37624000" />
+      <workItem from="1602219337634" duration="43217000" />
+      <workItem from="1602374807291" duration="9613000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1602261146043</created>
@@ -123,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602308241653</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="init">
+      <created>1602333899113</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1602333899113</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,12 +168,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
     <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="427" y="231" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602378822360">
+      <screen x="0" y="23" width="1440" height="799" />
+    </state>
+    <state x="427" y="231" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.799@0.23.1440.799" timestamp="1602378822360" />
     <state x="471" y="132" key="RollbackChangesDialog" timestamp="1602260878057">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
@@ -153,26 +187,26 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="229" y="61" key="SettingsEditor/0.23.1440.799@0.23.1440.799" timestamp="1602069475466" />
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602308243478">
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602333942600">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602308243478" />
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602333942600" />
     <state x="511" y="163" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1602267768183">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="511" y="163" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.23.1440.799@0.23.1440.799" timestamp="1602267768183" />
-    <state x="421" y="148" width="648" height="612" key="find.popup" timestamp="1602333525104">
+    <state x="421" y="148" width="648" height="612" key="find.popup" timestamp="1602339482867">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="421" y="148" width="648" height="612" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602333525104" />
+    <state x="421" y="148" width="648" height="612" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602339482867" />
     <state x="0" y="23" width="1438" height="797" key="recent.locations.popup" timestamp="1602298247233">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="0" y="23" width="1438" height="797" key="recent.locations.popup/0.23.1440.799@0.23.1440.799" timestamp="1602298247233" />
-    <state x="385" y="146" width="670" height="676" key="search.everywhere.popup" timestamp="1602260273130">
+    <state x="385" y="146" width="670" height="676" key="search.everywhere.popup" timestamp="1602381092839">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="385" y="146" width="670" height="676" key="search.everywhere.popup/0.23.1440.799@0.23.1440.799" timestamp="1602260273130" />
+    <state x="385" y="146" width="670" height="676" key="search.everywhere.popup/0.23.1440.799@0.23.1440.799" timestamp="1602381092839" />
     <state x="450" y="266" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1602260916827">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
