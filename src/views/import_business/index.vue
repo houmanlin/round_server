@@ -1,19 +1,20 @@
 <template>
   <div class="view_container">
     <!---------------   搜索  ----------------->
-    <search />
+    <search @onGetFieldData="getFieldData"/>
 
     <!-----------  用户的增删改查按钮  ---------->
     <operatorGroup @onOperator="operator"/>
 
 
     <!------------- 数据表格  --------------->
-    <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" @onTableOperator="tableOperatorGroup" @onOperator="tableOperator"/>
+    <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" :table-data="table_data" @onTableOperator="tableOperatorGroup" @onOperator="tableOperator"/>
     <el-pagination
         class="pagination"
         :pagerCount="21"
+        :current-page="page_config.current"
         layout="prev, pager, next"
-        :total="1000"
+        :total="page_config.total"
         @current-change="checkPage"
     >
     </el-pagination>
@@ -52,6 +53,8 @@ import submitCarInfo from "@/views/import_business/submit_dialog/submit_car_info
 import submitCustomsTransit from "@/views/import_business/submit_dialog/submit_customs_transit";
 import orderInfoDialog from "@/views/import_business/components/orderInfoDialog";
 import orderMaterialDialog from "@/views/import_business/components/orderMaterialDialog";
+import {getImportBussiness} from "@/api/import_bussiness";
+import {getPages} from "@/utils/utils";
 export default {
   components:{ search,
     components_table,
@@ -72,13 +75,51 @@ export default {
   data() {
     return {
       orderInfo: {},
-      table_header: IMPORT_BUSINESS_TABLE,      //表格表头信息
-      house_bill_table_header: HOSE_BILL_TABLE,      //表格表头信息
+      table_header            : IMPORT_BUSINESS_TABLE,      //表格表头信息
+      house_bill_table_header : HOSE_BILL_TABLE,      //表格表头信息
+      page_config             : {},
+      table_data              : [],
+      mainNo                  : "",
+      submenuNo               : "",
+      flightNo                : "",
+      customerIdOne           : "",                // 一级客户
+      customerIdTwo           : "",               // 二级客户
+      exitPort                : "",           // 离境港口
+      declarationDate         : "",                  // 离境港口
+      flightDateStart         : "",                  // 报关时间
+      flightDateEnd           : "",                  // 报关时间
+      status                  : "",        // 操作类
     }
   },
-
+  created() {
+    this.page_config = getPages()
+    this.getData();
+  },
 
   methods: {
+
+    getData(){
+      let data = {
+        limit                   : this.page_config.limit,
+        page                    : this.page_config.current,
+        mainNo                  : this.mainNo          ,
+        submenuNo               : this.submenuNo       ,
+        flightNo                : this.flightNo        ,
+        customerIdOne           : this.customerIdOne   ,               // 一级客户,                // 一级客户
+        customerIdTwo           : this.customerIdTwo   ,              // 二级客户,               // 二级客户
+        exitPort                : this.exitPort        ,          // 离境港口,           // 离境港口
+        declarationDate         : this.declarationDate ,                 // 离境港口,                  // 离境港口
+        flightDateStart         : this.flightDateStart ,                 // 报关时间,                  // 报关时间
+        flightDateEnd           : this.flightDateEnd ,                 // 报关时间,                  // 报关时间
+        status                  : this.status          ,       // 操作类,        // 操作类
+      }
+      getImportBussiness(data).then(res=>{
+        this.page_config = getPages(res.data)
+        let { records } = res.data
+        this.table_data = records
+      })
+    },
+
 
     /***
      * 提交重置
@@ -106,6 +147,22 @@ export default {
     },
     checkPage(){
 
+    },
+    getFieldData(data){
+      this.mainNo = data.mainNo                // 主单号
+      this.submenuNo = data.submenuNo                   // 分单号
+      this.flightNo = data.flightNo                   // 航班号
+      this.customerIdOne = data.customerIdOne                   // 一级客户
+      this.customerIdTwo = data.customerIdTwo                  // 二级客户
+      this.exitPort = data.exitPort                   // 离境港口
+      this.declarationDate = data.declarationDate                   // 离境港口
+      this.flightDateStart = data.flightDateStart                   // 报关时间
+      this.flightDateEnd = data.flightDateEnd                   // 报关时间
+      this.status = data.status                  // 操作类型
+      this.page_config.current = 1                  // 操作类型
+
+
+      this.getData();
     }
 
   }

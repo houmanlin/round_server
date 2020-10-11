@@ -63,12 +63,28 @@
       </el-table-column>
       <el-table-column align="center"
           :key="index"
-          v-if="item.label != '操作'"
+          v-if="item.label != '操作' && !item.hase_status"
           :prop="item.prop"
           show-overflow-tooltip
           min-width="200"
           @click="checkOrderInfo(item)"
           :label="item.label"/>
+      <el-table-column align="center"
+          :key="index"
+          v-else-if="item.label != '操作' && item.hase_status"
+          :prop="item.prop"
+          show-overflow-tooltip
+          min-width="200"
+          @click="checkOrderInfo(item)"
+          :label="item.label">
+        <template slot-scope="scope">
+            <div>
+<!--                {{ scope.row[item.prop] }}-->
+                <i class="el-icon-check" v-if="scope.row[item.prop]"/>
+                <i class="el-icon-close" v-else/>
+            </div>
+        </template>
+      </el-table-column>
       <el-table-column
           align="center"
           :key="index"
@@ -103,7 +119,7 @@
 
 <script>
 export default {
-  props:["tableHeader", "house_bill_header"],
+  props:["tableHeader", "house_bill_header", "tableData"],
   data() {
     return {
       tableData: [{

@@ -44,3 +44,13 @@ export function updateCustomerInfo(data) {
         data
     })
 }
+
+
+export function getOneClient(params){
+    params = getParams(params)
+    return request({
+        url:"/sysCustomer/getAll",
+        methods:"get",
+        params
+    })
+}

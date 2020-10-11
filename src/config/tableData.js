@@ -201,107 +201,136 @@ const BUSINESS_BILLING_TABLE = [
 const IMPORT_BUSINESS_TABLE = [
     {
         label: "一级客户",
-        prop: "username"
+        prop: "customerNameOne"
     },
     {
         label: "二级客户",
-        prop: "username"
+        prop: "customerNameOne"
     },
     {
         label: "离境口岸",
-        prop: "date"
+        prop: "exitPort"
     },
     {
         label: "航班号",
-        prop: "date"
+        prop: "flightNo"
     },
     {
         label: "航班日期",
-        prop: "date"
+        prop: "flightDate"
     },
     {
         label: "主单号",
-        prop: "date"
+        prop: "mainNo"
     },
     {
         label: "件数",
-        prop: "date"
+        prop: "mainNumPackage"
     },
     {
         label: "毛重",
-        prop: "date"
+        prop: "mainRoughWeight"
     },
     {
         label: "体积",
-        prop: "date"
+        prop: "mainVolume"
+    },
+    {
+        label: "体积",
+        prop: "mainVolume"
+    },
+    {
+        label: "体积",
+        prop: "mainVolume"
+    },
+    {
+        label: "体积",
+        prop: "mainVolume"
     },
     {
         label: "报关口岸",
-        prop: "date"
-    },
-    {
-        label: "已接单",
-        prop: "date"
+        prop: "customsPort"
     },
     {
         label: "入库查验",
-        prop: "date"
+        prop: "incomingCheckStatus",
+        hase_status: true
     },
     {
         label: "已提交报关",
-        prop: "date"
+        prop: "commitCustomsStatus",
+        hase_status: true
     },
     {
         label: "查验中",
-        prop: "date"
+        prop: "commitCheckStatus",
+        hase_status: true
     },
     {
         label: "退单处理中",
-        prop: "date"
+        prop: "chargebackStatus",
+        hase_status: true
     },
     {
         label: "退单完毕",
-        prop: "date"
+        prop: "chargebackedStatus",
+        hase_status: true
     },
     {
         label: "退库完毕",
-        prop: "date"
+        prop: "cancelStocksStatus",
+        hase_status: true
     },
     {
         label: "放行",
-        prop: "date"
+        prop: "commitPermitStatus",
+        hase_status: true
     },
+
+
     {
-        label: "提货车辆信息已提交",
-        prop: "date"
+        label: "境内送货状态",
+        prop: "incountryGoodsStatus",
+        hase_status: true
     },
     {
         label: "货物送达",
-        prop: "date"
+        prop: "goodsDeliveredStatus",
+        hase_status: true
+    },
+    {
+        label: "提货车辆信息已提交",
+        prop: "commitPickUpCarInfoStatus",
+        hase_status: true
     },
     {
         label: "货物已提取",
-        prop: "date"
+        prop: "pickUpGoodsConnectStatus",
+        hase_status: true
     },
     {
         label: "转关已提交",
-        prop: "date"
+        prop: "customsTransitOperStatus",
+        hase_status: true
     },
     {
         label: "转关中",
-        prop: "date"
+        prop: "customsTransitOperStatus",
+        hase_status: true
     },
     {
         label: "转关异常",
-        prop: "date"
+        prop: "customsTransitExceptionStatus",
+        hase_status: true
     },
     {
         label: "转关完毕",
-        prop: "date"
+        prop: "customsTransitFinishStatus",
+        hase_status: true
     },
     {
         label: "状态",
-        prop: "date"
+        prop: "currentStatus"
     },
     {
         label: "操作",

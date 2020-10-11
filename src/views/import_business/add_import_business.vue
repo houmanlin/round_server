@@ -4,15 +4,23 @@
     <el-form :inline="true" :model="mast_info" size="medium" label-width="80px" label-position="left" class="demo-form-inline">
 
       <el-form-item label="一级客户">
-        <el-select v-model="mast_info.client_name" filterable placeholder="请输入字段名">
-          <el-option label="杨哥" value="1"></el-option>
-          <el-option label="吕哥" value="2"></el-option>
+        <el-select v-model="mast_info.customerIdOne" filterable placeholder="请输入字段名">
+          <el-option
+              v-for="item in client_list"
+              :key="item.id"
+              :label="item.username"
+              :value="item.id">
+          </el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="二级客户">
-        <el-select v-model="mast_info.client_name" filterable placeholder="请输入字段名">
-          <el-option label="杨哥" value="1"></el-option>
-          <el-option label="吕哥" value="2"></el-option>
+        <el-select v-model="mast_info.customerIdTwo" filterable placeholder="请输入字段名">
+          <el-option
+              v-for="item in client_list"
+              :key="item.id"
+              :label="item.username"
+              :value="item.id">
+          </el-option>
         </el-select>
       </el-form-item>
 
@@ -24,10 +32,11 @@
       <el-form-item label="离境口岸">
         <el-input v-model="mast_info.exit_port" placeholder="请输入离境口岸"></el-input>
       </el-form-item>
+
       <el-form-item label="主单类型">
         <el-select filterable v-model="mast_info.mast_type" multiple placeholder="请选择主单类型">
-        <el-option label="通关代理" value="1"></el-option>
-        <el-option label="贸易代理" value="2"></el-option>
+          <el-option label="通关代理" value="1"></el-option>
+          <el-option label="贸易代理" value="2"></el-option>
         </el-select>
       </el-form-item>
     </el-form>
@@ -80,40 +89,40 @@
       </div>
       <div class="basics_info_entering_form">
 
-        <div class="house_bill_content" v-for="(item, index) in mast_info.house_bill">
+        <div class="house_bill_content" v-for="(item, index) in mast_info.busSubmenuSaveDTOS">
           <!-- 分单号-->
           <div class="form_item">
             <span>分单号</span>
-            <el-input v-model="item.host_bill_order" placeholder="请输入主单号"></el-input>
+            <el-input v-model="item.submenuNo" placeholder="请输入主单号"></el-input>
           </div>
           <!-- 分单件数-->
           <div class="form_item">
             <span>分单件数</span>
-            <el-input v-model="item.house_bill_number" placeholder="请输入分单件数"></el-input>
+            <el-input v-model="item.submenuNumPackage" placeholder="请输入分单件数"></el-input>
           </div>
           <!-- 分单毛重-->
           <div class="form_item">
             <span>分单毛重</span>
-            <el-input v-model="item.house_bill_weight" placeholder="请输入分单毛重"></el-input>
+            <el-input v-model="item.roughWeight" placeholder="请输入分单毛重"></el-input>
           </div>
           <!-- 分单体积-->
           <div class="form_item">
             <span>分单体积</span>
-            <el-input v-model="mast_info.house_bill_volume" placeholder="请输入分单体积"></el-input>
+            <el-input v-model="item.volume" placeholder="请输入分单体积"></el-input>
           </div>
           <!-- 分单计费量-->
           <div class="form_item">
             <span>分计费量</span>
-            <el-input v-model="mast_info.house_bill_expense" placeholder="请输入主单号"></el-input>
+            <el-input v-model="item.chargedWeight" placeholder="请输入主单号"></el-input>
           </div>
           <!-- 收件人-->
           <div class="form_item">
             <span>收件人</span>
-            <el-input v-model="mast_info.receiver" placeholder="请输入收件人"></el-input>
+            <el-input v-model="item.addressee" placeholder="请输入收件人"></el-input>
           </div>
           <div class="form_item">
             <span>贸易类型</span>
-            <el-select filterable multiple v-model="mast_info.trade_type" placeholder="请选择贸易方式">
+            <el-select filterable multiple v-model="item.tradeType" placeholder="请选择贸易方式">
               <el-option
                   v-for="item in trade_type_list"
                   :key="item.value"
@@ -124,8 +133,8 @@
           </div>
           <!-- 操作-->
           <div class="form_item last_form_item">
-            <el-button type="primary" icon="el-icon-plus" circle @click="dataAdd"  v-if="parseInt(index)+1 == mast_info.house_bill.length"></el-button>
-            <el-button icon="el-icon-minus" circle  @click="dataRemove(index)" v-if="parseInt(index)+1 != mast_info.house_bill.length"></el-button>
+            <el-button type="primary" icon="el-icon-plus" circle @click="dataAdd"  v-if="parseInt(index)+1 == mast_info.busSubmenuSaveDTOS.length"></el-button>
+            <el-button icon="el-icon-minus" circle  @click="dataRemove(index)" v-if="parseInt(index)+1 != mast_info.busSubmenuSaveDTOS.length"></el-button>
           </div>
         </div>
     </div>
@@ -141,20 +150,20 @@
         <div class="basics_info_entering_form">
           <el-form :inline="true" label-position="left" label-width="100px" :model="mast_info" class="demo-form-inline">
             <el-form-item label="货值">
-              <el-input v-model="mast_info.mast_order_number" placeholder="请输入货值"></el-input>
+              <el-input v-model="mast_info.goodsValue" placeholder="请输入货值"></el-input>
             </el-form-item>
             <el-form-item label="商品数量">
-              <el-input v-model="mast_info.flight_number" placeholder="请输入商品数量"></el-input>
+              <el-input v-model="mast_info.descriptionNum" placeholder="请输入商品数量"></el-input>
             </el-form-item>
             <el-form-item label="通关单号">
-              <el-input v-model="mast_info.destination" placeholder="请输入通关单号"></el-input>
+              <el-input v-model="mast_info.customsNo" placeholder="请输入通关单号"></el-input>
             </el-form-item>
 
             <el-form-item label="贸易单号">
-              <el-input v-model="mast_info.mast_number" placeholder="请输入贸易单号"></el-input>
+              <el-input v-model="mast_info.tradeNo" placeholder="请输入贸易单号"></el-input>
             </el-form-item>
             <el-form-item label="合同编号">
-              <el-input v-model="mast_info.mast_weight" placeholder="请输入合同编号"></el-input>
+              <el-input v-model="mast_info.contractCoding" placeholder="请输入合同编号"></el-input>
             </el-form-item>
             <el-form-item label="生产销售单位">
               <el-input v-model="mast_info.sale_monad" placeholder="请输入生产销售单位"></el-input>
@@ -217,7 +226,7 @@
 
 
     <div class="operator_button">
-      <el-button type="primary">保存</el-button>
+      <el-button type="primary" @click="addData">保存</el-button>
       <el-button class="reset_button">重置</el-button>
     </div>
 
@@ -227,45 +236,104 @@
 
 <script>
 import { TRADE_TYPE_GROUP } from '@/config/selectData'
+import {getOneClient} from "@/api/customer";
+import { addOrder} from "@/api/import_bussiness";
 export default {
   name: "add_import_business",
   data(){
     return{
       trade_type_list         : TRADE_TYPE_GROUP,
+      client_list             : [],
       mast_info:{
-        client_name           : "",       //客户类型
+        customerIdOne         : "",       //客户类型
+        customerIdTwo         : "",       //客户类型
         mast_type             : "",       //主单类型
         clearance_port        : "",       //报关口岸
         exit_port             : "",       //离境口岸
+        customsNo             : "",       //离境口岸
         mast_order_number     : "",       //主单号
         flight_number         : "",       //航班号
         destination           : "",       //目的港口
         flight_time           : "",       //航班时间
+        descriptionNum        : "",
         mast_number           : "",       //主单数量
+        tradeNo           : "",       //主单数量
         mast_weight           : "",       //主单重量
         mast_volume           : "",       //主单体积
+        contractCoding           : "",       //主单体积
         mast_expense          : "",       //主单费用
         trade_type            : "",       //贸易方式
         sale_monad            : "",       //销售单位
+        goodsValue            : "",
         company_agency        : "",       //公司代理
         marks                 : "",       //备注
-        house_bill            : [
-          {host_bill_order: '', house_bill_number: "", house_bill_weight:"", house_bill_volume: "", house_bill_expense: "", receiver: ""},
-
+        busSubmenuSaveDTOS    : [
+          {submenuNo: '', submenuNumPackage: "", roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType:""},
         ],                                //分单信息
         addresser_info         : "",      //发件人信息
-        receiver_info          : "",      //收件人信息
+        receiver_info          : "",      //收件人信息,
+
       }
     }
   },
+  created() {
+    this.getClientData()
+  },
   methods:{
     dataRemove(index){
-      this.$delete(this.mast_info.house_bill, index)
+      this.$delete(this.mast_info.busSubmenuSaveDTOS, index)
     },
     dataAdd(){
-      this.mast_info.house_bill.push(
-          {host_bill_order: '', house_bill_number: "", house_bill_weight:"", house_bill_volume: "", house_bill_expense: "", receiver: ""}
+      this.mast_info.busSubmenuSaveDTOS.push(
+          {submenuNo: '', submenuNumPackage: "", roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType:""},
       )
+    },
+    getClientData(){
+      getOneClient().then(res=>{
+        this.client_list = res.data
+      })
+    },
+    addData(){
+      if (this.mast_info.flight_time){
+        let date = new Date(this.mast_info.flight_time)
+        this.mast_info.flight_time = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+      }else{
+        this.mast_info.flight_time = ""
+      }
+
+
+
+
+      let data = {
+        addressee: this.mast_info.receiver_info,
+        addresser: this.mast_info.receiver_info,
+        busSubmenuSaveDTOS: this.mast_info.house_bill,
+        contractCoding:this.mast_info.contractCoding,
+        customerIdOne: this.mast_info.customerIdOne,
+        customerIdTwo: this.mast_info.customerIdTwo,
+        customsBrokerAgent:this.mast_info.company_agency,
+        customsNo:this.mast_info.destination,
+        customsPort:this.mast_info.clearance_port,
+        descriptionNum:this.mast_info.descriptionNum,
+        destination:this.mast_info.destination,
+        exitPort:this.mast_info.exit_port,
+        flightDate:this.mast_info.flight_time,
+        flightNo:this.mast_info.flight_number,
+        goodsValue:this.mast_info.goodsValue,
+        mainChargedWeight:this.mast_info.mast_expense,
+        mainNo:this.mast_info.mast_order_number,
+        mainNumPackage:this.mast_info.mast_number,
+        mainRoughWeight:this.mast_info.mast_weight,
+        mainType:this.mast_info.mast_type,
+        mainVolume:this.mast_info.mast_volume,
+        remark:this.mast_info.marks,
+        tradeNo:this.mast_info.tradeNo,
+        productionSaleUnit:this.mast_info.productionSaleUnit,
+      }
+      addOrder(data).then(res=>{
+          this.message.success("成功");
+          this.$router.back()
+      })
     }
   }
 }

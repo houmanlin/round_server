@@ -11,17 +11,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="开始对接业务计费">
-      <change afterPath="$PROJECT_DIR$/src/assets/404_images/person_my_.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/import_bussiness.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/clearance_goods.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/clearance_goods.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/customer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/tableData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/tableData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/components/Navbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/business_billing/components/searchComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/business_billing/components/searchComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/business_billing/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/business_billing/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/table" beforeDir="false" afterPath="$PROJECT_DIR$/table" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/componentsTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/componentsTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/searchComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/searchComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/import_business/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602436175219</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="开始对接业务计费">
+      <created>1602440915010</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1602440915010</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,18 +213,18 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="229" y="61" key="SettingsEditor/0.23.1440.799@0.23.1440.799" timestamp="1602069475466" />
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602436229013">
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602441014042">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602436229013" />
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602441014042" />
     <state x="511" y="163" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1602267768183">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="511" y="163" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.23.1440.799@0.23.1440.799" timestamp="1602267768183" />
-    <state x="198" y="137" width="648" height="640" key="find.popup" timestamp="1602440200514">
+    <state x="198" y="137" width="648" height="640" key="find.popup" timestamp="1602450240116">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="198" y="137" width="648" height="640" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602440200514" />
+    <state x="198" y="137" width="648" height="640" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602450240116" />
     <state x="0" y="23" width="1438" height="797" key="recent.locations.popup" timestamp="1602298247233">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
