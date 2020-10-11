@@ -24,6 +24,12 @@
       <el-form-item label="离境口岸">
         <el-input v-model="mast_info.exit_port" placeholder="请输入离境口岸"></el-input>
       </el-form-item>
+      <el-form-item label="主单类型">
+        <el-select filterable v-model="mast_info.mast_type" multiple placeholder="请选择主单类型">
+        <el-option label="通关代理" value="1"></el-option>
+        <el-option label="贸易代理" value="2"></el-option>
+        </el-select>
+      </el-form-item>
     </el-form>
 
 <!--    基础信息-->
@@ -61,16 +67,7 @@
           <el-form-item label="主单计费量">
             <el-input v-model="mast_info.mast_expense" placeholder="请输入主单计费量"></el-input>
           </el-form-item>
-          <el-form-item label="贸易方式">
-            <el-select filterable v-model="mast_info.trade_type" placeholder="请选择贸易方式">
-              <el-option
-                  v-for="item in trade_type_list"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value">
-              </el-option>
-            </el-select>
-          </el-form-item>
+
         </el-form>
       </div>
     </div>
@@ -116,9 +113,13 @@
           </div>
           <div class="form_item">
             <span>贸易类型</span>
-            <el-select filterable v-model="mast_info.mast_type" placeholder="请选择主单类型">
-              <el-option label="通关代理" value="1"></el-option>
-              <el-option label="贸易代理" value="2"></el-option>
+            <el-select filterable multiple v-model="mast_info.trade_type" placeholder="请选择贸易方式">
+              <el-option
+                  v-for="item in trade_type_list"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value">
+              </el-option>
             </el-select>
           </div>
           <!-- 操作-->
@@ -155,7 +156,17 @@
             <el-form-item label="合同编号">
               <el-input v-model="mast_info.mast_weight" placeholder="请输入合同编号"></el-input>
             </el-form-item>
+            <el-form-item label="生成销售单位">
+              <el-input v-model="mast_info.sale_monad" placeholder="请输入生成销售单位"></el-input>
+            </el-form-item>
+            <el-form-item label="报关销售代理">
+              <el-input v-model="mast_info.company_agency" placeholder="请输入报关销售代理"></el-input>
+            </el-form-item>
+            <el-form-item label="备注">
+              <el-input v-model="mast_info.marks" placeholder="请输入备注"></el-input>
+            </el-form-item>
           </el-form>
+
         </div>
 
         <div class="basics_info_entering_form">
@@ -235,6 +246,9 @@ export default {
         mast_volume           : "",       //主单体积
         mast_expense          : "",       //主单费用
         trade_type            : "",       //贸易方式
+        sale_monad            : "",       //销售单位
+        company_agency        : "",       //公司代理
+        marks                 : "",       //备注
         house_bill            : [
           {host_bill_order: '', house_bill_number: "", house_bill_weight:"", house_bill_volume: "", house_bill_expense: "", receiver: ""},
 

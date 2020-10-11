@@ -28,7 +28,6 @@ import reset_pass_dialog from "@/views/user_manage/components/resetPassDialog";
 import {DICTIONARY_TABLE} from "@/config/tableData";
 import {getDictionary} from "@/api/dictionary";
 import {getPages} from "@/utils/utils";
-import {DictionaryMode} from "@/views/dictionary/dictionary";
 export default {
   components:{ search, components_table, operatorGroup, reset_pass_dialog },
   data() {
