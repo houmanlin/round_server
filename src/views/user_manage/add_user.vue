@@ -15,20 +15,22 @@
       </el-switch>
     </el-form-item>
     <el-form-item class="create_user">
-      <el-button type="primary" @click="onSubmit">立即创建</el-button>
+      <el-button type="primary" @click="onSubmit">{{ userData.id > 0 ? '修改' : '立即创建' }}</el-button>
       <el-button @click="$router.back()">返回</el-button>
     </el-form-item>
   </el-form>
 </template>
 
 <script>
-import {registerUser} from "@/api/user";
+import {getInfoById, registerUser, updateInfo} from "@/api/user";
 
 export default {
   name: "add",
   data(){
     return{
+
       userData:{
+        id           : 0,
         realName     : "",
         username     : "",
         position     : "",
@@ -39,21 +41,43 @@ export default {
   },
   created() {
     if(this.$route.query.id){
-
+      this.userData.id = this.$route.query.id
+      this.getUserInfo()
       this.$route.meta.title = "修改用户"
     }else{
       this.$route.meta.title = "添加用户"
     }
   },
   methods:{
+    getUserInfo(){
+      let data = {
+        id: this.userData.id
+      }
+      getInfoById(data).then(res=>{
+        this.userData.isEnable = res.data.isEnable ? true : false
+        this.userData.position = res.data.position
+        this.userData.realName = res.data.realName
+        this.userData.username = res.data.username
+      })
+    },
     /**
      * 创建提交
      */
     onSubmit(e){
       this.userData.isEnable = this.userData.isEnable ? 1 : 0;
-      registerUser(this.userData).then(res=>{
-        this.$message.success(res.message)
-      })
+      if (this.userData.id > 0){
+        updateInfo(this.userData).then(res=>{
+          this.$message.success(res.message)
+          this.$router.back()
+        })
+      }else{
+        registerUser(this.userData).then(res=>{
+          this.$message.success(res.message)
+          this.$router.back()
+        })
+      }
+
+
     }
   }
 }

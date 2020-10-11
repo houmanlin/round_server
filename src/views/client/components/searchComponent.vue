@@ -14,7 +14,7 @@
 
     <!--  查询按钮  -->
     <el-col :span="6" :offset="1">
-      <el-button type="primary">查询</el-button>
+      <el-button type="primary" @click="selectData">查询</el-button>
     </el-col>
   </el-row>
 </template>
@@ -27,6 +27,14 @@ export default {
     return{
       user_name:        "",       //客户名称
       serial_number:    "",       //客户编号
+    }
+  },
+  methods:{
+    selectData(){
+      this.$emit("onSelectData", {
+        user_name       : this.user_name,
+        serial_number   : this.serial_number,
+      })
     }
   }
 }

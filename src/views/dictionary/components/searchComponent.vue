@@ -4,15 +4,13 @@
 
     <!--  名称查询输入框  -->
     <el-col :span="4">
-      <el-input v-model="field_value" placeholder="请输入字段名">
-
-      </el-input>
+      <el-input v-model="field_value" placeholder="请输入字段名" />
     </el-col>
 
 
     <!--  查询按钮  -->
     <el-col :span="6" :offset="1">
-      <el-button type="primary">查询</el-button>
+      <el-button type="primary" @click="selectData">查询</el-button>
     </el-col>
   </el-row>
 </template>
@@ -38,6 +36,11 @@ export default {
         label: '顺序'
       }],
       field_value: ''
+    }
+  },
+  methods:{
+    selectData(){
+      this.$emit("onSelectData", this.field_value)
     }
   }
 }

@@ -175,7 +175,8 @@ export default {
         ids: this.ids_str.toString()
       }
       removeUserPass(data).then(res=>{
-        this.$message.success(res.message)
+        this.$message.success(res.message);
+        this.getData();
       })
     },
     getSelectFiled(data){

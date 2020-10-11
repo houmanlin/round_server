@@ -9,11 +9,21 @@ export function login(data) {
   })
 }
 
-export function getInfo(token) {
+export function getInfoById(params) {
+  params = getParams(params)
   return request({
-    url: '/vue-admin-template/user/info',
+    url: '/sysAccount/getUpdateInfo',
     method: 'get',
-    params: { token }
+    params
+  })
+}
+
+export function updateInfo(data) {
+  data = getParams(data)
+  return request({
+    url: '/sysAccount/update',
+    method: 'PUT',
+    data
   })
 }
 

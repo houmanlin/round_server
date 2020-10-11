@@ -1,10 +1,8 @@
-accountId: 1
-busDate: "2020-10-09 22:46:04"
 createBy: "admin"
-createDate: "2020-10-09 22:46:04"
-id: 7
-mainNo: "mainNo04"
-operContent: "提交报关"
-operType: 2
+createDate: "2020-10-09 14:02:58"
+customerCode: "HYGW00008"
+id: 8
+isEnable: 1
 updateBy: "admin"
-updateDate: "2020-10-09 22:46:04"
+updateDate: "2020-10-09 14:02:58"
+username: "李四"

@@ -2,8 +2,6 @@ import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
 import {getToken, removeToken} from '@/utils/auth'
-import VueRouter from "vue-router";
-import {exitUser} from "@/utils/utils";
 
 
 // create an axios instance

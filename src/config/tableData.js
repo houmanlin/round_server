@@ -56,39 +56,39 @@ const USER_MANAGE_TABLE = [
 const DICTIONARY_TABLE = [
     {
         label: "CODE DIV",
-        prop: "username"
+        prop: "codeDiv"
     },
     {
         label: "CODE CD",
-        prop: "date"
+        prop: "codeId"
     },
     {
         label: "CODE TEXT",
-        prop: "date"
+        prop: "codeText"
     },
     {
         label: "顺序",
-        prop: "date"
+        prop: "sortOrder"
     },
     {
         label: "是否使用",
-        prop: "date"
+        prop: "enable"
     },
     {
         label: "创建人",
-        prop: "date"
+        prop: "createBy"
     },
     {
         label: "创建时间",
-        prop: "date"
+        prop: "createDate"
     },
     {
         label: "修改人",
-        prop: "date"
+        prop: "updateBy"
     },
     {
         label: "修改时间",
-        prop: "date"
+        prop: "updateDate"
     },
 
 ]
@@ -102,23 +102,23 @@ const CLIENT_MANAGE_TABLE = [
     },
     {
         label: "客户编码",
-        prop: "date"
+        prop: "customerCode"
     },
     {
         label: "创建时间",
-        prop: "date"
+        prop: "createDate"
     },
     {
         label: "创建人",
-        prop: "date"
+        prop: "createBy"
     },
     {
         label: "是否可用",
-        prop: "date"
+        prop: "enable_text"
     },
     {
         label: "操作",
-        prop: ["启用", "禁用"]
+        prop: ["启用", "禁用", "删除"]
     },
 ]
 
