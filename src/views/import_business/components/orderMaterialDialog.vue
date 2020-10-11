@@ -10,12 +10,14 @@
               <el-timeline-item v-for="(item, index) in order_flow" :timestamp="item.title" :key="index" placement="top">
                 <el-card>
                   <el-row>
-
+                    <el-col v-for="(item, indexs) in item.about_info" :key="indexs" :span="10">
+                     {{ item.title }}: {{ item.value }}
+                    </el-col>
                     <el-col :span="24" class="down_group">
                       <el-button size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}(附件)</el-button>
                     </el-col>
                   </el-row>
-                  <div>备注:{{item.marks}}</div>
+                  <div>{{ item.title == '转关异常' ? '异常原因' : '备注' }}: {{item.marks}}</div>
                 </el-card>
               </el-timeline-item>
             </el-timeline>
@@ -36,6 +38,7 @@ export default {
       order_flow:[
         {
           title:"入库查验",
+          about_info:[],
           download: [
             {title: "下载入库照片", url: ""},
           ],
@@ -43,7 +46,10 @@ export default {
         },
         {
           title:"提交报关",
-
+          about_info:[
+            {title: "报关服务商", value:"某致命伤"},
+            {title: "报关单号", value:"123423546"},
+          ],
           download: [
             {title: "下载最终版报关材料", url: ""},
           ],
@@ -51,15 +57,21 @@ export default {
         },
         {
           title:"查验",
-
+          about_info:[
+            {title: "车辆型号", value:"某致命伤"},
+            {title: "车牌号", value:"123423546"},
+            {title: "预计到达时间", value:"123423546"},
+            {title: "送货费用", value:"123423546"},
+          ],
           download: [
             {title: "下载入库照片", url: ""},
+            {title: "下载查验单据扫描(附件)", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
         },
         {
           title:"退单",
-
+          about_info: [],
           download: [
             {title: "下载退单材料", url: ""},
           ],
@@ -67,7 +79,7 @@ export default {
         },
         {
           title:"退单完成",
-
+          about_info: [],
           download: [
             {title: "下载退单完毕单据", url: ""},
           ],
@@ -75,7 +87,7 @@ export default {
         },
         {
           title:"退库",
-
+          about_info: [],
           download: [
             {title: "下载退库单", url: ""},
             {title: "下载装车照片", url: ""},
@@ -84,6 +96,7 @@ export default {
         },
         {
           title:"放行",
+          about_info: [],
           download: [
             {title: "下载放行单据", url: ""},
           ],
@@ -91,6 +104,7 @@ export default {
         },
         {
           title:"境内送货",
+          about_info:[],
           download: [
             {title: "车辆照片(附件)", url: ""},
             {title: "其它才材料(附件)", url: ""},
@@ -99,6 +113,7 @@ export default {
         },
         {
           title:"货物送达",
+          about_info:[],
           download: [
             {title: "车辆照片(附件)", url: ""},
             {title: "货物照片(附件)", url: ""},
@@ -108,7 +123,12 @@ export default {
         },
         {
           title:"提交提货车辆信息",
-
+          about_info:[
+            {title: "车辆型号", value:"某致命伤"},
+            {title: "车牌号", value:"123423546"},
+            {title: "预计到达时间", value:"123423546"},
+            {title: "送货费用", value:"123423546"},
+          ],
           download: [
             {title: "车辆照片(附件)", url: ""},
             {title: "其它才材料(附件)", url: ""},
@@ -117,15 +137,20 @@ export default {
         },
         {
           title:"提货交接",
+          about_info:[
+              {title: "提货交接", value: "kljkljl"},
+              {title: "预计到达时间", value: "kljkljl"},
+              {title: "车辆型号", value: "kljkljl"},
+              {title: "车牌照", value: "kljkljl"},
 
+          ],
           download: [
-            {title: "车辆照片(附件)", url: ""},
-            {title: "其它才材料(附件)", url: ""},
+            {title: "下载转关单据", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
         },
         {
-          title:"提货转关",
+          title:"提交转关",
           download: [
             {title: "车辆照片(附件)", url: ""},
             {title: "其它才材料(附件)", url: ""},

@@ -1,8 +1,17 @@
-createBy: "admin"
-createDate: "2020-10-09 14:02:58"
-customerCode: "HYGW00008"
-id: 8
-isEnable: 1
-updateBy: "admin"
-updateDate: "2020-10-09 14:02:58"
-username: "李四"
+cancelStockNum: 1
+chargebackNum: 1
+chargedWeight: "1"
+checkNum: 1
+customerNameOne: "张三"
+customerNameTwo: "李四"
+customsDate: "2020-10-08 19:32:53"
+customsNo: "1"
+customsTransitNum: 1
+descriptionNum: 1
+flightDate: "2020-10-08 19:32:56"
+id: 1
+mainNo: "1"
+submenuNum: 1
+supervise: "1"
+transportExist: 1
+transportNothing: 1

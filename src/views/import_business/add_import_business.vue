@@ -156,8 +156,8 @@
             <el-form-item label="合同编号">
               <el-input v-model="mast_info.mast_weight" placeholder="请输入合同编号"></el-input>
             </el-form-item>
-            <el-form-item label="生成销售单位">
-              <el-input v-model="mast_info.sale_monad" placeholder="请输入生成销售单位"></el-input>
+            <el-form-item label="生产销售单位">
+              <el-input v-model="mast_info.sale_monad" placeholder="请输入生产销售单位"></el-input>
             </el-form-item>
             <el-form-item label="报关销售代理">
               <el-input v-model="mast_info.company_agency" placeholder="请输入报关销售代理"></el-input>
@@ -309,7 +309,7 @@ export default {
     margin-right: 10px;
   }
   .form_item>span{
-    width: 70%;
+    width: 80%;
     font-size: 14px;
     vertical-align: middle;
     float: left;

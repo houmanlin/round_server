@@ -9,3 +9,12 @@ export function getClearanceGoods(params) {
         params
     })
 }
+
+export function exportClearanceGoods(params) {
+    params = getParams(params)
+    return request({
+        url: "/busBilling/export",
+        method: "GET",
+        params
+    })
+}

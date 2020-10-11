@@ -10,16 +10,19 @@
           <el-input
             type="textarea"
             maxlength="10000"
-            v-model="clearanceData.master_bill_number"
+            v-model="clearanceData.mainNo"
             placeholder="可批量输入，通过换行符（回车）区分多条数据"/>
         </el-form-item>
         <el-form-item label="报关日期">
-          <el-input
-            v-model="clearanceData.master_bill_time"
-            placeholder="报关日期"/>
+          <el-date-picker
+              v-model="clearanceData.customsDate"
+              type="date"
+              placeholder="报关时间">
+          </el-date-picker>
+
         </el-form-item>
         <el-form-item label="">
-          <el-button type="primary">查询</el-button>
+          <el-button type="primary" @click="getFiled">查询</el-button>
         </el-form-item>
         <el-form-item label="">
           <el-button class="operator_button" type="primary" @click="operatorUser('export')">导出</el-button>
@@ -30,17 +33,7 @@
     </el-col>
 
 
-    <!--  查询按钮  -->
-    <el-col :span="2" :offset="1">
 
-    </el-col>
-
-    <!--  查询按钮  -->
-    <el-col :span="2">
-      <!--  功能  -->
-
-
-    </el-col>
   </el-row>
 </template>
 
@@ -52,8 +45,8 @@ export default {
   data(){
     return{
       clearanceData:{
-        master_bill_number    : "",                   // 操作员
-        master_bill_time      : "",                   // 报关日期
+        mainNo                : "",                   // 操作员
+        customsDate           : "",                   // 报关日期
       },
       operator_type_list    : ORDER_TYPE_GROUP,       // 操作类型列表
     }
@@ -61,6 +54,9 @@ export default {
   methods:{
     operatorUser(operator_key){
       this.$emit("onOperator", operator_key)
+    },
+    getFiled(){
+      this.$emit("onFiledData", this.clearanceData)
     }
   }
 }

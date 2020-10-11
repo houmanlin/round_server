@@ -127,71 +127,68 @@ const CLIENT_MANAGE_TABLE = [
 const BUSINESS_BILLING_TABLE = [
     {
         label: "主单号",
-        prop: "username"
+        prop: "mainNo"
     },
     {
         label: "报关日期",
-        prop: "date"
+        prop: "customsDate"
     },
     {
         label: "航班日期",
-        prop: "date"
+        prop: "flightDate"
     },
     {
         label: "一级客户",
-        prop: "date"
+        prop: "customerNameOne"
     },
     {
         label: "二级客户",
-        prop: "date"
+        prop: "customerNameTwo"
     },
-    {
-        label: "重量kg",
-        prop: "date"
-    },
+
     {
         label: "监管方式",
-        prop: "date"
+        prop: "supervise"
     },
     {
         label: "通关单号",
-        prop: "date"
+        prop: "transportExist"
     },
     {
         label: "查验",
-        prop: "date"
+        prop: "checkNum"
     },
     {
         label: "品名数量",
-        prop: "date"
+        prop: "descriptionNum"
     },
     {
         label: "分单项/次",
-        prop: "date"
+        prop: "submenuNum"
     },
     {
         label: "计费重量/kg",
-        prop: "date"
+        prop: "chargedWeight"
     },
     {
         label: "查验/次",
-        prop: "date"
+        prop: "checkNum"
     },
     {
         label: "退单/次",
-        prop: "date"
+        prop: "chargebackNum"
     },
     {
         label: "转关/次",
-        prop: "date"
+        prop: "customsTransitNum"
     },
     {
         label: "运输（有境内监管）/次",
-        prop: "date"
+        prop: "transportExist"
     },
     {
         label: "运输（无境内监管）/次",
-        prop: "date"
+        prop: "transportNothing"
     },
     {
         label: "操作",
