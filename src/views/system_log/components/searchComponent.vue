@@ -44,10 +44,14 @@ export default {
   },
   methods:{
     selectData(){
+      let date = new Date(this.operator_date);
+      let year = date.getFullYear();
+      let mouth = parseInt(date.getMonth())+1;
+      let day = date.getDate();
       this.$emit("getSelectData", {
-        operator            : this.operator,         // 操作员
-        operator_date       : this.operator_date,    // 操作时间
-        operator_type       : this.operator_type,    // 操作类型
+        operator            : this.operator,                // 操作员
+        operator_date       : !this.operator_date ? '' :`${year}-${mouth}-${day}`,    // 操作时间
+        operator_type       : this.operator_type,           // 操作类型
       })
     }
   }

@@ -29,9 +29,12 @@ export default {
   components:{components_table, search},
   data() {
     return {
-      tableHeader: SYSTEM_LOG_TABLE,
-      tableData:[],
-      page_config:{}
+      tableHeader       : SYSTEM_LOG_TABLE,
+      tableData         : [],
+      page_config       : {},
+      operDate          : "",
+      operType          : "",
+      user_name         : ""
     }
   },
   created() {
@@ -43,9 +46,9 @@ export default {
       let data = {
         limit     : this.page_config.limit,
         page      : this.page_config.current,
-        operDate  : "",
-        operType  : "",
-        username  : "",
+        operDate  : this.operDate,
+        operType  : this.operType,
+        username  : this.user_name,
       }
       systemInfoLog(data).then(res=>{
         this.page_config = getPages(res.data)
@@ -85,7 +88,10 @@ export default {
       this.page_config.current = e
     },
     getSelectData(data){
-      console.log(data)
+      this.username = data.operator
+      this.operDate = data.operator_date
+      this.operType = data.operator_type
+      this.getData()
     }
   }
 }

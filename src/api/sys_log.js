@@ -6,7 +6,7 @@ export function systemInfoLog(data) {
     return request({
         url: "/busActionLog/list",
         method: "GET",
-        data
+        params:data
     })
 }
 
