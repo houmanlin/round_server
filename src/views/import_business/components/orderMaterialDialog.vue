@@ -216,6 +216,7 @@ export default {
 
 
 
+
         this.order_flow[11]["about_info"]["预计到达时间"] = res.data.commitCustomsTransitETA
         this.order_flow[11]["about_info"]["车牌号"] = res.data.commitCustomsTransitLPN
         this.order_flow[11]["about_info"]["车辆型号"] = res.data.commitCustomsTransitModelCar
