@@ -51,7 +51,7 @@ export default {
   },
   methods:{
     handleClose(){
-
+      this.dialogVisible = false
     }
   }
 }

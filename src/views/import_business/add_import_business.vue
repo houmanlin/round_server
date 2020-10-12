@@ -34,9 +34,15 @@
       </el-form-item>
 
       <el-form-item label="主单类型">
-        <el-select filterable v-model="mast_info.mast_type" multiple placeholder="请选择主单类型">
-          <el-option label="通关代理" value="1"></el-option>
-          <el-option label="贸易代理" value="2"></el-option>
+        <el-select filterable  collapse-tags v-model="mast_info.mast_type" multiple placeholder="请选择主单类型">
+          <el-option label="0110 通关代理" value="1"></el-option>
+          <el-option label="9610 通关代理" value="2"></el-option>
+          <el-option label="9710 通关代理" value="3"></el-option>
+          <el-option label="9810 通关代理" value="4"></el-option>
+          <el-option label="0110 贸易代理" value="5"></el-option>
+          <el-option label="9610 贸易代理" value="6"></el-option>
+          <el-option label="9710 贸易代理" value="7"></el-option>
+          <el-option label="9810 贸易代理" value="8"></el-option>
         </el-select>
       </el-form-item>
     </el-form>
@@ -106,24 +112,14 @@
             <span>分单毛重</span>
             <el-input v-model="item.roughWeight" placeholder="请输入分单毛重"></el-input>
           </div>
-          <!-- 分单体积-->
-          <div class="form_item">
-            <span>分单体积</span>
-            <el-input v-model="item.volume" placeholder="请输入分单体积"></el-input>
-          </div>
           <!-- 分单计费量-->
           <div class="form_item">
             <span>分计费量</span>
             <el-input v-model="item.chargedWeight" placeholder="请输入主单号"></el-input>
           </div>
-          <!-- 收件人-->
-          <div class="form_item">
-            <span>收件人</span>
-            <el-input v-model="item.addressee" placeholder="请输入收件人"></el-input>
-          </div>
           <div class="form_item">
             <span>贸易类型</span>
-            <el-select filterable multiple v-model="item.tradeType" placeholder="请选择贸易方式">
+            <el-select filterable  collapse-tags multiple v-model="item.tradeType" placeholder="请选择贸易方式">
               <el-option
                   v-for="item in trade_type_list"
                   :key="item.value"
@@ -151,10 +147,13 @@
         <div class="basics_info_entering_form">
           <el-form :inline="true" label-position="left" label-width="100px" :model="mast_info" class="demo-form-inline">
             <el-form-item label="货值">
-              <el-input v-model="mast_info.goodsValue" placeholder="请输入货值"></el-input>
+              <el-select filterable  v-model="mast_info.goodsValue" multiple placeholder="请选择货值">
+                <el-option label="人民币" value="1"></el-option>
+                <el-option label="美金" value="2"></el-option>
+              </el-select>
             </el-form-item>
-            <el-form-item label="商品数量">
-              <el-input v-model="mast_info.descriptionNum" placeholder="请输入商品数量"></el-input>
+            <el-form-item label="品名数量">
+              <el-input v-model="mast_info.descriptionNum" placeholder="请输入品名数量"></el-input>
             </el-form-item>
             <el-form-item label="通关单号">
               <el-input v-model="mast_info.customsNo" placeholder="请输入通关单号"></el-input>
@@ -417,14 +416,14 @@ export default {
     margin-top: 15px;
   }
   .house_bill_content>.form_item{
-    width: calc(95% / 7);
+    width: calc(95% / 5);
     display: flex;
     justify-items: center;
     align-items: center;
     margin-right: 10px;
   }
   .form_item>span{
-    width: 80%;
+    width: 50%;
     font-size: 14px;
     vertical-align: middle;
     float: left;

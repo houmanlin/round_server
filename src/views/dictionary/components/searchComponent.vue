@@ -34,6 +34,10 @@
         <el-button type="primary" @click="selectData">查询</el-button>
       </el-form-item>
 
+      <el-form-item label="" class="form more_select">
+        <el-button type="primary" @click="resetData">重置</el-button>
+      </el-form-item>
+
     </el-form>
 
 
@@ -71,6 +75,12 @@ export default {
   },
   methods:{
     selectData(){
+      this.$emit("onSelectData", this.searchData)
+    },
+    resetData(){
+      for (const index in this.searchData) {
+        this.searchData[index] = ""
+      }
       this.$emit("onSelectData", this.searchData)
     }
   }

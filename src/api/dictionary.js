@@ -35,3 +35,12 @@ export function dictionaryInfo(params) {
     params
   })
 }
+
+export function deleteDictionary(data) {
+  data = getParams(data)
+  return request({
+    url: '/sysDict/delete',
+    method: 'delete',
+    data
+  })
+}

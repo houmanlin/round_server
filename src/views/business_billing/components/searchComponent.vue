@@ -25,6 +25,9 @@
           <el-button type="primary" @click="getFiled">查询</el-button>
         </el-form-item>
         <el-form-item label="">
+          <el-button type="primary" @click="resetData">重置</el-button>
+        </el-form-item>
+        <el-form-item label="">
           <el-button class="operator_button" type="primary" @click="operatorUser('export')">导出</el-button>
 
         </el-form-item>
@@ -60,7 +63,13 @@ export default {
       this.clearanceData.customsDate = `${custom_date.getFullYear()}-${custom_date.getMonth()+1}-${custom_date.getDate()}`
 
       this.$emit("onFiledData", this.clearanceData)
-    }
+    },
+    resetData(){
+      for (let index in this.clearanceData) {
+        this.clearanceData[index] = ""
+      }
+      this.$emit("onFiledData", this.clearanceData)
+    },
   }
 }
 </script>

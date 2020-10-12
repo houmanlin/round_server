@@ -4,6 +4,8 @@
       <el-form :inline="true" :model="flight" label-position="left" label-width="80px" >
         <el-form-item label="主单号" class="form more_select">
           <el-input
+
+              style="width: 200px"
               class="form_textarea"
               type="textarea"
               maxlength="1000000"
@@ -38,7 +40,8 @@
       <!--  操作时间选择  -->
         <el-form :inline="true" :model="flight" label-position="left" label-width="80px" >
           <el-form-item label="状态" class="form">
-          <el-select filterable v-model="status" placeholder="请选择状态">
+          <el-select filterable v-model="status" placeholder="请选择状态"
+                     style="width: 230px">
             <el-option
                 v-for="item in operator_type_list"
                 :key="item.value"
@@ -78,7 +81,7 @@
 
           <el-form-item label="航班时间" class="form">
             <el-date-picker
-                style="width: 195px"
+                style="width: 250px"
                 v-model="flightDateStart"
                 type="daterange"
                 range-separator="至"
@@ -97,7 +100,8 @@
           </el-form-item>
 
           <el-form-item label="离境港口" class="form last_form">
-            <el-input v-model="exitPort" placeholder="请输入离境港口"/>
+            <el-input v-model="exitPort" placeholder="请输入离境港口" style="width: 195px"/>
+            <el-button type="primary" class="search_button" @click="resetData">重置</el-button>
           </el-form-item>
 
         </el-form>
@@ -168,6 +172,30 @@ export default {
     getClientData(){
       getOneClient().then(res=>{
         this.client_list = res.data
+      })
+    },
+    resetData(){
+      this.mainNo                     = "";                   // 主单号
+      this.submenuNo                  = "";                   // 分单号
+      this.flightNo                   = "";                   // 航班号
+      this.customerIdOne              = "";                   // 一级客户
+      this.customerIdTwo              = "";                   // 二级客户
+      this.exitPort                   = "";                   // 离境港口
+      this.declarationDate            = "";                   // 离境港口
+      this.flightDateStart            = "";                   // 报关时间
+      this.flightDateEnd              = "";                   // 报关时间
+      this.status                     = "";                   // 操作类型
+      this.$emit("onGetFieldData", {
+        mainNo:this.mainNo,                   // 主单号
+        submenuNo:this.submenuNo,                   // 分单号
+        flightNo:this.flightNo,                   // 航班号
+        customerIdOne:this.customerIdOne,                   // 一级客户
+        customerIdTwo:this.customerIdTwo,                   // 二级客户
+        exitPort:this.exitPort,                   // 离境港口
+        declarationDate:this.declarationDate,                   // 离境港口
+        flightDateStart:this.flightDateStart,                   // 报关时间
+        flightDateEnd:this.flightDateEnd,                   // 报关时间
+        status:this.status,                   // 操作类型
       })
     }
   }

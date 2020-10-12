@@ -118,7 +118,7 @@ const CLIENT_MANAGE_TABLE = [
     },
     {
         label: "操作",
-        prop: ["启用", "禁用", "删除"]
+        prop: ["启用", "禁用"]
     },
 ]
 
@@ -346,28 +346,21 @@ const IMPORT_BUSINESS_TABLE = [
 const HOSE_BILL_TABLE = [
     {
         label: "分单号",
-        prop: "username"
+        prop: "submenuNo"
     },
     {
         label: "分单件数",
-        prop: "date"
+        prop: "submenuNumPackage"
     },
     {
         label: "分单毛重",
-        prop: "date"
+        prop: "roughWeight"
     },
-    {
-        label: "分单提交",
-        prop: "date"
-    },
+
     {
         label: "分单计费重量",
-        prop: "date"
+        prop: "chargedWeight"
     },
-    {
-        label: "收货人",
-        prop: "date"
-    }
 ]
 
 module.exports = {

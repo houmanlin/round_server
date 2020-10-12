@@ -4,7 +4,7 @@
     <search @onSelectData="getSelectData"/>
 
     <!-----------  用户的增删改查按钮  ---------->
-    <operatorGroup @onAdd="addUser" @onEdit="editClient"/>
+    <operatorGroup @onAdd="addUser" @onEdit="editClient" @onRemove="removeClient"/>
 
 
     <!------------- 数据表格  --------------->
@@ -14,7 +14,8 @@
         class="pagination"
         :pagerCount="21"
         layout="prev, pager, next"
-        :total="1000"
+        :current-page="this.page_config.current"
+        :total="this.page_config.total"
         @current-change="checkPage"
     >
     </el-pagination>
@@ -126,6 +127,21 @@ export default {
         this.getData()
       })
     },
+    removeClient(){
+      let ids = ""
+      for (const dataKey in this.selected_data) {
+        ids += parseInt(dataKey)+1 == this.selected_data.length ? `${this.selected_data[dataKey].id}` : `${this.selected_data[dataKey].id},`
+      }
+      let data = {
+        ids
+      }
+      console.log(data)
+      removeCustomer(data).then(res=>{
+        this.$message.success(res.message)
+        this.getData()
+      })
+
+    }
   }
 }
 </script>

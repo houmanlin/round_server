@@ -6,6 +6,7 @@
 
     <!--  功能  -->
     <el-button class="operator_button" type="warning" @click="operatorUser('修改')">修改</el-button>
+    <el-button class="operator_button" type="warning" @click="operatorUser('删除')">删除</el-button>
 
 
   </div>

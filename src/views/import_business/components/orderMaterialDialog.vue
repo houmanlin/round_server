@@ -13,12 +13,12 @@
                     <el-col v-for="(item, indexs) in item.about_info" :key="indexs" :span="10">
                      {{ indexs }}: {{ item }}
                     </el-col>
+                    <div>{{ item.title == '转关异常' ? '异常原因' : '备注' }}: {{item.marks}}</div>
                     <el-col :span="24" class="down_group">
-                      <el-button @click="DownLoad(items.url)" size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}(附件)</el-button>
+                      <el-button @click="DownLoad(items.url)" size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}</el-button>
                     </el-col>
                   </el-row>
-                  <div>{{ item.title == '转关异常' ? '异常原因' : '备注' }}: {{item.marks}}</div>
-                </el-card>
+                   </el-card>
               </el-timeline-item>
             </el-timeline>
           </div>
@@ -140,13 +140,10 @@ export default {
         {
           title:"提货交接",
           about_info:{
-            "提货交接": "",
-            "预计到达时间": "",
-            "车辆型号": "",
-            "车牌照": "",
           },
           download: [
-            {title: "下载转关单据", url: this.getDownLoadUrl(0, 9)},
+            {title: "车辆(附件)", url: this.getDownLoadUrl(3, 9)},
+            {title: "其他附件(附件)", url: this.getDownLoadUrl(0, 9)},
           ],
           marks:""
         },      //10

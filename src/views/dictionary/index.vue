@@ -4,7 +4,7 @@
     <search @onSelectData="getSelectData"/>
 
     <!-----------  用户的增删改查按钮  ---------->
-    <operatorGroup @onAdd="addUser" @onEdit="editDictionary"/>
+    <operatorGroup @onAdd="addUser" @onEdit="editDictionary" @onRemove="removeDictionary"/>
 
 
     <!------------- 数据表格  --------------->
@@ -26,7 +26,7 @@ import operatorGroup from "./components/operatorButtonGroup";
 import components_table from "@/components/Table/tableComponents";
 import reset_pass_dialog from "@/views/user_manage/components/resetPassDialog";
 import {DICTIONARY_TABLE} from "@/config/tableData";
-import {getDictionary} from "@/api/dictionary";
+import {deleteDictionary, getDictionary} from "@/api/dictionary";
 import {getPages} from "@/utils/utils";
 export default {
   components:{ search, components_table, operatorGroup, reset_pass_dialog },
@@ -92,7 +92,20 @@ export default {
       this.$router.push({path: "add_dictionary", query:{id: this.selected_data[0].id}})
     },
     checkPage(data){
-
+      this.page_config.current = data
+    },
+    removeDictionary(){
+      if(this.selected_data.length > 1){
+        this.$message.info("只能修改一条数据")
+        return
+      }
+      let data = {
+        ids: this.selected_data[0].id.toString()
+      }
+      deleteDictionary(data).then(res=>{
+        this.getData()
+        this.$message.success(res.message)
+      })
     },
     getSelectData(data){
       this.field_value = data

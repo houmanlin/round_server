@@ -17,8 +17,8 @@
             placeholder="选择日期时间">
         </el-date-picker>
       </el-form-item>
-      <el-form-item label="送货费用">
-        <el-input v-model="clearanceData.delivery_expense" placeholder="请输入送货费用"/>
+      <el-form-item label="转关单号">
+        <el-input v-model="clearanceData.delivery_expense" placeholder="请输入转关单号"/>
       </el-form-item>
       <el-form-item label="备注">
         <el-input
@@ -65,7 +65,7 @@ export default {
   },
   methods:{
     handleClose(){
-
+      this.dialogVisible = false
     }
   }
 }

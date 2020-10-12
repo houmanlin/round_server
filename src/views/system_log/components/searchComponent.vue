@@ -25,6 +25,7 @@
     <!--    -->
     <el-col :span="6" :offset="1">
       <el-button type="primary" @click="selectData">查询</el-button>
+      <el-button type="primary" @click="resetData">查询</el-button>
     </el-col>
   </el-row>
 </template>
@@ -48,6 +49,16 @@ export default {
       let year = date.getFullYear();
       let mouth = parseInt(date.getMonth())+1;
       let day = date.getDate();
+      this.$emit("getSelectData", {
+        operator            : this.operator,                // 操作员
+        operator_date       : !this.operator_date ? '' :`${year}-${mouth}-${day}`,    // 操作时间
+        operator_type       : this.operator_type,           // 操作类型
+      })
+    },
+    resetData(){
+          this.operator            = "";                   // 操作员
+          this.operator_date       = "";                   // 操作时间
+          this.operator_type       = "";                   // 操作类型
       this.$emit("getSelectData", {
         operator            : this.operator,                // 操作员
         operator_date       : !this.operator_date ? '' :`${year}-${mouth}-${day}`,    // 操作时间

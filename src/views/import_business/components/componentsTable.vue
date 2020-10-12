@@ -7,10 +7,10 @@
       style="width: 100%">
 
     <template v-for="(item, index) in tableHeader" >
-      <el-table-column align="center" fixed="left" v-if="index==0" type="expand">
+      <el-table-column align="center" fixed="left" v-if="index==0" type="expand" >
         <template slot-scope="props">
           <el-table
-              :data="tableData"
+              :data="props.row['busSubmenus']"
               border
               :height="500"
               style="width: 100%">
@@ -25,6 +25,7 @@
                   v-if="indexs == 0"
                   fixed="left"
                   label="编号"
+                  align="center"
                   type="index"
 
                   width="50">
@@ -33,8 +34,9 @@
 
               <el-table-column
                   :key="indexs"
+                  align="center"
                   v-if="items.label != '操作'"
-                  :prop="item.prop"
+                  :prop="items.prop"
                   show-overflow-tooltip
                   width="300"
 
@@ -81,7 +83,7 @@
             <div>
 <!--                {{ scope.row[item.prop] }}-->
                 <i class="el-icon-check" v-if="scope.row[item.prop]"/>
-                <i class="el-icon-close" v-else/>
+
             </div>
         </template>
       </el-table-column>
@@ -122,71 +124,7 @@ export default {
   props:["tableHeader", "house_bill_header", "tableData"],
   data() {
     return {
-      tableDatas: [{
-        id: '12987122',
-        name: '好滋好味鸡蛋仔',
-        category: '江浙小吃、小吃零食',
-        desc: '荷兰优质淡奶，奶香浓而不腻',
-        address: '上海市普陀区真北路',
-        shop: '王小虎夫妻店',
-        shopId: '10333'
-      }, {
-        id: '12987123',
-        name: '好滋好味鸡蛋仔',
-        category: '江浙小吃、小吃零食',
-        desc: '荷兰优质淡奶，奶香浓而不腻',
-        address: '上海市普陀区真北路',
-        shop: '王小虎夫妻店',
-        shopId: '10333'
-      }, {
-        id: '12987125',
-        name: '好滋好味鸡蛋仔',
-        category: '江浙小吃、小吃零食',
-        desc: '荷兰优质淡奶，奶香浓而不腻',
-        address: '上海市普陀区真北路',
-        shop: '王小虎夫妻店',
-        shopId: '10333'
-      },{
-        id: '12987125',
-        name: '好滋好味鸡蛋仔',
-        category: '江浙小吃、小吃零食',
-        desc: '荷兰优质淡奶，奶香浓而不腻',
-        address: '上海市普陀区真北路',
-        shop: '王小虎夫妻店',
-        shopId: '10333'
-      },{
-        id: '12987125',
-        name: '好滋好味鸡蛋仔',
-        category: '江浙小吃、小吃零食',
-        desc: '荷兰优质淡奶，奶香浓而不腻',
-        address: '上海市普陀区真北路',
-        shop: '王小虎夫妻店',
-        shopId: '10333'
-      },{
-        id: '12987125',
-        name: '好滋好味鸡蛋仔',
-        category: '江浙小吃、小吃零食',
-        desc: '荷兰优质淡奶，奶香浓而不腻',
-        address: '上海市普陀区真北路',
-        shop: '王小虎夫妻店',
-        shopId: '10333'
-      },{
-        id: '12987125',
-        name: '好滋好味鸡蛋仔',
-        category: '江浙小吃、小吃零食',
-        desc: '荷兰优质淡奶，奶香浓而不腻',
-        address: '上海市普陀区真北路',
-        shop: '王小虎夫妻店',
-        shopId: '10333'
-      }, {
-        id: '12987126',
-        name: '好滋好味鸡蛋仔',
-        category: '江浙小吃、小吃零食',
-        desc: '荷兰优质淡奶，奶香浓而不腻',
-        address: '上海市普陀区真北路',
-        shop: '王小虎夫妻店',
-        shopId: '10333'
-      }]
+
     }
   },
   methods:{
@@ -199,6 +137,11 @@ export default {
         return
       }
       this.$emit("onOperator", arguments)
+    },
+    load(row, treeNode, resolve){
+      setTimeout(()=>{
+        console.log(row)
+      })
     }
   }
 

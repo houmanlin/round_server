@@ -13,6 +13,7 @@
     <!--  查询按钮  -->
     <el-col :span="6" :offset="1">
       <el-button type="primary" @click="selectData">查询</el-button>
+      <el-button type="primary" @click="resetData">重置</el-button>
     </el-col>
   </el-row>
 </template>
@@ -33,10 +34,20 @@ export default {
   methods:{
     selectData(){
       let data = {
-        user_mame: this.user_name,
+        user_name: this.user_name,
         real_name: this.real_name
       }
       this.$emit("onSelectData", data)
+    },
+    resetData(){
+          this.user_name           = "";                   // 操作员
+          this.real_name           = "";                   // 操作时间
+          this.operator_type       = "";                   // 操作类型
+          let data = {
+            user_name: this.user_name,
+            real_name: this.real_name
+          }
+          this.$emit("onSelectData", data)
     }
   }
 }
