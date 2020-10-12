@@ -122,7 +122,7 @@ export default {
   props:["tableHeader", "house_bill_header", "tableData"],
   data() {
     return {
-      tableData: [{
+      tableDatas: [{
         id: '12987122',
         name: '好滋好味鸡蛋仔',
         category: '江浙小吃、小吃零食',

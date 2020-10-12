@@ -8,7 +8,7 @@
 
 
     <!------------- 数据表格  --------------->
-    <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" :table-data="table_data" @onTableOperator="tableOperatorGroup" @onOperator="tableOperator"/>
+    <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" :tableData="table_data" @onTableOperator="tableOperatorGroup" @onOperator="tableOperator"/>
     <el-pagination
         class="pagination"
         :pagerCount="21"
@@ -139,9 +139,16 @@ export default {
       this.$refs[operator_key].dialogVisible = true
     },
     tableOperatorGroup(operator){
+      let {table_data } = operator
       if (operator.operator_key == '查看'){
         this.orderInfo = operator.table_data
         this.$refs["orderMaterialDialog"].dialogVisible = true
+      }
+
+      if(operator.operator_key == "下载"){
+        window.open(
+            `${process.env.VUE_APP_URL}/busUploadFile/downloadFile?fileType=0&mainNo=${table_data.mainNo}&nodeType=0`)
+
       }
 
     },

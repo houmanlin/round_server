@@ -70,7 +70,12 @@ export default {
       this.getData()
     },
     operatorTable(operator){
+      let { table_data ,operator_key } = operator
 
+      if (operator_key == "下载文件"){
+        window.open(
+            `${process.env.VUE_APP_URL}/busUploadFile/downloadFile?fileType=0&mainNo=${table_data.mainNo}&nodeType=16`)
+      }
     },
     /**
      * 获取过滤参数
@@ -86,7 +91,7 @@ export default {
      * 导出Excel
      */
     exportExcel(){
-      window.location.href = `${process.env.VUE_APP_URL}/busBilling/export?flag=1`
+      window.open( `${process.env.VUE_APP_URL}/busBilling/export?flag=1`)
     }
   }
 }
