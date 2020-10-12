@@ -13,7 +13,7 @@ export function getImportBussiness(params){
 
 
 export function addOrder(data) {
-    data = getParams(data)
+    //data = getParams(data)
     return request({
         url: "/busMain/save",
         method: "POST",

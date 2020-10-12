@@ -61,7 +61,8 @@
             <el-date-picker
                 v-model="mast_info.flight_time"
                 type="datetime"
-                placeholder="选择航班日期">
+                placeholder="选择航班日期"
+                value-format="yyyy-MM-dd HH:mm:ss" format="yyyy-MM-dd HH:mm:ss">
             </el-date-picker>
           </el-form-item>
           <el-form-item label="主单件数">
@@ -227,7 +228,7 @@
 
     <div class="operator_button">
       <el-button type="primary" @click="addData">保存</el-button>
-      <el-button class="reset_button">重置</el-button>
+      <el-button class="reset_button" @click="resetData">重置</el-button>
     </div>
 
 
@@ -245,12 +246,12 @@ export default {
       trade_type_list         : TRADE_TYPE_GROUP,
       client_list             : [],
       mast_info:{
-        customerIdOne         : "",       //客户类型
-        customerIdTwo         : "",       //客户类型
+        customerIdOne         : "",       //客户类型（一级客户）
+        customerIdTwo         : "",       //客户类型（二级客户）
         mast_type             : "",       //主单类型
         clearance_port        : "",       //报关口岸
         exit_port             : "",       //离境口岸
-        customsNo             : "",       //离境口岸
+        customsNo             : "",       //通关单号
         mast_order_number     : "",       //主单号
         flight_number         : "",       //航班号
         destination           : "",       //目的港口
@@ -293,26 +294,51 @@ export default {
         this.client_list = res.data
       })
     },
+    resetData(){
+      this.mast_info.addresser_info = ""
+      this.mast_info.receiver_info = ""
+      this.mast_info.contractCoding = ""
+      this.mast_info.customerIdOne = ""
+      this.mast_info.customerIdTwo = ""
+      this.mast_info.company_agency = ""
+      this.mast_info.customsNo = ""
+      this.mast_info.clearance_port = ""
+      this.mast_info.descriptionNum = ""
+      this.mast_info.destination = ""
+      this.mast_info.exit_port = ""
+      this.mast_info.flight_time = ""
+      this.mast_info.flight_number = ""
+      this.mast_info.goodsValue = ""
+      this.mast_info.mast_expense = ""
+      this.mast_info.mast_order_number = ""
+      this.mast_info.mast_number = ""
+      this.mast_info.mast_weight = ""
+      this.mast_info.mast_type = ""
+      this.mast_info.mast_volume = ""
+      this.mast_info.marks = ""
+      this.mast_info.tradeNo = ""
+      this.mast_info.sale_monad = ""
+      this.mast_info.busSubmenuSaveDTOS = [
+          {submenuNo: '', submenuNumPackage: "", roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType:""},
+      ]
+    },
     addData(){
       if (this.mast_info.flight_time){
-        let date = new Date(this.mast_info.flight_time)
-        this.mast_info.flight_time = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
-      }else{
+        //let date = new Date(this.mast_info.flight_time)
+        //this.mast_info.flight_time = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+      } else{
         this.mast_info.flight_time = ""
       }
 
-
-
-
       let data = {
-        addressee: this.mast_info.receiver_info,
+        addressee: this.mast_info.addresser_info,
         addresser: this.mast_info.receiver_info,
-        busSubmenuSaveDTOS: this.mast_info.house_bill,
+        busSubmenuSaveDTOS: this.mast_info.busSubmenuSaveDTOS,
         contractCoding:this.mast_info.contractCoding,
         customerIdOne: this.mast_info.customerIdOne,
         customerIdTwo: this.mast_info.customerIdTwo,
         customsBrokerAgent:this.mast_info.company_agency,
-        customsNo:this.mast_info.destination,
+        customsNo:this.mast_info.customsNo,
         customsPort:this.mast_info.clearance_port,
         descriptionNum:this.mast_info.descriptionNum,
         destination:this.mast_info.destination,
@@ -330,8 +356,29 @@ export default {
         tradeNo:this.mast_info.tradeNo,
         productionSaleUnit:this.mast_info.sale_monad,
       }
+
+      if(data.flightDate != ""){
+        let tempDate = data.flightDate.split()
+      }
+
+      if(data.busSubmenuSaveDTOS.length > 0){
+          for(let dtoItem of data.busSubmenuSaveDTOS){
+              if(dtoItem.tradeType.length > 0){
+                dtoItem.tradeType = dtoItem.tradeType.join(',')
+              } else {
+                dtoItem.tradeType = ""
+              }
+          }
+      }
+
+      if(data.mainType.length > 0){
+          data.mainType = data.mainType.join(',')
+      } else {
+        data.mainType = ""
+      }
+
       addOrder(data).then(res=>{
-          this.message.success("成功");
+          this.$message.success("成功");
           this.$router.back()
       })
     }
