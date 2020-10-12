@@ -14,7 +14,7 @@
                      {{ indexs }}: {{ item }}
                     </el-col>
                     <el-col :span="24" class="down_group">
-                      <el-button size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}(附件)</el-button>
+                      <el-button @click="DownLoad(items.url)" size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}(附件)</el-button>
                     </el-col>
                   </el-row>
                   <div>{{ item.title == '转关异常' ? '异常原因' : '备注' }}: {{item.marks}}</div>
@@ -43,7 +43,7 @@ export default {
           title:"入库查验",
           about_info:{},
           download: [
-            {title: "下载入库照片", url: ""},
+            {title: "下载入库照片", url: this.getDownLoadUrl(0, 1)},
           ],
           marks:""
         },    //0
@@ -54,7 +54,7 @@ export default {
             "报关单号":"",
           },
           download: [
-            {title: "下载最终版报关材料", url: ""},
+            {title: "下载最终版报关材料", url: this.getDownLoadUrl(0, 1)},
           ],
           marks:""
         },    //1
@@ -63,7 +63,7 @@ export default {
           about_info:{
           },
           download: [
-            {title: "下载查验单据扫描(附件)", url: ""},
+            {title: "下载查验单据扫描(附件)", url: this.getDownLoadUrl(0, 3)},
           ],
           marks:""
         },       //2
@@ -71,7 +71,7 @@ export default {
           title:"退单",
           about_info: [],
           download: [
-            {title: "下载退单材料", url: ""},
+            {title: "下载退单材料", url: this.getDownLoadUrl(0, 4)},
           ],
           marks:""
         },       //3
@@ -79,7 +79,7 @@ export default {
           title:"退单完成",
           about_info: [],
           download: [
-            {title: "下载退单完毕单据", url: ""},
+            {title: "下载退单完毕单据", url: this.getDownLoadUrl(0, 5)},
           ],
           marks:""
         },    //4
@@ -87,8 +87,8 @@ export default {
           title:"退库",
           about_info: [],
           download: [
-            {title: "下载退库单", url: ""},
-            {title: "下载装车照片", url: ""},
+            {title: "下载退库单", url: this.getDownLoadUrl(2, 6)},
+            {title: "下载装车照片", url: this.getDownLoadUrl(1, 6)},
           ],
           marks:""
         },       //5
@@ -96,7 +96,7 @@ export default {
           title:"放行",
           about_info: [],
           download: [
-            {title: "下载放行单据", url: ""},
+            {title: "下载放行单据", url: this.getDownLoadUrl(0, 7)},
           ],
           marks:""
         },       //6
@@ -109,8 +109,8 @@ export default {
             "送货费": ""
           },
           download: [
-            {title: "车辆照片(附件)", url: ""},
-            {title: "其它才材料(附件)", url: ""},
+            {title: "车辆照片(附件)", url: this.getDownLoadUrl(3, 11)},
+            {title: "其它才材料(附件)", url: this.getDownLoadUrl(0, 11)},
           ],
           marks:""
         },    //7
@@ -118,9 +118,9 @@ export default {
           title:"货物送达",
           about_info:[],
           download: [
-            {title: "车辆照片(附件)", url: ""},
-            {title: "货物照片(附件)", url: ""},
-            {title: "现成照片(附件)", url: ""},
+            {title: "车辆照片(附件)", url: this.getDownLoadUrl(3, 10)},
+            {title: "货物照片(附件)", url: this.getDownLoadUrl(5, 10)},
+            {title: "现场照片(附件)", url: this.getDownLoadUrl(6, 10)},
           ],
           marks:""
         },    //8
@@ -132,8 +132,8 @@ export default {
             "预计到达时间": "",
           },
           download: [
-            {title: "车辆照片(附件)", url: ""},
-            {title: "其它才材料(附件)", url: ""},
+            {title: "车辆照片(附件)", url: this.getDownLoadUrl(3, 8)},
+            {title: "其它才材料(附件)", url: this.getDownLoadUrl(0, 8)},
           ],
           marks:""
         },  //9
@@ -146,7 +146,7 @@ export default {
             "车牌照": "",
           },
           download: [
-            {title: "下载转关单据", url: ""},
+            {title: "下载转关单据", url: this.getDownLoadUrl(0, 9)},
           ],
           marks:""
         },      //10
@@ -159,28 +159,28 @@ export default {
             "转关单号": "",
           },
           download: [
-            {title: "下载转关单据", url: ""},
+            {title: "下载转关单据", url: this.getDownLoadUrl(0, 12)},
           ],
           marks:""
         },       //11
         {
           title:"转关",
           download: [
-            {title: "附件(附件)", url: ""},
+            {title: "附件(附件)", url: this.getDownLoadUrl(0, 13)},
           ],
           marks:""
         },          //12
         {
           title:"转关异常",
           download: [
-            {title: "附件(附件)", url: ""},
+            {title: "附件(附件)", url: this.getDownLoadUrl(0, 15)},
           ],
           marks:""
         },      //13
         {
           title:"转关完毕",
           download: [
-            {title: "附件(附件)", url: ""},
+            {title: "附件(附件)", url: this.getDownLoadUrl(0, 14)},
           ],
           marks:""
         },      //14
@@ -207,7 +207,7 @@ export default {
         this.order_flow[13].marks = res.data.exceptionCause
 
         // 转关
-        this.order_flow[12]["about_info"]["转关单号"] = res.data.customsTransitNo
+
         this.order_flow[12].marks = res.data.customsTransitRemark
         // 提货交接
         this.order_flow[10].marks = res.data.pickUpGoodsConnectRemark
@@ -233,6 +233,8 @@ export default {
         this.order_flow[11]["about_info"]["车牌号"] = res.data.commitCustomsTransitLPN
         this.order_flow[11]["about_info"]["车辆型号"] = res.data.commitCustomsTransitModelCar
         this.order_flow[11].marks = res.data.commitCustomsTransitRemark
+        this.order_flow[11]["about_info"]["转关单号"] = res.data.customsTransitNo
+
         // 放行
         this.order_flow[6].marks = res.data.commitCustomsTransitRemark
         this.order_flow[6].marks = res.data.commitCustomsTransitRemark
@@ -243,6 +245,12 @@ export default {
         // this.order_flow[1].marks = res.data.commitCustomsRemark
         this.order_flow[1].marks = res.data.incomingCheckRemark
       })
+    },
+    getDownLoadUrl(fileType, nodeType){
+      return `${process.env.VUE_APP_URL}/busUploadFile/downloadFile?fileType=${fileType}&mainNo=${this.orderInfo.mainNo}&nodeType=${nodeType}`
+    },
+    DownLoad(e){
+      window.open(e)
     }
   }
 }
