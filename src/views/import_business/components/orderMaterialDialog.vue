@@ -16,7 +16,7 @@
                     </el-col>
                     <div>{{ item.title == '转关异常' ? '异常原因' : '备注' }}: {{item.marks}}</div>
                     <el-col :span="24" class="down_group">
-                      <el-button @click="DownLoad(items.url)" size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}</el-button>
+                      <el-button @click="DownLoad(items.url['fileType'], items.url['nodeType'])" size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}</el-button>
                     </el-col>
                   </el-row>
                    </el-card>
@@ -248,10 +248,11 @@ export default {
       })
     },
     getDownLoadUrl(fileType, nodeType){
-      return `${process.env.VUE_APP_URL}/busUploadFile/downloadFile?fileType=${fileType}&mainNo=${this.mainNo}&nodeType=${nodeType}`
+      return {fileType, nodeType}
     },
-    DownLoad(e){
-      window.open(e)
+    DownLoad(fileType, nodeType){
+
+      window.open(`${process.env.VUE_APP_URL}/busUploadFile/downloadFile?fileType=${fileType}&mainNo=${this.mainNo}&nodeType=${nodeType}`)
     },
     closeDialog(){
       this.$emit("onCloseDialog")

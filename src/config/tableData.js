@@ -72,7 +72,7 @@ const DICTIONARY_TABLE = [
     },
     {
         label: "是否使用",
-        prop: "enable"
+        prop: "enable_text"
     },
     {
         label: "创建人",
@@ -205,7 +205,7 @@ const IMPORT_BUSINESS_TABLE = [
     },
     {
         label: "二级客户",
-        prop: "customerNameOne"
+        prop: "customerNameTwo"
     },
     {
         label: "离境口岸",
