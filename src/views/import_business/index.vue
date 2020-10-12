@@ -153,8 +153,9 @@ export default {
       }
 
     },
-    checkPage(){
-
+    checkPage(e){
+      this.page_config.current = e
+      this.getData()
     },
     closeDialog(){
       this.orderMater = false

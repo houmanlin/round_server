@@ -92,8 +92,9 @@ export default {
     addUser(){
       this.$router.push({path:"add_client"})
     },
-    checkPage(){
-
+    checkPage(e){
+      this.page_config.current = e
+      this.getData();
     },
     editClient(){
       if(this.selected_data.length > 1){

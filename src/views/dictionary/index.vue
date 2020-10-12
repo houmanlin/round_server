@@ -94,6 +94,7 @@ export default {
     },
     checkPage(data){
       this.page_config.current = data
+      this.getData()
     },
     removeDictionary(){
       if(this.selected_data.length > 1){
