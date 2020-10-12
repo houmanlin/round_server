@@ -100,7 +100,7 @@
           <!-- 分单号-->
           <div class="form_item">
             <span>分单号</span>
-            <el-input v-model="item.submenuNo" placeholder="请输入主单号"></el-input>
+            <el-input v-model="item.submenuNo" placeholder="请输入分单号"></el-input>
           </div>
           <!-- 分单件数-->
           <div class="form_item">
@@ -120,12 +120,14 @@
           <div class="form_item">
             <span>贸易类型</span>
             <el-select filterable  collapse-tags multiple v-model="item.tradeType" placeholder="请选择贸易方式">
-              <el-option
-                  v-for="item in trade_type_list"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value">
-              </el-option>
+              <el-option label="0110 通关代理" value="1"></el-option>
+              <el-option label="9610 通关代理" value="2"></el-option>
+              <el-option label="9710 通关代理" value="3"></el-option>
+              <el-option label="9810 通关代理" value="4"></el-option>
+              <el-option label="0110 贸易代理" value="5"></el-option>
+              <el-option label="9610 贸易代理" value="6"></el-option>
+              <el-option label="9710 贸易代理" value="7"></el-option>
+              <el-option label="9810 贸易代理" value="8"></el-option>
             </el-select>
           </div>
           <!-- 操作-->

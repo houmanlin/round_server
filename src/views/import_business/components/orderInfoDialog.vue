@@ -11,7 +11,7 @@
         <div class="form_value">{{ orderInfo.customerNameOne }}</div>
       </el-form-item>
       <el-form-item label="二级客户:">
-        <div class="form_value">{{ orderInfo.customerNameOne }}</div>
+        <div class="form_value">{{ orderInfo.customerNameTwo }}</div>
       </el-form-item>
       <el-form-item label="主单类型:">
         <div class="form_value">

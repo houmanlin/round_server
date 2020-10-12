@@ -38,6 +38,7 @@ export default {
   data(){
     return{
       dialogVisible:false,
+      mainNo: "",
       order_flow:[
         {
           title:"入库查验",
@@ -189,6 +190,7 @@ export default {
   },
   methods:{
     getData(){
+      this.mainNo = this.orderInfo.mainNo
       let data = {
         mainNo: this.orderInfo.mainNo
       }
@@ -244,7 +246,7 @@ export default {
       })
     },
     getDownLoadUrl(fileType, nodeType){
-      return `${process.env.VUE_APP_URL}/busUploadFile/downloadFile?fileType=${fileType}&mainNo=${this.orderInfo.mainNo}&nodeType=${nodeType}`
+      return `${process.env.VUE_APP_URL}/busUploadFile/downloadFile?fileType=${fileType}&mainNo=${this.mainNo}&nodeType=${nodeType}`
     },
     DownLoad(e){
       window.open(e)

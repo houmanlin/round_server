@@ -12,8 +12,9 @@
     <el-pagination
         class="pagination"
         :pagerCount="21"
+        :current-page="page_config.current"
         layout="prev, pager, next"
-        :total="1000"
+        :total="page_config.total"
         @current-change="checkPage"
     >
     </el-pagination>
