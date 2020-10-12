@@ -10,14 +10,7 @@ export function getImportBussiness(params){
         params
     })
 }
-// export function addImportBussiness(data){
-//     data = getParams(data)
-//     return request({
-//         url: "/busMain/save",
-//         methods:"post",
-//         data
-//     })
-// }
+
 
 export function addOrder(data) {
     data = getParams(data)
@@ -26,5 +19,15 @@ export function addOrder(data) {
         method: "POST",
         data,
         headers: {"content-Type": "application/json"}
+    })
+}
+
+
+export function getMainOrder(params) {
+    params = getParams(params)
+    return request({
+        url: "/busNode/getNodeInfoByMainNo",
+        method: "GET",
+        params,
     })
 }

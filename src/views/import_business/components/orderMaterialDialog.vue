@@ -30,7 +30,10 @@
 </template>
 
 <script>
+import {getMainOrder} from "@/api/import_bussiness";
+
 export default {
+  props: [ "orderInfo" ],
   name: "list",
   data(){
     return{
@@ -43,18 +46,17 @@ export default {
             {title: "下载入库照片", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },    //0
         {
           title:"提交报关",
-          about_info:[
-            {title: "报关服务商", value:"某致命伤"},
-            {title: "报关单号", value:"123423546"},
-          ],
+          about_info:{
+
+          },
           download: [
             {title: "下载最终版报关材料", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },    //1
         {
           title:"查验",
           about_info:[
@@ -68,7 +70,7 @@ export default {
             {title: "下载查验单据扫描(附件)", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },       //2
         {
           title:"退单",
           about_info: [],
@@ -76,7 +78,7 @@ export default {
             {title: "下载退单材料", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },       //3
         {
           title:"退单完成",
           about_info: [],
@@ -84,7 +86,7 @@ export default {
             {title: "下载退单完毕单据", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },    //4
         {
           title:"退库",
           about_info: [],
@@ -93,7 +95,7 @@ export default {
             {title: "下载装车照片", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },       //5
         {
           title:"放行",
           about_info: [],
@@ -101,7 +103,7 @@ export default {
             {title: "下载放行单据", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },       //6
         {
           title:"境内送货",
           about_info:[],
@@ -110,7 +112,7 @@ export default {
             {title: "其它才材料(附件)", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },    //7
         {
           title:"货物送达",
           about_info:[],
@@ -120,7 +122,7 @@ export default {
             {title: "现成照片(附件)", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },    //8
         {
           title:"提交提货车辆信息",
           about_info:[
@@ -134,7 +136,7 @@ export default {
             {title: "其它才材料(附件)", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },  //9
         {
           title:"提货交接",
           about_info:[
@@ -148,37 +150,83 @@ export default {
             {title: "下载转关单据", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },      //10
         {
           title:"提交转关",
+          about_info: {},
           download: [
             {title: "车辆照片(附件)", url: ""},
             {title: "其它才材料(附件)", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },       //11
         {
           title:"转关",
           download: [
             {title: "附件(附件)", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },          //12
         {
           title:"转关异常",
           download: [
             {title: "附件(附件)", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },      //13
         {
           title:"转关完毕",
           download: [
             {title: "附件(附件)", url: ""},
           ],
           marks:"王小虎 提交于 2018/4/12 20:46"
-        },
+        },      //14
       ]
+    }
+  },
+  updated() {
+    this.getData()
+  },
+  methods:{
+    getData(){
+      let data = {
+        mainNo: this.orderInfo.mainNo
+      }
+      getMainOrder(data).then(res=>{
+        this.order_flow[5].marks = res.data.cancelStocksRemark
+        this.order_flow[3].marks = res.data.chargebackRemark
+        this.order_flow[4].marks = res.data.chargebackedRemark
+        this.order_flow[2].marks = res.data.commitCheckRemark
+        // 转关完毕
+        this.order_flow[14].marks = res.data.customsTransitCompleteRemark
+
+        // 转关异常
+        this.order_flow[13].marks = res.data.exceptionCause
+
+        // 转关
+        this.order_flow[12]["about_info"]["转关单号"] = res.data.customsTransitNo
+        this.order_flow[12].marks = res.data.customsTransitRemark
+
+        // 货物送达
+        this.order_flow[8].marks = res.data.goodsDeliveredRemark
+        // 境内送货
+        this.order_flow[7]["about_info"]["送货费"] = res.data.deliveryExpense
+        this.order_flow[7]["about_info"]["预计到达时间"] = res.data.incountryETA
+        this.order_flow[7]["about_info"]["送货费"] = res.data.deliveryExpense
+
+
+
+        this.order_flow[11]["about_info"]["预计到达时间"] = res.data.commitCustomsTransitETA
+        this.order_flow[11]["about_info"]["车牌号"] = res.data.commitCustomsTransitLPN
+        this.order_flow[11]["about_info"]["车辆型号"] = res.data.commitCustomsTransitModelCar
+        this.order_flow[11].marks = res.data.commitCustomsTransitRemark
+        this.order_flow[6].marks = res.data.commitCustomsTransitRemark
+        this.order_flow[6].marks = res.data.commitCustomsTransitRemark
+        this.order_flow[1]["about_info"]["报关单号"] = res.data.commitCustomsTransitRemark
+        this.order_flow[1]["about_info"]["报关服务商"] = res.data.customsServiceProvider
+        // this.order_flow[1].marks = res.data.commitCustomsRemark
+        this.order_flow[1].marks = res.data.incomingCheckRemark
+      })
     }
   }
 }

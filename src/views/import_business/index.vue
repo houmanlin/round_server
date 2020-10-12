@@ -125,6 +125,7 @@ export default {
      * 提交重置
      */
     tableOperator(row, operator_key){
+
       this.orderInfo = row
       this.$refs["orderInfoDialog"].dialogVisible = true
     },
@@ -139,8 +140,8 @@ export default {
       this.$refs[operator_key].dialogVisible = true
     },
     tableOperatorGroup(operator){
-
       if (operator.operator_key == '查看'){
+        this.orderInfo = operator.table_data
         this.$refs["orderMaterialDialog"].dialogVisible = true
       }
 
