@@ -5,7 +5,7 @@
     <el-pagination
       class="pagination"
       :pagerCount="21"
-      :current-page.sync="page_config.current"
+      :current-page="page_config.current"
       layout="prev, pager, next"
       :total="page_config.total"
       @current-change="checkPage"
@@ -86,6 +86,7 @@ export default {
      */
     checkPage(e){
       this.page_config.current = e
+      this.getData()
     },
     getSelectData(data){
       this.username = data.operator

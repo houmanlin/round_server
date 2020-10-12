@@ -122,6 +122,7 @@ export default {
      */
     checkPage(e){
       this.page_config.page = e
+      this.getData()
     },
     /**
      * 表格操作

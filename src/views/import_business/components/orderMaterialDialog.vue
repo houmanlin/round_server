@@ -6,7 +6,7 @@
       >
         <div class="order_flow">
 
-          <div class="order_flow_content">
+          < class="order_flow_content">
             <el-timeline>
               <el-timeline-item v-for="(item, index) in order_flow" :timestamp="item.title" :key="index" placement="top">
                 <el-card>
@@ -14,7 +14,7 @@
                     <el-col v-for="(item, indexs) in item.about_info" :key="indexs" :span="10">
                      {{ indexs }}: {{ item }}
                     </el-col>
-                    <div>{{ item.title == '转关异常' ? '异常原因' : '备注' }}: {{item.marks}}</div>
+                    <el-col :span="24" class="down_group">{{ item.title == '转关异常' ? '异常原因' : '备注' }}: {{item.marks}}</el-col>
                     <el-col :span="24" class="down_group">
                       <el-button @click="DownLoad(items.url['fileType'], items.url['nodeType'])" size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}</el-button>
                     </el-col>
@@ -79,7 +79,7 @@ export default {
         },       //3
         {
           title:"退单完成",
-          about_info: [],
+          about_info: {},
           download: [
             {title: "下载退单完毕单据", url: this.getDownLoadUrl(0, 5)},
           ],
@@ -87,7 +87,7 @@ export default {
         },    //4
         {
           title:"退库",
-          about_info: [],
+          about_info: {},
           download: [
             {title: "下载退库单", url: this.getDownLoadUrl(2, 6)},
             {title: "下载装车照片", url: this.getDownLoadUrl(1, 6)},
@@ -118,7 +118,7 @@ export default {
         },    //7
         {
           title:"货物送达",
-          about_info:[],
+          about_info:{},
           download: [
             {title: "车辆照片(附件)", url: this.getDownLoadUrl(3, 10)},
             {title: "货物照片(附件)", url: this.getDownLoadUrl(5, 10)},
@@ -192,59 +192,86 @@ export default {
   methods:{
     getData(){
       this.mainNo = this.orderInfo.mainNo
-      debugger
       let data = {
         mainNo: this.orderInfo.mainNo
       }
       getMainOrder(data).then(res=>{
-        this.order_flow[5].marks = res.data.cancelStocksRemark
+        // 入库查验
+        this.order_flow[0].marks = res.data.incomingCheckRemark;
+
+
+        //提交报关
+        this.order_flow[1]["about_info"]["报关单号"] = res.data.commitCustomsTransitRemark
+        this.order_flow[1]["about_info"]["报关服务商"] = res.data.customsServiceProvider
+        this.order_flow[1].marks = res.data.commitCustomsRemark;
+
+
+        //提交查验
+        this.order_flow[2].marks = res.data.commitCheckRemark;
+
+        // 退单
         this.order_flow[3].marks = res.data.chargebackRemark
+
+        // 退单完成
         this.order_flow[4].marks = res.data.chargebackedRemark
-        this.order_flow[2].marks = res.data.commitCheckRemark
-        // 转关完毕
-        this.order_flow[14].marks = res.data.customsTransitCompleteRemark
 
-        // 转关异常
-        this.order_flow[13].marks = res.data.exceptionCause
+        // 退库
+        this.order_flow[5].marks = res.data.cancelStocksRemark
 
-        // 转关
+        // 放行
+        this.order_flow[6].marks = res.data.commitPermitRemark
 
-        this.order_flow[12].marks = res.data.customsTransitRemark
-        // 提货交接
-        this.order_flow[10].marks = res.data.pickUpGoodsConnectRemark
+
+        // 境内送货
+        this.order_flow[7]["about_info"]["预计到达时间"] = res.data.incountryETA
+        this.order_flow[7]["about_info"]["车牌号"] = res.data.incountryLPN
+        this.order_flow[7]["about_info"]["车辆型号"] = res.data.incountryModelCar
+        this.order_flow[7].marks = res.data.incountryRemark
+
+        // 货物送达
+        this.order_flow[8].marks = res.data.goodsDeliveredRemark
+
         // 提货车辆信息
         this.order_flow[9]["about_info"]["预计到达时间"] = res.data.pickUpCarETA
         this.order_flow[9]["about_info"]["车牌号"] = res.data.pickUpCarLPN
         this.order_flow[9]["about_info"]["车辆型号"] = res.data.pickUpCarModelCar
         this.order_flow[9].marks = res.data.pickUpCarRemark
-        // 货物送达
-        this.order_flow[8].marks = res.data.goodsDeliveredRemark
-        // 境内送货
-        this.order_flow[7]["about_info"]["送货费"] = res.data.deliveryExpense
-        this.order_flow[7]["about_info"]["预计到达时间"] = res.data.incountryETA
-        this.order_flow[7]["about_info"]["车牌号"] = res.data.incountryLPN
-        this.order_flow[7]["about_info"]["车辆型号"] = res.data.incountryModelCar
-        this.order_flow[7].marks = res.data.incountryRemark
-        this.order_flow[7].marks = res.data.incountryRemark
 
-
+        // 提货交接
+        this.order_flow[10].marks = res.data.pickUpGoodsConnectRemark
 
         // 提交转关
         this.order_flow[11]["about_info"]["预计到达时间"] = res.data.commitCustomsTransitETA
         this.order_flow[11]["about_info"]["车牌号"] = res.data.commitCustomsTransitLPN
         this.order_flow[11]["about_info"]["车辆型号"] = res.data.commitCustomsTransitModelCar
-        this.order_flow[11].marks = res.data.commitCustomsTransitRemark
         this.order_flow[11]["about_info"]["转关单号"] = res.data.customsTransitNo
+        this.order_flow[11].marks = res.data.commitCustomsTransitRemark
+
+        // 转关
+        this.order_flow[12].marks = res.data.customsTransitRemark
+
+        // 转关异常
+        this.order_flow[13].marks = res.data.exceptionCause
+
+        // 转关完毕
+        this.order_flow[14].marks = res.data.customsTransitCompleteRemark
+
+
+
+
+
+
+
+
+
+
 
         // 放行
         this.order_flow[6].marks = res.data.commitCustomsTransitRemark
         this.order_flow[6].marks = res.data.commitCustomsTransitRemark
 
-        //提交报关
-        this.order_flow[1]["about_info"]["报关单号"] = res.data.commitCustomsTransitRemark
-        this.order_flow[1]["about_info"]["报关服务商"] = res.data.customsServiceProvider
-        // this.order_flow[1].marks = res.data.commitCustomsRemark
-        this.order_flow[1].marks = res.data.incomingCheckRemark
+
+
       })
     },
     getDownLoadUrl(fileType, nodeType){
