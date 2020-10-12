@@ -1,6 +1,7 @@
 <template>
   <el-dialog
       :visible.sync="dialogVisible"
+      :before-close="handleClose"
       width="60%"
       >
         <div class="order_flow">
@@ -24,7 +25,7 @@
           </div>
         </div>
     <span slot="footer" class="dialog-footer">
-    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+    <el-button type="primary" @click="closeDialog">确 定</el-button>
   </span>
   </el-dialog>
 </template>
@@ -37,7 +38,7 @@ export default {
   name: "list",
   data(){
     return{
-      dialogVisible:false,
+      dialogVisible:true,
       mainNo: "",
       order_flow:[
         {
@@ -185,12 +186,13 @@ export default {
       ]
     }
   },
-  updated() {
+  mounted() {
     this.getData()
   },
   methods:{
     getData(){
       this.mainNo = this.orderInfo.mainNo
+      debugger
       let data = {
         mainNo: this.orderInfo.mainNo
       }
@@ -250,6 +252,13 @@ export default {
     },
     DownLoad(e){
       window.open(e)
+    },
+    closeDialog(){
+      this.$emit("onCloseDialog")
+    },
+    handleClose(){
+      this.dialogVisible = true
+      this.$emit("onCloseDialog")
     }
   }
 }

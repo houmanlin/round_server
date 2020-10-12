@@ -32,7 +32,7 @@
     <submitCarInfo ref="submitCarInfo"/>
     <submitCustomsTransit ref="submitCustomsTransit"/>
     <orderInfoDialog ref="orderInfoDialog" :orderInfo="orderInfo"/>
-    <orderMaterialDialog ref="orderMaterialDialog" :orderInfo="orderInfo"/>
+    <orderMaterialDialog v-if="orderMater" :orderInfo="orderInfo" @onCloseDialog="closeDialog"/>
   </div>
 </template>
 
@@ -89,6 +89,7 @@ export default {
       flightDateStart         : "",                  // 报关时间
       flightDateEnd           : "",                  // 报关时间
       status                  : "",        // 操作类
+      orderMater              : false
     }
   },
   created() {
@@ -142,7 +143,7 @@ export default {
       let {table_data } = operator
       if (operator.operator_key == '查看'){
         this.orderInfo = operator.table_data
-        this.$refs["orderMaterialDialog"].dialogVisible = true
+        this.orderMater = true
       }
 
       if(operator.operator_key == "下载"){
@@ -154,6 +155,9 @@ export default {
     },
     checkPage(){
 
+    },
+    closeDialog(){
+      this.orderMater = false
     },
     getFieldData(data){
       this.mainNo = data.mainNo                // 主单号
