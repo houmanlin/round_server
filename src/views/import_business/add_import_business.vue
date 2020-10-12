@@ -149,7 +149,7 @@
         <div class="basics_info_entering_form">
           <el-form :inline="true" label-position="left" label-width="100px" :model="mast_info" class="demo-form-inline">
             <el-form-item label="货值">
-              <el-select filterable  v-model="mast_info.goodsValue" multiple placeholder="请选择货值">
+              <el-select filterable  v-model="mast_info.goodsValue" placeholder="请选择货值">
                 <el-option label="人民币" value="人民币"></el-option>
                 <el-option label="美金" value="美金"></el-option>
               </el-select>

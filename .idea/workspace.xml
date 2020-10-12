@@ -12,14 +12,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="除了  上传外  都完成">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/fonts/element-icons.535877f5.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/fonts/element-icons.732389de.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/img/404.a57b6f31.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/img/404_cloud.0f4bc32b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system_log/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system_log/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +243,21 @@
       <option name="project" value="LOCAL" />
       <updated>1602514927247</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="除了  上传外  都完成">
+      <created>1602517136530</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1602517136530</updated>
+    </task>
+    <task id="LOCAL-00025" summary="除了  上传外  都完成">
+      <created>1602517239635</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1602517239635</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,10 +309,14 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="229" y="61" key="SettingsEditor/0.23.1440.799@0.23.1440.799" timestamp="1602069475466" />
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602514931181">
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602517241776">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602514931181" />
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602517241776" />
+    <state x="100" y="123" width="1240" height="599" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602517251833">
+      <screen x="0" y="23" width="1440" height="799" />
+    </state>
+    <state x="100" y="123" width="1240" height="599" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.799@0.23.1440.799" timestamp="1602517251832" />
     <state x="511" y="163" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1602267768183">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
@@ -314,10 +325,10 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="521" y="343" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.799@0.23.1440.799" timestamp="1602501187031" />
-    <state x="198" y="137" width="648" height="640" key="find.popup" timestamp="1602515342181">
+    <state x="198" y="137" width="648" height="640" key="find.popup" timestamp="1602517230740">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="198" y="137" width="648" height="640" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602515342181" />
+    <state x="198" y="137" width="648" height="640" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602517230740" />
     <state x="494" y="318" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1602462175338">
       <screen x="0" y="23" width="1440" height="799" />
     </state>

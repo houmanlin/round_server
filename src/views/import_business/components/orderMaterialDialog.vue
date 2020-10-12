@@ -6,7 +6,7 @@
       >
         <div class="order_flow">
 
-          < class="order_flow_content">
+          <div class="order_flow_content">
             <el-timeline>
               <el-timeline-item v-for="(item, index) in order_flow" :timestamp="item.title" :key="index" placement="top">
                 <el-card>
