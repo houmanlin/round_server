@@ -1,17 +1,41 @@
-cancelStockNum: 1
-chargebackNum: 1
-chargedWeight: "1"
-checkNum: 1
-customerNameOne: "张三"
-customerNameTwo: "李四"
-customsDate: "2020-10-08 19:32:53"
-customsNo: "1"
-customsTransitNum: 1
-descriptionNum: 1
-flightDate: "2020-10-08 19:32:56"
+addressee: null
+addresser: null
+cancelStocksStatus: null
+chargebackStatus: null
+chargebackedStatus: null
+commitCheckStatus: null
+commitCustomsStatus: null
+commitCustomsTransitStatus: null
+commitPermitStatus: null
+commitPickUpCarInfoStatus: null
+contractCoding: null
+currentStatus: "入库查验中"
+customerNameOne: "李四"
+customerNameTwo: "张三"
+customsBrokerAgent: null
+customsNo: null
+customsPort: null
+customsTransitExceptionStatus: null
+customsTransitFinishStatus: null
+customsTransitOperStatus: null
+declarationDate: "2020-10-11 15:59:28"
+descriptionNum: null
+destination: null
+exitPort: "北京离境口岸"
+flightDate: "2020-10-08 21:45:29"
+flightNo: "flightNo01"
+goodsDeliveredStatus: null
+goodsValue: null
 id: 1
-mainNo: "1"
-submenuNum: 1
-supervise: "1"
-transportExist: 1
-transportNothing: 1
+incomingCheckStatus: "1"
+incountryGoodsStatus: null
+mainChargedWeight: null
+mainNo: "mainNo01"
+mainNumPackage: null
+mainRoughWeight: null
+mainType: "0110 通关代理,9610 通关代理"
+mainVolume: null
+pickUpGoodsConnectStatus: null
+productionSaleUnit: null
+remark: null
+tradeNo: null

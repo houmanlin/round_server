@@ -17,6 +17,10 @@ export function getInfoById(params) {
     params
   })
 }
+export function getInfo(params) {
+
+  return
+}
 
 export function updateInfo(data) {
   data = getParams(data)

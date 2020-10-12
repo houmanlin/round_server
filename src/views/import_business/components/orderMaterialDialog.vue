@@ -11,7 +11,7 @@
                 <el-card>
                   <el-row>
                     <el-col v-for="(item, indexs) in item.about_info" :key="indexs" :span="10">
-                     {{ item.title }}: {{ item.value }}
+                     {{ indexs }}: {{ item }}
                     </el-col>
                     <el-col :span="24" class="down_group">
                       <el-button size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}(附件)</el-button>
@@ -41,35 +41,31 @@ export default {
       order_flow:[
         {
           title:"入库查验",
-          about_info:[],
+          about_info:{},
           download: [
             {title: "下载入库照片", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },    //0
         {
           title:"提交报关",
           about_info:{
-
+            "报关服务商": "",
+            "报关单号":"",
           },
           download: [
             {title: "下载最终版报关材料", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },    //1
         {
           title:"查验",
-          about_info:[
-            {title: "车辆型号", value:"某致命伤"},
-            {title: "车牌号", value:"123423546"},
-            {title: "预计到达时间", value:"123423546"},
-            {title: "送货费用", value:"123423546"},
-          ],
+          about_info:{
+          },
           download: [
-            {title: "下载入库照片", url: ""},
             {title: "下载查验单据扫描(附件)", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },       //2
         {
           title:"退单",
@@ -77,7 +73,7 @@ export default {
           download: [
             {title: "下载退单材料", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },       //3
         {
           title:"退单完成",
@@ -85,7 +81,7 @@ export default {
           download: [
             {title: "下载退单完毕单据", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },    //4
         {
           title:"退库",
@@ -94,7 +90,7 @@ export default {
             {title: "下载退库单", url: ""},
             {title: "下载装车照片", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },       //5
         {
           title:"放行",
@@ -102,16 +98,21 @@ export default {
           download: [
             {title: "下载放行单据", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },       //6
         {
           title:"境内送货",
-          about_info:[],
+          about_info:{
+            "预计到达时间": "",
+            "车牌号": "",
+            "车辆型号": "",
+            "送货费": ""
+          },
           download: [
             {title: "车辆照片(附件)", url: ""},
             {title: "其它才材料(附件)", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },    //7
         {
           title:"货物送达",
@@ -121,65 +122,67 @@ export default {
             {title: "货物照片(附件)", url: ""},
             {title: "现成照片(附件)", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },    //8
         {
           title:"提交提货车辆信息",
-          about_info:[
-            {title: "车辆型号", value:"某致命伤"},
-            {title: "车牌号", value:"123423546"},
-            {title: "预计到达时间", value:"123423546"},
-            {title: "送货费用", value:"123423546"},
-          ],
+          about_info:{
+            "车辆型号":"",
+            "车牌号":"",
+            "预计到达时间": "",
+          },
           download: [
             {title: "车辆照片(附件)", url: ""},
             {title: "其它才材料(附件)", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },  //9
         {
           title:"提货交接",
-          about_info:[
-              {title: "提货交接", value: "kljkljl"},
-              {title: "预计到达时间", value: "kljkljl"},
-              {title: "车辆型号", value: "kljkljl"},
-              {title: "车牌照", value: "kljkljl"},
-
-          ],
+          about_info:{
+            "提货交接": "",
+            "预计到达时间": "",
+            "车辆型号": "",
+            "车牌照": "",
+          },
           download: [
             {title: "下载转关单据", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },      //10
         {
           title:"提交转关",
-          about_info: {},
+          about_info:{
+            "车辆型号":"",
+            "车牌号":"",
+            "预计到达时间": "",
+            "转关单号": "",
+          },
           download: [
-            {title: "车辆照片(附件)", url: ""},
-            {title: "其它才材料(附件)", url: ""},
+            {title: "下载转关单据", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },       //11
         {
           title:"转关",
           download: [
             {title: "附件(附件)", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },          //12
         {
           title:"转关异常",
           download: [
             {title: "附件(附件)", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },      //13
         {
           title:"转关完毕",
           download: [
             {title: "附件(附件)", url: ""},
           ],
-          marks:"王小虎 提交于 2018/4/12 20:46"
+          marks:""
         },      //14
       ]
     }
@@ -206,23 +209,35 @@ export default {
         // 转关
         this.order_flow[12]["about_info"]["转关单号"] = res.data.customsTransitNo
         this.order_flow[12].marks = res.data.customsTransitRemark
-
+        // 提货交接
+        this.order_flow[10].marks = res.data.pickUpGoodsConnectRemark
+        // 提货车辆信息
+        this.order_flow[9]["about_info"]["预计到达时间"] = res.data.pickUpCarETA
+        this.order_flow[9]["about_info"]["车牌号"] = res.data.pickUpCarLPN
+        this.order_flow[9]["about_info"]["车辆型号"] = res.data.pickUpCarModelCar
+        this.order_flow[9].marks = res.data.pickUpCarRemark
         // 货物送达
         this.order_flow[8].marks = res.data.goodsDeliveredRemark
         // 境内送货
         this.order_flow[7]["about_info"]["送货费"] = res.data.deliveryExpense
         this.order_flow[7]["about_info"]["预计到达时间"] = res.data.incountryETA
-        this.order_flow[7]["about_info"]["送货费"] = res.data.deliveryExpense
+        this.order_flow[7]["about_info"]["车牌号"] = res.data.incountryLPN
+        this.order_flow[7]["about_info"]["车辆型号"] = res.data.incountryModelCar
+        this.order_flow[7].marks = res.data.incountryRemark
+        this.order_flow[7].marks = res.data.incountryRemark
 
 
 
-
+        // 提交转关
         this.order_flow[11]["about_info"]["预计到达时间"] = res.data.commitCustomsTransitETA
         this.order_flow[11]["about_info"]["车牌号"] = res.data.commitCustomsTransitLPN
         this.order_flow[11]["about_info"]["车辆型号"] = res.data.commitCustomsTransitModelCar
         this.order_flow[11].marks = res.data.commitCustomsTransitRemark
+        // 放行
         this.order_flow[6].marks = res.data.commitCustomsTransitRemark
         this.order_flow[6].marks = res.data.commitCustomsTransitRemark
+
+        //提交报关
         this.order_flow[1]["about_info"]["报关单号"] = res.data.commitCustomsTransitRemark
         this.order_flow[1]["about_info"]["报关服务商"] = res.data.customsServiceProvider
         // this.order_flow[1].marks = res.data.commitCustomsRemark

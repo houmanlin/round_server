@@ -3,15 +3,42 @@
 
 
     <!--  名称查询输入框  -->
-    <el-col :span="4">
-      <el-input v-model="field_value" placeholder="请输入字段名" />
-    </el-col>
+    <el-form :inline="true" :model="searchData" label-position="left" label-width="100px" >
+      <el-form-item label="CODE DIV" class="form more_select">
+        <el-input
+            class="form_textarea"
+            v-model="searchData.codeDiv"
+            placeholder="请输入CODE DIV"
+        />
+      </el-form-item>
+      <el-form-item label="CODE_TEXT" class="form more_select">
+        <el-input
+            class="form_textarea"
+            v-model="searchData.codeText"
+            placeholder="请输入CODE DIV"
+        />
+      </el-form-item>
+      <el-form-item label="是否使用" class="form more_select">
+        <el-select filterable v-model="searchData.isEnable" placeholder="请选择是否使用">
+          <el-option
+            label="禁用"
+            :value="0"
+          />
+          <el-option
+            label="使用"
+            :value="1"
+          />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="" class="form more_select">
+        <el-button type="primary" @click="selectData">查询</el-button>
+      </el-form-item>
+
+    </el-form>
 
 
-    <!--  查询按钮  -->
-    <el-col :span="6" :offset="1">
-      <el-button type="primary" @click="selectData">查询</el-button>
-    </el-col>
+
+
   </el-row>
 </template>
 
@@ -21,7 +48,11 @@ export default {
   name: "searchComponents",
   data(){
     return{
-
+      searchData:{
+        codeDiv: "",
+        codeText: "",
+        enable: "1"
+      },
       field_list: [{
         value: '0',
         label: 'CODE DIV'
@@ -40,7 +71,7 @@ export default {
   },
   methods:{
     selectData(){
-      this.$emit("onSelectData", this.field_value)
+      this.$emit("onSelectData", this.searchData)
     }
   }
 }

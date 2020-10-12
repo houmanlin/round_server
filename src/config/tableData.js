@@ -212,6 +212,10 @@ const IMPORT_BUSINESS_TABLE = [
         prop: "exitPort"
     },
     {
+        label: "报关日期",
+        prop: "declarationDate"
+    },
+    {
         label: "航班号",
         prop: "flightNo"
     },
@@ -232,16 +236,16 @@ const IMPORT_BUSINESS_TABLE = [
         prop: "mainRoughWeight"
     },
     {
-        label: "体积",
-        prop: "mainVolume"
+        label: "报关企业代理",
+        prop: "productionSaleUnit"
     },
     {
-        label: "体积",
-        prop: "mainVolume"
+        label: "生产销售单位",
+        prop: "productionSaleUnit"
     },
     {
-        label: "体积",
-        prop: "mainVolume"
+        label: "备注",
+        prop: "remark"
     },
     {
         label: "体积",

@@ -35,7 +35,7 @@ export default {
       table_header        : DICTIONARY_TABLE,      //表格表头信息
       table_data          : [],
       page_config         : {},
-      field_value         : "",
+      field_value         : {},
       selected_data       : []
     }
   },
@@ -51,8 +51,11 @@ export default {
       let data = {
         limit       : this.page_config.limit,
         page        : this.page_config.current,
-        codeText    : this.field_value
+        codeDiv     : this.field_value.codeDiv,
+        codeText    : this.field_value.codeText,
+        enable      : this.field_value.enable,
       }
+
       getDictionary(data).then(res=>{
         let { records } = res.data
         this.page_config = getPages(res.data)

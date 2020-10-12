@@ -56,6 +56,9 @@ export default {
       this.$emit("onOperator", operator_key)
     },
     getFiled(){
+      let custom_date = new Date( this.clearanceData.customsDate)
+      this.clearanceData.customsDate = `${custom_date.getFullYear()}-${custom_date.getMonth()+1}-${custom_date.getDate()}`
+
       this.$emit("onFiledData", this.clearanceData)
     }
   }

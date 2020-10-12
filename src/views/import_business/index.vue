@@ -125,8 +125,7 @@ export default {
      * 提交重置
      */
     tableOperator(row, operator_key){
-
-      this.orderInfo = row
+      this.orderInfo = row[0]
       this.$refs["orderInfoDialog"].dialogVisible = true
     },
     /**
