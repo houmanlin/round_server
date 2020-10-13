@@ -17,6 +17,7 @@
         <el-upload
             class="upload-demo"
             :on-progress="handlePreview"
+            ref="upload"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
             >
@@ -50,7 +51,7 @@ export default {
   methods:{
    handlePreview(event, file, fileList){
 
-      this.clearanceData.file1 = fileList
+      this.clearanceData.file = fileList
     },
     submitForm(){
       let data = new FormData()
@@ -68,7 +69,7 @@ export default {
         this.dialogVisible = false
         this.clearanceData.mark= "";
         this.clearanceData.file=[]
-
+        this.$refs.upload.clearFiles();
         this.$emit("onUploadSuccess")
       })
     },

@@ -22,6 +22,7 @@
       <el-form-item label="上传最终版报关材料(附件)">
         <el-upload
             class="upload-demo"
+            ref="upload"
             drag
             :on-progress="handlePreview"
             action="https://jsonplaceholder.typicode.com/posts/"
@@ -85,6 +86,7 @@ export default {
         this.clearanceData.service_shop = "";
         this.clearanceData.clearance_order = "";
         this.clearanceData.file = [];
+        this.$refs.upload.clearFiles()
 
         this.$emit("onUploadSuccess")
       })

@@ -33,6 +33,7 @@
       <el-form-item label="转关单据(附件)">
         <el-upload
             class="upload-demo"
+            ref="upload"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
             :on-progress="handlePreview"
@@ -99,7 +100,7 @@ export default {
         this.clearanceData.delivery_time= "";
         this.clearanceData.mark="";
         this.clearanceData.file=[]
-
+        this.$refs.upload.clearFiles();
 
         this.$emit("onUploadSuccess")
       })

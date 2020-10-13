@@ -34,6 +34,7 @@
         <el-upload
             class="upload-demo"
             drag
+            ref="upload1"
             :on-progress="handlePreview"
             action="https://jsonplaceholder.typicode.com/posts/"
             >
@@ -44,6 +45,7 @@
       <el-form-item label="其它才材料(附件)">
         <el-upload
             class="upload-demo"
+            ref="upload"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
             :on-progress="handlePreview1"
@@ -116,6 +118,8 @@ export default {
         this.clearanceData.delivery_time= "";
         this.clearanceData.file1=[];
         this.clearanceData.file2=[];
+        this.$refs.upload.clearFiles();
+        this.$refs.upload1.clearFiles();
 
 
         this.$emit("onUploadSuccess")

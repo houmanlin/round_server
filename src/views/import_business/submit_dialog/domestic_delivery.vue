@@ -18,6 +18,7 @@
         <el-upload
             :on-progress="handlePreview"
             class="upload-demo"
+            ref="upload2"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
             >
@@ -28,6 +29,7 @@
       <el-form-item label="货物照片(附件)">
         <el-upload
             :on-progress="handlePreview1"
+            ref="upload1"
             class="upload-demo"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
@@ -40,6 +42,7 @@
         <el-upload
             :on-progress="handlePreview2"
             class="upload-demo"
+            ref="upload"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
             >
@@ -115,7 +118,10 @@ export default {
         this.clearanceData.delivery_time= "";
         this.clearanceData.file1=[];
         this.clearanceData.file2=[];
-        this.clearanceData.file3=[]
+        this.clearanceData.file3=[];
+        this.$refs.upload.clearFiles()
+        this.$refs.upload1.clearFiles()
+        this.$refs.upload2.clearFiles()
         this.$emit("onUploadSuccess")
       })
     },
