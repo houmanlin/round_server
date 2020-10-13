@@ -1,11 +1,18 @@
-chargedWeight: "10"
-createBy: "admin"
-createDate: "2020-10-11 23:21:03"
-id: 9
-mainNo: "mainNo01"
-roughWeight: "10"
-submenuNo: "sub01"
-submenuNumPackage: 10
-tradeType: "0110 通关代理,9610 通关代理,9710 通关代理"
-updateBy: "admin"
-updateDate: "2020-10-11 23:21:10"
+业务节点类型
+    0：进出口业务
+    1：入库查验
+    2：提交报关
+    3：提交查验
+    4：退单
+    5：退单完毕
+    6：退库
+    7：提交放行
+    8：提交提货车辆信息
+    9：提货交接
+    10：货物送达
+    11：境内送货
+    12：提交转关
+    13：转关
+    14：转关完毕
+    15：转关异常
+    16：业务计费

@@ -8,7 +8,7 @@
 
 
     <!------------- 数据表格  --------------->
-    <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" :tableData="table_data" @onTableOperator="tableOperatorGroup" @onOperator="tableOperator"/>
+    <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" :tableData="table_data" @onTableOperator="tableOperatorGroup" @onOperator="tableOperator" @onUploadMethod="uploadFile" @onGetSelectData="getSelectData"/>
     <el-pagination
         class="pagination"
         :pagerCount="21"
@@ -21,17 +21,17 @@
 
     <!--  各种对话框  -->
 
-    <clearanceGoods ref="clearanceGoods"/>
-    <inspect ref="inspect"/>
-    <returnSale ref="returnSale"/>
-    <returnSaleSucc ref="returnSaleSucc"/>
-    <returnWorkhouse ref="returnWorkhouse"/>
-    <greenLight ref="greenLight"/>
-    <domesticDeliveryGoods ref="domesticDeliveryGoods"/>
-    <domesticDelivery ref="domesticDelivery"/>
-    <submitCarInfo ref="submitCarInfo"/>
-    <submitCustomsTransit ref="submitCustomsTransit"/>
-    <orderInfoDialog ref="orderInfoDialog" :orderInfo="orderInfo"/>
+    <clearanceGoods ref="clearanceGoods" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <inspect ref="inspect" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <returnSale ref="returnSale" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <returnSaleSucc ref="returnSaleSucc" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <returnWorkhouse ref="returnWorkhouse" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <greenLight ref="greenLight" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <domesticDeliveryGoods ref="domesticDeliveryGoods" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <domesticDelivery ref="domesticDelivery" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <submitCarInfo ref="submitCarInfo" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <submitCustomsTransit ref="submitCustomsTransit" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <orderInfoDialog ref="orderInfoDialog" :orderInfo="orderInfo" />
     <orderMaterialDialog v-if="orderMater" :orderInfo="orderInfo" @onCloseDialog="closeDialog"/>
   </div>
 </template>
@@ -89,7 +89,8 @@ export default {
       flightDateStart         : "",                  // 报关时间
       flightDateEnd           : "",                  // 报关时间
       status                  : "",        // 操作类
-      orderMater              : false
+      orderMater              : false,
+      selectTableData         : []
     }
   },
   created() {
@@ -121,6 +122,11 @@ export default {
       })
     },
 
+    uploadSuccess(){
+      this.getData();
+    },
+
+
 
     /***
      * 提交重置
@@ -137,6 +143,16 @@ export default {
         this.$router.push("add_import_business")
         return
       }
+      if(this.selectTableData.length > 1){
+        this.$message.info("只能操作一条订单")
+        return
+      }
+      if(this.selectTableData.length < 1){
+        this.$message.info("请选择要操作的数据")
+        return
+      }
+      console.log(this.selectTableData)
+      this.orderInfo = this.selectTableData[0]
       this.$refs[operator_key].dialogVisible = true
     },
     tableOperatorGroup(operator){
@@ -175,6 +191,12 @@ export default {
 
 
       this.getData();
+    },
+    getSelectData(data){
+      this.selectTableData = data
+    },
+    uploadFile(data){
+      reque
     }
 
   }

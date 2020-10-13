@@ -68,7 +68,8 @@
                 v-model="mast_info.flight_time"
                 type="datetime"
                 placeholder="选择航班日期"
-                value-format="yyyy-MM-dd HH:mm:ss" format="yyyy-MM-dd HH:mm:ss">
+                value-format="yyyy-MM-dd HH:mm:ss"
+                format="yyyy-MM-dd HH:mm:ss">
             </el-date-picker>
           </el-form-item>
           <el-form-item label="主单件数">
@@ -115,7 +116,7 @@
           <!-- 分单计费量-->
           <div class="form_item">
             <span>分计费量</span>
-            <el-input v-model="item.chargedWeight" placeholder="请输入主单号"></el-input>
+            <el-input v-model="item.chargedWeight" placeholder="请输入分计费量"></el-input>
           </div>
           <div class="form_item">
             <span>贸易类型</span>

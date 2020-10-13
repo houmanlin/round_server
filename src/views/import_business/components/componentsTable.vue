@@ -4,6 +4,7 @@
       border
       @cell-dblclick="double_click"
       height="400"
+      @selection-change="handleSelectionChange"
       style="width: 100%">
 
     <template v-for="(item, index) in tableHeader" >
@@ -99,12 +100,18 @@
             <el-upload
                 class="upload-demo"
                 ref="upload"
-                action="https://jsonplaceholder.typicode.com/posts/"
                 v-for="(operator_item, indexs) in item.prop"
                 :key="indexs"
-                @click="handleClick(scope.row, operator_item)"
                 v-if="operator_item == '上传' || operator_item == '上传文件'"
-                :auto-upload="false">
+                :data="getPostData(scope.row,0)"
+                multiple
+                :action="uploadSingle"
+                :file-list="fileList"
+                :on-success="handleResultSuccess"
+                :on-error="handleResultError"
+                :show-file-list="false"
+
+            >
               <el-button  type="text"
                           size="small">{{operator_item}}</el-button>
             </el-upload>
@@ -124,7 +131,9 @@ export default {
   props:["tableHeader", "house_bill_header", "tableData"],
   data() {
     return {
-
+      uploadSingle:`${process.env.VUE_APP_URL}/busUploadFile/uploadFileInfo`,
+      postData:{},
+      fileList: []
     }
   },
   methods:{
@@ -142,7 +151,46 @@ export default {
       setTimeout(()=>{
         console.log(row)
       })
-    }
+    },
+    handleSelectionChange(data){
+      this.$emit("onGetSelectData", data)
+    },
+    getPostData(row,nodetype){
+      let that = this;
+
+      let uploadJson={
+        mainNo:row.mainNo,
+        nodeType:nodetype,
+      }
+      console.log("uploadJson",uploadJson);
+      return uploadJson
+    },
+    uploadRequest(scope){
+      this.$emit("onUploadMethod", scope)
+    },
+    handleResultSuccess(response, file, fileList){
+      if(response.code == 99999){
+        this.$message.error('上传失败！');
+        debugger
+      }else{
+        this.$message({
+          message: '上传成功！',
+          type: 'success'
+        });
+
+      }
+      // console.log('fileList',fileList);
+      //   if (response) {
+      //     console.log('response',response);
+      //   } else {
+      //     this.$confirm(`上传成功！`);
+      //   }
+    },
+    handleResultError(response, file, fileList){
+      this.$message.error('上传失败！');
+      // console.log('fileList',fileList);
+      // console.log('response',response);
+    },
   }
 
 }

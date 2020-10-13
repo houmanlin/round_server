@@ -41,17 +41,23 @@
         <template slot-scope="scope">
           <template v-if="item.label == '操作'">
             <el-upload
-              class="upload-demo"
-              ref="upload"
-              action="https://jsonplaceholder.typicode.com/posts/"
-              v-for="(operator_item, indexs) in item.prop"
-              :key="indexs"
-              @click="handleClick(scope.row, operator_item)"
-              v-if="operator_item == '上传' || operator_item == '上传文件'"
-              :auto-upload="false">
-            <el-button  type="text"
-                        size="small">{{operator_item}}</el-button>
-          </el-upload>
+                class="upload-demo"
+                ref="upload"
+                v-for="(operator_item, indexs) in item.prop"
+                :key="indexs"
+                v-if="operator_item == '上传' || operator_item == '上传文件'"
+                :data="getPostData(scope.row,0)"
+                multiple
+                :action="upload_url"
+                :file-list="fileList"
+                :on-success="handleResultSuccess"
+                :on-error="handleResultError"
+                :show-file-list="false"
+
+            >
+              <el-button  type="text"
+                          size="small">{{operator_item}}</el-button>
+            </el-upload>
             <el-button v-if="operator_item != '上传' && operator_item != '上传文件'" v-for="(operator_item, indexs) in item.prop" :key="indexs" @click="handleClick(scope.row, operator_item)" type="text" size="small">{{operator_item}}</el-button>
 
           </template>
@@ -65,8 +71,9 @@
 
 <script>
 export default {
-  props: ["tableHeader", "tableData"],
+  props: ["tableHeader", "tableData", "upload_url"],
   name:"table",
+
   methods: {
     handleClick(row, operator_key) {
       this.$emit("onOperator", {
@@ -79,11 +86,46 @@ export default {
     },
     handleSelectionChange(data){
       this.$emit("onSelectData", data)
-    }
+    },
+    getPostData(row,nodetype){
+      let that = this;
+
+      let uploadJson={
+        mainNo:row.mainNo,
+        nodeType:nodetype,
+      }
+      return uploadJson
+    },
+    uploadRequest(scope){
+      this.$emit("onUploadMethod", scope)
+    },
+    handleResultSuccess(response, file, fileList){
+      if(response.code == 99999){
+        this.$message.error('上传失败！');
+      }else{
+        this.$message({
+          message: '上传成功！',
+          type: 'success'
+        });
+
+      }
+      // console.log('fileList',fileList);
+      //   if (response) {
+      //     console.log('response',response);
+      //   } else {
+      //     this.$confirm(`上传成功！`);
+      //   }
+    },
+    handleResultError(response, file, fileList){
+      this.$message.error('上传失败！');
+      // console.log('fileList',fileList);
+      // console.log('response',response);
+    },
   },
 
   data() {
     return {
+      fileList: []
     }
   },
 }

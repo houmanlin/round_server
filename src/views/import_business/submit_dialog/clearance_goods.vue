@@ -23,8 +23,9 @@
         <el-upload
             class="upload-demo"
             drag
+            :on-change="handlePreview"
             action="https://jsonplaceholder.typicode.com/posts/"
-            multiple>
+        >
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
         </el-upload>
@@ -32,26 +33,52 @@
     </el-form>
     <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible = false">取 消</el-button>
-    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+    <el-button type="primary" @click="submitForm">确 定</el-button>
   </span>
   </el-dialog>
 </template>
 
 <script>
+import {uploadForm} from "@/api/submit_form";
+
 export default {
+  props: ["mainNo"],
   name: "clearance_goods",
   data(){
     return{
       dialogVisible: false,
       clearanceData:{
         service_shop: "",
-        clearance_order:""
+        clearance_order:"",
+        file:[]
       }
     }
   },
   methods:{
+    handlePreview(file){
+
+      this.clearanceData.file[0] = file.raw
+    },
     handleClose(){
       this.dialogVisible = false
+    },
+    submitForm(){
+      let data = new FormData()
+
+
+
+      data.append("mainNo", this.mainNo)
+      data.append("customsServiceProvider", this.clearanceData.service_shop)
+      data.append("customsNo", this.clearanceData.clearance_order)
+      data.append("nodeType", 2)
+      this.clearanceData.file.forEach(file => {
+        data.append("file", file, file.name)
+      })
+
+      uploadForm(data).then(res=>{
+        this.dialogVisible = false
+        this.$emit("onUploadSuccess")
+      })
     }
   }
 }

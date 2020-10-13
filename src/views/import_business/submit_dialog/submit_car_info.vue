@@ -14,6 +14,7 @@
         <el-date-picker
             v-model="clearanceData.delivery_time"
             type="datetime"
+            value-format="yyyy-MM-dd HH:mm"
             placeholder="选择日期时间">
         </el-date-picker>
       </el-form-item>
@@ -31,8 +32,9 @@
         <el-upload
             class="upload-demo"
             drag
+            :on-change="handlePreview"
             action="https://jsonplaceholder.typicode.com/posts/"
-            multiple>
+            >
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
         </el-upload>
@@ -41,8 +43,9 @@
         <el-upload
             class="upload-demo"
             drag
+            :on-change="handlePreview1"
             action="https://jsonplaceholder.typicode.com/posts/"
-            multiple>
+            >
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
         </el-upload>
@@ -51,13 +54,16 @@
     </el-form>
     <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible = false">取 消</el-button>
-    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+    <el-button type="primary" @click="submitForm">确 定</el-button>
   </span>
   </el-dialog>
 </template>
 
 <script>
+import {uploadForm} from "@/api/submit_form";
+
 export default {
+  props:["mainNo"],
   name: "clearance_goods",
   data(){
     return{
@@ -66,11 +72,40 @@ export default {
         car_type: "",
         license_plate_number:"",
         delivery_expense:"",
-        delivery_time: ""
+        delivery_time: "",
+        file:[]
       }
     }
   },
   methods:{
+    handlePreview(file){
+
+      this.clearanceData.file[0] = file.raw
+    },
+    handlePreview1(file){
+
+      this.clearanceData.file[0] = file.raw
+    },
+    submitForm(){
+      let data = new FormData()
+
+
+
+      data.append("mainNo", this.mainNo)
+      data.append("pickUpCarModelCar", this.clearanceData.car_type)
+      data.append("pickUpCarLPN", this.clearanceData.license_plate_number)
+      data.append("pickUpCarETA", this.clearanceData.delivery_time)
+      data.append("pickUpCarRemark", this.clearanceData.mark)
+      data.append("nodeType", 8)
+      this.clearanceData.file.forEach(file => {
+        data.append("file", file, file.name)
+      })
+
+      uploadForm(data).then(res=>{
+        this.dialogVisible = false
+        this.$emit("onUploadSuccess")
+      })
+    },
     handleClose(){
       this.dialogVisible = false
     }

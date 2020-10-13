@@ -8,7 +8,7 @@
 
 
     <!------------- 数据表格  --------------->
-    <components_table :table-header="table_header" :table-data="table_data" @onOperator="operatorTable"/>
+    <components_table :table-header="table_header" :table-data="table_data" :upload_url="upload_url" @onOperator="operatorTable"/>
 
     <el-pagination
         class="pagination"
@@ -39,7 +39,8 @@ export default {
       page_config       : {},                          //分页配置
       table_data        : [],                          //表格数据
       customsDate       : "",
-      mainNo            : ""
+      mainNo            : "",
+      upload_url        : `${process.env.VUE_APP_URL}/busUploadFile/uploadFileInfo`
     }
   },
 
@@ -92,7 +93,7 @@ export default {
      */
     exportExcel(){
       window.open( `${process.env.VUE_APP_URL}/busBilling/export?flag=1`)
-    }
+    },
   }
 }
 </script>
