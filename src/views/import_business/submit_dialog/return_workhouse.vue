@@ -81,14 +81,14 @@ export default {
       let refundOrderFileNames = ""
       this.clearanceData.file1.forEach((file,index) => {
         data.append("file", file.raw, "refundOrderFileNames")
-        refundOrderFileNames += this.clearanceData.file.length != index + 1 ? `${file.name},` : `${file.name}`
+        refundOrderFileNames += this.clearanceData.file1.length != index + 1 ? `${file.name},` : `${file.name}`
 
       })
       let truckLoadingPictureFileNames = "";
       this.clearanceData.file2.forEach((file,index) => {
 
         data.append("file", file.raw, "truckLoadingPictureFileNames")
-        truckLoadingPictureFileNames += this.clearanceData.file.length != index + 1 ? `${file.name},` : `${file.name}`
+        truckLoadingPictureFileNames += this.clearanceData.file2.length != index + 1 ? `${file.name},` : `${file.name}`
 
       })
       data.append("truckLoadingPictureFileNames", truckLoadingPictureFileNames)
