@@ -361,6 +361,10 @@ const HOSE_BILL_TABLE = [
         label: "分单计费重量",
         prop: "chargedWeight"
     },
+    {
+        label: "贸易方式",
+        prop: "tradeType"
+    },
 ]
 
 module.exports = {

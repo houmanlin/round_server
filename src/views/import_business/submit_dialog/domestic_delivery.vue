@@ -16,7 +16,7 @@
       </el-form-item>
       <el-form-item label="车辆照片(附件)">
         <el-upload
-            :on-change="handlePreview"
+            :on-progress="handlePreview"
             class="upload-demo"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
@@ -27,7 +27,7 @@
       </el-form-item>
       <el-form-item label="货物照片(附件)">
         <el-upload
-            :on-change="handlePreview1"
+            :on-progress="handlePreview1"
             class="upload-demo"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
@@ -38,7 +38,7 @@
       </el-form-item>
       <el-form-item label="现场照片(附件)">
         <el-upload
-            :on-change="handlePreview2"
+            :on-progress="handlePreview2"
             class="upload-demo"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
@@ -70,22 +70,24 @@ export default {
         license_plate_number:"",
         delivery_expense:"",
         delivery_time: "",
-        file:[]
+        file1:[],
+        file2:[],
+        file3:[]
       }
     }
   },
   methods:{
-    handlePreview(file){
+   handlePreview(event, file, fileList){
 
-      this.clearanceData.file[0] = file.raw
+      this.clearanceData.file1 = fileList
     },
-    handlePreview1(file){
+   handlePreview1(event, file, fileList){
 
-      this.clearanceData.file[1] = file.raw
+      this.clearanceData.file2 = fileList
     },
-    handlePreview2(file){
+   handlePreview2(event, file, fileList){
 
-      this.clearanceData.file[2] = file.raw
+      this.clearanceData.file3 = fileList
     },
     submitForm(){
       let data = new FormData()
@@ -95,8 +97,14 @@ export default {
       data.append("mainNo", this.mainNo)
       data.append("goodsDeliveredRemark", this.clearanceData.mark)
       data.append("nodeType", 10)
-      this.clearanceData.file.forEach(file => {
-        data.append("file", file, file.name)
+      this.clearanceData.file1.forEach(file => {
+        data.append("file", file.row, "vehiclePictureFileNames")
+      })
+      this.clearanceData.file2.forEach(file => {
+        data.append("file", file.row, "goodsPictureFileNames")
+      })
+      this.clearanceData.file3.forEach(file => {
+        data.append("file", file.row, "scenePictureFileNames")
       })
 
       uploadForm(data).then(res=>{

@@ -35,7 +35,7 @@
             class="upload-demo"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
-            :on-change="handlePreview"
+            :on-progress="handlePreview"
             >
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -71,9 +71,9 @@ export default {
     }
   },
   methods:{
-    handlePreview(file){
+   handlePreview(event, file, fileList){
 
-      this.clearanceData.file[0] = file.raw
+      this.clearanceData.file = fileList
     },
     submitForm(){
       let data = new FormData()
@@ -88,7 +88,7 @@ export default {
       data.append("customsTransitRemark", this.clearanceData.mark)
       data.append("nodeType", 12)
       this.clearanceData.file.forEach(file => {
-        data.append("file", file, file.name)
+        data.append("file", file, "ordinaryFileNames")
       })
 
       uploadForm(data).then(res=>{

@@ -17,7 +17,7 @@
         <el-upload
             class="upload-demo"
             drag
-            :on-change="handlePreview1"
+            :on-progress="handlePreview1"
             action="https://jsonplaceholder.typicode.com/posts/"
             >
           <i class="el-icon-upload"></i>
@@ -28,7 +28,7 @@
         <el-upload
             class="upload-demo"
             drag
-            :on-change="handlePreview"
+            :on-progress="handlePreview"
             action="https://jsonplaceholder.typicode.com/posts/"
             >
           <i class="el-icon-upload"></i>
@@ -54,18 +54,19 @@ export default {
       dialogVisible: false,
       clearanceData:{
         mark: "",
-        file:[]
+        file1:[],
+        file2:[]
       }
     }
   },
   methods:{
-    handlePreview(file){
+   handlePreview(event, file, fileList){
 
-      this.clearanceData.file[0] = file.raw
+      this.clearanceData.file1 = fileList
     },
-    handlePreview1(file){
+   handlePreview1(event, file, fileList){
 
-      this.clearanceData.file[1] = file.raw
+      this.clearanceData.file2 = fileList
     },
     submitForm(){
       let data = new FormData()
@@ -75,8 +76,12 @@ export default {
       data.append("mainNo", this.mainNo)
       data.append("cancelStocksRemark", this.clearanceData.mark)
       data.append("nodeType", 6)
-      this.clearanceData.file.forEach(file => {
-        data.append("file", file, file.name)
+      this.clearanceData.file1.forEach(file => {
+        data.append("file", file, "refundOrderFileNames")
+      })
+
+      this.clearanceData.file2.forEach(file => {
+        data.append("file", file, "truckLoadingPictureFileNames")
       })
 
       uploadForm(data).then(res=>{

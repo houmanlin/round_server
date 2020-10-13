@@ -23,7 +23,7 @@
         <el-upload
             class="upload-demo"
             drag
-            :on-change="handlePreview"
+            :on-progress="handlePreview"
             action="https://jsonplaceholder.typicode.com/posts/"
         >
           <i class="el-icon-upload"></i>
@@ -55,9 +55,9 @@ export default {
     }
   },
   methods:{
-    handlePreview(file){
+    handlePreview(event, file, fileList){
 
-      this.clearanceData.file[0] = file.raw
+      this.clearanceData.file = fileList
     },
     handleClose(){
       this.dialogVisible = false
@@ -66,13 +66,17 @@ export default {
       let data = new FormData()
 
 
+      console.log(this.clearanceData.file)
+
 
       data.append("mainNo", this.mainNo)
       data.append("customsServiceProvider", this.clearanceData.service_shop)
       data.append("customsNo", this.clearanceData.clearance_order)
       data.append("nodeType", 2)
+
+
       this.clearanceData.file.forEach(file => {
-        data.append("file", file, file.name)
+        data.append("file", file.raw, "ordinaryFileNames")
       })
 
       uploadForm(data).then(res=>{

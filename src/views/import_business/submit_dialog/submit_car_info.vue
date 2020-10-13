@@ -32,7 +32,7 @@
         <el-upload
             class="upload-demo"
             drag
-            :on-change="handlePreview"
+            :on-progress="handlePreview"
             action="https://jsonplaceholder.typicode.com/posts/"
             >
           <i class="el-icon-upload"></i>
@@ -43,7 +43,7 @@
         <el-upload
             class="upload-demo"
             drag
-            :on-change="handlePreview1"
+            :on-progress="handlePreview1"
             action="https://jsonplaceholder.typicode.com/posts/"
             >
           <i class="el-icon-upload"></i>
@@ -73,18 +73,19 @@ export default {
         license_plate_number:"",
         delivery_expense:"",
         delivery_time: "",
-        file:[]
+        file1:[],
+        file2:[]
       }
     }
   },
   methods:{
-    handlePreview(file){
+   handlePreview(event, file, fileList){
 
-      this.clearanceData.file[0] = file.raw
+      this.clearanceData.file1 = fileList
     },
-    handlePreview1(file){
+   handlePreview1(event, file, fileList){
 
-      this.clearanceData.file[0] = file.raw
+      this.clearanceData.file2 = fileList
     },
     submitForm(){
       let data = new FormData()
@@ -97,8 +98,11 @@ export default {
       data.append("pickUpCarETA", this.clearanceData.delivery_time)
       data.append("pickUpCarRemark", this.clearanceData.mark)
       data.append("nodeType", 8)
-      this.clearanceData.file.forEach(file => {
-        data.append("file", file, file.name)
+      this.clearanceData.file1.forEach(file => {
+        data.append("file", file, "vehiclePictureFileNames")
+      })
+      this.clearanceData.file2.forEach(file => {
+        data.append("file", file, "ordinaryFileNames")
       })
 
       uploadForm(data).then(res=>{
