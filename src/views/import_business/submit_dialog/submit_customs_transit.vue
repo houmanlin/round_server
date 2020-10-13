@@ -97,8 +97,8 @@ export default {
         this.clearanceData.car_type= "";
         this.clearanceData.license_plate_number="";
         this.clearanceData.delivery_expense="";
-        this.clearanceData.delivery_time= "";
-        this.clearanceData.mark="";
+        this.clearanceData.delivery_time = "";
+        this.clearanceData.mark = "";
         this.clearanceData.file=[]
         this.$refs.upload.clearFiles();
 

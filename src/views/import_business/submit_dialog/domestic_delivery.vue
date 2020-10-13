@@ -100,15 +100,29 @@ export default {
       data.append("mainNo", this.mainNo)
       data.append("goodsDeliveredRemark", this.clearanceData.mark)
       data.append("nodeType", 10)
-      this.clearanceData.file1.forEach(file => {
+      let vehiclePictureFileNames = ""
+      this.clearanceData.file1.forEach((file, index) => {
         data.append("file", file.raw, "vehiclePictureFileNames")
+        vehiclePictureFileNames += this.clearanceData.file1.length == index + 1 ? `${file.name}` : `${file.name},`
+
       })
-      this.clearanceData.file2.forEach(file => {
+      let goodsPictureFileNames = ""
+      this.clearanceData.file2.forEach((file, index) => {
         data.append("file", file.raw, "goodsPictureFileNames")
+        goodsPictureFileNames += this.clearanceData.file2.length == index + 1 ? `${file.name}` : `${file.name},`
+
       })
+
+      let scenePictureFileNames = ""
       this.clearanceData.file3.forEach(file => {
         data.append("file", file.raw, "scenePictureFileNames")
+        scenePictureFileNames += this.clearanceData.file3.length == index + 1 ? `${file.name}` : `${file.name},`
+
       })
+      data.append("vehiclePictureFileNames", vehiclePictureFileNames)
+      data.append("goodsPictureFileNames", goodsPictureFileNames)
+      data.append("scenePictureFileNames", scenePictureFileNames)
+
 
       uploadForm(data).then(res=>{
         this.clearanceData.dialogVisible = false

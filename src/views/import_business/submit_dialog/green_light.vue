@@ -51,7 +51,7 @@ export default {
   methods:{
    handlePreview(event, file, fileList){
 
-      this.clearanceData.file1 = fileList
+      this.clearanceData.file = fileList
     },
     submitForm(){
       let data = new FormData()

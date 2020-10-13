@@ -103,11 +103,17 @@ export default {
       data.append("deliveryExpense", this.clearanceData.delivery_expense)
       data.append("incountryRemark", this.clearanceData.mark)
       data.append("nodeType", 11)
-      this.clearanceData.file1.forEach(file => {
+      let vehiclePictureFileNames = ""
+      this.clearanceData.file1.forEach((file,index) => {
         data.append("file", file.raw, "vehiclePictureFileNames")
+        vehiclePictureFileNames += this.clearanceData.file1.length == index + 1 ? `${file.name}` : `${file.name},`
+
       })
-      this.clearanceData.file2.forEach(file => {
+      let ordinaryFileNames = ""
+      this.clearanceData.file2.forEach((file,index) => {
         data.append("file", file.raw, "ordinaryFileNames")
+        ordinaryFileNames += this.clearanceData.file2.length == index + 1 ? `${file.name}` : `${file.name},`
+
       })
 
       uploadForm(data).then(res=>{

@@ -201,7 +201,7 @@ export default {
 
 
         //提交报关
-        this.order_flow[1]["about_info"]["报关单号"] = res.data.commitCustomsTransitRemark
+        this.order_flow[1]["about_info"]["报关单号"] = res.data.customsTransitRemark
         this.order_flow[1]["about_info"]["报关服务商"] = res.data.customsServiceProvider
         this.order_flow[1].marks = res.data.commitCustomsRemark;
 

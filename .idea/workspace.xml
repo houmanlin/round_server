@@ -12,13 +12,11 @@
   <component name="ChangeListManager">
     <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="上传文件修改---上传文件名">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/submit_dialog/clearance_goods.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/clearance_goods.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/submit_dialog/domestic_delivery.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/domestic_delivery.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/submit_dialog/domestic_delivery_goods.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/domestic_delivery_goods.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/submit_dialog/green_light.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/green_light.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/submit_dialog/inspect.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/inspect.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/submit_dialog/return_sale.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/return_sale.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/submit_dialog/return_sale_succ.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/return_sale_succ.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/submit_dialog/return_workhouse.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/return_workhouse.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/submit_dialog/submit_car_info.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/submit_car_info.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/submit_dialog/submit_customs_transit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/submit_customs_transit.vue" afterDir="false" />
@@ -90,6 +88,7 @@
       <workItem from="1602219337634" duration="43217000" />
       <workItem from="1602374807291" duration="15326000" />
       <workItem from="1602392321140" duration="10848000" />
+      <workItem from="1602569906782" duration="2746000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1602261146043</created>
@@ -301,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602568723350</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="上传文件修改---上传文件名">
+      <created>1602569690362</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1602569690362</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,14 +357,14 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="471" y="132" key="RollbackChangesDialog/0.23.1440.799@0.23.1440.799" timestamp="1602260878057" />
-    <state x="229" y="61" key="SettingsEditor" timestamp="1602069475466">
+    <state x="229" y="61" key="SettingsEditor" timestamp="1602571806698">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="229" y="61" key="SettingsEditor/0.23.1440.799@0.23.1440.799" timestamp="1602069475466" />
-    <state x="320" y="157" key="Vcs.Push.Dialog.v2" timestamp="1602568724568">
+    <state x="229" y="61" key="SettingsEditor/0.23.1440.799@0.23.1440.799" timestamp="1602571806698" />
+    <state x="320" y="157" key="Vcs.Push.Dialog.v2" timestamp="1602569692481">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="157" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1602568724568" />
+    <state x="320" y="157" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1602569692480" />
     <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602519048371" />
     <state x="100" y="123" width="1240" height="599" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602517251833">
       <screen x="0" y="23" width="1440" height="799" />
@@ -372,11 +378,11 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="521" y="343" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.799@0.23.1440.799" timestamp="1602501187031" />
-    <state x="198" y="128" width="648" height="721" key="find.popup" timestamp="1602568553896">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="198" y="137" width="648" height="640" key="find.popup" timestamp="1602574122646">
+      <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="198" y="128" width="648" height="721" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1602568553896" />
-    <state x="198" y="137" width="648" height="640" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602517852638" />
+    <state x="198" y="137" width="648" height="640" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602574122646" />
     <state x="494" y="318" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1602462175338">
       <screen x="0" y="23" width="1440" height="799" />
     </state>

@@ -51,7 +51,8 @@ export default {
       clearanceData:{
         service_shop: "",
         clearance_order:"",
-        file:[]
+        file:[],
+        mark:"",
       }
     }
   },
@@ -74,13 +75,18 @@ export default {
       data.append("customsServiceProvider", this.clearanceData.service_shop)
       data.append("customsNo", this.clearanceData.clearance_order)
       data.append("nodeType", 2)
+      data.append("commitCustomsRemark", this.clearanceData.mark)
 
+      let file_name = ""
+      this.clearanceData.file.forEach((file, index) => {
 
-      this.clearanceData.file.forEach(file => {
-        data.append("file", file.raw, "ordinaryFileNames")
+        data.append("file", file.raw, file.name)
+        file_name += this.clearanceData.file.length != index + 1 ? `${file.name},` : `${file.name}`
       })
 
-      uploadForm(data).then(res=>{
+      data.append("ordinaryFileNames", file_name)
+
+      uploadForm(data).then(()=>{
         this.dialogVisible = false
 
         this.clearanceData.service_shop = "";
@@ -88,7 +94,7 @@ export default {
         this.clearanceData.file = [];
         this.$refs.upload.clearFiles()
 
-        this.$emit("onUploadSuccess")
+        this.$emit('onUploadSuccess')
       })
     }
   }

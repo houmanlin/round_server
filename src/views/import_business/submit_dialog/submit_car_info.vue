@@ -100,12 +100,20 @@ export default {
       data.append("pickUpCarETA", this.clearanceData.delivery_time)
       data.append("pickUpCarRemark", this.clearanceData.mark)
       data.append("nodeType", 8)
-      this.clearanceData.file1.forEach(file => {
+      let vehiclePictureFileNames = ""
+      this.clearanceData.file1.forEach((file, index) => {
         data.append("file", file.raw, "vehiclePictureFileNames")
+        vehiclePictureFileNames += this.clearanceData.file1.length == index + 1 ? `${file.name}` : `${file.name},`
       })
-      this.clearanceData.file2.forEach(file => {
+      let ordinaryFileNames = ""
+      this.clearanceData.file2.forEach((file, index) => {
+        ordinaryFileNames += this.clearanceData.file2.length == index + 1 ? `${file.name}` : `${file.name},`
+
         data.append("file", file.raw, "ordinaryFileNames")
       })
+
+      data.append("vehiclePictureFileNames", vehiclePictureFileNames)
+      data.append("ordinaryFileNames", ordinaryFileNames)
 
       uploadForm(data).then(res=>{
         this.dialogVisible = false
