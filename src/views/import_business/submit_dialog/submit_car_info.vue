@@ -99,14 +99,22 @@ export default {
       data.append("pickUpCarRemark", this.clearanceData.mark)
       data.append("nodeType", 8)
       this.clearanceData.file1.forEach(file => {
-        data.append("file", file, "vehiclePictureFileNames")
+        data.append("file", file.raw, "vehiclePictureFileNames")
       })
       this.clearanceData.file2.forEach(file => {
-        data.append("file", file, "ordinaryFileNames")
+        data.append("file", file.raw, "ordinaryFileNames")
       })
 
       uploadForm(data).then(res=>{
         this.dialogVisible = false
+        this.clearanceData.car_type= "";
+        this.clearanceData.license_plate_number="";
+        this.clearanceData.delivery_expense="";
+        this.clearanceData.delivery_time= "";
+        this.clearanceData.file1=[];
+        this.clearanceData.file2=[]
+
+
         this.$emit("onUploadSuccess")
       })
     },

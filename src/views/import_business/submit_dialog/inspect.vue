@@ -50,7 +50,7 @@ export default {
   methods:{
    handlePreview(event, file, fileList){
 
-      this.clearanceData.file1 = fileList
+      this.clearanceData.file = fileList
     },
     submitForm(){
       let data = new FormData()
@@ -61,11 +61,15 @@ export default {
       data.append("commitCheckRemark", this.clearanceData.mark)
       data.append("nodeType", 3)
       this.clearanceData.file.forEach(file => {
-        data.append("file", file, "ordinaryFileNames")
+        data.append("file", file.raw, "ordinaryFileNames")
       })
 
       uploadForm(data).then(res=>{
         this.dialogVisible = false
+        this.clearanceData.mark= "";
+        this.clearanceData.file=[]
+
+
         this.$emit("onUploadSuccess")
       })
     },

@@ -61,11 +61,14 @@ export default {
       data.append("chargebackedRemark", this.clearanceData.mark)
       data.append("nodeType", 5)
       this.clearanceData.file.forEach(file => {
-        data.append("file", file, "chargebackedRemark")
+        data.append("file", file.raw, "chargebackedRemark")
       })
 
       uploadForm(data).then(res=>{
         this.dialogVisible = false
+        this.clearanceData.mark= "";
+        this.clearanceData.file=[]
+
         this.$emit("onUploadSuccess")
       })
     },

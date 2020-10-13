@@ -81,6 +81,11 @@ export default {
 
       uploadForm(data).then(res=>{
         this.dialogVisible = false
+
+        this.clearanceData.service_shop = "";
+        this.clearanceData.clearance_order = "";
+        this.clearanceData.file = [];
+
         this.$emit("onUploadSuccess")
       })
     }

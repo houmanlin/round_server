@@ -77,15 +77,20 @@ export default {
       data.append("cancelStocksRemark", this.clearanceData.mark)
       data.append("nodeType", 6)
       this.clearanceData.file1.forEach(file => {
-        data.append("file", file, "refundOrderFileNames")
+        data.append("file", file.raw, "refundOrderFileNames")
       })
 
       this.clearanceData.file2.forEach(file => {
-        data.append("file", file, "truckLoadingPictureFileNames")
+        data.append("file", file.raw, "truckLoadingPictureFileNames")
       })
 
       uploadForm(data).then(res=>{
         this.dialogVisible = false
+        this.clearanceData.mark= "";
+        this.clearanceData.file1=[];
+        this.clearanceData.file2=[]
+
+
         this.$emit("onUploadSuccess")
       })
     },

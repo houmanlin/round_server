@@ -61,11 +61,17 @@ export default {
       data.append("commitPermitRemark", this.clearanceData.mark)
       data.append("nodeType", 7)
       this.clearanceData.file.forEach(file => {
-        data.append("file", file, "ordinaryFileNames")
+        data.append("file", file.raw, "ordinaryFileNames")
       })
 
       uploadForm(data).then(res=>{
         this.dialogVisible = false
+
+        this.clearanceData.mark= "";
+        this.clearanceData.file=[]
+
+
+
         this.$emit("onUploadSuccess")
       })
     },
