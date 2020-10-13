@@ -16,7 +16,7 @@
     <el-button class="operator_button" type="danger" @click="operatorUser('returnSaleSucc')">退单完成</el-button>
 
     <!--  功能  -->
-    <el-button class="operator_button" type="danger" @click="operatorUser('returnWorkhouse')">退库</el-button>
+<!--    <el-button class="operator_button" type="danger" @click="operatorUser('returnWorkhouse')">退库</el-button>-->
 
     <!--  功能  -->
     <el-button class="operator_button" type="success" @click="operatorUser('greenLight')">放行</el-button>

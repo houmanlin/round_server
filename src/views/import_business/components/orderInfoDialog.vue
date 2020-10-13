@@ -13,11 +13,7 @@
       <el-form-item label="二级客户:">
         <div class="form_value">{{ orderInfo.customerNameTwo }}</div>
       </el-form-item>
-      <el-form-item label="主单类型:">
-        <div class="form_value">
-          {{ orderInfo.mainType }}
-        </div>
-      </el-form-item>
+
       <el-form-item label="报关口岸:">
         <div class="form_value">{{ orderInfo.customsPort }}</div>
       </el-form-item>
@@ -74,6 +70,11 @@
       </el-form-item>
       <el-form-item label="备注:">
         <div class="form_value">{{ orderInfo.remark }}</div>
+      </el-form-item>
+      <el-form-item label="主单类型:">
+        <div class="form_value" style="width: 400px">
+          {{ orderInfo.mainType }}
+        </div>
       </el-form-item>
     </el-form>
 

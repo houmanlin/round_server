@@ -201,7 +201,7 @@ export default {
 
 
         //提交报关
-        this.order_flow[1]["about_info"]["报关单号"] = res.data.customsTransitRemark
+        this.order_flow[1]["about_info"]["报关单号"] = res.data.customsNo
         this.order_flow[1]["about_info"]["报关服务商"] = res.data.customsServiceProvider
         this.order_flow[1].marks = res.data.commitCustomsRemark;
 
@@ -226,6 +226,7 @@ export default {
         this.order_flow[7]["about_info"]["预计到达时间"] = res.data.incountryETA
         this.order_flow[7]["about_info"]["车牌号"] = res.data.incountryLPN
         this.order_flow[7]["about_info"]["车辆型号"] = res.data.incountryModelCar
+        this.order_flow[7]["about_info"]["送货费"] = res.data.deliveryExpense
         this.order_flow[7].marks = res.data.incountryRemark
 
         // 货物送达

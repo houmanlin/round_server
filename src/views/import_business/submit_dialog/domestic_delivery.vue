@@ -16,7 +16,8 @@
       </el-form-item>
       <el-form-item label="车辆照片(附件)">
         <el-upload
-            :on-progress="handlePreview"
+            :http-request="handlePreview"
+            :on-remove="removeData"
             class="upload-demo"
             ref="upload2"
             drag
@@ -28,7 +29,8 @@
       </el-form-item>
       <el-form-item label="货物照片(附件)">
         <el-upload
-            :on-progress="handlePreview1"
+            :http-request="handlePreview1"
+            :on-remove="removeData1"
             ref="upload1"
             class="upload-demo"
             drag
@@ -40,7 +42,8 @@
       </el-form-item>
       <el-form-item label="现场照片(附件)">
         <el-upload
-            :on-progress="handlePreview2"
+            :http-request="handlePreview2"
+            :on-remove="removeData"
             class="upload-demo"
             ref="upload"
             drag
@@ -80,17 +83,44 @@ export default {
     }
   },
   methods:{
-   handlePreview(event, file, fileList){
+    removeData(file , fileList){
+      for (let item in this.clearanceData.file1){
+        if(this.clearanceData.file1[item].uid == file.uid){
 
-      this.clearanceData.file1 = fileList
+          delete this.clearanceData.file1[item]
+          return
+        }
+      }
     },
-   handlePreview1(event, file, fileList){
+    removeData1(file , fileList){
+      for (let item in this.clearanceData.file2){
+        if(this.clearanceData.file2[item].uid == file.uid){
 
-      this.clearanceData.file2 = fileList
+          delete this.clearanceData.file2[item]
+          return
+        }
+      }
     },
-   handlePreview2(event, file, fileList){
+    removeData2(file , fileList){
+      for (let item in this.clearanceData.file3){
+        if(this.clearanceData.file3[item].uid == file.uid){
 
-      this.clearanceData.file3 = fileList
+          delete this.clearanceData.file3[item]
+          return
+        }
+      }
+    },
+   handlePreview(file){
+
+      this.clearanceData.file1.push(file.file)
+    },
+   handlePreview1(file){
+
+      this.clearanceData.file2.push(file.file)
+    },
+   handlePreview2(file){
+
+      this.clearanceData.file3.push(file.file)
     },
     submitForm(){
       let data = new FormData()
@@ -102,20 +132,20 @@ export default {
       data.append("nodeType", 10)
       let vehiclePictureFileNames = ""
       this.clearanceData.file1.forEach((file, index) => {
-        data.append("file", file.raw, "vehiclePictureFileNames")
+        data.append("file", file, file.name)
         vehiclePictureFileNames += this.clearanceData.file1.length == index + 1 ? `${file.name}` : `${file.name},`
 
       })
       let goodsPictureFileNames = ""
       this.clearanceData.file2.forEach((file, index) => {
-        data.append("file", file.raw, "goodsPictureFileNames")
+        data.append("file", file, file.name)
         goodsPictureFileNames += this.clearanceData.file2.length == index + 1 ? `${file.name}` : `${file.name},`
 
       })
 
       let scenePictureFileNames = ""
-      this.clearanceData.file3.forEach(file => {
-        data.append("file", file.raw, "scenePictureFileNames")
+      this.clearanceData.file3.forEach((file, index) => {
+        data.append("file", file, file.name)
         scenePictureFileNames += this.clearanceData.file3.length == index + 1 ? `${file.name}` : `${file.name},`
 
       })
@@ -125,7 +155,7 @@ export default {
 
 
       uploadForm(data).then(res=>{
-        this.clearanceData.dialogVisible = false
+        this.dialogVisible = false
         this.clearanceData.mark= "";
         this.clearanceData.license_plate_number="";
         this.clearanceData.delivery_expense="";
@@ -136,6 +166,7 @@ export default {
         this.$refs.upload.clearFiles()
         this.$refs.upload1.clearFiles()
         this.$refs.upload2.clearFiles()
+
         this.$emit("onUploadSuccess")
       })
     },

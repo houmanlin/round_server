@@ -200,6 +200,10 @@ const BUSINESS_BILLING_TABLE = [
 // 进出口业务表格头
 const IMPORT_BUSINESS_TABLE = [
     {
+        label: "主单号",
+        prop: "mainNo"
+    },
+    {
         label: "一级客户",
         prop: "customerNameOne"
     },
@@ -222,10 +226,6 @@ const IMPORT_BUSINESS_TABLE = [
     {
         label: "航班日期",
         prop: "flightDate"
-    },
-    {
-        label: "主单号",
-        prop: "mainNo"
     },
     {
         label: "件数",

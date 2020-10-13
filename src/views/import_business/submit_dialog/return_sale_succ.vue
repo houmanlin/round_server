@@ -16,7 +16,8 @@
       <el-form-item label="上传退单完毕单据(附件)">
         <el-upload
             class="upload-demo"
-            :on-progress="handlePreview"
+            :http-request="handlePreview"
+            :on-remove="removeData"
             ref="upload"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
@@ -49,9 +50,18 @@ export default {
     }
   },
   methods:{
-   handlePreview(event, file, fileList){
+    removeData(file , fileList){
+      for (let item in this.clearanceData.file){
+        if(this.clearanceData.file[item].uid == file.uid){
 
-      this.clearanceData.file = fileList
+          delete this.clearanceData.file[item]
+          return
+        }
+      }
+    },
+   handlePreview(file){
+
+      this.clearanceData.file.push(file.file)
     },
     submitForm(){
       let data = new FormData()
@@ -62,7 +72,7 @@ export default {
       data.append("chargebackedRemark", this.clearanceData.mark)
       data.append("nodeType", 5)
       this.clearanceData.file.forEach(file => {
-        data.append("file", file.raw, "chargebackedRemark")
+        data.append("file", file, file.name)
       })
 
       uploadForm(data).then(res=>{

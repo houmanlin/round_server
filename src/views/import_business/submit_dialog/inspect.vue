@@ -18,7 +18,8 @@
             class="upload-demo"
             ref="upload"
             drag
-            :on-progress="handlePreview"
+            :http-request="handlePreview"
+            :on-remove="removeData"
             action="https://jsonplaceholder.typicode.com/posts/"
             >
           <i class="el-icon-upload"></i>
@@ -49,9 +50,18 @@ export default {
     }
   },
   methods:{
-   handlePreview(event, file, fileList){
+    removeData(file , fileList){
+      for (let item in this.clearanceData.file){
+        if(this.clearanceData.file[item].uid == file.uid){
 
-      this.clearanceData.file = fileList
+          delete this.clearanceData.file[item]
+          return
+        }
+      }
+    },
+   handlePreview(file){
+
+      this.clearanceData.file.push(file.file)
     },
     submitForm(){
       let data = new FormData()
@@ -62,7 +72,7 @@ export default {
       data.append("commitCheckRemark", this.clearanceData.mark)
       data.append("nodeType", 3)
       this.clearanceData.file.forEach(file => {
-        data.append("file", file.raw, "ordinaryFileNames")
+        data.append("file", file, file.name)
       })
 
       uploadForm(data).then(res=>{

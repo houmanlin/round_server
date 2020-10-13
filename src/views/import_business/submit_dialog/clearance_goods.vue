@@ -24,7 +24,8 @@
             class="upload-demo"
             ref="upload"
             drag
-            :on-progress="handlePreview"
+            :http-request="handlePreview"
+            :on-remove="removeData"
             action="https://jsonplaceholder.typicode.com/posts/"
         >
           <i class="el-icon-upload"></i>
@@ -57,9 +58,17 @@ export default {
     }
   },
   methods:{
-    handlePreview(event, file, fileList){
+    removeData(file , fileList){
+      for (let item in this.clearanceData.file){
+        if(this.clearanceData.file[item].uid == file.uid){
 
-      this.clearanceData.file = fileList
+          delete this.clearanceData.file[item]
+          return
+        }
+      }
+    },
+    handlePreview(file){
+      this.clearanceData.file.push(file.file)
     },
     handleClose(){
       this.dialogVisible = false
@@ -78,9 +87,9 @@ export default {
       data.append("commitCustomsRemark", this.clearanceData.mark)
 
       let file_name = ""
-      this.clearanceData.file.forEach((file, index) => {
 
-        data.append("file", file.raw, file.name)
+      this.clearanceData.file.forEach((file, index) => {
+        data.append("file", file, file.name)
         file_name += this.clearanceData.file.length != index + 1 ? `${file.name},` : `${file.name}`
       })
 
@@ -92,6 +101,7 @@ export default {
         this.clearanceData.service_shop = "";
         this.clearanceData.clearance_order = "";
         this.clearanceData.file = [];
+        this.clearanceData.mark = [];
         this.$refs.upload.clearFiles()
 
         this.$emit('onUploadSuccess')

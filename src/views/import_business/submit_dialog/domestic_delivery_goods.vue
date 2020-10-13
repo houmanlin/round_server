@@ -35,7 +35,8 @@
             class="upload-demo"
             drag
             ref="upload1"
-            :on-progress="handlePreview"
+            :http-request="handlePreview"
+            :on-remove="removeData"
             action="https://jsonplaceholder.typicode.com/posts/"
             >
           <i class="el-icon-upload"></i>
@@ -48,7 +49,8 @@
             ref="upload"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
-            :on-progress="handlePreview1"
+            :http-request="handlePreview1"
+            :on-remove="removeData1"
         >
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -83,13 +85,31 @@ export default {
     }
   },
   methods:{
-   handlePreview(event, file, fileList){
+    removeData(file , fileList){
+      for (let item in this.clearanceData.file1){
+        if(this.clearanceData.file1[item].uid == file.uid){
 
-      this.clearanceData.file1 = fileList
+          delete this.clearanceData.file1[item]
+          return
+        }
+      }
     },
-   handlePreview1(event, file, fileList){
+    removeData1(file , fileList){
+      for (let item in this.clearanceData.file2){
+        if(this.clearanceData.file2[item].uid == file.uid){
 
-      this.clearanceData.file2 = fileList
+          delete this.clearanceData.file2[item]
+          return
+        }
+      }
+    },
+   handlePreview(file){
+
+      this.clearanceData.file1.push(file.file)
+    },
+   handlePreview1(file){
+
+      this.clearanceData.file2.push(file.file)
     },
     submitForm(){
       let data = new FormData()
@@ -105,17 +125,19 @@ export default {
       data.append("nodeType", 11)
       let vehiclePictureFileNames = ""
       this.clearanceData.file1.forEach((file,index) => {
-        data.append("file", file.raw, "vehiclePictureFileNames")
+        data.append("file", file, file.name)
         vehiclePictureFileNames += this.clearanceData.file1.length == index + 1 ? `${file.name}` : `${file.name},`
 
       })
       let ordinaryFileNames = ""
       this.clearanceData.file2.forEach((file,index) => {
-        data.append("file", file.raw, "ordinaryFileNames")
+        data.append("file", file, file.name)
         ordinaryFileNames += this.clearanceData.file2.length == index + 1 ? `${file.name}` : `${file.name},`
 
       })
 
+      data.append("ordinaryFileNames", ordinaryFileNames)
+      data.append("vehiclePictureFileNames", vehiclePictureFileNames)
       uploadForm(data).then(res=>{
         this.dialogVisible = false
         this.clearanceData.car_type= "";

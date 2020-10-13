@@ -35,8 +35,9 @@
             class="upload-demo"
             ref="upload"
             drag
+            :on-remove="removeData"
             action="https://jsonplaceholder.typicode.com/posts/"
-            :on-progress="handlePreview"
+            :http-request="handlePreview"
             >
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -72,9 +73,17 @@ export default {
     }
   },
   methods:{
-   handlePreview(event, file, fileList){
+    removeData(file , fileList){
+      for (let item in this.clearanceData.file){
+        if(this.clearanceData.file[item].uid == file.uid){
 
-      this.clearanceData.file = fileList
+          delete this.clearanceData.file[item]
+          return
+        }
+      }
+    },
+   handlePreview(file){
+      this.clearanceData.file.push(file.file)
     },
     submitForm(){
       let data = new FormData()
@@ -86,10 +95,10 @@ export default {
       data.append("commitCustomsTransitLPN", this.clearanceData.license_plate_number)
       data.append("commitCustomsTransitETA", this.clearanceData.delivery_time)
       data.append("customsTransitNo", this.clearanceData.delivery_expense)
-      data.append("customsTransitRemark", this.clearanceData.mark)
+      data.append("commitCustomsTransitRemark", this.clearanceData.mark)
       data.append("nodeType", 12)
       this.clearanceData.file.forEach(file => {
-        data.append("file", file.raw, "ordinaryFileNames")
+        data.append("file", file, file.name)
       })
 
       uploadForm(data).then(res=>{

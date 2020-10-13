@@ -19,7 +19,8 @@
             ref="upload"
             drag
             action="https://jsonplaceholder.typicode.com/posts/"
-            :on-progress="handlePreview"
+            :http-request="handlePreview"
+            :on-remove="removeData"
         >
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -49,9 +50,18 @@ export default {
     }
   },
   methods:{
-   handlePreview(event, file, fileList){
+    removeData(file , fileList){
+      for (let item in this.clearanceData.file){
+        if(this.clearanceData.file[item].uid == file.uid){
 
-      this.clearanceData.file = fileList
+          delete this.clearanceData.file[item]
+          return
+        }
+      }
+    },
+   handlePreview(file){
+
+      this.clearanceData.file.push(file)
     },
     submitForm(){
       let data = new FormData()
@@ -62,7 +72,7 @@ export default {
       data.append("commitPermitRemark", this.clearanceData.mark)
       data.append("nodeType", 7)
       this.clearanceData.file.forEach(file => {
-        data.append("file", file.raw, "ordinaryFileNames")
+        data.append("file", file, file.name)
       })
 
       uploadForm(data).then(res=>{
