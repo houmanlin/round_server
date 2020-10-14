@@ -40,9 +40,8 @@
           <el-option label="9710 通关代理" value="3"></el-option>
           <el-option label="9810 通关代理" value="4"></el-option>
           <el-option label="0110 贸易代理" value="5"></el-option>
-          <el-option label="9610 贸易代理" value="6"></el-option>
-          <el-option label="9710 贸易代理" value="7"></el-option>
-          <el-option label="9810 贸易代理" value="8"></el-option>
+          <el-option label="9710 贸易代理" value="6"></el-option>
+          <el-option label="9810 贸易代理" value="7"></el-option>
         </el-select>
       </el-form-item>
     </el-form>
@@ -120,7 +119,7 @@
           </div>
           <div class="form_item">
             <span>贸易类型</span>
-            <el-select filterable  collapse-tags multiple v-model="item.tradeType" placeholder="请选择贸易方式">
+            <el-select filterable collapse-tags multiple v-model="item.tradeType" placeholder="请选择贸易方式">
               <el-option label="0110 通关代理" value="1"></el-option>
               <el-option label="9610 通关代理" value="2"></el-option>
               <el-option label="9710 通关代理" value="3"></el-option>
@@ -155,6 +154,17 @@
                   default-first-option
                   filterable
                   v-model="mast_info.goodsValue"
+                  placeholder="请选择货值">
+                <el-option label="人民币" value="人民币"></el-option>
+                <el-option label="美金" value="美金"></el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="币种">
+              <el-select
+                  allow-create
+                  default-first-option
+                  filterable
+                  v-model="mast_info.currency"
                   placeholder="请选择货值">
                 <el-option label="人民币" value="人民币"></el-option>
                 <el-option label="美金" value="美金"></el-option>
@@ -245,7 +255,7 @@
 <script>
 import { TRADE_TYPE_GROUP } from '@/config/selectData'
 import {getOneClient} from "@/api/customer";
-import { addOrder} from "@/api/import_bussiness";
+import {addOrder, editOrder, getMainOrderInfo} from "@/api/import_bussiness";
 export default {
   name: "add_import_business",
   data(){
@@ -253,6 +263,7 @@ export default {
       trade_type_list         : TRADE_TYPE_GROUP,
       client_list             : [],
       mast_info:{
+        id                    : 0 ,       //订单ID
         customerIdOne         : "",       //客户类型（一级客户）
         customerIdTwo         : "",       //客户类型（二级客户）
         mast_type             : "",       //主单类型
@@ -266,6 +277,7 @@ export default {
         descriptionNum        : "",
         mast_number           : "",       //主单数量
         tradeNo           : "",       //主单数量
+        currency          : "",
         mast_weight           : "",       //主单重量
         mast_volume           : "",       //主单体积
         contractCoding           : "",       //主单体积
@@ -285,9 +297,107 @@ export default {
     }
   },
   created() {
+
     this.getClientData()
+
+    this.mast_info.id = this.$route.query.id ? this.$route.query.id : 0
+
+
+    if (this.mast_info.id > 0){
+      let that = this
+      setTimeout(function (){
+        that.getOrderInfo()
+      })
+      this.$route.meta.title = "修改订单"
+    }else{
+      this.$route.meta.title = "进出口业务"
+    }
   },
   methods:{
+    getOrderInfo(){
+      let data = {
+        id: this.mast_info.id
+      }
+      getMainOrderInfo(data).then(res=>{
+        // 发件人
+        this.$set(this.mast_info, "receiver_info", res.data.addressee)
+        // 收件人
+        this.$set(this.mast_info, "addresser_info", res.data.addresser)
+        res.data.customerNoOne = res.data.customerNoOne ?  res.data.customerNoOne : ""
+        res.data.customerIdTwo = res.data.customerIdTwo ?  res.data.customerIdTwo : ""
+        // 一级客户
+        this.$set(this.mast_info, "customerNoOne", res.data.customerNoOne.split(","))
+        // 二级客户
+        this.$set(this.mast_info, "customerNoOne", res.data.customerIdTwo.split(","))
+        // 报关口岸
+        this.$set(this.mast_info, "clearance_port", res.data.customsPort)
+        // 离岸口岸
+        this.$set(this.mast_info, "exit_port", res.data.exitPort)
+        // 主单类型
+        res.data.mainType = res.data.mainType ?  res.data.mainType : ""
+        this.$set(this.mast_info, "mast_type", res.data.mainType.split(","))
+        // 主单号
+        this.$set(this.mast_info, "mast_order_number", res.data.mainNo)
+        // 航班号
+        this.$set(this.mast_info, "flight_number", res.data.flightNo)
+        // 目的地
+        this.$set(this.mast_info, "destination", res.data.destination)
+        // 航班时间
+        this.$set(this.mast_info, "flight_time", res.data.flightDate)
+        // 主单件
+        this.$set(this.mast_info, "mast_number", res.data.mainNumPackage)
+        // 主单毛重
+        this.$set(this.mast_info, "mast_weight", res.data.mainRoughWeight)
+        // 主单体积
+        this.$set(this.mast_info, "mast_volume", res.data.mainVolume)
+        // 主单计费量
+        this.$set(this.mast_info, "mast_expense", res.data.mainChargedWeight)
+        // 辅助信息货值
+        res.data.goodsValue = res.data.goodsValue ?  res.data.goodsValue : ""
+        this.$set(this.mast_info, "goodsValue", res.data.goodsValue)
+        // 辅助信息币种
+        res.data.currency = res.data.currency ?  res.data.currency : ""
+        this.$set(this.mast_info, "currency", res.data.currency)
+        // 辅助信息品名
+        this.$set(this.mast_info, "descriptionNum", res.data.descriptionNum)
+        // 辅助信息通关单号
+        this.$set(this.mast_info, "customsNo", res.data.customsNo)
+        // 辅助信息贸易单号
+        this.$set(this.mast_info, "tradeNo", res.data.tradeNo)
+        // 辅助信息合同编号
+        this.$set(this.mast_info, "contractCoding", res.data.contractCoding)
+        // 辅助信息生产销售单位
+        this.$set(this.mast_info, "sale_monad", res.data.productionSaleUnit)
+        // 辅助信息报关销售代理
+        this.$set(this.mast_info, "company_agency", res.data.customsBrokerAgent)
+        // 辅助信息备注
+        this.$set(this.mast_info, "marks", res.data.remark)
+
+        // 分单信息
+
+        for (const argumentsKey in res.data.busSubmenus) {
+
+          let busSubmenusItem = res.data.busSubmenus[argumentsKey]
+          let tradeType = busSubmenusItem.tradeType ? busSubmenusItem.tradeType : "";
+
+
+          let busSubmenu_item = {
+            submenuNo: busSubmenusItem.submenuNo,
+            submenuNumPackage: busSubmenusItem.submenuNumPackage,
+            roughWeight:busSubmenusItem.roughWeight,
+            volume: busSubmenusItem.volume,
+            id: busSubmenusItem.id,
+            chargedWeight: busSubmenusItem.chargedWeight,
+            addressee: busSubmenusItem.addressee,
+            tradeType: tradeType.split(",")
+          }
+
+
+          this.$set(this.mast_info["busSubmenuSaveDTOS"], argumentsKey, busSubmenu_item)
+        }
+
+      })
+    },
     dataRemove(index){
       this.$delete(this.mast_info.busSubmenuSaveDTOS, index)
     },
@@ -330,6 +440,26 @@ export default {
       ]
     },
     addData(){
+
+      let origin_data = this.mast_info
+      let arrays = new Array()
+      for (let trace_type in origin_data.busSubmenuSaveDTOS) {
+        let dtos = {
+          submenuNo: origin_data.busSubmenuSaveDTOS[trace_type].submenuNo,
+          submenuNumPackage: origin_data.busSubmenuSaveDTOS[trace_type].submenuNumPackage,
+          roughWeight: origin_data.busSubmenuSaveDTOS[trace_type].roughWeight,
+          volume: origin_data.busSubmenuSaveDTOS[trace_type].volume,
+          chargedWeight: origin_data.busSubmenuSaveDTOS[trace_type].chargedWeight,
+          addressee: origin_data.busSubmenuSaveDTOS[trace_type].addressee,
+          tradeType: origin_data.busSubmenuSaveDTOS[trace_type].tradeType
+        }
+        arrays.push(dtos)
+
+      }
+
+      this.$set(origin_data, "busSubmenuSaveDTOS", arrays)
+
+
       if (this.mast_info.flight_time){
         //let date = new Date(this.mast_info.flight_time)
         //this.mast_info.flight_time = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
@@ -353,6 +483,7 @@ export default {
         flightDate:this.mast_info.flight_time,
         flightNo:this.mast_info.flight_number,
         goodsValue:this.mast_info.goodsValue,
+        currency:this.mast_info.currency,
         mainChargedWeight:this.mast_info.mast_expense,
         mainNo:this.mast_info.mast_order_number,
         mainNumPackage:this.mast_info.mast_number,
@@ -384,10 +515,36 @@ export default {
         data.mainType = ""
       }
 
-      addOrder(data).then(res=>{
+
+      if(this.mast_info.id > 0){
+
+        for (const originDataKey in data.busSubmenuSaveDTOS) {
+          let submenuNumPackage = data.busSubmenuSaveDTOS[originDataKey].submenuNumPackage
+          data.busSubmenuSaveDTOS[originDataKey].submenuNumPackage = parseInt(submenuNumPackage)
+        }
+
+        data.descriptionNum = parseInt(data.descriptionNum)
+        data.id = parseInt(data.id)
+
+
+        data.id = this.mast_info.id
+
+
+        editOrder(data).then(res=>{
           this.$message.success("成功");
           this.$router.back()
-      })
+        }).catch(err=>{
+          this.mast_info = origin_data
+        })
+      }else{
+        addOrder(data).then(res=>{
+          this.$message.success("成功");
+          this.$router.back()
+        })
+      }
+
+
+
     }
   }
 }

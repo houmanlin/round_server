@@ -1,7 +1,7 @@
 <template>
   <div class="view_container">
     <!---------------   搜索  ----------------->
-    <search @onGetFieldData="getFieldData"/>
+    <search @onGetFieldData="getFieldData" @exportFiles="exportFile"/>
 
     <!-----------  用户的增删改查按钮  ---------->
     <operatorGroup @onOperator="operator"/>
@@ -115,6 +115,12 @@ export default {
         flightDateEnd           : this.flightDateEnd ,                 // 报关时间,                  // 报关时间
         status                  : this.status          ,       // 操作类,        // 操作类
       }
+      // let a = "?"
+      // for (let i in data){
+      //   a += i == 'status' ?  i+"=${this."+ i +"}" : i+"=${this."+ i +"}&"
+      // }
+      // console.log(a)
+
       getImportBussiness(data).then(res=>{
         this.page_config = getPages(res.data)
         let { records } = res.data
@@ -165,7 +171,9 @@ export default {
       if(operator.operator_key == "下载"){
         window.open(
             `${process.env.VUE_APP_URL}/busUploadFile/downloadFile?fileType=0&mainNo=${table_data.mainNo}&nodeType=0`)
-
+      }
+      if(operator.operator_key == "编辑"){
+        this.$router.push(`add_import_business?id=${table_data.id}`)
       }
 
     },
@@ -175,6 +183,10 @@ export default {
     },
     closeDialog(){
       this.orderMater = false
+    },
+    exportFile(){
+      let export_file_params = `limit=${this.page_config.limit}&page=${this.page_config.current}&mainNo=${this.mainNo}&submenuNo=${this.submenuNo}&flightNo=${this.flightNo}&customerIdOne=${this.customerIdOne}&customerIdTwo=${this.customerIdTwo}&exitPort=${this.exitPort}&declarationDate=${this.declarationDate}&flightDateStart=${this.flightDateStart}&flightDateEnd=${this.flightDateEnd}&status=${this.status}`
+      window.open(`${process.env.VUE_APP_URL}/busMain/export?${export_file_params}`)
     },
     getFieldData(data){
       this.mainNo = data.mainNo                // 主单号

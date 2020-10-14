@@ -338,7 +338,7 @@ const IMPORT_BUSINESS_TABLE = [
     },
     {
         label: "操作",
-        prop: ["下载","查看", "上传" ]
+        prop: [ "编辑", "查看", "上传", "下载" ]
     },
 ]
 

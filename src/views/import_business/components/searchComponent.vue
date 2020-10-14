@@ -22,7 +22,7 @@
               placeholder="可批量输入，通过换行符（回车）区分多条数据"
           />
         </el-form-item>
-        <el-form-item label="航班号" class="form more_select">
+        <el-form-item label="航班号" class="form more_select hangban">
           <el-input
               class="form_textarea"
               type="textarea"
@@ -30,6 +30,7 @@
               v-model="flightNo"
               placeholder="可批量输入，通过换行符（回车）区分多条数据"
           />
+          <el-button type="primary" class="search_button" @click="exportFile">导出</el-button>
         </el-form-item>
 
       </el-form>
@@ -174,6 +175,9 @@ export default {
         this.client_list = res.data
       })
     },
+    exportFile(){
+      this.$emit("exportFiles")
+    },
     resetData(){
       this.mainNo                     = "";                   // 主单号
       this.submenuNo                  = "";                   // 分单号
@@ -222,6 +226,13 @@ export default {
   }
   .search_button{
     margin-left: 35px
+  }
+  .hangban{
+    position: relative;
+  }
+  .hangban .search_button{
+    position: absolute;
+    right: -110px;
   }
 
 </style>

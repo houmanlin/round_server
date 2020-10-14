@@ -94,7 +94,7 @@
           v-else
           fixed="right"
           label="操作"
-          width="150">
+          width="180">
         <template slot-scope="scope">
           <template v-if="item.label == '操作'">
             <el-upload

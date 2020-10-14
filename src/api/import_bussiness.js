@@ -22,11 +22,30 @@ export function addOrder(data) {
     })
 }
 
+export function editOrder(data) {
+    // params = getParams(params)
+    return request({
+        url: "/busMain/update",
+        method: "POST",
+        data,
+        headers: {"content-Type": "application/json"}
+    })
+}
+
 
 export function getMainOrder(params) {
     params = getParams(params)
     return request({
         url: "/busNode/getNodeInfoByMainNo",
+        method: "GET",
+        params,
+    })
+}
+
+export function getMainOrderInfo(params) {
+    params = getParams(params)
+    return request({
+        url: "/busMain/getMainUpdateInfoById",
         method: "GET",
         params,
     })
