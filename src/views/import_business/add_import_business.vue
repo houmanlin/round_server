@@ -321,7 +321,8 @@ export default {
         // 一级客户
         this.$set(this.mast_info, "customerIdOne", res.data.customerIdOne)
         // 二级客户
-        this.$set(this.mast_info, "customerIdTwo", res.data.customerIdTwo)
+        this.$set(this.mast_info, "customerIdTwo", res.data.customerIdTwo);
+        console.log(res.data.customerIdTwo,"res.data.customerIdTwo")
         // 报关口岸
         this.$set(this.mast_info, "clearance_port", res.data.customsPort)
         // 离岸口岸
@@ -446,7 +447,8 @@ export default {
           addressee: origin_data.busSubmenuSaveDTOS[trace_type].addressee,
           tradeType: origin_data.busSubmenuSaveDTOS[trace_type].tradeType
         }
-        console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType)
+        console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType);
+          console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType.join(","))
         arrays.push(dtos)
         console.log(dtos)
       }
