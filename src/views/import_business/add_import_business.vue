@@ -281,7 +281,7 @@ export default {
         company_agency        : "",       //公司代理
         marks                 : "",       //备注
         busSubmenuSaveDTOS    : [
-          {submenuNo: '', submenuNumPackage: "", roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType:""},
+          {submenuNo: '', submenuNumPackage: "", roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType: []},
         ],                                //分单信息
         addresser_info         : "",      //发件人信息
         receiver_info          : "",      //收件人信息,
@@ -316,12 +316,12 @@ export default {
         this.$set(this.mast_info, "receiver_info", res.data.addressee)
         // 收件人
         this.$set(this.mast_info, "addresser_info", res.data.addresser)
-        res.data.customerNoOne = res.data.customerNoOne ?  res.data.customerNoOne : ""
-        res.data.customerIdTwo = res.data.customerIdTwo ?  res.data.customerIdTwo : ""
+        // res.data.customerNoOne = res.data.customerNoOne ?  res.data.customerNoOne : ""
+        // res.data.customerIdTwo = res.data.customerIdTwo ?  res.data.customerIdTwo : ""
         // 一级客户
-        this.$set(this.mast_info, "customerNoOne", res.data.customerNoOne.split(","))
+        this.$set(this.mast_info, "customerIdOne", res.data.customerIdOne)
         // 二级客户
-        this.$set(this.mast_info, "customerNoOne", res.data.customerIdTwo.split(","))
+        this.$set(this.mast_info, "customerIdTwo", res.data.customerIdTwo)
         // 报关口岸
         this.$set(this.mast_info, "clearance_port", res.data.customsPort)
         // 离岸口岸
@@ -396,7 +396,7 @@ export default {
     },
     dataAdd(){
       this.mast_info.busSubmenuSaveDTOS.push(
-          {submenuNo: '', submenuNumPackage: "", roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType:""},
+          {submenuNo: '', submenuNumPackage: "", roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType:[]},
       )
     },
     getClientData(){
@@ -429,7 +429,7 @@ export default {
       this.mast_info.tradeNo = ""
       this.mast_info.sale_monad = ""
       this.mast_info.busSubmenuSaveDTOS = [
-          {submenuNo: '', submenuNumPackage: "", roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType:""},
+          {submenuNo: '', submenuNumPackage: "", roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType:[]},
       ]
     },
     addData(){
@@ -446,10 +446,12 @@ export default {
           addressee: origin_data.busSubmenuSaveDTOS[trace_type].addressee,
           tradeType: origin_data.busSubmenuSaveDTOS[trace_type].tradeType
         }
+        console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType)
         arrays.push(dtos)
-
+        console.log(dtos)
       }
 
+      console.log(arrays)
       this.$set(origin_data, "busSubmenuSaveDTOS", arrays)
 
 
