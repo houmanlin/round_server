@@ -54,7 +54,7 @@
       <div class="basics_info_entering_form">
         <el-form :inline="true" :model="mast_info" label-width="100px" label-position="left" class="demo-form-inline">
           <el-form-item label="主单号">
-            <el-input v-model="mast_info.mast_order_number" placeholder="请输入主单号"></el-input>
+            <el-input v-model="mast_info.mast_order_number" placeholder="请输入主单号" :disabled="this.mast_info.id > 0"></el-input>
           </el-form-item>
           <el-form-item label="航班号">
             <el-input v-model="mast_info.flight_number" placeholder="请输入航班号"></el-input>

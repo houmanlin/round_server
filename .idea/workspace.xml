@@ -10,7 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92aa8e7c-8be7-4e5b-95af-4061389fb904" name="Default Changelist" comment="">
+    <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="上传文件修改---上传文件名">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" afterDir="false" />
     </list>
@@ -64,22 +64,7 @@
       <recent name="$PROJECT_DIR$/src/views/user_manage" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="" />
@@ -96,7 +81,7 @@
       <workItem from="1602219337634" duration="43217000" />
       <workItem from="1602374807291" duration="15326000" />
       <workItem from="1602392321140" duration="10848000" />
-      <workItem from="1602569906782" duration="22350000" />
+      <workItem from="1602569906782" duration="25257000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1602261146043</created>
@@ -343,7 +328,21 @@
       <option name="project" value="LOCAL" />
       <updated>1602686400857</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="上传文件修改---上传文件名">
+      <created>1602686842836</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1602686842836</updated>
+    </task>
+    <task id="LOCAL-00037" summary="上传文件修改---上传文件名">
+      <created>1602766452359</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1602766452359</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,13 +363,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
@@ -390,10 +388,10 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="427" y="231" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.799@0.23.1440.799" timestamp="1602390758872" />
-    <state x="117" y="92" key="DiffContextDialog" timestamp="1602575546401">
+    <state x="117" y="92" key="DiffContextDialog" timestamp="1602766462101">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="117" y="92" key="DiffContextDialog/0.23.1440.799@0.23.1440.799" timestamp="1602575546401" />
+    <state x="117" y="92" key="DiffContextDialog/0.23.1440.799@0.23.1440.799" timestamp="1602766462101" />
     <state x="471" y="132" key="RollbackChangesDialog" timestamp="1602575548081">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
@@ -402,11 +400,11 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="229" y="61" key="SettingsEditor/0.23.1440.799@0.23.1440.799" timestamp="1602571806698" />
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602686844815">
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602766463930">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="320" y="157" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1602569692480" />
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602686844815" />
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602766463930" />
     <state x="100" y="123" width="1240" height="599" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602517251833">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
