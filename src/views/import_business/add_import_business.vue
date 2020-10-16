@@ -34,7 +34,7 @@
       </el-form-item>
 
       <el-form-item label="主单类型">
-        <el-select filterable  collapse-tags v-model="mast_info.mast_type" multiple placeholder="请选择主单类型">
+        <!-- <el-select filterable  collapse-tags v-model="mast_info.mast_type" multiple placeholder="请选择主单类型">
           <el-option label="0110 通关代理" value="1"></el-option>
           <el-option label="9610 通关代理" value="2"></el-option>
           <el-option label="9710 通关代理" value="3"></el-option>
@@ -42,6 +42,9 @@
           <el-option label="0110 贸易代理" value="5"></el-option>
           <el-option label="9710 贸易代理" value="6"></el-option>
           <el-option label="9810 贸易代理" value="7"></el-option>
+        </el-select> -->
+        <el-select filterable  collapse-tags v-model="mainTypeSelected" multiple placeholder="请选择主单类型">
+          <el-option v-for="item in mainTypeList" :key="item.id" :label="item.text" :value="item.id"></el-option>
         </el-select>
       </el-form-item>
     </el-form>
@@ -253,13 +256,25 @@ export default {
   name: "add_import_business",
   data(){
     return{
+      mainTypeList:[
+        {"id":"1","text":"0110 通关代理"},
+        {"id":"2","text":"9610 通关代理"},
+        {"id":"3","text":"9710 通关代理"},
+        {"id":"4","text":"9810 通关代理"},
+        {"id":"5","text":"0110 贸易代理"},
+        {"id":"6","text":"9710 贸易代理"},
+        {"id":"7","text":"9810 贸易代理"},
+      ],
+      mainTypeSelected:[],
+
+
       trade_type_list         : TRADE_TYPE_GROUP,
       client_list             : [],
       mast_info:{
         id                    : 0 ,       //订单ID
         customerIdOne         : "",       //客户类型（一级客户）
         customerIdTwo         : "",       //客户类型（二级客户）
-        mast_type             : "",       //主单类型
+        mast_type             : "1,2",       //主单类型
         clearance_port        : "",       //报关口岸
         exit_port             : "",       //离境口岸
         customsNo             : "",       //通关单号
@@ -328,8 +343,9 @@ export default {
         // 离岸口岸
         this.$set(this.mast_info, "exit_port", res.data.exitPort)
         // 主单类型
-        res.data.mainType = res.data.mainType ?  res.data.mainType : ""
-        this.$set(this.mast_info, "mast_type", res.data.mainType.split(","))
+        // res.data.mainType = res.data.mainType ?  res.data.mainType : ""
+        // this.$set(this.mast_info, "mast_type", res.data.mainType.split(","))
+        this.mainTypeSelected = res.data.mainType ?  res.data.mainType.split(",") : []
         // 主单号
         this.$set(this.mast_info, "mast_order_number", res.data.mainNo)
         // 航班号
@@ -432,6 +448,7 @@ export default {
       this.mast_info.busSubmenuSaveDTOS = [
           {submenuNo: '', submenuNumPackage: "", roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType:[]},
       ]
+      this.mainTypeSelected = []
     },
     addData(){
 
@@ -485,7 +502,8 @@ export default {
         mainNo:this.mast_info.mast_order_number,
         mainNumPackage:this.mast_info.mast_number,
         mainRoughWeight:this.mast_info.mast_weight,
-        mainType:this.mast_info.mast_type,
+        // mainType:this.mast_info.mast_type,
+        mainType:"",
         mainVolume:this.mast_info.mast_volume,
         remark:this.mast_info.marks,
         tradeNo:this.mast_info.tradeNo,
@@ -506,10 +524,17 @@ export default {
           }
       }
 
-      if(data.mainType.length > 0){
-          data.mainType = data.mainType.join(',')
-      } else {
-        data.mainType = ""
+      // if(data.mainType.length > 0){
+      //     data.mainType = data.mainType.join(',')
+      // } else {
+      //   data.mainType = ""
+      // }
+      let tempMainTypeSelected = []
+      if(this.mainTypeSelected && this.mainTypeSelected.length > 0){
+        for(let idx=0; idx < this.mainTypeSelected.length; idx++) {
+            tempMainTypeSelected[idx] = this.mainTypeSelected[idx];
+        }
+        data.mainType = tempMainTypeSelected.join(',')
       }
 
 
