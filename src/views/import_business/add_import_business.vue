@@ -122,7 +122,7 @@
           </div>
           <div class="form_item">
             <span>贸易类型</span>
-            <el-select filterable collapse-tags multiple v-model="item.tradeType" placeholder="请选择贸易方式">
+            <!-- <el-select filterable collapse-tags multiple v-model="item.tradeType" placeholder="请选择贸易方式">
               <el-option label="0110 通关代理" value="1"></el-option>
               <el-option label="9610 通关代理" value="2"></el-option>
               <el-option label="9710 通关代理" value="3"></el-option>
@@ -131,6 +131,9 @@
               <el-option label="9610 贸易代理" value="6"></el-option>
               <el-option label="9710 贸易代理" value="7"></el-option>
               <el-option label="9810 贸易代理" value="8"></el-option>
+            </el-select> -->
+            <el-select filterable  collapse-tags v-model="item.tradeType" multiple placeholder="请选择贸易方式">
+              <el-option v-for="item in mainTypeList" :key="item.id" :label="item.text" :value="item.id"></el-option>
             </el-select>
           </div>
           <!-- 操作-->
@@ -266,6 +269,16 @@ export default {
         {"id":"7","text":"9810 贸易代理"},
       ],
       mainTypeSelected:[],
+      tradeTypeList:[
+        {"id":"1","text":"0110 通关代理"},
+        {"id":"2","text":"9610 通关代理"},
+        {"id":"3","text":"9710 通关代理"},
+        {"id":"4","text":"9810 通关代理"},
+        {"id":"5","text":"0110 贸易代理"},
+        {"id":"6","text":"9610 贸易代理"},
+        {"id":"7","text":"9710 贸易代理"},
+        {"id":"8","text":"9810 贸易代理"}
+      ],
 
 
       trade_type_list         : TRADE_TYPE_GROUP,
@@ -464,8 +477,8 @@ export default {
           addressee: origin_data.busSubmenuSaveDTOS[trace_type].addressee,
           tradeType: origin_data.busSubmenuSaveDTOS[trace_type].tradeType
         }
-        console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType);
-          console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType.join(","))
+        // console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType);
+        //   console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType.join(","))
         arrays.push(dtos)
         console.log(dtos)
       }
@@ -524,17 +537,8 @@ export default {
           }
       }
 
-      // if(data.mainType.length > 0){
-      //     data.mainType = data.mainType.join(',')
-      // } else {
-      //   data.mainType = ""
-      // }
-      let tempMainTypeSelected = []
       if(this.mainTypeSelected && this.mainTypeSelected.length > 0){
-        for(let idx=0; idx < this.mainTypeSelected.length; idx++) {
-            tempMainTypeSelected[idx] = this.mainTypeSelected[idx];
-        }
-        data.mainType = tempMainTypeSelected.join(',')
+        data.mainType = this.mainTypeSelected.join(',')
       }
 
 
