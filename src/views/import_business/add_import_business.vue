@@ -497,7 +497,8 @@ export default {
       let data = {
         addressee: this.mast_info.addresser_info,
         addresser: this.mast_info.receiver_info,
-        busSubmenuSaveDTOS: this.mast_info.busSubmenuSaveDTOS,
+        // busSubmenuSaveDTOS: this.mast_info.busSubmenuSaveDTOS,
+        busSubmenuSaveDTOS: [],
         contractCoding:this.mast_info.contractCoding,
         customerIdOne: this.mast_info.customerIdOne,
         customerIdTwo: this.mast_info.customerIdTwo,
@@ -523,19 +524,21 @@ export default {
         productionSaleUnit:this.mast_info.sale_monad,
       }
 
-      if(data.flightDate != ""){
-        let tempDate = data.flightDate.split()
+      if(this.mast_info.busSubmenuSaveDTOS.length > 0){
+        for (let item of this.mast_info.busSubmenuSaveDTOS) {
+          let dto = {
+            submenuNo: item.submenuNo,
+            submenuNumPackage: item.submenuNumPackage,
+            roughWeight: item.roughWeight,
+            volume: item.volume,
+            chargedWeight: item.chargedWeight,
+            addressee: item.addressee,
+            tradeType: item.tradeType.join(',')
+          }
+          data.busSubmenuSaveDTOS.push(dto)
+        }
       }
 
-      if(data.busSubmenuSaveDTOS.length > 0){
-          for(let dtoItem of data.busSubmenuSaveDTOS){
-              if(dtoItem.tradeType.length > 0){
-                dtoItem.tradeType = dtoItem.tradeType.join(',')
-              } else {
-                dtoItem.tradeType = ""
-              }
-          }
-      }
 
       if(this.mainTypeSelected && this.mainTypeSelected.length > 0){
         data.mainType = this.mainTypeSelected.join(',')
