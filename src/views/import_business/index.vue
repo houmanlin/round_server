@@ -185,7 +185,13 @@ export default {
       this.orderMater = false
     },
     exportFile(){
-      let export_file_params = `limit=${this.page_config.limit}&page=${this.page_config.current}&mainNo=${this.mainNo}&submenuNo=${this.submenuNo}&flightNo=${this.flightNo}&customerIdOne=${this.customerIdOne}&customerIdTwo=${this.customerIdTwo}&exitPort=${this.exitPort}&declarationDate=${this.declarationDate}&flightDateStart=${this.flightDateStart}&flightDateEnd=${this.flightDateEnd}&status=${this.status}`
+      let ids = []
+      for (let select_key in this.selectTableData){
+        ids.push(this.selectTableData[select_key].id)
+      }
+      ids = ids.join(",")
+
+      let export_file_params = `limit=${this.page_config.limit}&page=${this.page_config.current}&mainNo=${this.mainNo}&submenuNo=${this.submenuNo}&flightNo=${this.flightNo}&customerIdOne=${this.customerIdOne}&customerIdTwo=${this.customerIdTwo}&exitPort=${this.exitPort}&declarationDate=${this.declarationDate}&flightDateStart=${this.flightDateStart}&flightDateEnd=${this.flightDateEnd}&status=${this.status}&ids=${ids}`
       window.open(`${process.env.VUE_APP_URL}/busMain/export?${export_file_params}`)
     },
     getFieldData(data){

@@ -374,7 +374,7 @@ export default {
         // 主单体积
         this.$set(this.mast_info, "mast_volume", res.data.mainVolume)
         // 主单计费量
-        this.$set(this.mast_info, "mast_expense", res.data.mainChargedWeight)
+        this.$set(this.mast_info, "chargedWeight", res.data.mainChargedWeight)
         // 辅助信息货值
         res.data.goodsValue = res.data.goodsValue ?  res.data.goodsValue : ""
         this.$set(this.mast_info, "goodsValue", res.data.goodsValue)
@@ -403,18 +403,16 @@ export default {
           let busSubmenusItem = res.data.busSubmenus[argumentsKey]
           let tradeType = busSubmenusItem.tradeType ? busSubmenusItem.tradeType : "";
 
-
           let busSubmenu_item = {
             submenuNo: busSubmenusItem.submenuNo,
             submenuNumPackage: busSubmenusItem.submenuNumPackage,
             roughWeight:busSubmenusItem.roughWeight,
             volume: busSubmenusItem.volume,
-            id: busSubmenusItem.id,
+            id: busSubmenusItem.id ? busSubmenusItem.id : 0,
             chargedWeight: busSubmenusItem.chargedWeight,
             addressee: busSubmenusItem.addressee,
             tradeType: tradeType.split(",")
           }
-
 
           this.$set(this.mast_info["busSubmenuSaveDTOS"], argumentsKey, busSubmenu_item)
         }
@@ -467,8 +465,10 @@ export default {
 
       let origin_data = this.mast_info
       let arrays = new Array()
+      debugger
       for (let trace_type in origin_data.busSubmenuSaveDTOS) {
         let dtos = {
+          id:origin_data.busSubmenuSaveDTOS[trace_type].id ? origin_data.busSubmenuSaveDTOS[trace_type].id : 0,
           submenuNo: origin_data.busSubmenuSaveDTOS[trace_type].submenuNo,
           submenuNumPackage: origin_data.busSubmenuSaveDTOS[trace_type].submenuNumPackage,
           roughWeight: origin_data.busSubmenuSaveDTOS[trace_type].roughWeight,
@@ -477,6 +477,7 @@ export default {
           addressee: origin_data.busSubmenuSaveDTOS[trace_type].addressee,
           tradeType: origin_data.busSubmenuSaveDTOS[trace_type].tradeType
         }
+        debugger
         // console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType);
         //   console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType.join(","))
         arrays.push(dtos)
@@ -526,7 +527,10 @@ export default {
 
       if(this.mast_info.busSubmenuSaveDTOS.length > 0){
         for (let item of this.mast_info.busSubmenuSaveDTOS) {
+
+
           let dto = {
+            id: item.id ? item.id : 0,
             submenuNo: item.submenuNo,
             submenuNumPackage: item.submenuNumPackage,
             roughWeight: item.roughWeight,
@@ -538,12 +542,12 @@ export default {
           data.busSubmenuSaveDTOS.push(dto)
         }
       }
+      console.log(data.busSubmenuSaveDTOS)
 
 
       if(this.mainTypeSelected && this.mainTypeSelected.length > 0){
         data.mainType = this.mainTypeSelected.join(',')
       }
-
 
       if(this.mast_info.id > 0){
 
