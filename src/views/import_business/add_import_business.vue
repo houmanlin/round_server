@@ -4,7 +4,7 @@
     <el-form :inline="true" :model="mast_info" size="medium" label-width="80px" label-position="left" class="demo-form-inline">
 
       <el-form-item label="一级客户">
-        <el-select v-model="mast_info.customerIdOne" filterable placeholder="请输入字段名">
+        <el-select v-model="mast_info.customerIdOne" filterable placeholder="请输入一级客户名">
           <el-option
               v-for="item in client_list"
               :key="item.id"
@@ -14,7 +14,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="二级客户">
-        <el-select v-model="mast_info.customerIdTwo" filterable placeholder="请输入字段名">
+        <el-select v-model="mast_info.customerIdTwo" filterable placeholder="请输入二级客户">
           <el-option
               v-for="item in client_list"
               :key="item.id"
@@ -164,7 +164,7 @@
                   default-first-option
                   filterable
                   v-model="mast_info.currency"
-                  placeholder="请选择货值">
+                  placeholder="请选择货币">
                 <el-option label="人民币" value="人民币"></el-option>
                 <el-option label="美金" value="美金"></el-option>
               </el-select>

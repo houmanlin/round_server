@@ -39,13 +39,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/404_images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
@@ -81,7 +84,9 @@
       <workItem from="1602219337634" duration="43217000" />
       <workItem from="1602374807291" duration="15326000" />
       <workItem from="1602392321140" duration="10848000" />
-      <workItem from="1602569906782" duration="25257000" />
+      <workItem from="1602569906782" duration="22350000" />
+      <workItem from="1602808208767" duration="118000" />
+      <workItem from="1602814711865" duration="1129000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1602261146043</created>
@@ -328,21 +333,7 @@
       <option name="project" value="LOCAL" />
       <updated>1602686400857</updated>
     </task>
-    <task id="LOCAL-00036" summary="上传文件修改---上传文件名">
-      <created>1602686842836</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1602686842836</updated>
-    </task>
-    <task id="LOCAL-00037" summary="上传文件修改---上传文件名">
-      <created>1602766452359</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1602766452359</updated>
-    </task>
-    <option name="localTasksCounter" value="38" />
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,23 +379,32 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="427" y="231" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.799@0.23.1440.799" timestamp="1602390758872" />
-    <state x="117" y="92" key="DiffContextDialog" timestamp="1602766462101">
+    <state x="117" y="92" key="DiffContextDialog" timestamp="1602575546401">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
-    <state x="117" y="92" key="DiffContextDialog/0.23.1440.799@0.23.1440.799" timestamp="1602766462101" />
+    <state x="117" y="92" key="DiffContextDialog/0.23.1440.799@0.23.1440.799" timestamp="1602575546401" />
+    <state x="501" y="236" key="FileChooserDialogImpl" timestamp="1602808251777">
+      <screen x="0" y="0" width="1440" height="960" />
+    </state>
+    <state x="501" y="236" key="FileChooserDialogImpl/0.0.1440.960@0.0.1440.960" timestamp="1602808251777" />
+    <state x="137" y="79" key="MergeDialog" timestamp="1602814769083">
+      <screen x="0" y="0" width="1440" height="960" />
+    </state>
+    <state x="137" y="79" key="MergeDialog/0.0.1440.960@0.0.1440.960" timestamp="1602814769083" />
     <state x="471" y="132" key="RollbackChangesDialog" timestamp="1602575548081">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="471" y="132" key="RollbackChangesDialog/0.23.1440.799@0.23.1440.799" timestamp="1602575548081" />
-    <state x="229" y="61" key="SettingsEditor" timestamp="1602571806698">
-      <screen x="0" y="23" width="1440" height="799" />
+    <state x="229" y="46" key="SettingsEditor" timestamp="1602814932347">
+      <screen x="0" y="0" width="1440" height="960" />
     </state>
+    <state x="229" y="46" key="SettingsEditor/0.0.1440.960@0.0.1440.960" timestamp="1602814932347" />
     <state x="229" y="61" key="SettingsEditor/0.23.1440.799@0.23.1440.799" timestamp="1602571806698" />
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602766463930">
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2" timestamp="1602686403018">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="320" y="157" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1602569692480" />
-    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602766463930" />
+    <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602686403018" />
     <state x="100" y="123" width="1240" height="599" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602517251833">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
@@ -413,9 +413,10 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="511" y="163" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.23.1440.799@0.23.1440.799" timestamp="1602267768183" />
-    <state x="521" y="343" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602501187031">
-      <screen x="0" y="23" width="1440" height="799" />
+    <state x="521" y="384" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602814723651">
+      <screen x="0" y="0" width="1440" height="960" />
     </state>
+    <state x="521" y="384" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.960@0.0.1440.960" timestamp="1602814723651" />
     <state x="521" y="343" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.799@0.23.1440.799" timestamp="1602501187031" />
     <state x="479" y="100" width="648" height="640" key="find.popup" timestamp="1602666991489">
       <screen x="0" y="23" width="1440" height="799" />
