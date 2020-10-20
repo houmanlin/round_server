@@ -52,7 +52,7 @@
           </el-select>
         </el-form-item>
           <el-form-item label="一级客户" class="form">
-            <el-select filterable v-model="customerIdOne" placeholder="请选择一级客户">
+            <el-select filterable multiple   v-model="customerIdOne" placeholder="请选择一级客户">
               <el-option
                   v-for="item in client_list"
                   :key="item.id"
@@ -62,7 +62,7 @@
             </el-select>
           </el-form-item>
           <el-form-item label="二级客户" class="form">
-            <el-select filterable v-model="customerIdTwo" placeholder="请选择二级客户">
+            <el-select filterable multiple v-model="customerIdTwo" placeholder="请选择二级客户">
               <el-option
                   v-for="item in client_list"
                   :key="item.id"

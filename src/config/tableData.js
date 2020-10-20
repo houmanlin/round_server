@@ -2,6 +2,14 @@
 const SYSTEM_LOG_TABLE = [
 
     {
+        label: "主单号",
+        prop: "busDate"
+    },
+    {
+        label: "分单号",
+        prop: "busDate"
+    },
+    {
         label: "操作时间",
         prop: "busDate"
     },
@@ -200,7 +208,7 @@ const BUSINESS_BILLING_TABLE = [
 // 进出口业务表格头
 const IMPORT_BUSINESS_TABLE = [
     {
-        label: "主单号",
+        label: "主单号/分单号",
         prop: "mainNo"
     },
     {

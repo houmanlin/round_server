@@ -51,6 +51,7 @@ export default {
   .search_container{
     display: flex;
     justify-content: flex-start;
+    margin-bottom: 10px;
   }
   .operator_button{
     margin-right: 15px;

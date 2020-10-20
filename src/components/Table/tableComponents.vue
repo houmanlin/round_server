@@ -15,7 +15,7 @@
       <el-table-column align="center"
           v-if="index == 0"
           fixed="left"
-          label="编号"
+          label="序号"
           type="index"
           @click="checkOrderInfo(item)"
           width="50">

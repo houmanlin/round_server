@@ -59,14 +59,14 @@
       <el-table-column
           v-if="index == 0"
           fixed="left"
-          label="编号"
+          label="序号"
           type="index"
           @click="checkOrderInfo(item)"
           width="50">
       </el-table-column>
       <el-table-column align="center"
           :key="index"
-          v-if="item.label != '操作' && !item.hase_status"
+          v-if="(item.label != '操作' && item.label != '主单号') && !item.hase_status"
           :prop="item.prop"
           show-overflow-tooltip
           min-width="200"
@@ -74,7 +74,23 @@
           :label="item.label"/>
       <el-table-column align="center"
           :key="index"
-          v-else-if="item.label != '操作' && item.hase_status"
+          v-else-if="(item.label != '操作' && item.label != '主单号') && item.hase_status"
+          :prop="item.prop"
+          show-overflow-tooltip
+          min-width="200"
+          @click="checkOrderInfo(item)"
+          :label="item.label">
+        <template slot-scope="scope">
+            <div>
+<!--                {{ scope.row[item.prop] }}-->
+                <i class="el-icon-check" v-if="scope.row[item.prop]"/>
+
+            </div>
+        </template>
+      </el-table-column>
+      <el-table-column align="center"
+          :key="index"
+          v-else-if="item.label == '主单号/分单' && item.hase_status"
           :prop="item.prop"
           show-overflow-tooltip
           min-width="200"
@@ -217,5 +233,9 @@ export default {
 
 /deep/ .el-table td, .el-table th {
   text-align: center;
+}
+
+/deep/ .el-table__expand-column .cell {
+  display: none;
 }
 </style>
