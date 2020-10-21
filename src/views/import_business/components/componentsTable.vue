@@ -4,6 +4,10 @@
       border
       @cell-dblclick="double_click"
       height="400"
+      :header-cell-style="{
+          'background-color': '#fafafa',
+          'border-bottom': '1px #409EFF solid'
+      }"
       @selection-change="handleSelectionChange"
       style="width: 100%">
 
@@ -65,8 +69,20 @@
           width="50">
       </el-table-column>
       <el-table-column align="center"
+                       :key="index"
+                       v-if="item.label == '主单号/分单号'"
+                       :prop="item.prop"
+                       show-overflow-tooltip
+                       min-width="200"
+                       @click="checkOrderInfo(item)"
+                       :label="item.label">
+        <template slot-scope="scope">
+          <el-button type="text">{{scope.row.mainNo}}</el-button>
+        </template>
+      </el-table-column>
+      <el-table-column align="center"
           :key="index"
-          v-if="(item.label != '操作' && item.label != '主单号') && !item.hase_status"
+          v-if="item.label != '操作' && item.label != '主单号/分单号' && !item.hase_status"
           :prop="item.prop"
           show-overflow-tooltip
           min-width="200"
@@ -74,7 +90,7 @@
           :label="item.label"/>
       <el-table-column align="center"
           :key="index"
-          v-else-if="(item.label != '操作' && item.label != '主单号') && item.hase_status"
+          v-else-if="item.label != '操作' && item.hase_status"
           :prop="item.prop"
           show-overflow-tooltip
           min-width="200"
@@ -88,31 +104,17 @@
             </div>
         </template>
       </el-table-column>
-      <el-table-column align="center"
-          :key="index"
-          v-else-if="item.label == '主单号/分单' && item.hase_status"
-          :prop="item.prop"
-          show-overflow-tooltip
-          min-width="200"
-          @click="checkOrderInfo(item)"
-          :label="item.label">
-        <template slot-scope="scope">
-            <div>
-<!--                {{ scope.row[item.prop] }}-->
-                <i class="el-icon-check" v-if="scope.row[item.prop]"/>
 
-            </div>
-        </template>
-      </el-table-column>
       <el-table-column
           align="center"
           :key="index"
-          v-else
+          v-else-if="item.label == '操作'"
           fixed="right"
           label="操作"
           width="180">
         <template slot-scope="scope">
           <template v-if="item.label == '操作'">
+
             <el-upload
                 class="upload-demo"
                 ref="upload"
@@ -126,7 +128,6 @@
                 :on-success="handleResultSuccess"
                 :on-error="handleResultError"
                 :show-file-list="false"
-
             >
               <el-button  type="text"
                           size="small">{{operator_item}}</el-button>
@@ -235,7 +236,5 @@ export default {
   text-align: center;
 }
 
-/deep/ .el-table__expand-column .cell {
-  display: none;
-}
+
 </style>

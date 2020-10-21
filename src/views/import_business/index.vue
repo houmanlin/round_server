@@ -6,7 +6,7 @@
     <!-----------  用户的增删改查按钮  ---------->
     <operatorGroup @onOperator="operator"/>
 
-
+    <el-button type="text" disabled>查验: 15</el-button>
     <!------------- 数据表格  --------------->
     <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" :tableData="table_data" @onTableOperator="tableOperatorGroup" @onOperator="tableOperator" @onUploadMethod="uploadFile" @onGetSelectData="getSelectData"/>
     <el-pagination

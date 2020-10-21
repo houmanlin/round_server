@@ -3,6 +3,10 @@
       :data="tableData"
       border
       :height="500"
+      :header-cell-style="{
+          'background-color': '#fafafa',
+          'border-bottom': '1px #409EFF solid'
+      }"
       @selection-change="handleSelectionChange"
       style="width: 100%">
 

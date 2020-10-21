@@ -41,7 +41,7 @@
       <!--  操作时间选择  -->
         <el-form :inline="true" :model="flight" label-position="left" label-width="80px" >
           <el-form-item label="状态" class="form">
-          <el-select filterable v-model="status" placeholder="请选择状态"
+          <el-select filterable v-model="status" collapse-tags placeholder="请选择状态"
                      style="width: 230px">
             <el-option
                 v-for="item in operator_type_list"
@@ -52,7 +52,7 @@
           </el-select>
         </el-form-item>
           <el-form-item label="一级客户" class="form">
-            <el-select filterable multiple   v-model="customerIdOne" placeholder="请选择一级客户">
+            <el-select filterable multiple collapse-tags v-model="customerIdOne" placeholder="请选择一级客户">
               <el-option
                   v-for="item in client_list"
                   :key="item.id"
@@ -62,7 +62,7 @@
             </el-select>
           </el-form-item>
           <el-form-item label="二级客户" class="form">
-            <el-select filterable multiple v-model="customerIdTwo" placeholder="请选择二级客户">
+            <el-select filterable multiple v-model="customerIdTwo" collapse-tags placeholder="请选择二级客户">
               <el-option
                   v-for="item in client_list"
                   :key="item.id"
@@ -93,9 +93,12 @@
           </el-form-item>
           <el-form-item label="报关时间" class="form">
             <el-date-picker
+                style="width: 250px"
                 v-model="declarationDate"
-                type="date"
+                type="daterange"
                 range-separator="至"
+                start-placeholder="起始时间"
+                end-placeholder="结束时间"
                 placeholder="报关时间">
             </el-date-picker>
           </el-form-item>

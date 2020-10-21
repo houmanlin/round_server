@@ -24,6 +24,7 @@
     <el-button class="operator_button button_yellow" type="primary" @click="operatorUser('domesticDelivery')">货物送达</el-button>
     <el-button class="operator_button" type="warning" @click="operatorUser('submitCarInfo')">提交提货车辆信息</el-button>
     <el-button class="operator_button" type="warning" @click="operatorUser('submitCustomsTransit')">提交转关</el-button>
+    <el-button class="operator_button" type="warning" @click="operatorUser('remove')">删除</el-button>
   </div>
 </template>
 
@@ -51,7 +52,6 @@ export default {
   .search_container{
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 10px;
   }
   .operator_button{
     margin-right: 15px;

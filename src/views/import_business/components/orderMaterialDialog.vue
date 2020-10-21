@@ -45,7 +45,7 @@ export default {
           title:"入库查验",
           about_info:{},
           download: [
-            {title: "下载入库照片", url: this.getDownLoadUrl(0, 1)},
+            {title: "下载入库照片(0)", url: this.getDownLoadUrl(0, 1)},
           ],
           marks:""
         },    //0
@@ -56,7 +56,7 @@ export default {
             "报关单号":"",
           },
           download: [
-            {title: "下载最终版报关材料", url: this.getDownLoadUrl(0, 1)},
+            {title: "下载最终版报关材料(0)", url: this.getDownLoadUrl(0, 1)},
           ],
           marks:""
         },    //1
@@ -65,7 +65,7 @@ export default {
           about_info:{
           },
           download: [
-            {title: "下载查验单据扫描(附件)", url: this.getDownLoadUrl(0, 3)},
+            {title: "下载查验单据扫描(附件)(0)", url: this.getDownLoadUrl(0, 3)},
           ],
           marks:""
         },       //2
@@ -73,7 +73,7 @@ export default {
           title:"退单",
           about_info: [],
           download: [
-            {title: "下载退单材料", url: this.getDownLoadUrl(0, 4)},
+            {title: "下载退单材料(0)", url: this.getDownLoadUrl(0, 4)},
           ],
           marks:""
         },       //3
@@ -81,7 +81,7 @@ export default {
           title:"退单完成",
           about_info: {},
           download: [
-            {title: "下载退单完毕单据", url: this.getDownLoadUrl(0, 5)},
+            {title: "下载退单完毕单据(0)", url: this.getDownLoadUrl(0, 5)},
           ],
           marks:""
         },    //4
@@ -89,8 +89,8 @@ export default {
           title:"退库",
           about_info: {},
           download: [
-            {title: "下载退库单", url: this.getDownLoadUrl(2, 6)},
-            {title: "下载装车照片", url: this.getDownLoadUrl(1, 6)},
+            {title: "下载退库单(0)", url: this.getDownLoadUrl(2, 6)},
+            {title: "下载装车照片(0)", url: this.getDownLoadUrl(1, 6)},
           ],
           marks:""
         },       //5
@@ -98,7 +98,7 @@ export default {
           title:"放行",
           about_info: [],
           download: [
-            {title: "下载放行单据", url: this.getDownLoadUrl(0, 7)},
+            {title: "下载放行单据(0)", url: this.getDownLoadUrl(0, 7)},
           ],
           marks:""
         },       //6
@@ -111,8 +111,8 @@ export default {
             "送货费": ""
           },
           download: [
-            {title: "车辆照片(附件)", url: this.getDownLoadUrl(3, 11)},
-            {title: "其它才材料(附件)", url: this.getDownLoadUrl(0, 11)},
+            {title: "车辆照片(附件)(0)", url: this.getDownLoadUrl(3, 11)},
+            {title: "其它才材料(附件)(0)", url: this.getDownLoadUrl(0, 11)},
           ],
           marks:""
         },    //7
@@ -120,9 +120,9 @@ export default {
           title:"货物送达",
           about_info:{},
           download: [
-            {title: "车辆照片(附件)", url: this.getDownLoadUrl(3, 10)},
-            {title: "货物照片(附件)", url: this.getDownLoadUrl(5, 10)},
-            {title: "现场照片(附件)", url: this.getDownLoadUrl(6, 10)},
+            {title: "车辆照片(附件)(0)", url: this.getDownLoadUrl(3, 10)},
+            {title: "货物照片(附件)(0)", url: this.getDownLoadUrl(5, 10)},
+            {title: "现场照片(附件)(0)", url: this.getDownLoadUrl(6, 10)},
           ],
           marks:""
         },    //8
@@ -134,8 +134,8 @@ export default {
             "预计到达时间": "",
           },
           download: [
-            {title: "车辆照片(附件)", url: this.getDownLoadUrl(3, 8)},
-            {title: "其它才材料(附件)", url: this.getDownLoadUrl(0, 8)},
+            {title: "车辆照片(附件)(0)", url: this.getDownLoadUrl(3, 8)},
+            {title: "其它才材料(附件)(0)", url: this.getDownLoadUrl(0, 8)},
           ],
           marks:""
         },  //9
@@ -144,8 +144,8 @@ export default {
           about_info:{
           },
           download: [
-            {title: "车辆(附件)", url: this.getDownLoadUrl(3, 9)},
-            {title: "其他附件(附件)", url: this.getDownLoadUrl(0, 9)},
+            {title: "车辆(附件)(0)", url: this.getDownLoadUrl(3, 9)},
+            {title: "其他附件(附件)(0)", url: this.getDownLoadUrl(0, 9)},
           ],
           marks:""
         },      //10
@@ -158,28 +158,28 @@ export default {
             "转关单号": "",
           },
           download: [
-            {title: "下载转关单据", url: this.getDownLoadUrl(0, 12)},
+            {title: "下载转关单据(0)", url: this.getDownLoadUrl(0, 12)},
           ],
           marks:""
         },       //11
         {
           title:"转关",
           download: [
-            {title: "附件(附件)", url: this.getDownLoadUrl(0, 13)},
+            {title: "附件(附件)(0)", url: this.getDownLoadUrl(0, 13)},
           ],
           marks:""
         },          //12
         {
           title:"转关异常",
           download: [
-            {title: "附件(附件)", url: this.getDownLoadUrl(0, 15)},
+            {title: "附件(附件)(0)", url: this.getDownLoadUrl(0, 15)},
           ],
           marks:""
         },      //13
         {
           title:"转关完毕",
           download: [
-            {title: "附件(附件)", url: this.getDownLoadUrl(0, 14)},
+            {title: "附件(附件)(0)", url: this.getDownLoadUrl(0, 14)},
           ],
           marks:""
         },      //14

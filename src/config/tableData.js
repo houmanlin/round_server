@@ -3,7 +3,7 @@ const SYSTEM_LOG_TABLE = [
 
     {
         label: "主单号",
-        prop: "busDate"
+        prop: "mainNo"
     },
     {
         label: "分单号",
@@ -208,8 +208,12 @@ const BUSINESS_BILLING_TABLE = [
 // 进出口业务表格头
 const IMPORT_BUSINESS_TABLE = [
     {
-        label: "主单号/分单号",
-        prop: "mainNo"
+        label: "状态",
+        prop: "currentStatus"
+    },
+    {
+        label: "业务类型",
+        prop: "exitPort"
     },
     {
         label: "一级客户",
@@ -218,6 +222,10 @@ const IMPORT_BUSINESS_TABLE = [
     {
         label: "二级客户",
         prop: "customerNameTwo"
+    },
+    {
+        label: "主单号/分单号",
+        prop: "mainNo"
     },
     {
         label: "离境口岸",
@@ -339,10 +347,6 @@ const IMPORT_BUSINESS_TABLE = [
         label: "转关完毕",
         prop: "customsTransitFinishStatus",
         hase_status: true
-    },
-    {
-        label: "状态",
-        prop: "currentStatus"
     },
     {
         label: "操作",

@@ -25,7 +25,7 @@
     <!--    -->
     <el-col :span="6" :offset="1">
       <el-button type="primary" @click="selectData">查询</el-button>
-      <el-button type="primary" @click="resetData">查询</el-button>
+      <el-button type="primary" @click="resetData">重置</el-button>
     </el-col>
   </el-row>
 </template>
