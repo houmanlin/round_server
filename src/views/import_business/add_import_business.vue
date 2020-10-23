@@ -168,16 +168,16 @@
           </div>
 
           <!-- 分单计费量-->
-          <div class="form_item">
-            <span>报关代理</span>
-            <el-input :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''" v-model="item.baoguan_daili" placeholder="请输入报关代理"></el-input>
+<!--          <div class="form_item">-->
+<!--            <span>报关代理</span>-->
+<!--            <el-input :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''" v-model="item.baoguan_daili" placeholder="请输入报关代理"></el-input>-->
 
-          </div>
+<!--          </div>-->
           <!-- 分单计费量-->
-          <div class="form_item">
-            <span>生产销售单位</span>
-            <el-input :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''" v-model="item.sale_monad" placeholder="请输入生产销售单位"></el-input>
-          </div>
+<!--          <div class="form_item">-->
+<!--            <span>生产销售单位</span>-->
+<!--            <el-input :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''" v-model="item.sale_monad" placeholder="请输入生产销售单位"></el-input>-->
+<!--          </div>-->
 
 <!--        -->
 <!--          &lt;!&ndash; 分单计费量&ndash;&gt;-->
@@ -186,30 +186,30 @@
 <!--            <el-input v-model="item.chargedWeight" placeholder="请输入分计费量"></el-input>-->
 <!--          </div>-->
           <!-- 分单计费量-->
-          <div class="form_item">
-            <span>报关代理</span>
-            <el-select
-                :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''"
-                v-model="item.baoguan_type"
-                placeholder="请选择报关类型">
-              <el-option label="贸易" value="贸易"></el-option>
-              <el-option label="代理" value="代理"></el-option>
-              <el-option label="自理" value="自理"></el-option>
-            </el-select>
-          </div>
+<!--          <div class="form_item">-->
+<!--            <span>报关代理</span>-->
+<!--            <el-select-->
+<!--                :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''"-->
+<!--                v-model="item.baoguan_type"-->
+<!--                placeholder="请选择报关类型">-->
+<!--              <el-option label="贸易" value="贸易"></el-option>-->
+<!--              <el-option label="代理" value="代理"></el-option>-->
+<!--              <el-option label="自理" value="自理"></el-option>-->
+<!--            </el-select>-->
+<!--          </div>-->
           <!-- 监管方式-->
-          <div class="form_item">
-            <span>监管方式</span>
-            <el-select
-                :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''"
-                v-model="item.jianguan_type"
-                placeholder="请选择监管方式">
-              <el-option label="9610" value="9610"></el-option>
-              <el-option label="9710" value="9710"></el-option>
-              <el-option label="9810" value="9810"></el-option>
-              <el-option label="0110" value="0110"></el-option>
-            </el-select>
-          </div>
+<!--          <div class="form_item">-->
+<!--            <span>监管方式</span>-->
+<!--            <el-select-->
+<!--                :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''"-->
+<!--                v-model="item.jianguan_type"-->
+<!--                placeholder="请选择监管方式">-->
+<!--              <el-option label="9610" value="9610"></el-option>-->
+<!--              <el-option label="9710" value="9710"></el-option>-->
+<!--              <el-option label="9810" value="9810"></el-option>-->
+<!--              <el-option label="0110" value="0110"></el-option>-->
+<!--            </el-select>-->
+<!--          </div>-->
 <!--          <div class="form_item">-->
 <!--            <span>贸易类型</span>-->
 
@@ -218,11 +218,11 @@
 <!--            </el-select>-->
 <!--          </div>-->
           <!-- 目的地-->
-          <div class="form_item">
-            <span>{{ mast_info.yewu_type == '统一版进口' ? '始发港' : '目的港' }}</span>
-            <el-input :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''"
-                       v-model="item.destination" :placeholder=" mast_info.yewu_type == '统一版出口' ? '请输入始发的' : '请输入目的地'"></el-input>
-          </div>
+<!--          <div class="form_item">-->
+<!--            <span>{{ mast_info.yewu_type == '统一版进口' ? '始发港' : '目的港' }}</span>-->
+<!--            <el-input :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''"-->
+<!--                       v-model="item.destination" :placeholder=" mast_info.yewu_type == '统一版出口' ? '请输入始发的' : '请输入目的地'"></el-input>-->
+<!--          </div>-->
           <div class="form_item" v-if="mast_info.yewu_type == '统一版进口'">
             <span>{{ mast_info.yewu_type == '转关'? '境内监管中转' : '境内送货' }}</span>
             <el-select filterable  v-model="item.is_jingnei" :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''" placeholder="请选择境内送货">
@@ -236,6 +236,7 @@
           </div>
           <!-- 操作-->
           <div class="form_item last_form_item">
+
             <el-button type="primary" icon="el-icon-plus" circle @click="dataAdd"  v-if="parseInt(index)+1 == mast_info.busSubmenuSaveDTOS.length"></el-button>
             <el-button icon="el-icon-minus" circle  @click="dataRemove(index)" v-if="parseInt(index)+1 != mast_info.busSubmenuSaveDTOS.length"></el-button>
           </div>
@@ -536,9 +537,15 @@ export default {
       })
     },
     dataRemove(index){
+      if(this.mainTypeSelected == '' || this.mainTypeSelected == '直单'){
+        return
+      }
       this.$delete(this.mast_info.busSubmenuSaveDTOS, index)
     },
     dataAdd(){
+      if(this.mainTypeSelected == '' || this.mainTypeSelected == '直单'){
+        return
+      }
       this.mast_info.busSubmenuSaveDTOS.push(
           {
             submenuNo: '',

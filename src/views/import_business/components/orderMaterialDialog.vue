@@ -2,6 +2,7 @@
   <el-dialog
       :visible.sync="dialogVisible"
       :before-close="handleClose"
+      top="3vh"
       width="60%"
       >
         <div class="order_flow">
@@ -45,161 +46,104 @@ export default {
       mainNo: "",
       order_flow:[
         {
-          title:"入库查验",
-          about_info:{},
-          download: [
-            {title: "下载入库照片(0)", url: this.getDownLoadUrl(0, 1)},
-          ],
-          marks:""
-        },    //0
-        {
           title:"提交报关",
           about_info:{
-            "报关服务商": "",
-            "报关单号":"",
+
           },
           download: [
-            {title: "下载最终版报关材料(0)", url: this.getDownLoadUrl(0, 1)},
+            {title: "下载附件(0)", url: this.getDownLoadUrl(0, 1)},
           ],
           marks:"",
           operater_time:""
         },    //1
         {
-          title:"查验",
+          title:"提交查验",
           about_info:{
           },
           download: [
-            {title: "下载查验单据扫描(附件)(0)", url: this.getDownLoadUrl(0, 3)},
+            {title: "下载查验通知书(附件)(0)", url: this.getDownLoadUrl(0, 3)},
           ],
           marks:"",
           operater_time:""
         },       //2
         {
-          title:"退单",
+          title:"查验操作",
           about_info: [],
           download: [
-            {title: "下载退单材料(0)", url: this.getDownLoadUrl(0, 4)},
+            {title: "下载现场查验图片(0)", url: this.getDownLoadUrl(0, 4)},
           ],
           marks:"",
           operater_time:""
         },       //3
         {
-          title:"退单完成",
+          title:"提交放行",
           about_info: {},
           download: [
-            {title: "下载退单完毕单据(0)", url: this.getDownLoadUrl(0, 5)},
+            {title: "下载放行通知单附件(0)", url: this.getDownLoadUrl(0, 5)},
           ],
           marks:"",
           operater_time:""
         },    //4
         {
-          title:"退库",
+          title:"放行出库",
           about_info: {},
           download: [
-            {title: "下载退库单(0)", url: this.getDownLoadUrl(2, 6)},
-            {title: "下载装车照片(0)", url: this.getDownLoadUrl(1, 6)},
+            {title: "下载放行通知单附件(0)", url: this.getDownLoadUrl(2, 6)},
+            {title: "下载报关单附件(0)", url: this.getDownLoadUrl(1, 6)},
+            {title: "下载出库单附件(0)", url: this.getDownLoadUrl(1, 6)},
           ],
           marks:"",
           operater_time:""
         },       //5
         {
-          title:"放行",
-          about_info: [],
+          title:"提交转关",
+          about_info: {
+            "转关单号": "",
+            "车辆型号": "",
+            "车牌号": "",
+          },
           download: [
-            {title: "下载放行单据(0)", url: this.getDownLoadUrl(0, 7)},
+            {title: "下载主单复印件(0)", url: this.getDownLoadUrl(0, 7)},
+            {title: "下载转关单据附件(0)", url: this.getDownLoadUrl(0, 7)},
           ],
           marks:"",
           operater_time:""
         },       //6
         {
-          title:"境内送货",
+          title:"提货操作",
           about_info:{
-            "预计到达时间": "",
-            "车牌号": "",
-            "车辆型号": "",
-            "送货费": ""
+            "姓名": "",
+            "身份证号": "",
+            "地址": "",
+
           },
           download: [
-            {title: "车辆照片(附件)(0)", url: this.getDownLoadUrl(3, 11)},
-            {title: "其它才材料(附件)(0)", url: this.getDownLoadUrl(0, 11)},
+            {title: "驾驶证复印件(附件)(0)", url: this.getDownLoadUrl(3, 11)},
+            {title: "行驶证照片(附件)(0)", url: this.getDownLoadUrl(0, 11)},
+            {title: "车辆照片(附件)(0)", url: this.getDownLoadUrl(0, 11)},
           ],
           marks:"",
           operater_time:""
         },    //7
         {
-          title:"货物送达",
+          title:"提交退单",
           about_info:{},
           download: [
-            {title: "车辆照片(附件)(0)", url: this.getDownLoadUrl(3, 10)},
-            {title: "货物照片(附件)(0)", url: this.getDownLoadUrl(5, 10)},
-            {title: "现场照片(附件)(0)", url: this.getDownLoadUrl(6, 10)},
+            {title: "退单文件(附件)(0)", url: this.getDownLoadUrl(3, 10)},
           ],
           marks:"",
           operater_time:""
         },    //8
         {
-          title:"提交提货车辆信息",
+          title:"退库完成",
           about_info:{
-            "车辆型号":"",
-            "车牌号":"",
-            "预计到达时间": "",
           },
           download: [
-            {title: "车辆照片(附件)(0)", url: this.getDownLoadUrl(3, 8)},
-            {title: "其它才材料(附件)(0)", url: this.getDownLoadUrl(0, 8)},
+            {title: "现场出库照片(附件)(0)", url: this.getDownLoadUrl(3, 8)},
           ],
           marks:"",
           operater_time:""
         },  //9
-        {
-          title:"提货交接",
-          about_info:{
-          },
-          download: [
-            {title: "车辆(附件)(0)", url: this.getDownLoadUrl(3, 9)},
-            {title: "其他附件(附件)(0)", url: this.getDownLoadUrl(0, 9)},
-          ],
-          marks:"",
-          operater_time:""
-        },      //10
-        {
-          title:"提交转关",
-          about_info:{
-            "车辆型号":"",
-            "车牌号":"",
-            "预计到达时间": "",
-            "转关单号": "",
-          },
-          download: [
-            {title: "下载转关单据(0)", url: this.getDownLoadUrl(0, 12)},
-          ],
-          marks:"",
-          operater_time:""
-        },       //11
-        {
-          title:"转关",
-          download: [
-            {title: "附件(附件)(0)", url: this.getDownLoadUrl(0, 13)},
-          ],
-          marks:"",
-          operater_time:""
-        },          //12
-        {
-          title:"转关异常",
-          download: [
-            {title: "附件(附件)(0)", url: this.getDownLoadUrl(0, 15)},
-          ],
-          marks:"",
-          operater_time:""
-        },      //13
-        {
-          title:"转关完毕",
-          download: [
-            {title: "附件(附件)(0)", url: this.getDownLoadUrl(0, 14)},
-          ],
-          marks:"",
-          operater_time:""
-        },      //14
       ]
     }
   },
@@ -218,8 +162,6 @@ export default {
 
 
         //提交报关
-        this.order_flow[1]["about_info"]["报关单号"] = res.data.customsNo
-        this.order_flow[1]["about_info"]["报关服务商"] = res.data.customsServiceProvider
         this.order_flow[1].marks = res.data.commitCustomsRemark;
 
 
@@ -240,10 +182,6 @@ export default {
 
 
         // 境内送货
-        this.order_flow[7]["about_info"]["预计到达时间"] = res.data.incountryETA
-        this.order_flow[7]["about_info"]["车牌号"] = res.data.incountryLPN
-        this.order_flow[7]["about_info"]["车辆型号"] = res.data.incountryModelCar
-        this.order_flow[7]["about_info"]["送货费"] = res.data.deliveryExpense
         this.order_flow[7].marks = res.data.incountryRemark
 
         // 货物送达
@@ -313,7 +251,7 @@ export default {
 <style scoped>
   .order_flow{
     width: 100%;
-    height: 400px;
+    height: 600px;
     overflow-y: auto;
 
   }
