@@ -11,10 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="上传文件修改---上传文件名">
+      <change afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/houseInfoDialog.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/orderInfoDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/orderInfoDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -97,7 +96,7 @@
       <workItem from="1603276875966" duration="4273000" />
       <workItem from="1603289508390" duration="1344000" />
       <workItem from="1603328644336" duration="79000" />
-      <workItem from="1603419408098" duration="8662000" />
+      <workItem from="1603419408098" duration="15472000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1602261146043</created>
@@ -379,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603430184017</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="上传文件修改---上传文件名">
+      <created>1603432566745</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1603432566745</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,11 +453,15 @@
     </state>
     <state x="229" y="46" key="SettingsEditor/0.0.1440.960@0.0.1440.960" timestamp="1602836008753" />
     <state x="229" y="61" key="SettingsEditor/0.23.1440.799@0.23.1440.799" timestamp="1602571806698" />
-    <state x="313" y="214" key="Vcs.Push.Dialog.v2" timestamp="1603430186110">
+    <state width="504" height="446" key="SwitcherDM" timestamp="1603435771921">
+      <screen x="0" y="0" width="1440" height="960" />
+    </state>
+    <state width="504" height="446" key="SwitcherDM/0.0.1440.960@0.0.1440.960" timestamp="1603435771921" />
+    <state x="313" y="214" key="Vcs.Push.Dialog.v2" timestamp="1603432568286">
       <screen x="0" y="0" width="1440" height="960" />
     </state>
     <state x="320" y="157" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1602569692480" />
-    <state x="313" y="214" key="Vcs.Push.Dialog.v2/0.0.1440.960@0.0.1440.960" timestamp="1603430186110" />
+    <state x="313" y="214" key="Vcs.Push.Dialog.v2/0.0.1440.960@0.0.1440.960" timestamp="1603432568286" />
     <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602686403018" />
     <state x="100" y="123" width="1240" height="599" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602517251833">
       <screen x="0" y="23" width="1440" height="799" />
@@ -480,14 +490,14 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="0" y="23" width="1438" height="797" key="recent.locations.popup/0.23.1440.799@0.23.1440.799" timestamp="1602502269413" />
-    <state x="377" y="221" key="run.anything.popup" timestamp="1603430452479">
+    <state x="377" y="221" key="run.anything.popup" timestamp="1603435221207">
       <screen x="0" y="0" width="1440" height="960" />
     </state>
-    <state x="377" y="221" key="run.anything.popup/0.0.1440.960@0.0.1440.960" timestamp="1603430452479" />
-    <state x="385" y="147" width="672" height="813" key="search.everywhere.popup" timestamp="1603192423587">
+    <state x="377" y="221" key="run.anything.popup/0.0.1440.960@0.0.1440.960" timestamp="1603435221207" />
+    <state x="385" y="147" width="672" height="813" key="search.everywhere.popup" timestamp="1603434372242">
       <screen x="0" y="0" width="1440" height="960" />
     </state>
-    <state x="385" y="147" width="672" height="813" key="search.everywhere.popup/0.0.1440.960@0.0.1440.960" timestamp="1603192423587" />
+    <state x="385" y="147" width="672" height="813" key="search.everywhere.popup/0.0.1440.960@0.0.1440.960" timestamp="1603434372242" />
     <state x="385" y="146" width="670" height="676" key="search.everywhere.popup/0.23.1440.799@0.23.1440.799" timestamp="1602513613981" />
     <state x="450" y="266" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1602405587095">
       <screen x="0" y="23" width="1440" height="799" />
