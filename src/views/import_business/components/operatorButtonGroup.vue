@@ -7,24 +7,28 @@
     <el-button class="operator_button" type="warning" @click="operatorUser('clearanceGoods')">提交报关</el-button>
 
     <!--  功能  -->
-    <el-button class="operator_button" type="primary" @click="operatorUser('inspect')">查验</el-button>
+    <el-button class="operator_button" type="primary" @click="operatorUser('inspect')">提交查验</el-button>
 
     <!--  功能  -->
-    <el-button class="operator_button" type="danger" @click="operatorUser('returnSale')">退单</el-button>
+<!--    <el-button class="operator_button" type="danger" @click="operatorUser('returnSale')">退单</el-button>-->
 
     <!--  功能  -->
-    <el-button class="operator_button" type="danger" @click="operatorUser('returnSaleSucc')">退单完成</el-button>
+<!--    <el-button class="operator_button" type="danger" @click="operatorUser('returnSaleSucc')">退单完成</el-button>-->
 
     <!--  功能  -->
 <!--    <el-button class="operator_button" type="danger" @click="operatorUser('returnWorkhouse')">退库</el-button>-->
 
     <!--  功能  -->
-    <el-button class="operator_button" type="success" @click="operatorUser('greenLight')">放行</el-button>
-    <el-button class="operator_button button_yellow" type="primary" @click="operatorUser('domesticDeliveryGoods')">境内送货</el-button>
-    <el-button class="operator_button button_yellow" type="primary" @click="operatorUser('domesticDelivery')">货物送达</el-button>
-    <el-button class="operator_button" type="warning" @click="operatorUser('submitCarInfo')">提交提货车辆信息</el-button>
+    <el-button class="operator_button" type="success" @click="operatorUser('greenLight')">提交放行</el-button>
+    <el-button class="operator_button" type="success" @click="operatorUser('greenLightReturnWorkhouse')">放行出库</el-button>
+<!--    <el-button class="operator_button button_yellow" type="primary" @click="operatorUser('domesticDeliveryGoods')">境内送货</el-button>-->
+<!--    <el-button class="operator_button button_yellow" type="primary" @click="operatorUser('domesticDelivery')">货物送达</el-button>-->
+<!--    <el-button class="operator_button" type="warning" @click="operatorUser('submitCarInfo')">提交提货车辆信息</el-button>-->
     <el-button class="operator_button" type="warning" @click="operatorUser('submitCustomsTransit')">提交转关</el-button>
-    <el-button class="operator_button" type="warning" @click="operatorUser('remove')">删除</el-button>
+    <el-button class="operator_button" type="warning" @click="operatorUser('customsTransitOperator')">转关操作</el-button>
+    <el-button class="operator_button" type="warning" @click="operatorUser('submitReturnSale')">提交退单</el-button>
+    <el-button class="operator_button" type="warning" @click="operatorUser('mainNoRemove')">主单删除</el-button>
+    <el-button class="operator_button" type="warning" @click="operatorUser('houseNoRemove')">分单删除</el-button>
   </div>
 </template>
 

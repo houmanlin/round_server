@@ -29,8 +29,11 @@
     <greenLight ref="greenLight" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
     <domesticDeliveryGoods ref="domesticDeliveryGoods" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
     <domesticDelivery ref="domesticDelivery" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <greenLightReturnWorkhouse ref="greenLightReturnWorkhouse" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
     <submitCarInfo ref="submitCarInfo" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
     <submitCustomsTransit ref="submitCustomsTransit" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <customsTransitOperator ref="customsTransitOperator" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <submitReturnSale ref="submitReturnSale" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
     <orderInfoDialog ref="orderInfoDialog" :orderInfo="orderInfo" />
     <orderMaterialDialog v-if="orderMater" :orderInfo="orderInfo" @onCloseDialog="closeDialog"/>
   </div>
@@ -49,8 +52,11 @@ import returnWorkhouse from "@/views/import_business/submit_dialog/return_workho
 import greenLight from "@/views/import_business/submit_dialog/green_light";
 import domesticDeliveryGoods from "@/views/import_business/submit_dialog/domestic_delivery_goods";
 import domesticDelivery from "@/views/import_business/submit_dialog/domestic_delivery";
+import greenLightReturnWorkhouse from "@/views/import_business/submit_dialog/greenLightReturnWorkhouse";
 import submitCarInfo from "@/views/import_business/submit_dialog/submit_car_info";
 import submitCustomsTransit from "@/views/import_business/submit_dialog/submit_customs_transit";
+import customsTransitOperator from "@/views/import_business/submit_dialog/customsTransitOperator";
+import submitReturnSale from "@/views/import_business/submit_dialog/submitReturnSale";
 import orderInfoDialog from "@/views/import_business/components/orderInfoDialog";
 import orderMaterialDialog from "@/views/import_business/components/orderMaterialDialog";
 import {getImportBussiness} from "@/api/import_bussiness";
@@ -66,8 +72,11 @@ export default {
     returnWorkhouse,
     greenLight,
     domesticDelivery,
+    greenLightReturnWorkhouse,
     submitCarInfo,
     submitCustomsTransit,
+    customsTransitOperator,
+    submitReturnSale,
     domesticDeliveryGoods,
     orderInfoDialog,
     orderMaterialDialog
@@ -149,14 +158,14 @@ export default {
         this.$router.push("add_import_business")
         return
       }
-      if(this.selectTableData.length > 1){
-        this.$message.info("只能操作一条订单")
-        return
-      }
-      if(this.selectTableData.length < 1){
-        this.$message.info("请选择要操作的数据")
-        return
-      }
+      // if(this.selectTableData.length > 1){
+      //   this.$message.info("只能操作一条订单")
+      //   return
+      // }
+      // if(this.selectTableData.length < 1){
+      //   this.$message.info("请选择要操作的数据")
+      //   return
+      // }
       console.log(this.selectTableData)
       this.orderInfo = this.selectTableData[0]
       this.$refs[operator_key].dialogVisible = true

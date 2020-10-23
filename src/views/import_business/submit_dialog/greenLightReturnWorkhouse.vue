@@ -1,32 +1,10 @@
 <template>
   <el-dialog
       :visible.sync="dialogVisible"
-      width="50%"
+      top="0"
+      width="40%"
       :before-close="handleClose">
-    <el-form ref="form" :model="clearanceData" label-width="120px" class="form_list">
-
-      <el-form-item label="主单复印件">
-        <el-upload
-            class="upload-demo"
-            ref="upload"
-            drag
-            :on-remove="removeData1"
-            action="https://jsonplaceholder.typicode.com/posts/"
-            :http-request="handlePreview1"
-        >
-          <i class="el-icon-upload"></i>
-          <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-        </el-upload>
-      </el-form-item>
-      <el-form-item label="转关单号">
-        <el-input v-model="clearanceData.delivery_expense" placeholder="请输入转关单号"/>
-      </el-form-item>
-      <el-form-item label="车辆型号">
-        <el-input v-model="clearanceData.car_type" placeholder="请输入车辆类型"></el-input>
-      </el-form-item>
-      <el-form-item label="车牌号">
-        <el-input v-model="clearanceData.license_plate_number" placeholder="请输入车牌号"/>
-      </el-form-item>
+    <el-form ref="form" :model="clearanceData" label-width="120px">
       <el-form-item label="备注">
         <el-input
             type="textarea"
@@ -36,21 +14,45 @@
             show-word-limit
         />
       </el-form-item>
-      <el-form-item label="转关单据(附件)">
+      <el-form-item label="放行通知单（附件）">
         <el-upload
             class="upload-demo"
             ref="upload"
             drag
-            :on-remove="removeData"
             action="https://jsonplaceholder.typicode.com/posts/"
             :http-request="handlePreview"
-            >
+            :on-remove="removeData"
+        >
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
         </el-upload>
       </el-form-item>
-
-
+      <el-form-item label="报关单（附件）">
+        <el-upload
+            class="upload-demo"
+            ref="upload"
+            drag
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :http-request="handlePreview1"
+            :on-remove="removeData1"
+        >
+          <i class="el-icon-upload"></i>
+          <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+        </el-upload>
+      </el-form-item>
+      <el-form-item label="出库单（附件）">
+        <el-upload
+            class="upload-demo"
+            ref="upload"
+            drag
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :http-request="handlePreview2"
+            :on-remove="removeData2"
+        >
+          <i class="el-icon-upload"></i>
+          <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+        </el-upload>
+      </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible = false">取 消</el-button>
@@ -63,19 +65,16 @@
 import {uploadForm} from "@/api/submit_form";
 
 export default {
-  props:["mainNo"],
+  props: ["mainNo"],
   name: "clearance_goods",
   data(){
     return{
       dialogVisible: false,
       clearanceData:{
-        car_type: "",
-        license_plate_number:"",
-        delivery_expense:"",
-        delivery_time: "",
-        mark:"",
+        mark: "",
         file:[],
         file1:[],
+        file2:[],
       }
     }
   },
@@ -90,7 +89,8 @@ export default {
       }
     },
    handlePreview(file){
-      this.clearanceData.file.push(file.file)
+
+      this.clearanceData.file.push(file)
     },
     removeData1(file , fileList){
       for (let item in this.clearanceData.file1){
@@ -102,7 +102,21 @@ export default {
       }
     },
    handlePreview1(file){
-      this.clearanceData.file1.push(file.file)
+
+      this.clearanceData.file1.push(file)
+    },
+    removeData2(file , fileList){
+      for (let item in this.clearanceData.file2){
+        if(this.clearanceData.file2[item].uid == file.uid){
+
+          delete this.clearanceData.file2[item]
+          return
+        }
+      }
+    },
+   handlePreview2(file){
+
+      this.clearanceData.file2.push(file)
     },
     submitForm(){
       let data = new FormData()
@@ -110,25 +124,19 @@ export default {
 
 
       data.append("mainNo", this.mainNo)
-      data.append("commitCustomsTransitModelCar", this.clearanceData.car_type)
-      data.append("commitCustomsTransitLPN", this.clearanceData.license_plate_number)
-      data.append("commitCustomsTransitETA", this.clearanceData.delivery_time)
-      data.append("customsTransitNo", this.clearanceData.delivery_expense)
-      data.append("commitCustomsTransitRemark", this.clearanceData.mark)
-      data.append("nodeType", 12)
+      data.append("commitPermitRemark", this.clearanceData.mark)
+      data.append("nodeType", 7)
       this.clearanceData.file.forEach(file => {
         data.append("file", file, file.name)
       })
 
       uploadForm(data).then(res=>{
         this.dialogVisible = false
-        this.clearanceData.car_type= "";
-        this.clearanceData.license_plate_number="";
-        this.clearanceData.delivery_expense="";
-        this.clearanceData.delivery_time = "";
-        this.clearanceData.mark = "";
+
+        this.clearanceData.mark= "";
         this.clearanceData.file=[]
         this.$refs.upload.clearFiles();
+
 
         this.$emit("onUploadSuccess")
       })
@@ -141,9 +149,5 @@ export default {
 </script>
 
 <style scoped>
-.form_list{
-  width: 100%;
-  height: 300px;
-  overflow-y: auto;
-}
+
 </style>

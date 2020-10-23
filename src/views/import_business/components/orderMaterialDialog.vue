@@ -18,6 +18,9 @@
                     <el-col :span="24" class="down_group">
                       <el-button @click="DownLoad(items.url['fileType'], items.url['nodeType'])" size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}</el-button>
                     </el-col>
+                    <el-col :span="24" class="down_group">
+                      操作时间: 2020年10月22日
+                    </el-col>
                   </el-row>
                    </el-card>
               </el-timeline-item>
@@ -58,7 +61,8 @@ export default {
           download: [
             {title: "下载最终版报关材料(0)", url: this.getDownLoadUrl(0, 1)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },    //1
         {
           title:"查验",
@@ -67,7 +71,8 @@ export default {
           download: [
             {title: "下载查验单据扫描(附件)(0)", url: this.getDownLoadUrl(0, 3)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },       //2
         {
           title:"退单",
@@ -75,7 +80,8 @@ export default {
           download: [
             {title: "下载退单材料(0)", url: this.getDownLoadUrl(0, 4)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },       //3
         {
           title:"退单完成",
@@ -83,7 +89,8 @@ export default {
           download: [
             {title: "下载退单完毕单据(0)", url: this.getDownLoadUrl(0, 5)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },    //4
         {
           title:"退库",
@@ -92,7 +99,8 @@ export default {
             {title: "下载退库单(0)", url: this.getDownLoadUrl(2, 6)},
             {title: "下载装车照片(0)", url: this.getDownLoadUrl(1, 6)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },       //5
         {
           title:"放行",
@@ -100,7 +108,8 @@ export default {
           download: [
             {title: "下载放行单据(0)", url: this.getDownLoadUrl(0, 7)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },       //6
         {
           title:"境内送货",
@@ -114,7 +123,8 @@ export default {
             {title: "车辆照片(附件)(0)", url: this.getDownLoadUrl(3, 11)},
             {title: "其它才材料(附件)(0)", url: this.getDownLoadUrl(0, 11)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },    //7
         {
           title:"货物送达",
@@ -124,7 +134,8 @@ export default {
             {title: "货物照片(附件)(0)", url: this.getDownLoadUrl(5, 10)},
             {title: "现场照片(附件)(0)", url: this.getDownLoadUrl(6, 10)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },    //8
         {
           title:"提交提货车辆信息",
@@ -137,7 +148,8 @@ export default {
             {title: "车辆照片(附件)(0)", url: this.getDownLoadUrl(3, 8)},
             {title: "其它才材料(附件)(0)", url: this.getDownLoadUrl(0, 8)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },  //9
         {
           title:"提货交接",
@@ -147,7 +159,8 @@ export default {
             {title: "车辆(附件)(0)", url: this.getDownLoadUrl(3, 9)},
             {title: "其他附件(附件)(0)", url: this.getDownLoadUrl(0, 9)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },      //10
         {
           title:"提交转关",
@@ -160,28 +173,32 @@ export default {
           download: [
             {title: "下载转关单据(0)", url: this.getDownLoadUrl(0, 12)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },       //11
         {
           title:"转关",
           download: [
             {title: "附件(附件)(0)", url: this.getDownLoadUrl(0, 13)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },          //12
         {
           title:"转关异常",
           download: [
             {title: "附件(附件)(0)", url: this.getDownLoadUrl(0, 15)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },      //13
         {
           title:"转关完毕",
           download: [
             {title: "附件(附件)(0)", url: this.getDownLoadUrl(0, 14)},
           ],
-          marks:""
+          marks:"",
+          operater_time:""
         },      //14
       ]
     }

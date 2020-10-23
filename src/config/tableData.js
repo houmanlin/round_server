@@ -9,10 +9,7 @@ const SYSTEM_LOG_TABLE = [
         label: "分单号",
         prop: "busDate"
     },
-    {
-        label: "操作时间",
-        prop: "busDate"
-    },
+
     {
         label: "操作人员账户",
         prop: "updateBy"
@@ -24,6 +21,10 @@ const SYSTEM_LOG_TABLE = [
     {
         label: "操作内容",
         prop: "operContent"
+    },
+    {
+        label: "操作时间",
+        prop: "busDate"
     },
 ]
 
@@ -43,16 +44,17 @@ const USER_MANAGE_TABLE = [
         prop: "position"
     },
     {
-        label: "创建时间",
-        prop: "createDate"
+        label: "是否可用",
+        prop: "enable_text"
     },
+
     {
         label: "创建人",
         prop: "createBy"
     },
     {
-        label: "是否可用",
-        prop: "enable_text"
+        label: "创建时间",
+        prop: "createDate"
     },
     {
         label: "操作",
@@ -113,16 +115,17 @@ const CLIENT_MANAGE_TABLE = [
         prop: "customerCode"
     },
     {
-        label: "创建时间",
-        prop: "createDate"
+        label: "是否可用",
+        prop: "enable_text"
     },
     {
         label: "创建人",
         prop: "createBy"
     },
+
     {
-        label: "是否可用",
-        prop: "enable_text"
+        label: "创建时间",
+        prop: "createDate"
     },
     {
         label: "操作",
@@ -207,6 +210,119 @@ const BUSINESS_BILLING_TABLE = [
 
 // 进出口业务表格头
 const IMPORT_BUSINESS_TABLE = [
+    {
+        label: "状态",
+        prop: "currentStatus"
+    },
+    {
+        label: "业务类型",
+        prop: "exitPort"
+    },
+    {
+        label: "一级客户",
+        prop: "customerNameOne"
+    },
+    {
+        label: "二级客户",
+        prop: "customerNameTwo"
+    },
+    {
+        label: "主单号/分单号",
+        prop: "mainNo"
+    },
+    {
+        label: "通关口岸",
+        prop: "exitPort"
+    },
+    {
+        label: "报关日期",
+        prop: "declarationDate"
+    },
+    {
+        label: "报关口岸",
+        prop: "customsPort"
+    },
+    {
+        label: "航班号",
+        prop: "flightNo"
+    },
+    {
+        label: "航班日期",
+        prop: "flightDate"
+    },
+    {
+        label: "件数",
+        prop: "mainNumPackage"
+    },
+    {
+        label: "毛重",
+        prop: "mainRoughWeight"
+    },
+    {
+        label: "报关企业代理",
+        prop: "productionSaleUnit"
+    },
+    {
+        label: "报关日期",
+        prop: "productionSaleUnit"
+    },
+    {
+        label: "提交报关",
+        prop: "productionSaleUnit"
+    },
+    {
+        label: "提交查验",
+        prop: "commitCheckStatus",
+        hase_status: true
+    },
+    {
+        label: "查验操作",
+        prop: "commitCheckStatus",
+        hase_status: true
+    },
+    {
+        label: "提交放行",
+        prop: "commitCheckStatus",
+        hase_status: true
+    },
+    {
+        label: "放行出库",
+        prop: "commitCheckStatus",
+        hase_status: true
+    },
+    {
+        label: "提交转关",
+        prop: "commitCheckStatus",
+        hase_status: true
+    },
+    {
+        label: "转关操作",
+        prop: "commitCheckStatus",
+        hase_status: true
+    },
+    {
+        label: "提货操作",
+        prop: "commitCheckStatus",
+        hase_status: true
+    },
+    {
+        label: "提交退单",
+        prop: "commitCheckStatus",
+        hase_status: true
+    },
+    {
+        label: "退单操作",
+        prop: "commitCheckStatus",
+        hase_status: true
+    },
+    {
+        label: "操作",
+        prop: [ "编辑", "查看", "上传", "下载" ]
+    },
+]
+
+// 进出口业务表格头
+const HOSE_BILL_TABLE = [
     {
         label: "状态",
         prop: "currentStatus"
@@ -347,35 +463,6 @@ const IMPORT_BUSINESS_TABLE = [
         label: "转关完毕",
         prop: "customsTransitFinishStatus",
         hase_status: true
-    },
-    {
-        label: "操作",
-        prop: [ "编辑", "查看", "上传", "下载" ]
-    },
-]
-
-// 进出口业务表格头
-const HOSE_BILL_TABLE = [
-    {
-        label: "分单号",
-        prop: "submenuNo"
-    },
-    {
-        label: "分单件数",
-        prop: "submenuNumPackage"
-    },
-    {
-        label: "分单毛重",
-        prop: "roughWeight"
-    },
-
-    {
-        label: "分单计费重量",
-        prop: "chargedWeight"
-    },
-    {
-        label: "贸易方式",
-        prop: "tradeType"
     },
 ]
 

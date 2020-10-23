@@ -13,7 +13,7 @@
             show-word-limit
         />
       </el-form-item>
-      <el-form-item label="上传放行单据（附件）">
+      <el-form-item label="放行通知单（附件）">
         <el-upload
             class="upload-demo"
             ref="upload"

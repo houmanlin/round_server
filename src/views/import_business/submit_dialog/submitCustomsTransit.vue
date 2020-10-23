@@ -4,12 +4,6 @@
       width="35%"
       :before-close="handleClose">
     <el-form ref="form" :model="clearanceData" label-width="100px">
-<!--      <el-form-item label="报关服务商">-->
-<!--        <el-input v-model="clearanceData.service_shop" placeholder="请输入报关服务商"></el-input>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="报关单号">-->
-<!--        <el-input v-model="clearanceData.clearance_order" placeholder="请输入报关单号"/>-->
-<!--      </el-form-item>-->
       <el-form-item label="备注">
         <el-input
             type="textarea"
@@ -19,7 +13,7 @@
             show-word-limit
             />
       </el-form-item>
-      <el-form-item label="附件">
+      <el-form-item label="退单文件(附件)">
         <el-upload
             class="upload-demo"
             ref="upload"

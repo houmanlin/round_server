@@ -13,7 +13,7 @@
             show-word-limit
         />
       </el-form-item>
-      <el-form-item label="入库照片(附件)">
+      <el-form-item label="查验通知书附件(附件)">
         <el-upload
             class="upload-demo"
             ref="upload"

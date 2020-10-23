@@ -41,7 +41,7 @@
       <!--  操作时间选择  -->
         <el-form :inline="true" :model="flight" label-position="left" label-width="80px" >
           <el-form-item label="状态" class="form">
-          <el-select filterable v-model="status" collapse-tags placeholder="请选择状态"
+          <el-select filterable multiple v-model="status" collapse-tags placeholder="请选择状态"
                      style="width: 230px">
             <el-option
                 v-for="item in operator_type_list"

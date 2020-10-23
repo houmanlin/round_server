@@ -89,17 +89,17 @@
       <div class="basics_info_entering_form">
         <el-form :inline="true" :model="mast_info" label-width="96px" label-position="left" class="demo-form-inline">
           <el-form-item label="品名数量">
-            <el-input :disabled="mainTypeSelected == '一主多分'" v-model="mast_info.descriptionNum" placeholder="请输入品名数量"></el-input>
+            <el-input :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''" v-model="mast_info.descriptionNum" placeholder="请输入品名数量"></el-input>
           </el-form-item>
           <el-form-item label="报关销售代理">
-            <el-input :disabled="mainTypeSelected == '一主多分'" v-model="mast_info.company_agency" placeholder="请输入报关销售代理"></el-input>
+            <el-input :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''" v-model="mast_info.company_agency" placeholder="请输入报关销售代理"></el-input>
           </el-form-item>
           <el-form-item label="生产销售单位">
-            <el-input :disabled="mainTypeSelected == '一主多分'" v-model="mast_info.sale_monad" placeholder="请输入生产销售单位"></el-input>
+            <el-input :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''" v-model="mast_info.sale_monad" placeholder="请输入生产销售单位"></el-input>
           </el-form-item>
           <el-form-item label="报关类型">
             <el-select
-                :disabled="mainTypeSelected == '一主多分'"
+                :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''"
                 v-model="mast_info.baoguan_type"
                 placeholder="请选择报关类型">
               <el-option label="贸易" value="贸易"></el-option>
@@ -109,7 +109,7 @@
           </el-form-item>
           <el-form-item label="监管方式">
             <el-select
-                :disabled="mainTypeSelected == '一主多分'"
+                :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''"
                 v-model="mast_info.jianguan_type"
                 placeholder="请选择报关类型">
               <el-option label="9610" value="9610"></el-option>
@@ -119,10 +119,10 @@
             </el-select>
           </el-form-item>
           <el-form-item :label="mast_info.yewu_type == '统一版进口' ? '始发港' : '目的港'">
-            <el-input :disabled="mainTypeSelected == '一主多分'" v-model="mast_info.destination" :placeholder="mast_info.yewu_type == '统一版出口' ? '请输入始发的' : '请输入目的地'"></el-input>
+            <el-input :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''" v-model="mast_info.destination" :placeholder="mast_info.yewu_type == '统一版出口' ? '请输入始发的' : '请输入目的地'"></el-input>
           </el-form-item>
           <el-form-item label="主单体积">
-            <el-input :disabled="mainTypeSelected == '一主多分'" v-model="mast_info.mast_volume" placeholder="请输入主单体积"></el-input>
+            <el-input :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''" v-model="mast_info.mast_volume" placeholder="请输入主单体积"></el-input>
           </el-form-item>
           <el-form-item :label="mast_info.yewu_type == '转关'? '境内监管中转' : '境内送货'" v-if="mast_info.yewu_type == '统一版进口'">
             <el-select filterable  v-model="mast_info.is_jingnei" placeholder="请选择境内送货">
@@ -147,36 +147,36 @@
 
         <div class="house_bill_content" v-for="(item, index) in mast_info.busSubmenuSaveDTOS">
           <!-- 分单号-->
-<!--          <div class="form_item">-->
-<!--            <span>分单号</span>-->
-<!--            <el-input v-model="item.submenuNo" placeholder="请输入分单号"></el-input>-->
-<!--          </div>-->
+          <div class="form_item">
+            <span>分单号</span>
+            <el-input v-model="item.submenuNo" placeholder="请输入分单号" :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''"></el-input>
+          </div>
           <!-- 分单件数-->
           <div class="form_item">
             <span>分单件数</span>
-            <el-input :disabled="mainTypeSelected == '直单'" v-model="item.submenuNumPackage" placeholder="请输入分单件数"></el-input>
+            <el-input :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''" v-model="item.submenuNumPackage" placeholder="请输入分单件数"></el-input>
           </div>
 
           <div class="form_item">
             <span>分单毛重</span>
-            <el-input :disabled="mainTypeSelected == '直单'" v-model="item.roughWeight" placeholder="请输入分单毛重"></el-input>
+            <el-input :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''" v-model="item.roughWeight" placeholder="请输入分单毛重"></el-input>
           </div>
           <!-- 品名数量-->
           <div class="form_item">
             <span>品名数量</span>
-            <el-input :disabled="mainTypeSelected == '直单'" v-model="item.pinming_shu" placeholder="请输入品名数量"></el-input>
+            <el-input :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''" v-model="item.pinming_shu" placeholder="请输入品名数量"></el-input>
           </div>
 
           <!-- 分单计费量-->
           <div class="form_item">
             <span>报关代理</span>
-            <el-input :disabled="mainTypeSelected == '直单'" v-model="item.baoguan_daili" placeholder="请输入报关代理"></el-input>
+            <el-input :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''" v-model="item.baoguan_daili" placeholder="请输入报关代理"></el-input>
 
           </div>
           <!-- 分单计费量-->
           <div class="form_item">
             <span>生产销售单位</span>
-            <el-input :disabled="mainTypeSelected == '直单'" v-model="item.sale_monad" placeholder="请输入生产销售单位"></el-input>
+            <el-input :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''" v-model="item.sale_monad" placeholder="请输入生产销售单位"></el-input>
           </div>
 
 <!--        -->
@@ -189,7 +189,7 @@
           <div class="form_item">
             <span>报关代理</span>
             <el-select
-                :disabled="mainTypeSelected == '直单'"
+                :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''"
                 v-model="item.baoguan_type"
                 placeholder="请选择报关类型">
               <el-option label="贸易" value="贸易"></el-option>
@@ -201,7 +201,7 @@
           <div class="form_item">
             <span>监管方式</span>
             <el-select
-                :disabled="mainTypeSelected == '直单'"
+                :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''"
                 v-model="item.jianguan_type"
                 placeholder="请选择监管方式">
               <el-option label="9610" value="9610"></el-option>
@@ -220,12 +220,12 @@
           <!-- 目的地-->
           <div class="form_item">
             <span>{{ mast_info.yewu_type == '统一版进口' ? '始发港' : '目的港' }}</span>
-            <el-input :disabled="mainTypeSelected == '直单'"
+            <el-input :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''"
                        v-model="item.destination" :placeholder=" mast_info.yewu_type == '统一版出口' ? '请输入始发的' : '请输入目的地'"></el-input>
           </div>
           <div class="form_item" v-if="mast_info.yewu_type == '统一版进口'">
             <span>{{ mast_info.yewu_type == '转关'? '境内监管中转' : '境内送货' }}</span>
-            <el-select filterable  v-model="item.is_jingnei" :disabled="mainTypeSelected == '直单'" placeholder="请选择境内送货">
+            <el-select filterable  v-model="item.is_jingnei" :disabled="mainTypeSelected == '直单' || mainTypeSelected == ''" placeholder="请选择境内送货">
               <el-option label="是" :value="1"></el-option>
               <el-option label="否" :value="0"></el-option>
             </el-select>
@@ -405,7 +405,7 @@ export default {
         busSubmenuSaveDTOS    : [
 
           {
-            // submenuNo: '',
+            submenuNo: '',
             submenuNumPackage: "", feiyong: "", pinming_shu:"", baoguan_daili:"",sale_monad:"",is_jingnei:"",baoguan_type:"",destination:"",roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType: []},
         ],                                //分单信息
         addresser_info         : "",      //发件人信息
@@ -512,7 +512,7 @@ export default {
           let tradeType = busSubmenusItem.tradeType ? busSubmenusItem.tradeType : "";
 
           let busSubmenu_item = {
-            // submenuNo: busSubmenusItem.submenuNo,
+            submenuNo: busSubmenusItem.submenuNo,
             pinming_shu:busSubmenusItem.pinming_shu,
             baoguan_daili:busSubmenusItem.baoguan_daili,
             sale_monad:busSubmenusItem.sale_monad,
@@ -541,7 +541,7 @@ export default {
     dataAdd(){
       this.mast_info.busSubmenuSaveDTOS.push(
           {
-            // submenuNo: '',
+            submenuNo: '',
             submenuNumPackage: "",feiyong: "", pinming_shu:"",baoguan_daili:"", baoguan_type:"" , sale_monad:"" ,destination:"",is_jingnei:"",jianguan_type:"",roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType:[]},
       )
     },
@@ -582,7 +582,7 @@ export default {
       this.mast_info.sale_monad = ""
       this.mast_info.busSubmenuSaveDTOS = [
           {
-            // submenuNo: '',
+            submenuNo: '',
             submenuNumPackage: "", feiyong: "", pinming_shu:"",baoguan_daili:"",sale_monad:"",jianguan_type:"",is_jingnei:"",baoguan_type: "",destination: "", roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType:[]},
       ]
       this.mainTypeSelected = []
@@ -594,7 +594,7 @@ export default {
       for (let trace_type in origin_data.busSubmenuSaveDTOS) {
         let dtos = {
           id:origin_data.busSubmenuSaveDTOS[trace_type].id ? origin_data.busSubmenuSaveDTOS[trace_type].id : 0,
-          // submenuNo: origin_data.busSubmenuSaveDTOS[trace_type].submenuNo,
+          submenuNo: origin_data.busSubmenuSaveDTOS[trace_type].submenuNo,
           submenuNumPackage: origin_data.busSubmenuSaveDTOS[trace_type].submenuNumPackage,
           feiyong: origin_data.busSubmenuSaveDTOS[trace_type].feiyong,
           sale_monad: origin_data.busSubmenuSaveDTOS[trace_type].sale_monad,
@@ -667,7 +667,7 @@ export default {
 
           let dto = {
             id: item.id ? item.id : 0,
-            // submenuNo: item.submenuNo,
+            submenuNo: item.submenuNo,
             submenuNumPackage: item.submenuNumPackage,
             feiyong: item.feiyong,
             pinming_shu: item.pinming_shu,

@@ -4,10 +4,6 @@
       border
       @cell-dblclick="double_click"
       height="400"
-      :header-cell-style="{
-          'background-color': '#fafafa',
-          'border-bottom': '1px #409EFF solid'
-      }"
       @selection-change="handleSelectionChange"
       style="width: 100%">
 
@@ -16,7 +12,6 @@
         <template slot-scope="props">
           <el-table
               :data="props.row['busSubmenus']"
-              border
               :height="500"
               style="width: 100%">
 
@@ -24,29 +19,42 @@
               <el-table-column
                   v-if="indexs == 0"
                   type="selection"
-                  width="55">
+                  width="100">
               </el-table-column>
               <el-table-column
                   v-if="indexs == 0"
                   fixed="left"
-                  label="编号"
+                  label="序号"
                   align="center"
                   type="index"
 
                   width="50">
               </el-table-column>
 
-
               <el-table-column
                   :key="indexs"
                   align="center"
-                  v-if="items.label != '操作'"
+                  fixed="left"
+                  v-if="items.label != '操作' && items.label != '主单号/分单号'"
                   :prop="items.prop"
+                  :fixed="item.label == '序号' || item.label == '状态' || item.label == '业务类型' || item.label == '一级客户' ||  item.label == '二级客户' || item.label == '主单号/分单号' ? 'left' : false "
                   show-overflow-tooltip
-                  width="300"
-
+                  :min-width="items.label == '序号' || items.label == '状态' || items.label == '业务类型' || items.label == '一级客户' ||  items.label == '二级客户' || items.label == '主单号/分单号' ? '120' : '200'"
                   :label="items.label"/>
 
+              <el-table-column align="center"
+                               :key="index"
+                               v-if="items.label == '主单号/分单号'"
+                               :prop="items.prop"
+                               fixed="left"
+                               show-overflow-tooltip
+                               min-width="200"
+                               @click="checkOrderInfo(items)"
+                               :label="items.label">
+                <template slot-scope="scope">
+                  <el-button type="text">{{scope.row.mainNo}}</el-button>
+                </template>
+              </el-table-column>
             </template>
 
           </el-table>
@@ -72,6 +80,7 @@
                        :key="index"
                        v-if="item.label == '主单号/分单号'"
                        :prop="item.prop"
+                       fixed="left"
                        show-overflow-tooltip
                        min-width="200"
                        @click="checkOrderInfo(item)"
@@ -85,7 +94,8 @@
           v-if="item.label != '操作' && item.label != '主单号/分单号' && !item.hase_status"
           :prop="item.prop"
           show-overflow-tooltip
-          min-width="200"
+          :fixed="item.label == '序号' || item.label == '状态' || item.label == '业务类型' || item.label == '一级客户' ||  item.label == '二级客户' || item.label == '主单号/分单号' ? 'left' : false "
+          :min-width="item.label == '序号' || item.label == '状态' || item.label == '业务类型' || item.label == '一级客户' ||  item.label == '二级客户' || item.label == '主单号/分单号' ? 130 : 200"
           @click="checkOrderInfo(item)"
           :label="item.label"/>
       <el-table-column align="center"
@@ -236,5 +246,8 @@ export default {
   text-align: center;
 }
 
+/deep/ .el-table__expanded-cell{
+  padding: 0;
+}
 
 </style>
