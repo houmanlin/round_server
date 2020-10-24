@@ -10,6 +10,12 @@
             v-model="clearanceData.dialog_submenuNo"
         />
       </el-form-item>
+      <el-form-item label="转关单号">
+        <el-input
+            placeholder="请输入转关单号"
+            v-model="clearanceData.dialog_zhuanguan_order"
+        />
+      </el-form-item>
       <el-form-item label="分单件数">
         <el-input
             placeholder="请输入分单件数"
@@ -40,6 +46,7 @@
             v-model="clearanceData.dialog_sale_monad"
         />
       </el-form-item>
+
       <el-form-item label="监管方式">
         <el-select
             v-model="clearanceData.dialog_jianguan_type"
@@ -50,7 +57,7 @@
           <el-option label="0110" value="0110"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item :label="clearanceData.dialog_yewu_type == '转关'? '境内监管中转' : '境内送货'" v-if="clearanceData.dialog_yewu_type == '转关'">
+      <el-form-item :label="clearanceData.dialog_yewu_type == '转关'? '境内监管中转' : '境内送货'" v-if="clearanceData.dialog_yewu_type == '转关' || clearanceData.dialog_yewu_type == '统一版出口'">
         <el-select filterable  v-model="clearanceData.dialog_is_jingnei" placeholder="请选择境内送货">
           <el-option label="是" :value="1"></el-option>
           <el-option label="否" :value="0"></el-option>
@@ -88,7 +95,8 @@ export default {
         dialog_sale_monad:"",
         dialog_jianguan_type:[],
         dialog_feiyong: 0,
-        dialog_is_jingnei: ""
+        dialog_is_jingnei: "",
+        dialog_zhuanguan_order: ""
       }
     }
   },
@@ -104,6 +112,7 @@ export default {
       this.clearanceData.dialog_sale_monad        = this.editData.sale_monad
       this.clearanceData.dialog_jianguan_type     = this.editData.jianguan_type
       this.clearanceData.dialog_yewu_type         = this.editData.yewu_type
+      this.clearanceData.dialog_zhuanguan_order   = this.editData.zhuanguan_order
     }
   },
   methods:{
@@ -118,6 +127,7 @@ export default {
       emitData['baoguan_daili']      =  this.clearanceData.dialog_baoguan_daili
       emitData['sale_monad']         =  this.clearanceData.dialog_sale_monad
       emitData['jianguan_type']      =  this.clearanceData.dialog_jianguan_type
+      emitData['zhuanguan_order']      =  this.clearanceData.dialog_zhuanguan_order
       this.$emit("onEditHouseNo", emitData)
     },
     handleClose(){

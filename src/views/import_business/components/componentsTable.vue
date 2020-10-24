@@ -2,7 +2,7 @@
   <el-table
       :data="tableData"
       border
-      @cell-dblclick="double_click"
+      @cell-click="double_click"
       height="400"
       @selection-change="handleSelectionChange"
       style="width: 100%">
@@ -13,7 +13,9 @@
           <el-table
               :data="props.row['busSubmenus']"
               :height="500"
-              style="width: 100%">
+              style="width:90%"
+              @cell-click="double_click"
+             >
 
             <template v-for="(items, indexs) in house_bill_header" >
               <el-table-column
@@ -34,12 +36,11 @@
               <el-table-column
                   :key="indexs"
                   align="center"
-                  fixed="left"
                   v-if="items.label != '操作' && items.label != '主单号/分单号'"
                   :prop="items.prop"
                   :fixed="item.label == '序号' || item.label == '状态' || item.label == '业务类型' || item.label == '一级客户' ||  item.label == '二级客户' || item.label == '主单号/分单号' ? 'left' : false "
                   show-overflow-tooltip
-                  :min-width="items.label == '序号' || items.label == '状态' || items.label == '业务类型' || items.label == '一级客户' ||  items.label == '二级客户' || items.label == '主单号/分单号' ? '120' : '200'"
+                  :min-width="items.label == '序号' || items.label == '状态' || items.label == '业务类型' || items.label == '一级客户' ||  items.label == '二级客户' || items.label == '主单号/分单号' ? '131' : '200'"
                   :label="items.label"/>
 
               <el-table-column align="center"
@@ -248,6 +249,14 @@ export default {
 
 /deep/ .el-table__expanded-cell{
   padding: 0;
+}
+/deep/.el-table__fixed {
+  height:auto !important;
+  bottom:17px;
+  position: absolute;
+  top: 0;
+  left: 0;
+
 }
 
 </style>

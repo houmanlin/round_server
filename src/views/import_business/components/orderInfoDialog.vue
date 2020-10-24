@@ -72,7 +72,7 @@
       <el-form-item label="生产销售单位:" class="info_item">
         <div class="form_value">{{ orderInfo.productionSaleUnit }}</div>
       </el-form-item>
-      <el-form-item label="备注:" class="info_item" style="width: 98%">
+      <el-form-item label="备注:" class="info_item" style="width: 98%; border-color: #ffffff">
         <div class="form_value">{{ orderInfo.remark }}</div>
       </el-form-item>
     </el-form>

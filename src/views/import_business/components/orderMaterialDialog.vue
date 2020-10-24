@@ -12,16 +12,17 @@
               <el-timeline-item v-for="(item, index) in order_flow" :timestamp="item.title" :key="index" placement="top">
                 <el-card>
                   <el-row>
-                    <el-col v-for="(item, indexs) in item.about_info" :key="indexs" :span="10">
+                    <el-col v-for="(item, indexs) in item.about_info" :key="indexs" :span="6">
                      {{ indexs }}: {{ item }}
                     </el-col>
-                    <el-col :span="24" class="down_group">{{ item.title == '转关异常' ? '异常原因' : '备注' }}: {{item.marks}}</el-col>
-                    <el-col :span="24" class="down_group">
-                      <el-button @click="DownLoad(items.url['fileType'], items.url['nodeType'])" size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}</el-button>
-                    </el-col>
-                    <el-col :span="24" class="down_group">
+                    <el-col :span="12" class="down_group">
                       操作时间: 2020年10月22日
                     </el-col>
+                    <el-col :span="12" class="down_group">{{ item.title == '转关异常' ? '异常原因' : '备注' }}: {{item.marks}}</el-col>
+                    <el-col :span="24" class="down_group">
+                      <el-button  @click="DownLoad(items.url['fileType'], items.url['nodeType'])" size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}</el-button>
+                    </el-col>
+
                   </el-row>
                    </el-card>
               </el-timeline-item>
@@ -251,7 +252,7 @@ export default {
 <style scoped>
   .order_flow{
     width: 100%;
-    height: 600px;
+    height: 650px;
     overflow-y: auto;
 
   }
@@ -261,6 +262,10 @@ export default {
     margin: 0 auto;
   }
   .down_group{
-    margin: 15px 0;
+    margin: 0;
+  }
+  /deep/ .el-card__body{
+    padding-top: 5px;
+    padding-bottom: 5px
   }
 </style>

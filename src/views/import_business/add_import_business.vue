@@ -79,15 +79,7 @@
 
         </el-select>
       </el-form-item>
-      <el-form-item :label="mast_info.yewu_type == '转关'? '境内监管中转' : '境内送货'" v-if="mast_info.yewu_type == '转关'">
-      <el-select filterable  v-model="mast_info.is_jingnei" placeholder="请选择境内送货">
-        <el-option label="是" :value="1"></el-option>
-        <el-option label="否" :value="0"></el-option>
-      </el-select>
-    </el-form-item>
-      <el-form-item label="费用" v-if="mast_info.is_jingnei">
-        <el-input v-model="mast_info.feiyong" placeholder="请输入费用"></el-input>
-      </el-form-item>
+
     </el-form>
 
 <!--    基础信息-->
@@ -120,17 +112,29 @@
             <el-select
                 :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''"
                 v-model="mast_info.jianguan_type"
-                placeholder="请选择报关类型">
+                placeholder="请选择监管方式">
               <el-option label="9610" value="9610"></el-option>
               <el-option label="9710" value="9710"></el-option>
               <el-option label="9810" value="9810"></el-option>
               <el-option label="0110" value="0110"></el-option>
             </el-select>
           </el-form-item>
+          <el-form-item label="转关单号">
+            <el-input v-model="mast_info.zhuanguan_order" placeholder="请输入转关单号" :disabled="mainTypeSelected != '转关'"></el-input>
+          </el-form-item>
           <el-form-item :label="mast_info.yewu_type == '统一版进口' ? '始发港' : '目的港'">
-            <el-input :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''" v-model="mast_info.destination" :placeholder="mast_info.yewu_type == '统一版出口' ? '请输入始发的' : '请输入目的地'"></el-input>
+            <el-input :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''" v-model="mast_info.destination" :placeholder="mast_info.yewu_type == '统一版进口' ? '请输入始发港' : '请输入目的港'"></el-input>
+          </el-form-item>
+          <el-form-item :label="mast_info.yewu_type == '转关'? '境内监管中转' : '境内送货'" v-if="mast_info.yewu_type == '转关' || mast_info.yewu_type == '统一版出口'">
+            <el-select filterable  v-model="mast_info.is_jingnei" :placeholder="'请选择' + mast_info.yewu_type == '转关'? '境内监管中转' : '境内送货'">
+              <el-option label="是" :value="1"></el-option>
+              <el-option label="否" :value="0"></el-option>
+            </el-select>
           </el-form-item>
 
+          <el-form-item label="费用" v-if="mast_info.is_jingnei">
+            <el-input v-model="mast_info.feiyong" placeholder="请输入费用"></el-input>
+          </el-form-item>
         </el-form>
       </div>
     </div>
@@ -216,7 +220,7 @@
 <!--            </el-form-item>-->
 
             <el-form-item label="备注">
-              <el-input :disabled="mast_info.yewu_type == '统一版出口'" v-model="mast_info.marks" placeholder="请输入备注"></el-input>
+              <el-input v-model="mast_info.marks" placeholder="请输入备注"></el-input>
             </el-form-item>
           </el-form>
 
@@ -333,6 +337,7 @@ export default {
         tradeNo               : "",       //主单数量
         is_jingnei            : 0,
         currency              : "",
+        zhuanguan_order       : "",
         mast_weight           : "",       //主单重量
         mast_volume           : "",       //主单体积
         contractCoding           : "",       //主单体积
@@ -463,6 +468,7 @@ export default {
           let busSubmenu_item = {
             submenuNo: busSubmenusItem.submenuNo,
             pinming_shu:busSubmenusItem.pinming_shu,
+            zhuanguan_order:busSubmenusItem.zhuanguan_order,
             baoguan_daili:busSubmenusItem.baoguan_daili,
             sale_monad:busSubmenusItem.sale_monad,
             baoguan_type:busSubmenusItem.baoguan_type,
@@ -476,7 +482,7 @@ export default {
             id: busSubmenusItem.id ? busSubmenusItem.id : 0,
             chargedWeight: busSubmenusItem.chargedWeight,
             addressee: busSubmenusItem.addressee,
-            tradeType: tradeType.split(",")
+            // tradeType: tradeType.split(",")
           }
 
           this.$set(this.mast_info["busSubmenuSaveDTOS"], argumentsKey, busSubmenu_item)
@@ -497,6 +503,7 @@ export default {
       this.mast_info.busSubmenuSaveDTOS.push(
           {
             submenuNo: '',
+            zhuanguan_order: '',
             submenuNumPackage: "",feiyong: "", pinming_shu:"",baoguan_daili:"", baoguan_type:"" , sale_monad:"" ,destination:"",is_jingnei:"",jianguan_type:"",roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType:[]},
       )
     },
@@ -586,7 +593,8 @@ export default {
           volume: origin_data.busSubmenuSaveDTOS[trace_type].volume,
           chargedWeight: origin_data.busSubmenuSaveDTOS[trace_type].chargedWeight,
           addressee: origin_data.busSubmenuSaveDTOS[trace_type].addressee,
-          tradeType: origin_data.busSubmenuSaveDTOS[trace_type].tradeType
+          tradeType: origin_data.busSubmenuSaveDTOS[trace_type].tradeType,
+          zhuanguan_order: origin_data.busSubmenuSaveDTOS[trace_type].zhuanguan_order
         }
         // console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType);
         //   console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType.join(","))
@@ -650,6 +658,7 @@ export default {
           let dto = {
             id: item.id ? item.id : 0,
             submenuNo: item.submenuNo,
+            zhuanguan_order: item.zhuanguan_order,
             submenuNumPackage: item.submenuNumPackage,
             feiyong: item.feiyong,
             pinming_shu: item.pinming_shu,
@@ -659,7 +668,7 @@ export default {
             volume: item.volume,
             chargedWeight: item.chargedWeight,
             addressee: item.addressee,
-            tradeType: item.tradeType.join(',')
+            // tradeType: item.tradeType.join(',')
           }
           data.busSubmenuSaveDTOS.push(dto)
         }
@@ -667,9 +676,9 @@ export default {
       console.log(data.busSubmenuSaveDTOS)
 
 
-      if(this.mainTypeSelected && this.mainTypeSelected.length > 0){
-        data.mainType = this.mainTypeSelected.join(',')
-      }
+      // if(this.mainTypeSelected && this.mainTypeSelected.length > 0){
+      //   data.mainType = this.mainTypeSelected.join(',')
+      // }
 
       if(this.mast_info.id > 0){
 
