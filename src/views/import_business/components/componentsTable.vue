@@ -259,4 +259,18 @@ export default {
 
 }
 
+/deep/.el-icon-arrow-right:before {
+  content: "\e6d9";
+  color:red;
+}
+/deep/.el-table__expand-icon--expanded .el-icon-arrow-right:before {
+  content: "\e6d8";
+  color:red;
+}
+
+/deep/.el-table__expand-icon--expanded{
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
 </style>
