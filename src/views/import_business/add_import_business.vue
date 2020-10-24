@@ -93,7 +93,7 @@
             <el-input :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''" v-model="mast_info.descriptionNum" placeholder="请输入品名数量"></el-input>
           </el-form-item>
           <el-form-item label="报关代理">
-            <el-input :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''" v-model="mast_info.company_agency" placeholder="请输入报关销售代理"></el-input>
+            <el-input :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''" v-model="mast_info.company_agency" placeholder="请输入报关代理"></el-input>
           </el-form-item>
           <el-form-item label="生产销售单位">
             <el-input :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''" v-model="mast_info.sale_monad" placeholder="请输入生产销售单位"></el-input>
@@ -120,12 +120,12 @@
             </el-select>
           </el-form-item>
           <el-form-item label="转关单号">
-            <el-input v-model="mast_info.zhuanguan_order" placeholder="请输入转关单号" :disabled="mainTypeSelected != '转关'"></el-input>
+            <el-input v-model="mast_info.zhuanguan_order" placeholder="请输入转关单号" :disabled="mast_info.yewu_type == '转关'"></el-input>
           </el-form-item>
           <el-form-item :label="mast_info.yewu_type == '统一版进口' ? '始发港' : '目的港'">
             <el-input :disabled="mainTypeSelected == '一主多分' || mainTypeSelected == ''" v-model="mast_info.destination" :placeholder="mast_info.yewu_type == '统一版进口' ? '请输入始发港' : '请输入目的港'"></el-input>
           </el-form-item>
-          <el-form-item :label="mast_info.yewu_type == '转关'? '境内监管中转' : '境内送货'" v-if="mast_info.yewu_type == '转关' || mast_info.yewu_type == '统一版出口'">
+          <el-form-item :label="mast_info.yewu_type == '转关'? '境内监管中转' : '境内送货'" v-if="(mast_info.yewu_type == '转关' || mast_info.yewu_type == '统一版出口') && mainTypeSelected == '直单'">
             <el-select filterable  v-model="mast_info.is_jingnei" :placeholder="'请选择' + mast_info.yewu_type == '转关'? '境内监管中转' : '境内送货'">
               <el-option label="是" :value="1"></el-option>
               <el-option label="否" :value="0"></el-option>

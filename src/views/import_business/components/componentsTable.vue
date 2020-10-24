@@ -13,7 +13,7 @@
           <el-table
               :data="props.row['busSubmenus']"
               :height="500"
-              style="width:90%"
+              style="width:calc(100% - 180px)"
               @cell-click="double_click"
              >
 

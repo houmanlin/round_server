@@ -12,6 +12,7 @@
       </el-form-item>
       <el-form-item label="转关单号">
         <el-input
+            v-if="clearanceData.dialog_yewu_type == '转关'"
             placeholder="请输入转关单号"
             v-model="clearanceData.dialog_zhuanguan_order"
         />

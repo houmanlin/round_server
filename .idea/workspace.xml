@@ -12,11 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="上传文件修改---上传文件名">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/tableData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/tableData.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/add_import_business.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/components/componentsTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/componentsTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/orderInfoDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/orderInfoDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/import_business/submit_dialog/houseInfoDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/submit_dialog/houseInfoDialog.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +41,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/views/import_business/submit_dialog" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../customs-front-mobile" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -102,7 +99,7 @@
       <workItem from="1603328644336" duration="79000" />
       <workItem from="1603419408098" duration="15628000" />
       <workItem from="1603464603273" duration="1203000" />
-      <workItem from="1603534492379" duration="5625000" />
+      <workItem from="1603534492379" duration="8337000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1602261146043</created>
@@ -398,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603439833445</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="上传文件修改---上传文件名">
+      <created>1603543407239</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1603543407239</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,10 +452,10 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="117" y="92" key="DiffContextDialog/0.23.1440.799@0.23.1440.799" timestamp="1602575546401" />
-    <state x="501" y="236" key="FileChooserDialogImpl" timestamp="1603421152784">
+    <state x="114" y="232" key="FileChooserDialogImpl" timestamp="1603545593249">
       <screen x="0" y="0" width="1440" height="960" />
     </state>
-    <state x="501" y="236" key="FileChooserDialogImpl/0.0.1440.960@0.0.1440.960" timestamp="1603421152784" />
+    <state x="114" y="232" key="FileChooserDialogImpl/0.0.1440.960@0.0.1440.960" timestamp="1603545593249" />
     <state x="137" y="79" key="MergeDialog" timestamp="1602814769083">
       <screen x="0" y="0" width="1440" height="960" />
     </state>
@@ -470,11 +474,11 @@
       <screen x="0" y="0" width="1440" height="960" />
     </state>
     <state width="504" height="446" key="SwitcherDM/0.0.1440.960@0.0.1440.960" timestamp="1603435771921" />
-    <state x="313" y="214" key="Vcs.Push.Dialog.v2" timestamp="1603439835305">
+    <state x="-325" y="0" key="Vcs.Push.Dialog.v2" timestamp="1603543413248">
       <screen x="0" y="0" width="1440" height="960" />
     </state>
     <state x="320" y="157" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1602569692480" />
-    <state x="313" y="214" key="Vcs.Push.Dialog.v2/0.0.1440.960@0.0.1440.960" timestamp="1603439835305" />
+    <state x="-325" y="0" key="Vcs.Push.Dialog.v2/0.0.1440.960@0.0.1440.960" timestamp="1603543413248" />
     <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602686403018" />
     <state x="100" y="123" width="1240" height="599" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602517251833">
       <screen x="0" y="23" width="1440" height="799" />
@@ -484,10 +488,10 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="511" y="163" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.23.1440.799@0.23.1440.799" timestamp="1602267768183" />
-    <state x="521" y="384" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603169275068">
+    <state x="324" y="193" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603546433908">
       <screen x="0" y="0" width="1440" height="960" />
     </state>
-    <state x="521" y="384" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.960@0.0.1440.960" timestamp="1603169275068" />
+    <state x="324" y="193" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.960@0.0.1440.960" timestamp="1603546433908" />
     <state x="521" y="343" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.799@0.23.1440.799" timestamp="1602501187031" />
     <state x="479" y="93" width="652" height="769" key="find.popup" timestamp="1603424097103">
       <screen x="0" y="0" width="1440" height="960" />
