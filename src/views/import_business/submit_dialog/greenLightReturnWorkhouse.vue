@@ -90,7 +90,7 @@ export default {
     },
    handlePreview(file){
 
-      this.clearanceData.file.push(file)
+      this.clearanceData.file.push(file.file)
     },
     removeData1(file , fileList){
       for (let item in this.clearanceData.file1){
@@ -103,7 +103,7 @@ export default {
     },
    handlePreview1(file){
 
-      this.clearanceData.file1.push(file)
+      this.clearanceData.file1.push(file.file)
     },
     removeData2(file , fileList){
       for (let item in this.clearanceData.file2){
@@ -116,20 +116,36 @@ export default {
     },
    handlePreview2(file){
 
-      this.clearanceData.file2.push(file)
+      this.clearanceData.file2.push(file.file)
     },
     submitForm(){
       let data = new FormData()
-
+      let filename = ""
+      let filename1 = ""
+      let filename2 = ""
 
 
       data.append("mainNo", this.mainNo)
       data.append("commitPermitRemark", this.clearanceData.mark)
-      data.append("nodeType", 7)
-      this.clearanceData.file.forEach(file => {
-        data.append("file", file, file.name)
-      })
+      data.append("nodeType", 5)
+      this.clearanceData.file.forEach((file,index) => {
 
+        data.append("file", file, file.name)
+        filename += this.clearanceData.file.length != index + 1 ? `${file.name},` : `${file.name}`
+      })
+      this.clearanceData.file1.forEach((file,index) => {
+
+        data.append("file", file, file.name)
+        filename1 += this.clearanceData.file1.length != index + 1 ? `${file.name},` : `${file.name}`
+      })
+      this.clearanceData.file2.forEach((file,index) => {
+
+        data.append("file", file, file.name)
+        filename2 += this.clearanceData.file2.length != index + 1 ? `${file.name},` : `${file.name}`
+      })
+      data.append("dischargedNoticeFileNames", filename)
+      data.append("customsDeclarationFileNames", filename1)
+      data.append("outboundDeliveryOrderFileNames", filename2)
       uploadForm(data).then(res=>{
         this.dialogVisible = false
 

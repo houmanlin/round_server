@@ -19,7 +19,7 @@
             show-word-limit
             />
       </el-form-item>
-      <el-form-item label="附件">
+      <el-form-item label="报关单附件">
         <el-upload
             class="upload-demo"
             ref="upload"
@@ -81,9 +81,7 @@ export default {
 
 
       data.append("mainNo", this.mainNo)
-      data.append("customsServiceProvider", this.clearanceData.service_shop)
-      data.append("customsNo", this.clearanceData.clearance_order)
-      data.append("nodeType", 2)
+      data.append("nodeType", 1)
       data.append("commitCustomsRemark", this.clearanceData.mark)
 
       let file_name = ""
@@ -93,7 +91,7 @@ export default {
         file_name += this.clearanceData.file.length != index + 1 ? `${file.name},` : `${file.name}`
       })
 
-      data.append("ordinaryFileNames", file_name)
+      // data.append("customsDeclarationFileNames", file_name)
 
       uploadForm(data).then(()=>{
         this.dialogVisible = false
@@ -101,7 +99,7 @@ export default {
         this.clearanceData.service_shop = "";
         this.clearanceData.clearance_order = "";
         this.clearanceData.file = [];
-        this.clearanceData.mark = [];
+        this.clearanceData.mark = "";
         this.$refs.upload.clearFiles()
 
         this.$emit('onUploadSuccess')

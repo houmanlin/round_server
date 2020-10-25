@@ -70,7 +70,7 @@ export default {
 
       data.append("mainNo", this.mainNo)
       data.append("commitCheckRemark", this.clearanceData.mark)
-      data.append("nodeType", 3)
+      data.append("nodeType", 2)
       this.clearanceData.file.forEach(file => {
         data.append("file", file, file.name)
       })

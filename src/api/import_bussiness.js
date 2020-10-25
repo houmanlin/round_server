@@ -50,3 +50,23 @@ export function getMainOrderInfo(params) {
         params,
     })
 }
+
+
+export function MainOrderDel(params) {
+    params = getParams(params)
+    return request({
+        url: "/busMain/getMainUpdateInfoById",
+        method: "GET",
+        params,
+    })
+}
+
+
+export function houseOrderDel(params) {
+    params = getParams(params)
+    return request({
+        url: "/busMain/delete",
+        method: "DELETE",
+        params,
+    })
+}

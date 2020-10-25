@@ -212,11 +212,11 @@ const BUSINESS_BILLING_TABLE = [
 const IMPORT_BUSINESS_TABLE = [
     {
         label: "状态",
-        prop: "currentStatus"
+        prop: "busNodeListVOS.status"
     },
     {
         label: "业务类型",
-        prop: "exitPort"
+        prop: "businessType"
     },
     {
         label: "一级客户",
@@ -232,7 +232,7 @@ const IMPORT_BUSINESS_TABLE = [
     },
     {
         label: "通关口岸",
-        prop: "exitPort"
+        prop: "clearancePort"
     },
     {
         label: "报关日期",
@@ -240,7 +240,7 @@ const IMPORT_BUSINESS_TABLE = [
     },
     {
         label: "报关口岸",
-        prop: "customsPort"
+        prop: "portEntry"
     },
     {
         label: "航班号",
@@ -252,67 +252,67 @@ const IMPORT_BUSINESS_TABLE = [
     },
     {
         label: "件数",
-        prop: "mainNumPackage"
+        prop: "mainNum"
     },
     {
         label: "毛重",
-        prop: "mainRoughWeight"
+        prop: "mainRoughtWeight"
     },
     {
-        label: "报关企业代理",
-        prop: "productionSaleUnit"
+        label: "报关代理",
+        prop: "customsBroker"
     },
     {
         label: "报关日期",
-        prop: "productionSaleUnit"
+        prop: "busNodeListVOS.commitCustomsDate"
     },
     {
         label: "提交报关",
-        prop: "productionSaleUnit"
+        prop: "busNodeListVOS.commitCustoms"
     },
     {
         label: "提交查验",
-        prop: "commitCheckStatus",
+        prop: "busNodeListVOS.commitCheck",
         hase_status: true
     },
     {
         label: "查验操作",
-        prop: "commitCheckStatus",
+        prop: "busNodeListVOS.commitOperationCheck",
         hase_status: true
     },
     {
         label: "提交放行",
-        prop: "commitCheckStatus",
+        prop: "busNodeListVOS.commitPermit",
         hase_status: true
     },
     {
         label: "放行出库",
-        prop: "commitCheckStatus",
+        prop: "busNodeListVOS.dischargedDelivery",
         hase_status: true
     },
     {
         label: "提交转关",
-        prop: "commitCheckStatus",
+        prop: "busNodeListVOS.commitCustomsTransit",
         hase_status: true
     },
     {
         label: "转关操作",
-        prop: "commitCheckStatus",
+        prop: "busNodeListVOS.customsTransitOperation",
         hase_status: true
     },
     {
         label: "提货操作",
-        prop: "commitCheckStatus",
+        prop: "busNodeListVOS.pickUpOperation",
         hase_status: true
     },
     {
         label: "提交退单",
-        prop: "commitCheckStatus",
+        prop: "busNodeListVOS.commitChargeback",
         hase_status: true
     },
     {
         label: "退单操作",
-        prop: "commitCheckStatus",
+        prop: "busNodeListVOS.cancellingStocks",
         hase_status: true
     },
     {

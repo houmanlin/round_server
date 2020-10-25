@@ -10,9 +10,8 @@
             v-model="clearanceData.dialog_submenuNo"
         />
       </el-form-item>
-      <el-form-item label="转关单号">
+      <el-form-item label="转关单号" v-if="clearanceData.dialog_yewu_type == '3'">
         <el-input
-            v-if="clearanceData.dialog_yewu_type == '转关'"
             placeholder="请输入转关单号"
             v-model="clearanceData.dialog_zhuanguan_order"
         />
@@ -43,23 +42,38 @@
       </el-form-item>
       <el-form-item label="生产销售单位">
         <el-input
-            placeholder="请输入报关代理"
+            placeholder="请输入生产销售单位"
             v-model="clearanceData.dialog_sale_monad"
         />
       </el-form-item>
-
+      <el-form-item :label="clearanceData.dialog_yewu_type == '1' ? '始发港' : '目的港'">
+        <el-input
+            :placeholder="clearanceData.dialog_yewu_type == '1' ? '请输入始发港' : '请输入目的港'"
+            v-model="clearanceData.dialog_destination"
+        />
+      </el-form-item>
+      <el-form-item label="报关类型">
+        <el-select
+            :disabled="clearanceData.dialog_mainTypeSelected == '1'"
+            v-model="clearanceData.dialog_baoguan_type"
+            placeholder="请选择报关类型">
+          <el-option label="贸易" :value="1"></el-option>
+          <el-option label="代理" :value="2"></el-option>
+          <el-option label="自理" :value="3"></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item label="监管方式">
         <el-select
             v-model="clearanceData.dialog_jianguan_type"
             placeholder="请选择监管方式">
-          <el-option label="9610" value="9610"></el-option>
-          <el-option label="9710" value="9710"></el-option>
-          <el-option label="9810" value="9810"></el-option>
-          <el-option label="0110" value="0110"></el-option>
+          <el-option label="9610" :value="1"></el-option>
+          <el-option label="9710" :value="2"></el-option>
+          <el-option label="9810" :value="3"></el-option>
+          <el-option label="0110" :value="4"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item :label="clearanceData.dialog_yewu_type == '转关'? '境内监管中转' : '境内送货'" v-if="clearanceData.dialog_yewu_type == '转关' || clearanceData.dialog_yewu_type == '统一版出口'">
-        <el-select filterable  v-model="clearanceData.dialog_is_jingnei" placeholder="请选择境内送货">
+      <el-form-item :label="clearanceData.dialog_yewu_type == '3'? '境内监管中转' : '境内送货'" v-if="clearanceData.dialog_yewu_type == '3' || clearanceData.dialog_yewu_type == '2'">
+        <el-select filteyrable  v-model="clearanceData.dialog_is_jingnei" placeholder="请选择境内送货">
           <el-option label="是" :value="1"></el-option>
           <el-option label="否" :value="0"></el-option>
         </el-select>
@@ -94,10 +108,13 @@ export default {
         dialog_pinming_shu:"",
         dialog_baoguan_daili:"",
         dialog_sale_monad:"",
-        dialog_jianguan_type:[],
+        dialog_jianguan_type:"",
         dialog_feiyong: 0,
         dialog_is_jingnei: "",
-        dialog_zhuanguan_order: ""
+        dialog_zhuanguan_order: "",
+        dialog_destination: "",
+        dialog_mainTypeSelected: "",
+        dialog_baoguan_type: "",
       }
     }
   },
@@ -114,6 +131,8 @@ export default {
       this.clearanceData.dialog_jianguan_type     = this.editData.jianguan_type
       this.clearanceData.dialog_yewu_type         = this.editData.yewu_type
       this.clearanceData.dialog_zhuanguan_order   = this.editData.zhuanguan_order
+      this.clearanceData.dialog_destination       = this.editData.destination
+      this.clearanceData.dialog_baoguan_type      = this.editData.baoguan_type
     }
   },
   methods:{
@@ -128,7 +147,9 @@ export default {
       emitData['baoguan_daili']      =  this.clearanceData.dialog_baoguan_daili
       emitData['sale_monad']         =  this.clearanceData.dialog_sale_monad
       emitData['jianguan_type']      =  this.clearanceData.dialog_jianguan_type
-      emitData['zhuanguan_order']      =  this.clearanceData.dialog_zhuanguan_order
+      emitData['zhuanguan_order']    =  this.clearanceData.dialog_zhuanguan_order
+      emitData['destination']        =  this.clearanceData.dialog_destination
+      emitData['baoguan_type']        =  this.clearanceData.dialog_baoguan_type
       this.$emit("onEditHouseNo", emitData)
     },
     handleClose(){

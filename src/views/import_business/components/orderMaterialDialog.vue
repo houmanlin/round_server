@@ -16,7 +16,7 @@
                      {{ indexs }}: {{ item }}
                     </el-col>
                     <el-col :span="12" class="down_group">
-                      操作时间: 2020年10月22日
+                      操作时间: {{ item.operater_time }}
                     </el-col>
                     <el-col :span="12" class="down_group">{{ item.title == '转关异常' ? '异常原因' : '备注' }}: {{item.marks}}</el-col>
                     <el-col :span="24" class="down_group">
@@ -52,7 +52,7 @@ export default {
 
           },
           download: [
-            {title: "下载附件(0)", url: this.getDownLoadUrl(0, 1)},
+            {title: "下载附件(0)", url: this.getDownLoadUrl(0, 2)},
           ],
           marks:"",
           operater_time:""
@@ -158,74 +158,25 @@ export default {
         mainNo: this.orderInfo.mainNo
       }
       getMainOrder(data).then(res=>{
-        // 入库查验
-        this.order_flow[0].marks = res.data.incomingCheckRemark;
-
-
-        //提交报关
-        this.order_flow[1].marks = res.data.commitCustomsRemark;
-
-
-        //提交查验
-        this.order_flow[2].marks = res.data.commitCheckRemark;
-
-        // 退单
-        this.order_flow[3].marks = res.data.chargebackRemark
-
-        // 退单完成
-        this.order_flow[4].marks = res.data.chargebackedRemark
-
-        // 退库
-        this.order_flow[5].marks = res.data.cancelStocksRemark
-
-        // 放行
-        this.order_flow[6].marks = res.data.commitPermitRemark
-
-
-        // 境内送货
-        this.order_flow[7].marks = res.data.incountryRemark
-
-        // 货物送达
-        this.order_flow[8].marks = res.data.goodsDeliveredRemark
-
-        // 提货车辆信息
-        this.order_flow[9]["about_info"]["预计到达时间"] = res.data.pickUpCarETA
-        this.order_flow[9]["about_info"]["车牌号"] = res.data.pickUpCarLPN
-        this.order_flow[9]["about_info"]["车辆型号"] = res.data.pickUpCarModelCar
-        this.order_flow[9].marks = res.data.pickUpCarRemark
-
-        // 提货交接
-        this.order_flow[10].marks = res.data.pickUpGoodsConnectRemark
-
+        // 提交报关
+        this.order_flow[0].marks = res.data.commitCustomsDate;
+        this.order_flow[0].operater_time = res.data.commitCustomsDate;
+        // 提交查验
+        this.order_flow[1].operater_time = res.data.commitCheckDate;
+        // 查验操作
+        this.order_flow[2].operater_time = res.data.commitPermitDate;
+        // 提交放行
+        this.order_flow[3].operater_time = res.data.commitPermitDate;
+        // 放行出库
+        this.order_flow[4].operater_time = res.data.commitPermitDate;
         // 提交转关
-        this.order_flow[11]["about_info"]["预计到达时间"] = res.data.commitCustomsTransitETA
-        this.order_flow[11]["about_info"]["车牌号"] = res.data.commitCustomsTransitLPN
-        this.order_flow[11]["about_info"]["车辆型号"] = res.data.commitCustomsTransitModelCar
-        this.order_flow[11]["about_info"]["转关单号"] = res.data.customsTransitNo
-        this.order_flow[11].marks = res.data.commitCustomsTransitRemark
-
-        // 转关
-        this.order_flow[12].marks = res.data.customsTransitRemark
-
-        // 转关异常
-        this.order_flow[13].marks = res.data.exceptionCause
-
-        // 转关完毕
-        this.order_flow[14].marks = res.data.customsTransitCompleteRemark
-
-
-
-
-
-
-
-
-
-
-
-        // 放行
-        this.order_flow[6].marks = res.data.commitCustomsTransitRemark
-        this.order_flow[6].marks = res.data.commitCustomsTransitRemark
+        this.order_flow[5].operater_time = res.data.commitCustomsTransitDate;
+        // 提货操作
+        this.order_flow[6].operater_time = res.data.pickUpOperationDate
+        // 提货操作
+        this.order_flow[7].operater_time = res.data.commitChargebackDate;
+        // 退库完成
+        this.order_flow[7].operater_time = res.data.cancellingStocksDate;
 
 
 

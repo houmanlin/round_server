@@ -61,19 +61,23 @@ export default {
     },
    handlePreview(file){
 
-      this.clearanceData.file.push(file)
+      this.clearanceData.file.push(file.file)
     },
     submitForm(){
       let data = new FormData()
-
+      let file_name = ""
 
 
       data.append("mainNo", this.mainNo)
       data.append("commitPermitRemark", this.clearanceData.mark)
-      data.append("nodeType", 7)
-      this.clearanceData.file.forEach(file => {
+      data.append("nodeType", 4)
+
+      this.clearanceData.file.forEach((file,index) => {
         data.append("file", file, file.name)
+        file_name += this.clearanceData.file.length != index + 1 ? `${file.name},` : `${file.name}`
       })
+
+      data.append("dischargedNoticeFileNames", file_name)
 
       uploadForm(data).then(res=>{
         this.dialogVisible = false

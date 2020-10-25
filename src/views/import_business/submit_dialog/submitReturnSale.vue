@@ -76,10 +76,8 @@ export default {
 
 
       data.append("mainNo", this.mainNo)
-      data.append("customsServiceProvider", this.clearanceData.service_shop)
-      data.append("customsNo", this.clearanceData.clearance_order)
-      data.append("nodeType", 2)
-      data.append("commitCustomsRemark", this.clearanceData.mark)
+      data.append("nodeType", 9)
+      data.append("commitChargebackRemark", this.clearanceData.mark)
 
       let file_name = ""
 

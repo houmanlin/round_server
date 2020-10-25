@@ -19,7 +19,7 @@
         </el-upload>
       </el-form-item>
       <el-form-item label="转关单号">
-        <el-input v-model="clearanceData.delivery_expense" placeholder="请输入转关单号"/>
+        <el-input v-model="clearanceData.zhaunguan_danhao" placeholder="请输入转关单号"/>
       </el-form-item>
       <el-form-item label="车辆型号">
         <el-input v-model="clearanceData.car_type" placeholder="请输入车辆类型"></el-input>
@@ -72,6 +72,7 @@ export default {
         car_type: "",
         license_plate_number:"",
         delivery_expense:"",
+        zhaunguan_danhao:"",
         delivery_time: "",
         mark:"",
         file:[],
@@ -110,15 +111,26 @@ export default {
 
 
       data.append("mainNo", this.mainNo)
+      data.append("commitCustomsTransitNo", this.clearanceData.zhaunguan_danhao)
       data.append("commitCustomsTransitModelCar", this.clearanceData.car_type)
       data.append("commitCustomsTransitLPN", this.clearanceData.license_plate_number)
-      data.append("commitCustomsTransitETA", this.clearanceData.delivery_time)
-      data.append("customsTransitNo", this.clearanceData.delivery_expense)
       data.append("commitCustomsTransitRemark", this.clearanceData.mark)
-      data.append("nodeType", 12)
+      data.append("nodeType", 6)
+      let file_name = ""
+      let file_name1 = ""
       this.clearanceData.file.forEach(file => {
         data.append("file", file, file.name)
+        file_name += this.clearanceData.file1.length != index + 1 ? `${file.name},` : `${file.name}`
       })
+
+      this.clearanceData.file1.forEach((file, index) => {
+        data.append("file", file, file.name)
+        file_name1 += this.clearanceData.file1.length != index + 1 ? `${file.name},` : `${file.name}`
+      })
+
+      data.append("mainCopiesFileNames", file_name)
+      data.append("customsTransitDocFileNames", file_name1)
+
 
       uploadForm(data).then(res=>{
         this.dialogVisible = false
@@ -127,6 +139,7 @@ export default {
         this.clearanceData.delivery_expense="";
         this.clearanceData.delivery_time = "";
         this.clearanceData.mark = "";
+        this.clearanceData.zhaunguan_danhao = "";
         this.clearanceData.file=[]
         this.$refs.upload.clearFiles();
 

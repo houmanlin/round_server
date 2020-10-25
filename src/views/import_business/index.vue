@@ -59,7 +59,7 @@ import customsTransitOperator from "@/views/import_business/submit_dialog/custom
 import submitReturnSale from "@/views/import_business/submit_dialog/submitReturnSale";
 import orderInfoDialog from "@/views/import_business/components/orderInfoDialog";
 import orderMaterialDialog from "@/views/import_business/components/orderMaterialDialog";
-import {getImportBussiness} from "@/api/import_bussiness";
+import {getImportBussiness, houseOrderDel} from "@/api/import_bussiness";
 import {getPages} from "@/utils/utils";
 export default {
   components:{ search,
@@ -154,18 +154,44 @@ export default {
      * 添加用户
      */
     operator(operator_key){
+      let ids = ""
+      this.selectTableData.forEach((item, index)=>{
+        ids += this.selectTableData.length != index +1 ? `${item.id},` : `${item.id}`
+      })
+
       if(operator_key == 'add'){
         this.$router.push("add_import_business")
         return
       }
-      // if(this.selectTableData.length > 1){
-      //   this.$message.info("只能操作一条订单")
-      //   return
-      // }
-      // if(this.selectTableData.length < 1){
-      //   this.$message.info("请选择要操作的数据")
-      //   return
-      // }
+      if(operator_key == 'mainNoRemove'){
+
+        let data = {
+          ids
+        }
+
+        houseOrderDel(data).then(res=>{
+          this.getData();
+        })
+        return
+      }
+      if(operator_key == 'houseNoRemove'){
+        let data = {
+          ids
+        }
+
+        houseOrderDel(data).then(res=>{
+          this.getData();
+        })
+        return
+      }
+        if(this.selectTableData.length > 1){
+          this.$message.info("只能操作一条订单")
+          return
+        }
+        if(this.selectTableData.length < 1){
+          this.$message.info("请选择要操作的数据")
+          return
+        }
       console.log(this.selectTableData)
       this.orderInfo = this.selectTableData[0]
       this.$refs[operator_key].dialogVisible = true
@@ -223,7 +249,7 @@ export default {
       this.selectTableData = data
     },
     uploadFile(data){
-      reque
+      debugger
     }
 
   }
