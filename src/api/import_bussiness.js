@@ -65,7 +65,7 @@ export function MainOrderDel(params) {
 export function houseOrderDel(params) {
     params = getParams(params)
     return request({
-        url: "/busMain/delete",
+        url: "/busSubmenu/delete",
         method: "DELETE",
         params,
     })

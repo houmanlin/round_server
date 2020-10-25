@@ -655,18 +655,18 @@ export default {
       }
 
       // true:  始发港  false:  目的港
-      if (this.mast_info.yewu_type == '1'){
-        delete data.departurePort
-      }else{
-        delete data.destinationPort
-      }
+      // if (this.mast_info.yewu_type == '1'){
+      //   delete data.departurePort
+      // }else{
+      //   delete data.destinationPort
+      // }
       // true:  境内送货  false:  境内监管中转
-     if (this.mast_info.yewu_type != '3'){
-        delete data.domesticDelivery
-
-      }else{
-        delete data.domesticSuperviseTransit
-      }
+     // if (this.mast_info.yewu_type != '3'){
+     //    delete data.domesticDelivery
+     //
+     //  }else{
+     //    delete data.domesticSuperviseTransit
+     //  }
 
       if(this.mast_info.busSubmenuSaveDTOS.length > 0){
         for (let item of this.mast_info.busSubmenuSaveDTOS) {
@@ -696,25 +696,25 @@ export default {
             delete dto.id
           }
           // true:  始发港  false:  目的港
-          if (this.mast_info.yewu_type == '1'){
-            delete dto.departurePort
-          }else{
-            delete dto.destinationPort
-          }
+          // if (this.mast_info.yewu_type == '1'){
+          //   delete dto.departurePort
+          // }else{
+          //   delete dto.destinationPort
+          // }
 
           // true:  境内送货  false:  境内监管中转
-          if (this.mast_info.yewu_type != '3'){
-            delete dto.domesticDelivery
-
-          }else{
-            delete dto.domesticSuperviseTransit
-          }
+          // if (this.mast_info.yewu_type != '3'){
+          //   delete dto.domesticDelivery
+          //
+          // }else{
+          //   delete dto.domesticSuperviseTransit
+          // }
 
           data.busSubmenuSaveDTOS.push(dto)
         }
       }
       if (this.mainTypeSelected == '0'){
-        delete data.busSubmenuSaveDTOS
+         data.busSubmenuSaveDTOS = []
       }
 
       // if(this.mainTypeSelected && this.mainTypeSelected.length > 0){

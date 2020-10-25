@@ -59,7 +59,7 @@ import customsTransitOperator from "@/views/import_business/submit_dialog/custom
 import submitReturnSale from "@/views/import_business/submit_dialog/submitReturnSale";
 import orderInfoDialog from "@/views/import_business/components/orderInfoDialog";
 import orderMaterialDialog from "@/views/import_business/components/orderMaterialDialog";
-import {getImportBussiness, houseOrderDel} from "@/api/import_bussiness";
+import {getImportBussiness, houseOrderDel, MainOrderDel} from "@/api/import_bussiness";
 import {getPages} from "@/utils/utils";
 export default {
   components:{ search,
@@ -169,7 +169,7 @@ export default {
           ids
         }
 
-        houseOrderDel(data).then(res=>{
+        MainOrderDel(data).then(res=>{
           this.getData();
         })
         return

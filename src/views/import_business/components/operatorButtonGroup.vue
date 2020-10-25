@@ -2,7 +2,7 @@
   <div class="search_container">
 
     <!--  功能  -->
-    <el-button class="operator_button dark_green" type="primary" @click="operatorUser('add')">新增</el-button>
+    <el-button class="operator_button dark_green" type="primary" @click="operatorUser('add')" v-if="name =='张雪' || name =='贾彬' || name =='苏纪闽' || name =='admin' ">新增</el-button>
     <!--  功能  -->
     <el-button class="operator_button" type="warning" @click="operatorUser('clearanceGoods')">提交报关</el-button>
 
@@ -27,8 +27,8 @@
     <el-button class="operator_button" type="warning" @click="operatorUser('submitCustomsTransit')">提交转关</el-button>
     <el-button class="operator_button" type="warning" @click="operatorUser('customsTransitOperator')">转关操作</el-button>
     <el-button class="operator_button" type="warning" @click="operatorUser('submitReturnSale')">提交退单</el-button>
-    <el-button class="operator_button" type="warning" @click="operatorUser('mainNoRemove')">主单删除</el-button>
-    <el-button class="operator_button" type="warning" @click="operatorUser('houseNoRemove')">分单删除</el-button>
+    <el-button class="operator_button" type="warning" @click="operatorUser('mainNoRemove')" v-if="name =='张雪' || name =='贾彬' || name =='苏纪闽' || name =='admin' ">主单删除</el-button>
+    <el-button class="operator_button" type="warning" @click="operatorUser('houseNoRemove')" v-if="name =='张雪' || name =='贾彬' || name =='苏纪闽' || name =='admin' ">分单删除</el-button>
   </div>
 </template>
 
@@ -37,9 +37,13 @@ export default {
   name: "operatorButtonGroup",
   data(){
     return{
-
+      name:""
     }
   },
+  created() {
+   this.name = this.$store.getters.name
+  },
+
   methods:{
     /**
      * 操作按钮
