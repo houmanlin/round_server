@@ -31,7 +31,7 @@
         <div class="form_value">{{ orderInfo.flightDate }}</div>
       </el-form-item>
       <el-form-item label="主单件数:" class="info_item">
-        <div class="form_value">{{ orderInfo.mainNumPackage }}</div>
+        <div class="form_value">{{ orderInfo.mainNum }}</div>
       </el-form-item>
       <el-form-item label="主单毛量:" class="info_item">
         <div class="form_value">{{ orderInfo.mainRoughWeight }}</div>
@@ -46,7 +46,7 @@
         <div class="form_value">{{ orderInfo.goodsValue }}</div>
       </el-form-item>
       <el-form-item label="商品数量:" class="info_item">
-        <div class="form_value">{{ orderInfo.descriptionNum }}</div>
+        <div class="form_value">{{ orderInfo.nameNum }}</div>
       </el-form-item>
       <el-form-item label="通关单号:" class="info_item">
         <div class="form_value">{{ orderInfo.customsNo }}</div>
