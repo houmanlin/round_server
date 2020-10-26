@@ -54,25 +54,22 @@ export default {
         this.page_config = getPages(res.data)
         let {records} = res.data
         for (const index in records) {
-
           let module_Data = {
             0: "录入业务数据",
-            1: "入库查验",
-            2: "提交报关",
-            3: "提交查验",
-            4: "退单",
-            5: "退单完毕",
-            6: "退库",
-            7: "提交放行",
-            8: "提交提货车辆信息",
-            9: "提货交接",
-            10: "货物送达",
-            11: "境内送货",
-            12: "提交转关",
-            13: "转关",
-            14: "转关完毕",
-            15: "转关异常"
+            1:"提交报关",
+            2:"提交查验",
+            3:"查验操作",
+            4:"提交放行",
+            5:"放行出库",
+            6:"提交转关",
+            7:"转关操作",
+            8:"提货操作",
+            9:"提交退单",
+            10:"退库完成",
+            11:"删除主单",
+            12:"删除分单"
           }
+
           let operator_keys = res.data.records[index].operType
 
           this.$set(res.data.records[index], "opertype_text", module_Data[operator_keys])

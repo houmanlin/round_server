@@ -7,7 +7,7 @@ const SYSTEM_LOG_TABLE = [
     },
     {
         label: "分单号",
-        prop: "busDate"
+        prop: "submenuNo"
     },
 
     {

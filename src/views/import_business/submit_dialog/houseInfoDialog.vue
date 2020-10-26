@@ -103,57 +103,63 @@ export default {
   data(){
     return{
       dialogVisible: false,
+      oldSubmenuNo : "",
       clearanceData:{
-        yewu_type:"",
-        dialog_submenuNo: '',
-        dialog_submenuNumPackage: "",
-        dialog_roughWeight:"",
-        dialog_pinming_shu:"",
-        dialog_baoguan_daili:"",
-        dialog_sale_monad:"",
-        dialog_jianguan_type:"",
-        dialog_feiyong: 0,
-        dialog_is_jingnei: "",
-        dialog_zhuanguan_order: "",
-        dialog_destination: "",
-        dialog_mainTypeSelected: "",
-        dialog_baoguan_type: "",
+        yewu_type                     : "",
+        old_submenuNo                 : "",
+        dialog_submenuNo              : '',
+        dialog_submenuNumPackage      : "",
+        dialog_roughWeight            : "",
+        dialog_pinming_shu            : "",
+        dialog_baoguan_daili          : "",
+        dialog_sale_monad             : "",
+        dialog_jianguan_type          : "",
+        dialog_feiyong                : 0,
+        dialog_is_jingnei             : "",
+        dialog_zhuanguan_order        : "",
+        dialog_destination            : "",
+        dialog_mainTypeSelected       : "",
+        dialog_baoguan_type           : "",
+        dialog_oldMainNO              : "",
       }
     }
   },
   watch:{
     dialogVisible(newValue, oldValue){
-
-      this.clearanceData.data_index               = this.editData.data_index
-      this.clearanceData.dialog_submenuNo         = this.editData.submenuNo
-      this.clearanceData.dialog_submenuNumPackage = this.editData.submenuNumPackage
-      this.clearanceData.dialog_roughWeight       = this.editData.roughWeight
-      this.clearanceData.dialog_pinming_shu       = this.editData.pinming_shu
-      this.clearanceData.dialog_baoguan_daili     = this.editData.baoguan_daili
-      this.clearanceData.dialog_sale_monad        = this.editData.sale_monad
-      this.clearanceData.dialog_jianguan_type     = this.editData.jianguan_type
-      this.clearanceData.dialog_yewu_type         = this.editData.yewu_type
-      this.clearanceData.dialog_zhuanguan_order   = this.editData.zhuanguan_order
-      this.clearanceData.dialog_destination       = this.editData.destination
-      this.clearanceData.dialog_baoguan_type      = this.editData.baoguan_type
+      this.clearanceData.old_submenuNo            = this.editData.submenuNo;
+      this.clearanceData.data_index               = this.editData.data_index;
+      this.clearanceData.dialog_submenuNo         = this.editData.submenuNo;
+      this.clearanceData.dialog_submenuNumPackage = this.editData.submenuNumPackage;
+      this.clearanceData.dialog_roughWeight       = this.editData.roughWeight;
+      this.clearanceData.dialog_pinming_shu       = this.editData.pinming_shu;
+      this.clearanceData.dialog_baoguan_daili     = this.editData.baoguan_daili;
+      this.clearanceData.dialog_sale_monad        = this.editData.sale_monad;
+      this.clearanceData.dialog_jianguan_type     = this.editData.jianguan_type;
+      this.clearanceData.dialog_yewu_type         = this.editData.yewu_type;
+      this.clearanceData.dialog_zhuanguan_order   = this.editData.zhuanguan_order;
+      this.clearanceData.dialog_destination       = this.editData.destination;
+      this.clearanceData.dialog_baoguan_type      = this.editData.baoguan_type;
+      this.clearanceData.dialog_oldMainNO         = this.editData.oldMainNO;
     }
   },
   methods:{
 
     submitForm(){
-      let emitData = {}
-      emitData['data_index']         =  this.clearanceData.data_index
-      emitData['submenuNo']          =  this.clearanceData.dialog_submenuNo
-      emitData['submenuNumPackage']  =  this.clearanceData.dialog_submenuNumPackage
-      emitData['roughWeight']        =  this.clearanceData.dialog_roughWeight
-      emitData['pinming_shu']        =  this.clearanceData.dialog_pinming_shu
-      emitData['baoguan_daili']      =  this.clearanceData.dialog_baoguan_daili
-      emitData['sale_monad']         =  this.clearanceData.dialog_sale_monad
-      emitData['jianguan_type']      =  this.clearanceData.dialog_jianguan_type
-      emitData['zhuanguan_order']    =  this.clearanceData.dialog_zhuanguan_order
-      emitData['destination']        =  this.clearanceData.dialog_destination
-      emitData['baoguan_type']        =  this.clearanceData.dialog_baoguan_type
-      this.$emit("onEditHouseNo", emitData)
+      let emitData = {};
+      emitData['data_index']         =  this.clearanceData.data_index;
+      emitData['data_index']         =  this.clearanceData.data_index;
+      emitData['submenuNo']          =  this.clearanceData.dialog_submenuNo;
+      emitData['submenuNumPackage']  =  this.clearanceData.dialog_submenuNumPackage;
+      emitData['roughWeight']        =  this.clearanceData.dialog_roughWeight;
+      emitData['pinming_shu']        =  this.clearanceData.dialog_pinming_shu;
+      emitData['baoguan_daili']      =  this.clearanceData.dialog_baoguan_daili;
+      emitData['sale_monad']         =  this.clearanceData.dialog_sale_monad;
+      emitData['jianguan_type']      =  this.clearanceData.dialog_jianguan_type;
+      emitData['zhuanguan_order']    =  this.clearanceData.dialog_zhuanguan_order;
+      emitData['destination']        =  this.clearanceData.dialog_destination;
+      emitData['oldSubmenuNo']       =  this.oldSubmenuNo;
+      emitData['baoguan_type']       =  this.clearanceData.dialog_baoguan_type;
+      this.$emit("onEditHouseNo", emitData);
     },
     handleClose(){
       this.dialogVisible = false

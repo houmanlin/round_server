@@ -294,6 +294,7 @@ export default {
   },
   data(){
     return{
+      oldMainNo:"",
       mainTypeList:[
         {"id":"1","text":"直单"},
         {"id":"2","text":"一主多分"},
@@ -422,6 +423,7 @@ export default {
         this.mainTypeSelected = res.data.mainType
         // 主单号
         this.$set(this.mast_info, "mast_order_number", res.data.mainNo)
+        this.oldMainNo = res.data.mainNo
         // 航班号
         this.$set(this.mast_info, "flight_number", res.data.flightNo)
         // 目的地
@@ -450,13 +452,13 @@ export default {
         // this.$set(this.mast_info, "customsNo", res.data.customsNo)
         // 辅助信息贸易单号
         // this.$set(this.mast_info, "tradeNo", res.data.tradeNo)
-        // TODO 报关类型
+        // 报关类型
         this.$set(this.mast_info, "baoguan_type", res.data.customsDeclareType)
-        // TODO 监管方式
+        // 监管方式
         this.$set(this.mast_info, "jianguan_type", res.data.supervisionMethod)
-        // TODO 业务类型
+        // 业务类型
         this.$set(this.mast_info, "yewu_type", res.data.businessType)
-        // TODO 境内送货
+        // 境内送货
         this.$set(this.mast_info, "is_jingnei", res.data.is_jingnei)
         this.$set(this.mast_info, "feiyong", res.data.is_jingnei)
         // 辅助信息合同编号
@@ -532,10 +534,12 @@ export default {
         return
       }
       let dataList = this.mast_info.busSubmenuSaveDTOS[index]
-      debugger
       this.$set(dataList, "data_index", index)
       this.$set(dataList, "yewu_type", this.mast_info.yewu_type)
       this.$set(dataList, "mainTypeSelected", this.mast_info.mainTypeSelected)
+
+      this.$set(dataList, "oldMainNO", this.oldMainNo)
+
       this.edit_data = dataList
       this.$refs["houseInfoDialog"]["dialogVisible"] = true
     },
@@ -698,6 +702,8 @@ export default {
           let dto = {
             id                           : item.id,
             mainNo                       : this.mast_info.mast_order_number,           // 主单号
+            oldMainNo                    : this.oldMainNo,                             // 旧主单号
+            oldSubmenuNo                 : item.oldMainNo,                             // 旧主单号
             submenuNo                    : item.submenuNo,                             // 分单号
             nameNum                      : parseInt(item.pinming_shu),                 // 品名数量
             productionSaleUnit           : item.sale_monad,                            // 销售单位
@@ -750,7 +756,6 @@ export default {
           data.busSubmenuSaveDTOS[originDataKey].submenuNumPackage = parseInt(submenuNumPackage)
         }
 
-        data.descriptionNum = parseInt(data.descriptionNum)
         data.id = parseInt(data.id)
 
 
