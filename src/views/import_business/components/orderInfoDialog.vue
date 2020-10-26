@@ -119,7 +119,7 @@ export default {
       mainTypeShow:false,
       businessType1:false,
       businessType2:false,
-      businessType:false,
+      businessType3:false,
     }
   },
   methods:{
