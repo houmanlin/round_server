@@ -60,9 +60,7 @@
       <el-form-item label="通关口岸">
         <el-input v-model="mast_info.exit_port" placeholder="请输入通关口岸"></el-input>
       </el-form-item>
-      <el-form-item label="转关单号" v-if="mast_info.yewu_type == '3'">
-        <el-input v-model="mast_info.zhuanguan_number" placeholder="请输入通关口岸"></el-input>
-      </el-form-item>
+
 
       <el-form-item label="业务类型">
         <el-select filterable  v-model="mast_info.yewu_type" placeholder="请选择业务类型">
@@ -74,8 +72,8 @@
 
       <el-form-item label="主单类型">
         <el-select filterable v-model="mainTypeSelected" placeholder="请选择主单类型">
-          <el-option label="直单" :value="0"></el-option>
-          <el-option label="一主多分" :value="1"></el-option>
+          <el-option label="直单" :value="1"></el-option>
+          <el-option label="一主多分" :value="2"></el-option>
 
         </el-select>
       </el-form-item>
@@ -90,17 +88,17 @@
       <div class="basics_info_entering_form">
         <el-form :inline="true" :model="mast_info" label-width="96px" label-position="left" class="demo-form-inline">
           <el-form-item label="品名数量">
-            <el-input :disabled="mainTypeSelected == '1'" v-model="mast_info.descriptionNum" placeholder="请输入品名数量"></el-input>
+            <el-input :disabled="mainTypeSelected == '2' || mainTypeSelected == ''" v-model="mast_info.descriptionNum" placeholder="请输入品名数量"></el-input>
           </el-form-item>
           <el-form-item label="报关代理">
-            <el-input :disabled="mainTypeSelected == '1'" v-model="mast_info.company_agency" placeholder="请输入报关代理"></el-input>
+            <el-input :disabled="mainTypeSelected == '2' || mainTypeSelected == ''" v-model="mast_info.company_agency" placeholder="请输入报关代理"></el-input>
           </el-form-item>
           <el-form-item label="生产销售单位">
-            <el-input :disabled="mainTypeSelected == '1'" v-model="mast_info.sale_monad" placeholder="请输入生产销售单位"></el-input>
+            <el-input :disabled="mainTypeSelected == '2' || mainTypeSelected == ''" v-model="mast_info.sale_monad" placeholder="请输入生产销售单位"></el-input>
           </el-form-item>
           <el-form-item label="报关类型">
             <el-select
-                :disabled="mainTypeSelected == '1'"
+                :disabled="mainTypeSelected == '2' || mainTypeSelected == ''"
                 v-model="mast_info.baoguan_type"
                 placeholder="请选择报关类型">
               <el-option label="贸易" :value="1"></el-option>
@@ -110,7 +108,7 @@
           </el-form-item>
           <el-form-item label="监管方式">
             <el-select
-                :disabled="mainTypeSelected == '1'"
+                :disabled="mainTypeSelected == '2' || mainTypeSelected == ''"
                 v-model="mast_info.jianguan_type"
                 placeholder="请选择监管方式">
               <el-option label="9610" :value="1"></el-option>
@@ -119,14 +117,14 @@
               <el-option label="0110" :value="4"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="转关单号">
-            <el-input v-model="mast_info.zhuanguan_order" placeholder="请输入转关单号" :disabled="mast_info.yewu_type != '转关'"></el-input>
+          <el-form-item label="转关单号" v-if="mast_info.yewu_type == '3'">
+            <el-input v-model="mast_info.zhuanguan_order" placeholder="请输入转关单号" :disabled="mainTypeSelected == '2' || mainTypeSelected == ''"></el-input>
           </el-form-item>
           <el-form-item :label="mast_info.yewu_type == '1' ? '始发港' : '目的港'">
-            <el-input :disabled="mainTypeSelected == '1'" v-model="mast_info.destination" :placeholder="mast_info.yewu_type == '1' ? '请输入始发港' : '请输入目的港'"></el-input>
+            <el-input :disabled="mainTypeSelected == '2' || mainTypeSelected == ''" v-model="mast_info.destination" :placeholder="mast_info.yewu_type == '1' ? '请输入始发港' : '请输入目的港'"></el-input>
           </el-form-item>
-          <el-form-item :label="mast_info.yewu_type == '3'? '境内监管中转' : '境内送货'" v-if="(mast_info.yewu_type == '3' || mast_info.yewu_type == '2') && mainTypeSelected == '1'">
-            <el-select filterable  v-model="mast_info.is_jingnei" :placeholder="'请选择' + mast_info.yewu_type == '3'? '境内监管中转' : '境内送货'">
+          <el-form-item :label="mast_info.yewu_type == '3'? '境内监管中转' : '境内送货'" v-if="mast_info.yewu_type == '3' || mast_info.yewu_type == '2'">
+            <el-select filterable  v-model="mast_info.is_jingnei" :placeholder="'请选择' + mast_info.yewu_type == '3'? '境内监管中转' : '境内送货'" :disabled="mainTypeSelected == '2'">
               <el-option label="是" :value="1"></el-option>
               <el-option label="否" :value="0"></el-option>
             </el-select>
@@ -151,22 +149,22 @@
           <!-- 分单号-->
           <div class="form_item" @click="dataEdit(index)">
             <span>分单号</span>
-            <el-input readonly v-model="item.submenuNo" placeholder="请输入分单号" :disabled="mainTypeSelected == '0' || mainTypeSelected == ''"></el-input>
+            <el-input readonly v-model="item.submenuNo" placeholder="请输入分单号" :disabled="mainTypeSelected == '1' || mainTypeSelected == ''"></el-input>
           </div>
           <!-- 分单件数-->
           <div class="form_item" @click="dataEdit(index)">
             <span>分单件数</span>
-            <el-input readonly :disabled="mainTypeSelected == '0' || mainTypeSelected == ''" v-model="item.submenuNumPackage" placeholder="请输入分单件数"></el-input>
+            <el-input readonly :disabled="mainTypeSelected == '1' || mainTypeSelected == ''" v-model="item.submenuNumPackage" placeholder="请输入分单件数"></el-input>
           </div>
 
           <div class="form_item" @click="dataEdit(index)">
             <span>分单毛重</span>
-            <el-input readonly :disabled="mainTypeSelected == '0' || mainTypeSelected == ''" v-model="item.roughWeight" placeholder="请输入分单毛重"></el-input>
+            <el-input readonly :disabled="mainTypeSelected == '1' || mainTypeSelected == ''" v-model="item.roughWeight" placeholder="请输入分单毛重"></el-input>
           </div>
           <!-- 品名数量-->
           <div class="form_item" @click="dataEdit(index)">
             <span>品名数量</span>
-            <el-input readonly :disabled="mainTypeSelected == '0' || mainTypeSelected == ''" v-model="item.pinming_shu" placeholder="请输入品名数量"></el-input>
+            <el-input readonly :disabled="mainTypeSelected == '1' || mainTypeSelected == ''" v-model="item.pinming_shu" placeholder="请输入品名数量"></el-input>
           </div>
 
 
@@ -396,42 +394,46 @@ export default {
       let data = {
         id: this.mast_info.id
       }
+
+      /**
+       * 数据获取更新
+       */
       getMainOrderInfo(data).then(res=>{
         // 发件人
-        this.$set(this.mast_info, "receiver_info", res.data.addressee)
+        this.$set(this.mast_info, "receiver_info", res.data.addressor)
         // 收件人
         this.$set(this.mast_info, "addresser_info", res.data.addresser)
         // res.data.customerNoOne = res.data.customerNoOne ?  res.data.customerNoOne : ""
         // res.data.customerIdTwo = res.data.customerIdTwo ?  res.data.customerIdTwo : ""
         // 一级客户
         this.$set(this.mast_info, "customerIdOne", res.data.customerIdOne)
-        // TODO 一级客户
+        // 转关
         this.$set(this.mast_info, "zhuanguan_number", res.data.zhuanguan_number)
         // 二级客户
         this.$set(this.mast_info, "customerIdTwo", res.data.customerIdTwo);
-        console.log(res.data.customerIdTwo,"res.data.customerIdTwo")
+
         // 报关口岸
-        this.$set(this.mast_info, "clearance_port", res.data.customsPort)
+        this.$set(this.mast_info, "clearance_port", res.data.portEntry)
         // 离岸口岸
-        this.$set(this.mast_info, "exit_port", res.data.exitPort)
+        // this.$set(this.mast_info, "exit_port", res.data.exitPort)
         // 主单类型
         // res.data.mainType = res.data.mainType ?  res.data.mainType : ""
         // this.$set(this.mast_info, "mast_type", res.data.mainType.split(","))
-        this.mainTypeSelected = res.data.mainType ?  res.data.mainType.split(",") : []
+        this.mainTypeSelected = res.data.mainType
         // 主单号
         this.$set(this.mast_info, "mast_order_number", res.data.mainNo)
         // 航班号
         this.$set(this.mast_info, "flight_number", res.data.flightNo)
         // 目的地
-        this.$set(this.mast_info, "destination", res.data.destination)
+        this.$set(this.mast_info, "destination", res.data.businessType == '1' ? res.data.destinationPort : res.data.departurePort )
         // 航班时间
         this.$set(this.mast_info, "flight_time", res.data.flightDate)
         // 主单件
-        this.$set(this.mast_info, "mast_number", res.data.mainNumPackage)
+        this.$set(this.mast_info, "mast_number", res.data.mainNum)
         // 主单毛重
-        this.$set(this.mast_info, "mast_weight", res.data.mainRoughWeight)
+        this.$set(this.mast_info, "mast_weight", res.data.mainRoughtWeight)
         // 主单体积
-        this.$set(this.mast_info, "mast_volume", res.data.mainVolume)
+        // this.$set(this.mast_info, "mast_volume", res.data.mainVolume)
         // 主单计费量
         this.$set(this.mast_info, "chargedWeight", res.data.mainChargedWeight)
         // 辅助信息货值
@@ -441,15 +443,15 @@ export default {
         res.data.currency = res.data.currency ?  res.data.currency : ""
         this.$set(this.mast_info, "currency", res.data.currency)
         // 辅助信息品名
-        this.$set(this.mast_info, "descriptionNum", res.data.descriptionNum)
+        this.$set(this.mast_info, "descriptionNum", res.data.nameNum)
         // 辅助信息通关单号
-        this.$set(this.mast_info, "customsNo", res.data.customsNo)
+        // this.$set(this.mast_info, "customsNo", res.data.customsNo)
         // 辅助信息贸易单号
-        this.$set(this.mast_info, "tradeNo", res.data.tradeNo)
+        // this.$set(this.mast_info, "tradeNo", res.data.tradeNo)
         // TODO 报关类型
-        this.$set(this.mast_info, "baoguan_type", res.data.tradeNo)
-        // TODO 监管类型
-        this.$set(this.mast_info, "jianguan_type", res.data.tradeNo)
+        this.$set(this.mast_info, "baoguan_type", res.data.customsDeclareType)
+        // TODO 监管方式
+        this.$set(this.mast_info, "jianguan_type", res.data.supervisionMethod)
         // TODO 业务类型
         this.$set(this.mast_info, "yewu_type", res.data.yewu_type)
         // TODO 境内送货
@@ -496,14 +498,20 @@ export default {
 
       })
     },
+    /**
+     * 数据删除
+     */
     dataRemove(index){
-      if(this.mainTypeSelected == '' || this.mainTypeSelected == '0'){
+      if(this.mainTypeSelected == '' || this.mainTypeSelected == '1'){
         return
       }
       this.$delete(this.mast_info.busSubmenuSaveDTOS, index)
     },
+    /**
+     * 数据添加
+     */
     dataAdd(){
-      if(this.mainTypeSelected == '' || this.mainTypeSelected == '0'){
+      if(this.mainTypeSelected == '' || this.mainTypeSelected == '1'){
         return
       }
       this.mast_info.busSubmenuSaveDTOS.push(
@@ -518,10 +526,11 @@ export default {
      * @param index  修改的索引
      */
     dataEdit(index){
-      if(this.mainTypeSelected == '' || this.mainTypeSelected == '0'){
+      if(this.mainTypeSelected == '' || this.mainTypeSelected == '1'){
         return
       }
       let dataList = this.mast_info.busSubmenuSaveDTOS[index]
+      debugger
       this.$set(dataList, "data_index", index)
       this.$set(dataList, "yewu_type", this.mast_info.yewu_type)
       this.$set(dataList, "mainTypeSelected", this.mast_info.mainTypeSelected)
@@ -541,11 +550,17 @@ export default {
       this.$set(this.mast_info.busSubmenuSaveDTOS, index, houseNoInfo)
       this.$refs["houseInfoDialog"]["dialogVisible"] = false
     },
+    /**
+     *  获取客户信息
+     */
     getClientData(){
       getOneClient().then(res=>{
         this.client_list = res.data
       })
     },
+    /**
+     * 重置按钮
+     */
     resetData(){
       this.mast_info.addresser_info = ""
       this.mast_info.receiver_info = ""
@@ -583,6 +598,10 @@ export default {
       ]
       this.mainTypeSelected = []
     },
+    /**
+     * 修改方法
+     * 添加方法
+     */
     addData(){
 
       let origin_data = this.mast_info
@@ -601,6 +620,7 @@ export default {
           roughWeight: origin_data.busSubmenuSaveDTOS[trace_type].roughWeight,
           volume: origin_data.busSubmenuSaveDTOS[trace_type].volume,
           chargedWeight: origin_data.busSubmenuSaveDTOS[trace_type].chargedWeight,
+          destination: origin_data.busSubmenuSaveDTOS[trace_type].destination,
           addressee: origin_data.busSubmenuSaveDTOS[trace_type].addressee,
           tradeType: origin_data.busSubmenuSaveDTOS[trace_type].tradeType,
           zhuanguan_order: origin_data.busSubmenuSaveDTOS[trace_type].zhuanguan_order
@@ -621,7 +641,7 @@ export default {
       } else{
         this.mast_info.flight_time = ""
       }
-      // TODO    1213o99
+
       let data = {
         addressee                       : this.mast_info.addresser_info,            // 发件人
         addressor                       : this.mast_info.receiver_info,             // 收件人
@@ -681,7 +701,6 @@ export default {
             supervisionMethod            : parseInt(item.jianguan_type),               // 监管方式
             submenuNumPackage            : parseInt(item.submenuNumPackage),           // 分单件数
             feiyong                      : item.feiyong,                               // 费用
-            pinming_shu                  : item.pinming_shu,                           // 品名数量
             subRoughWeight               : item.roughWeight,                           // 毛重
             expense                      : item.feiyong,                               // 费用
             domesticDelivery             : item.is_jingnei,                            //
@@ -713,7 +732,7 @@ export default {
           data.busSubmenuSaveDTOS.push(dto)
         }
       }
-      if (this.mainTypeSelected == '0'){
+      if (this.mainTypeSelected == '1'){
          data.busSubmenuSaveDTOS = []
       }
 

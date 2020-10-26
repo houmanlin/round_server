@@ -41,7 +41,7 @@ export default {
     }
   },
   created() {
-   this.name = this.$store.getters.name
+   this.name = localStorage.getItem("promise_name")
   },
 
   methods:{

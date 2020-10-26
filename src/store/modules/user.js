@@ -7,7 +7,8 @@ const getDefaultState = () => {
   return {
     token: getToken(),
     name: '',
-    avatar: ''
+    avatar: '',
+    promise_name:''
   }
 }
 
@@ -25,6 +26,10 @@ const mutations = {
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
+  },
+  SET_PROMISE_NAME: (state, promise_name) => {
+    localStorage.setItem("promise_name", promise_name)
+    state.promise_name = promise_name
   }
 }
 
@@ -36,7 +41,7 @@ const actions = {
       login(getParams(userInfo)).then(response => {
         const { data } = response
         commit('SET_TOKEN', data.token)
-        commit('SET_NAME', userInfo.username)
+        commit('SET_PROMISE_NAME', userInfo.username)
         setToken(data.token)
         resolve()
       }).catch(error => {

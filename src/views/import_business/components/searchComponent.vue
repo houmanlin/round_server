@@ -103,9 +103,9 @@
             </el-date-picker>
           </el-form-item>
 
-          <el-form-item label="离境港口" class="form last_form">
-            <el-input v-model="exitPort" placeholder="请输入离境港口" style="width: 195px"/>
-            <el-button type="primary" class="search_button" @click="resetData">重置</el-button>
+          <el-form-item label="" class="form last_form">
+            <el-input v-model="exitPort" placeholder="请输入离境港口"  type="hidden" style="width: 195px"/>
+            <el-button type="primary" class="search_button"  @click="resetData">重置</el-button>
           </el-form-item>
 
         </el-form>

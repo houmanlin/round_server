@@ -6,61 +6,44 @@ const ORDER_TYPE_GROUP = [
     },
     {
         value: 1,
-        label: '入库查验'
-    },
-    {
-        value: 2,
         label: '提交报关'
     },
     {
-        value: 3,
+        value: 2,
         label: '提交查验'
     },
     {
+        value: 3,
+        label: '查验操作'
+    },
+    {
         value: 4,
-        label: '退单'
-    },
-    {
-        value: 5,
-        label: '退单完成'
-    },
-    {
-        value: 7,
         label: '提交放行'
     },
     {
+        value: 5,
+        label: '放行出库'
+    },
+    {
+        value: 7,
+        label: '提交转关'
+    },
+    {
         value: 8,
-        label: '境内送货'
+        label: '转关操作'
     },
     {
         value: 9,
-        label: '货物送达'
+        label: '提货操作'
     },
     {
         value: 10,
-        label: '提交提货车辆信息'
+        label: '提交退单'
     },
     {
         value: 11,
-        label: '提货交接'
-    },
-    {
-        value: 12,
-        label: '提交转关'
-    },
-
-    {
-        value: 13,
-        label: '转关'
-    },
-        {
-        value: 14,
-        label: '转关异常'
-    },
-    {
-        value: 15,
-        label: '转关完毕'
-    },
+        label: '退库完成'
+    }
 ]
 
 const SYSTEM_LOG_STATUS_GROUP = [
