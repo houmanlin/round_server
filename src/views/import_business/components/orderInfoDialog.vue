@@ -4,8 +4,9 @@
       width="80%"
       :before-close="handleClose">
     <el-row style="margin-bottom: 20px">
-      <el-col :span="6"> 主单号:{{ orderInfo.mainNo }}</el-col>
-      <el-col :span="18">主单类型:{{ orderInfo.mainType }}</el-col>
+      <el-col :span="8"> 主单号：{{ orderInfo.mainNo }}</el-col>
+      <el-col :span="8">主单类型：{{ orderInfo.mainType }}</el-col>
+      <el-col :span="8">业务类型：{{ orderInfo.businessType }}</el-col>
     </el-row>
     <el-form label-position="left" ref="form" :inline="true" :model="clearanceData" label-width="110px" class="order_info_list">
 <!--      <el-form-item label="主单号:" class="info_item">-->
@@ -21,7 +22,7 @@
       <el-form-item label="报关口岸:" class="info_item">
         <div class="form_value">{{ orderInfo.portEntry }}</div>
       </el-form-item>
-      <el-form-item label="离境口岸:" class="info_item">
+      <el-form-item label="通关口岸:" class="info_item">
         <div class="form_value">{{ orderInfo.clearancePort }}</div>
       </el-form-item>
       <el-form-item label="航班号:" class="info_item">
@@ -36,26 +37,53 @@
       <el-form-item label="主单毛量:" class="info_item">
         <div class="form_value">{{ orderInfo.mainRoughWeight }}</div>
       </el-form-item>
-      <el-form-item label="毛单体积:" class="info_item">
-        <div class="form_value">{{ orderInfo.mainVolume }}</div>
-      </el-form-item>
       <el-form-item label="主单计费量:" class="info_item">
         <div class="form_value">{{ orderInfo.mainChargedWeight }}</div>
       </el-form-item>
+      
+      <el-form-item label="品名数量:" class="info_item" v-show="mainTypeShow">
+        <div class="form_value">{{ orderInfo.mainChargedWeight }}</div>
+      </el-form-item>
+      <el-form-item label="报关代理:" class="info_item" v-show="mainTypeShow">
+        <div class="form_value">{{ orderInfo.mainChargedWeight }}</div>
+      </el-form-item>
+      <el-form-item label="生产销售单位:" class="info_item" v-show="mainTypeShow">
+        <div class="form_value">{{ orderInfo.mainChargedWeight }}</div>
+      </el-form-item>
+      <el-form-item label="报关类型:" class="info_item" v-show="mainTypeShow">
+        <div class="form_value">{{ orderInfo.mainChargedWeight }}</div>
+      </el-form-item>
+      <el-form-item label="监管方式:" class="info_item" v-show="mainTypeShow">
+        <div class="form_value">{{ orderInfo.mainChargedWeight }}</div>
+      </el-form-item>
+
+      <el-form-item label="始发港:" class="info_item" v-show="businessType1">
+          <div class="form_value">{{ orderInfo.departurePort }}</div>
+      </el-form-item>
+
+
+      <el-form-item label="目的港:" class="info_item" v-show="businessType2 | businessType3">
+        <div class="form_value">{{ orderInfo.destinationPort }}</div>
+      </el-form-item>
+      <el-form-item label="境内送货:" class="info_item" v-show="businessType2">
+        <div class="form_value">{{ orderInfo.domesticDelivery }}</div>
+      </el-form-item>
+
+      <el-form-item label="转关单号:" class="info_item" v-show="businessType3">
+        <div class="form_value">{{ orderInfo.transitNo }}</div>
+      </el-form-item>
+      <el-form-item label="目的港:" class="info_item" v-show="businessType3">
+        <div class="form_value">{{ orderInfo.destinationPort }}</div>
+      </el-form-item>
+      <el-form-item label="境内监管中转:" class="info_item" v-show="businessType3">
+        <div class="form_value">{{ orderInfo.domesticSuperviseTransit }}</div>
+      </el-form-item>
+
       <el-form-item label="货值:" class="info_item">
         <div class="form_value">{{ orderInfo.goodsValue }}</div>
       </el-form-item>
-      <el-form-item label="商品数量:" class="info_item">
-        <div class="form_value">{{ orderInfo.nameNum }}</div>
-      </el-form-item>
-      <el-form-item label="通关单号:" class="info_item">
-        <div class="form_value">{{ orderInfo.customsNo }}</div>
-      </el-form-item>
-      <el-form-item label="贸易单号:" class="info_item">
-        <div class="form_value">{{ orderInfo.tradeNo }}</div>
-      </el-form-item>
-      <el-form-item label="合同编码:" class="info_item">
-        <div class="form_value">{{ orderInfo.contractCoding }}</div>
+      <el-form-item label="币种:" class="info_item">
+        <div class="form_value">{{ orderInfo.currency }}</div>
       </el-form-item>
       <el-form-item label="发件人:" class="info_item">
         <div class="form_value">{{ orderInfo.addresser }}</div>
@@ -63,23 +91,10 @@
       <el-form-item label="收件人:" class="info_item">
         <div class="form_value">{{ orderInfo.addressor }}</div>
       </el-form-item>
-      <el-form-item label="报关企业代理:" class="info_item">
-        <div class="form_value">{{ orderInfo.customsBroker }}</div>
-      </el-form-item>
-      <el-form-item label="报关日期:" class="info_item">
-        <div class="form_value">{{ orderInfo.declarationDate }}</div>
-      </el-form-item>
-      <el-form-item label="生产销售单位:" class="info_item">
-        <div class="form_value">{{ orderInfo.productionSaleUnit }}</div>
-      </el-form-item>
       <el-form-item label="备注:" class="info_item" style="width: 98%; border-color: #ffffff">
         <div class="form_value">{{ orderInfo.remark }}</div>
       </el-form-item>
     </el-form>
-
-
-
-
 
 
     <span slot="footer" class="dialog-footer">
@@ -92,6 +107,7 @@
 export default {
   props:["orderInfo"],
   name: "clearance_goods",
+  
   data(){
     return{
       dialogVisible: false,
@@ -99,14 +115,29 @@ export default {
       clearanceData:{
         service_shop: "",
         clearance_order:""
-      }
+      },
+      mainTypeShow:false,
+      businessType1:false,
+      businessType2:false,
+      businessType:false,
     }
   },
   methods:{
     handleClose(){
       this.dialogVisible = false
     }
+  },
+  created() {},
+  mounted() {},
+  watch:{
+    orderInfo(val){
+    this.mainTypeShow = val.mainType === '直单'? true:false
+    this.businessType1 = this.mainTypeShow && val.businessType === '统一版进口'? true:false
+    this.businessType2 = this.mainTypeShow && val.businessType === '统一版出口'? true:false
+    this.businessType3 = this.mainTypeShow && val.businessType === '转关'? true:false
+    }
   }
+
 }
 </script>
 
@@ -125,6 +156,14 @@ export default {
   .el-form-item{
     margin-bottom: 0;
     margin-right: 0;
+  }
+
+  .main-type-hidden{
+    display: hidden;
+  }
+
+  .main-type-show{
+    display: block;
   }
 
 </style>
