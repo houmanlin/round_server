@@ -399,9 +399,9 @@ export default {
        * 数据获取更新
        */
       getMainOrderInfo(data).then(res=>{
-        // 发件人
-        this.$set(this.mast_info, "receiver_info", res.data.addressor)
         // 收件人
+        this.$set(this.mast_info, "receiver_info", res.data.addressor)
+        // 发件人
         this.$set(this.mast_info, "addresser_info", res.data.addresser)
         // res.data.customerNoOne = res.data.customerNoOne ?  res.data.customerNoOne : ""
         // res.data.customerIdTwo = res.data.customerIdTwo ?  res.data.customerIdTwo : ""
@@ -431,11 +431,13 @@ export default {
         // 主单件
         this.$set(this.mast_info, "mast_number", res.data.mainNum)
         // 主单毛重
-        this.$set(this.mast_info, "mast_weight", res.data.mainRoughtWeight)
+        this.$set(this.mast_info, "mast_weight", res.data.mainRoughWeight)
         // 主单体积
         // this.$set(this.mast_info, "mast_volume", res.data.mainVolume)
         // 主单计费量
-        this.$set(this.mast_info, "chargedWeight", res.data.mainChargedWeight)
+        this.$set(this.mast_info, "mast_expense", res.data.mainChargedWeight)
+        // 通关口岸
+        this.$set(this.mast_info, "exit_port", res.data.clearancePort)
         // 辅助信息货值
         res.data.goodsValue = res.data.goodsValue ?  res.data.goodsValue : ""
         this.$set(this.mast_info, "goodsValue", res.data.goodsValue)
@@ -453,7 +455,7 @@ export default {
         // TODO 监管方式
         this.$set(this.mast_info, "jianguan_type", res.data.supervisionMethod)
         // TODO 业务类型
-        this.$set(this.mast_info, "yewu_type", res.data.yewu_type)
+        this.$set(this.mast_info, "yewu_type", res.data.businessType)
         // TODO 境内送货
         this.$set(this.mast_info, "is_jingnei", res.data.is_jingnei)
         this.$set(this.mast_info, "feiyong", res.data.is_jingnei)
@@ -462,7 +464,7 @@ export default {
         // 辅助信息生产销售单位
         this.$set(this.mast_info, "sale_monad", res.data.productionSaleUnit)
         // 辅助信息报关销售代理
-        this.$set(this.mast_info, "company_agency", res.data.customsBrokerAgent)
+        this.$set(this.mast_info, "company_agency", res.data.customsBroker)
         // 辅助信息备注
         this.$set(this.mast_info, "marks", res.data.remark)
 
@@ -596,7 +598,8 @@ export default {
             submenuNo: '',
             submenuNumPackage: "", feiyong: "" , pinming_shu:"",baoguan_daili:"",sale_monad:"",jianguan_type:"",is_jingnei:"",baoguan_type: "",destination: "", roughWeight:"", volume: "", chargedWeight: "", addressee: "", tradeType:[]},
       ]
-      this.mainTypeSelected = []
+      //this.mainTypeSelected = []
+      this.mainTypeSelected = ""
     },
     /**
      * 修改方法
@@ -643,7 +646,7 @@ export default {
       }
 
       let data = {
-        addressee                       : this.mast_info.addresser_info,            // 发件人
+        addresser                       : this.mast_info.addresser_info,            // 发件人
         addressor                       : this.mast_info.receiver_info,             // 收件人
         busSubmenuSaveDTOS              : [],                                       // 分单信息
         businessType                    : this.mast_info.yewu_type,                 // 业务类型 1.统一版进口 2.统一版出口 3.转关
@@ -663,15 +666,15 @@ export default {
         goodsValue                      : this.mast_info.goodsValue,                // 货值
         mainChargedWeight               : this.mast_info.mast_expense,              // 主单计费重
         mainNo                          : this.mast_info.mast_order_number,         // 主单号
-        mainNumPackage                  : parseInt(this.mast_info.mast_number),     // 主单件数
+        mainNum                         : parseInt(this.mast_info.mast_number),     // 主单件数
         mainType                        : parseInt(this.mainTypeSelected),          // 主单类型 1.直单 2.一主多分
         nameNum                         : parseInt(this.mast_info.descriptionNum),  // 品名数量
         portEntry                       : this.mast_info.clearance_port,            // 报关口岸
         productionSaleUnit              : this.mast_info.sale_monad,                // 生产销售单位
-        remark                          : this.mast_info.remark,                    // 备注
+        remark                          : this.mast_info.marks,                    // 备注
         supervisionMethod               : this.mast_info.jianguan_type,             // 监管方式
         transitNo                       : this.mast_info.zhuanguan_order ,          // 转关单号
-        mainRoughtWeight                : this.mast_info.mast_weight,               // 主单毛重
+        mainRoughWeight                : this.mast_info.mast_weight,               // 主单毛重
       }
 
       // true:  始发港  false:  目的港
