@@ -19,10 +19,10 @@
       </el-form-item>
 
       <el-form-item label="报关口岸:" class="info_item">
-        <div class="form_value">{{ orderInfo.customsPort }}</div>
+        <div class="form_value">{{ orderInfo.portEntry }}</div>
       </el-form-item>
       <el-form-item label="离境口岸:" class="info_item">
-        <div class="form_value">{{ orderInfo.exitPort }}</div>
+        <div class="form_value">{{ orderInfo.clearancePort }}</div>
       </el-form-item>
       <el-form-item label="航班号:" class="info_item">
         <div class="form_value">{{ orderInfo.flightNo }}</div>
@@ -61,10 +61,10 @@
         <div class="form_value">{{ orderInfo.addresser }}</div>
       </el-form-item>
       <el-form-item label="收件人:" class="info_item">
-        <div class="form_value">{{ orderInfo.addressee }}</div>
+        <div class="form_value">{{ orderInfo.addressor }}</div>
       </el-form-item>
       <el-form-item label="报关企业代理:" class="info_item">
-        <div class="form_value">{{ orderInfo.customsBrokerAgent }}</div>
+        <div class="form_value">{{ orderInfo.customsBroker }}</div>
       </el-form-item>
       <el-form-item label="报关日期:" class="info_item">
         <div class="form_value">{{ orderInfo.declarationDate }}</div>
