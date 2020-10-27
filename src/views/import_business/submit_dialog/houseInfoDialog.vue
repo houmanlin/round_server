@@ -72,7 +72,7 @@
           <el-option label="0110" :value="4"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item :label="clearanceData.dialog_yewu_type == '3'? '境内监管中转' : '境内送货'" v-if="clearanceData.dialog_yewu_type == '3' || clearanceData.dialog_yewu_type == '2'">
+      <el-form-item :label="clearanceData.dialog_yewu_type == '3'? '境内监管中转' : '境内送货'" v-if="clearanceData.dialog_yewu_type == '3' || clearanceData.dialog_yewu_type == '1'">
         <el-select filteyrable  v-model="clearanceData.dialog_is_jingnei" placeholder="请选择境内送货">
           <el-option label="是" :value="1"></el-option>
           <el-option label="否" :value="0"></el-option>
