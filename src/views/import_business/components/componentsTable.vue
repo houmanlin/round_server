@@ -11,7 +11,7 @@
       <el-table-column align="center" fixed="left" v-if="index==0" type="expand" >
         <template slot-scope="props">
           <el-table
-              :data="props.row['busNodeListVOS']"
+              :data="props.row['busSubmenuListVOS']"
               :height="500"
               @cell-click="double_click"
               @selection-change="handleSelectionChange2"
@@ -38,11 +38,14 @@
                   :key="indexs"
                   align="center"
                   v-if="items.label != '操作' && items.label != '主单号/分单号'"
-                  :prop="items.prop"
-                  :fixed="item.label == '序号' || item.label == '状态' || item.label == '业务类型' || item.label == '一级客户' ||  item.label == '二级客户' || item.label == '主单号/分单号' ? 'left' : false "
+                  :fixed="item.label == '状态' || item.label == '业务类型' || item.label == '一级客户' ||  item.label == '二级客户' || item.label == '主单号/分单号' ? 'left' : false "
                   show-overflow-tooltip
-                  :min-width="items.label == '序号' || items.label == '状态' || items.label == '业务类型' || items.label == '一级客户' ||  items.label == '二级客户' || items.label == '主单号/分单号' ? '131' : '200'"
-                  :label="items.label"/>
+                  :min-width="items.label == '状态' || items.label == '业务类型' || items.label == '一级客户' ||  items.label == '二级客户' || items.label == '主单号/分单号' ? '131' : '200'"
+                  :label="items.label">
+                  <template>
+                    {{ props.row[items.prop] }}
+                  </template>
+              </el-table-column>
 
               <el-table-column align="center"
                                v-else-if="items.label == '主单号/分单号'"
@@ -50,10 +53,9 @@
                                fixed="left"
                                show-overflow-tooltip
                                min-width="200"
-                               @click="checkOrderInfo(items)"
                                :label="items.label">
                 <template slot-scope="scope">
-                  <el-button type="text">{{scope.row.mainNo}}</el-button>
+                  <el-button @click="checkOrderInfo(items)" type="text">{{scope.row.mainNo}}</el-button>
                 </template>
               </el-table-column>
 
@@ -73,7 +75,7 @@
                         v-for="(operator_item, idx) in items.prop"
                         :key="idx"
                         v-if="operator_item == '上传' || operator_item == '上传文件'"
-                        :data="getPostData(scope.row,0)"
+                        :data="getPostData(props.row,0)"
                         multiple
                         :action="uploadSingle"
                         :file-list="fileList"
@@ -89,7 +91,7 @@
                         v-if="operator_item != '上传' && operator_item != '上传文件'" 
                         v-for="(operator_item, indexs) in items.prop" 
                         :key="indexs" 
-                        @click="checkOrderInfoSub(props.row, operator_item)" 
+                        @click="checkOrderInfoSub(props.row['busSubmenuListVOS'][scope.$index], operator_item)" 
                         type="text" 
                         size="small">
                         {{operator_item}}
@@ -181,15 +183,15 @@
                 :on-success="handleResultSuccess"
                 :on-error="handleResultError"
                 :show-file-list="false"
-                :disabled="scope.row.mainType !== '直单'"
+                :disabled="scope.row.mainType !== 1"
             >
               <el-button  type="text"
                           size="small"
-                          :disabled="scope.row.mainType !== '直单'"
+                          :disabled="scope.row.mainType !== 1"
                           >{{operator_item}}</el-button>
             </el-upload>
             <el-button 
-            :disabled="scope.row.mainType !== '直单'"
+            :disabled="scope.row.mainType !== 1"
             v-if="operator_item != '上传' && operator_item != '上传文件'" v-for="(operator_item, indexs) in item.prop" :key="indexs" @click="checkOrderInfo(scope.row, operator_item)" type="text" size="small">{{operator_item}}</el-button>
 
           </template>
@@ -213,6 +215,7 @@ export default {
   },
   methods:{
     checkOrderInfoSub(row, key){
+      debugger
       this.$emit("onTableOperator", {table_data:row, operator_key:key})
     },
     checkOrderInfo(row, key){
@@ -241,6 +244,7 @@ export default {
 
       let uploadJson={
         mainNo:row.mainNo,
+        submenuNo:row.submenuNo,
         nodeType:nodetype,
       }
       console.log("uploadJson",uploadJson);

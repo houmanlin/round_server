@@ -5,7 +5,7 @@
       :before-close="handleClose">
     <el-row style="margin-bottom: 20px">
       <el-col :span="8"> 主单号：{{ orderInfo.mainNo }}</el-col>
-      <el-col :span="8">主单类型：{{ orderInfo.mainType }}</el-col>
+      <el-col :span="8">主单类型：{{ orderInfo.mainType == 1?'直单':'一主多分' }}</el-col>
       <el-col :span="8">业务类型：{{ orderInfo.businessType }}</el-col>
     </el-row>
     <el-form label-position="left" ref="form" :inline="true" :model="clearanceData" label-width="110px" class="order_info_list">

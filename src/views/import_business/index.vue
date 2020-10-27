@@ -41,7 +41,7 @@
     <greenLight ref="greenLight" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
     <domesticDeliveryGoods ref="domesticDeliveryGoods" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
     <domesticDelivery ref="domesticDelivery" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
-    <greenLightReturnWorkhouse ref="greenLightReturnWorkhouse" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <greenLightReturnWorkhouse ref="greenLightReturnWorkhouse" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
     <submitCarInfo ref="submitCarInfo" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
     <submitCustomsTransit ref="submitCustomsTransit" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
     <customsTransitOperator ref="customsTransitOperator" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
@@ -148,6 +148,13 @@ export default {
         this.page_config = getPages(res.data)
         let { records } = res.data
         this.table_data = records
+        for(let item of this.table_data){
+          if(item.busSubmenuListVOS && item.busSubmenuListVOS.length > 0){
+            for(let subItem of item.busSubmenuListVOS){
+              this.$set(subItem, "mainNo", item.mainNo)
+            }
+          }
+        }
       })
 
       getCount().then(res=>{
@@ -208,16 +215,30 @@ export default {
         })
         return
       }
-        if(this.selectTableData.length > 1){
-          this.$message.info("只能操作一条订单")
-          return
-        }
-        if(this.selectTableData.length < 1){
-          this.$message.info("请选择要操作的数据")
-          return
-        }
-      console.log(this.selectTableData)
-      this.orderInfo = this.selectTableData[0]
+      if(this.selectTableData.length > 1){
+        this.$message.info("只能操作一条订单")
+        return
+      }
+      if(this.selectMenuTableData.length > 1){
+        this.$message.info("只能操作一条订单")
+        return
+      }
+      if(this.selectTableData.length >= 1 && this.selectMenuTableData.length >= 1){
+        this.$message.info("只能操作一条订单")
+        return
+      }
+      if(this.selectMenuTableData.length < 1 && this.selectTableData.length < 1){
+        this.$message.info("请选择要操作的数据")
+        return
+      }
+
+      if(this.selectTableData.length > 0){
+        this.orderInfo = this.selectTableData[0]
+        console.log(this.selectTableData)
+      } else {
+        this.orderInfo = this.selectMenuTableData[0]
+        console.log(this.selectMenuTableData)
+      }
       this.$refs[operator_key].dialogVisible = true
     },
     tableOperatorGroup(operator){

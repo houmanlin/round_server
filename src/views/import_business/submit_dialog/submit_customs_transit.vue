@@ -63,7 +63,7 @@
 import {uploadForm} from "@/api/submit_form";
 
 export default {
-  props:["mainNo"],
+  props: ["mainNo","submenuNo"],
   name: "clearance_goods",
   data(){
     return{
@@ -111,6 +111,7 @@ export default {
 
 
       data.append("mainNo", this.mainNo)
+      data.append("submenuNo", this.submenuNo)
       data.append("commitCustomsTransitNo", this.clearanceData.zhaunguan_danhao)
       data.append("commitCustomsTransitModelCar", this.clearanceData.car_type)
       data.append("commitCustomsTransitLPN", this.clearanceData.license_plate_number)

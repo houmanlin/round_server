@@ -212,7 +212,7 @@ const BUSINESS_BILLING_TABLE = [
 const IMPORT_BUSINESS_TABLE = [
     {
         label: "状态",
-        prop: "busNodeListVOS.status"
+        prop: "status"
     },
     {
         label: "业务类型",
@@ -235,10 +235,6 @@ const IMPORT_BUSINESS_TABLE = [
         prop: "clearancePort"
     },
     {
-        label: "报关日期",
-        prop: "declarationDate"
-    },
-    {
         label: "报关口岸",
         prop: "portEntry"
     },
@@ -259,60 +255,56 @@ const IMPORT_BUSINESS_TABLE = [
         prop: "mainRoughtWeight"
     },
     {
-        label: "报关代理",
-        prop: "customsBroker"
-    },
-    {
         label: "报关日期",
-        prop: "busNodeListVOS.commitCustomsDate"
+        prop: "customsDate"
     },
     {
         label: "提交报关",
-        prop: "busNodeListVOS.commitCustoms"
+        prop: "commitCustoms"
     },
     {
         label: "提交查验",
-        prop: "busNodeListVOS.commitCheck",
+        prop: "commitCheck",
         hase_status: true
     },
     {
         label: "查验操作",
-        prop: "busNodeListVOS.commitOperationCheck",
+        prop: "checkOperation",
         hase_status: true
     },
     {
         label: "提交放行",
-        prop: "busNodeListVOS.commitPermit",
+        prop: "commitPermit",
         hase_status: true
     },
     {
         label: "放行出库",
-        prop: "busNodeListVOS.dischargedDelivery",
+        prop: "dischargedDelivery",
         hase_status: true
     },
     {
         label: "提交转关",
-        prop: "busNodeListVOS.commitCustomsTransit",
+        prop: "commitCustomsTransit",
         hase_status: true
     },
     {
         label: "转关操作",
-        prop: "busNodeListVOS.customsTransitOperation",
+        prop: "customsTransitOperation",
         hase_status: true
     },
     {
         label: "提货操作",
-        prop: "busNodeListVOS.pickUpOperation",
+        prop: "pickUpOperation",
         hase_status: true
     },
     {
         label: "提交退单",
-        prop: "busNodeListVOS.commitChargeback",
+        prop: "commitChargeback",
         hase_status: true
     },
     {
         label: "退单操作",
-        prop: "busNodeListVOS.cancellingStocks",
+        prop: "cancelingStocks",
         hase_status: true
     },
     {

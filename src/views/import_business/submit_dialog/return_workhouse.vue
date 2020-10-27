@@ -51,7 +51,8 @@
 import {uploadForm} from "@/api/submit_form";
 
 export default {
-  props:["mainNo"],
+  props: ["mainNo","submenuNo"],
+  
   name: "clearance_goods",
   data(){
     return{
@@ -96,6 +97,7 @@ export default {
 
 
       data.append("mainNo", this.mainNo)
+      data.append("submenuNo", this.submenuNo)
       data.append("cancelStocksRemark", this.clearanceData.mark)
       data.append("nodeType", 6)
       let refundOrderFileNames = ""
