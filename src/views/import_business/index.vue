@@ -8,7 +8,7 @@
 
     <el-button type="text" disabled>查验: 15</el-button>
     <!------------- 数据表格  --------------->
-    <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" :tableData="table_data" @onTableOperator="tableOperatorGroup" @onOperator="tableOperator" @onUploadMethod="uploadFile" @onGetSelectData="getSelectData"/>
+    <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" :tableData="table_data" @onTableOperator="tableOperatorGroup" @onOperator="tableOperator" @onUploadMethod="uploadFile" @onGetSelectData="getSelectData" @onGetSelectMenuData="getSelectMenuData"/>
     <el-pagination
         class="pagination"
         :pagerCount="21"
@@ -99,7 +99,8 @@ export default {
       flightDateEnd           : "",                  // 报关时间
       status                  : "",        // 操作类
       orderMater              : false,
-      selectTableData         : []
+      selectTableData         : [],
+      selectMenuTableData         : [],
     }
   },
   created() {
@@ -155,8 +156,12 @@ export default {
      */
     operator(operator_key){
       let ids = ""
+      let menu_ids = ""
       this.selectTableData.forEach((item, index)=>{
         ids += this.selectTableData.length != index +1 ? `${item.id},` : `${item.id}`
+      })
+      this.selectMenuTableData.forEach((item, index)=>{
+        menu_ids += this.selectMenuTableData.length != index +1 ? `${item.id},` : `${item.id}`
       })
 
       if(operator_key == 'add'){
@@ -170,16 +175,18 @@ export default {
         }
 
         MainOrderDel(data).then(res=>{
+          this.$message.success("成功")
           this.getData();
         })
         return
       }
       if(operator_key == 'houseNoRemove'){
         let data = {
-          ids
+          ids:menu_ids
         }
 
         houseOrderDel(data).then(res=>{
+          this.$message.success("成功")
           this.getData();
         })
         return
@@ -248,8 +255,11 @@ export default {
     getSelectData(data){
       this.selectTableData = data
     },
+    getSelectMenuData(data){
+      this.selectMenuTableData = data
+    },
     uploadFile(data){
-      debugger
+
     }
 
   }

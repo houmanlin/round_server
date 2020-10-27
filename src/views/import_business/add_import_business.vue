@@ -477,25 +477,24 @@ export default {
           let busSubmenusItem = res.data.busSubmenus[argumentsKey]
           let tradeType = busSubmenusItem.tradeType ? busSubmenusItem.tradeType : "";
 
+          //TODO 123321
           let busSubmenu_item = {
+            static_old_submenuNo: busSubmenusItem.submenuNo,
             submenuNo: busSubmenusItem.submenuNo,
-            pinming_shu:busSubmenusItem.pinming_shu,
-            zhuanguan_order:busSubmenusItem.zhuanguan_order,
-            baoguan_daili:busSubmenusItem.baoguan_daili,
-            sale_monad:busSubmenusItem.sale_monad,
-            baoguan_type:busSubmenusItem.baoguan_type,
-            destination:busSubmenusItem.destination,
-            is_jingnei:busSubmenusItem.is_jingnei,
-            jianguan_type:busSubmenusItem.jianguan_type,
+            pinming_shu:busSubmenusItem.nameNum,
+            zhuanguan_order:busSubmenusItem.transitNo,
+            baoguan_daili:busSubmenusItem.customsBroker,
+            sale_monad:busSubmenusItem.productionSaleUnit,
+            baoguan_type:busSubmenusItem.customsDeclareType,
+            destination:this.mast_info.yewu_type == '1' ? busSubmenusItem.departurePort : busSubmenusItem.destinationPort,
+            is_jingnei:this.mast_info.yewu_type != '3' ? busSubmenusItem.domesticDelivery : busSubmenusItem.domesticSuperviseTransit,
+            jianguan_type:busSubmenusItem.supervisionMethod,
             submenuNumPackage: busSubmenusItem.submenuNumPackage,
-            feiyong: busSubmenusItem.feiyong,
-            roughWeight:busSubmenusItem.roughWeight,
-            volume: busSubmenusItem.volume,
+            feiyong: busSubmenusItem.expense,
+            roughWeight:busSubmenusItem.subRoughWeight,
             id: busSubmenusItem.id ? busSubmenusItem.id : 0,
-            chargedWeight: busSubmenusItem.chargedWeight,
-            addressee: busSubmenusItem.addressee,
-            // tradeType: tradeType.split(",")
           }
+          debugger
 
           this.$set(this.mast_info["busSubmenuSaveDTOS"], argumentsKey, busSubmenu_item)
         }
@@ -554,6 +553,8 @@ export default {
       this.$delete(houseNoInfo, 'data_index')
       this.$delete(houseNoInfo, 'yewu_type')
       this.$set(this.mast_info.busSubmenuSaveDTOS, index, houseNoInfo)
+      this.$set(this.mast_info.busSubmenuSaveDTOS[index], "static_old_submenuNo", houseNoInfo.static_old_submenuNo)
+      this.subZhongLiang()
       this.$refs["houseInfoDialog"]["dialogVisible"] = false
     },
     /**
@@ -611,35 +612,33 @@ export default {
      */
     addData(){
 
-      let origin_data = this.mast_info
-      let arrays = new Array()
-      for (let trace_type in origin_data.busSubmenuSaveDTOS) {
-        let dtos = {
-          id:origin_data.busSubmenuSaveDTOS[trace_type].id ? origin_data.busSubmenuSaveDTOS[trace_type].id : 0,
-          submenuNo: origin_data.busSubmenuSaveDTOS[trace_type].submenuNo,
-          submenuNumPackage: origin_data.busSubmenuSaveDTOS[trace_type].submenuNumPackage,
-          jianguan_type: origin_data.busSubmenuSaveDTOS[trace_type].jianguan_type,
-          feiyong: origin_data.busSubmenuSaveDTOS[trace_type].feiyong,
-          sale_monad: origin_data.busSubmenuSaveDTOS[trace_type].sale_monad,
-          pinming_shu: origin_data.busSubmenuSaveDTOS[trace_type].pinming_shu,
-          baoguan_daili: origin_data.busSubmenuSaveDTOS[trace_type].baoguan_daili,
-          baoguan_type: origin_data.busSubmenuSaveDTOS[trace_type].baoguan_type,
-          roughWeight: origin_data.busSubmenuSaveDTOS[trace_type].roughWeight,
-          volume: origin_data.busSubmenuSaveDTOS[trace_type].volume,
-          chargedWeight: origin_data.busSubmenuSaveDTOS[trace_type].chargedWeight,
-          destination: origin_data.busSubmenuSaveDTOS[trace_type].destination,
-          addressee: origin_data.busSubmenuSaveDTOS[trace_type].addressee,
-          tradeType: origin_data.busSubmenuSaveDTOS[trace_type].tradeType,
-          zhuanguan_order: origin_data.busSubmenuSaveDTOS[trace_type].zhuanguan_order
-        }
-        // console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType);
-        //   console.log(origin_data.busSubmenuSaveDTOS[trace_type].tradeType.join(","))
-        arrays.push(dtos)
-        console.log(dtos)
-      }
-
-      console.log(arrays)
-      this.$set(origin_data, "busSubmenuSaveDTOS", arrays)
+      // let origin_data = this.mast_info
+      // let arrays = new Array()
+      // for (let trace_type in origin_data.busSubmenuSaveDTOS) {
+      //   let dtos = {
+      //     id:origin_data.busSubmenuSaveDTOS[trace_type].id ? origin_data.busSubmenuSaveDTOS[trace_type].id : 0,
+      //     submenuNo: origin_data.busSubmenuSaveDTOS[trace_type].submenuNo,
+      //     submenuNumPackage: origin_data.busSubmenuSaveDTOS[trace_type].submenuNumPackage,
+      //     jianguan_type: origin_data.busSubmenuSaveDTOS[trace_type].jianguan_type,
+      //     feiyong: origin_data.busSubmenuSaveDTOS[trace_type].feiyong,
+      //     sale_monad: origin_data.busSubmenuSaveDTOS[trace_type].sale_monad,
+      //     pinming_shu: origin_data.busSubmenuSaveDTOS[trace_type].pinming_shu,
+      //     baoguan_daili: origin_data.busSubmenuSaveDTOS[trace_type].baoguan_daili,
+      //     baoguan_type: origin_data.busSubmenuSaveDTOS[trace_type].baoguan_type,
+      //     roughWeight: origin_data.busSubmenuSaveDTOS[trace_type].roughWeight,
+      //     volume: origin_data.busSubmenuSaveDTOS[trace_type].volume,
+      //     chargedWeight: origin_data.busSubmenuSaveDTOS[trace_type].chargedWeight,
+      //     destination: origin_data.busSubmenuSaveDTOS[trace_type].destination,
+      //     addressee: origin_data.busSubmenuSaveDTOS[trace_type].addressee,
+      //     tradeType: origin_data.busSubmenuSaveDTOS[trace_type].tradeType,
+      //     zhuanguan_order: origin_data.busSubmenuSaveDTOS[trace_type].zhuanguan_order
+      //   }
+      //   arrays.push(dtos)
+      //   console.log(dtos)
+      // }
+      //
+      // console.log(arrays)
+      // this.$set(origin_data, "busSubmenuSaveDTOS", arrays)
 
 
       if (this.mast_info.flight_time){
@@ -681,35 +680,22 @@ export default {
         mainRoughWeight                : this.mast_info.mast_weight,               // 主单毛重
       }
 
-      // true:  始发港  false:  目的港
-      // if (this.mast_info.yewu_type == '1'){
-      //   delete data.departurePort
-      // }else{
-      //   delete data.destinationPort
-      // }
-      // true:  境内送货  false:  境内监管中转
-     // if (this.mast_info.yewu_type != '3'){
-     //    delete data.domesticDelivery
-     //
-     //  }else{
-     //    delete data.domesticSuperviseTransit
-     //  }
+
 
       if(this.mast_info.busSubmenuSaveDTOS.length > 0){
         for (let item of this.mast_info.busSubmenuSaveDTOS) {
-          console.log(item)
+          console.log(this.mast_info.busSubmenuSaveDTOS)
 
           let dto = {
             id                           : item.id,
             mainNo                       : this.mast_info.mast_order_number,           // 主单号
             oldMainNo                    : this.oldMainNo,                             // 旧主单号
-            oldSubmenuNo                 : item.oldMainNo,                             // 旧主单号
+            oldSubmenuNo                 : item.static_old_submenuNo,                             // 旧主单号
             submenuNo                    : item.submenuNo,                             // 分单号
             nameNum                      : parseInt(item.pinming_shu),                 // 品名数量
             productionSaleUnit           : item.sale_monad,                            // 销售单位
             supervisionMethod            : parseInt(item.jianguan_type),               // 监管方式
             submenuNumPackage            : parseInt(item.submenuNumPackage),           // 分单件数
-            feiyong                      : item.feiyong,                               // 费用
             subRoughWeight               : item.roughWeight,                           // 毛重
             expense                      : item.feiyong,                               // 费用
             domesticDelivery             : item.is_jingnei,                            //
@@ -720,23 +706,12 @@ export default {
             customsBroker                : item.baoguan_daili,                         // 报关代理
             transitNo                    : item.transitNo                              // 转关单号
           }
+
+          debugger
           if(!item.id){
             delete dto.id
           }
-          // true:  始发港  false:  目的港
-          // if (this.mast_info.yewu_type == '1'){
-          //   delete dto.departurePort
-          // }else{
-          //   delete dto.destinationPort
-          // }
 
-          // true:  境内送货  false:  境内监管中转
-          // if (this.mast_info.yewu_type != '3'){
-          //   delete dto.domesticDelivery
-          //
-          // }else{
-          //   delete dto.domesticSuperviseTransit
-          // }
 
           data.busSubmenuSaveDTOS.push(dto)
         }
@@ -760,8 +735,6 @@ export default {
 
 
         data.id = this.mast_info.id
-
-
         editOrder(data).then(res=>{
           this.$message.success("成功");
           this.$router.back()
@@ -771,12 +744,19 @@ export default {
       }else{
         addOrder(data).then(res=>{
           this.$message.success("成功");
-          // this.$router.back()
+          this.$router.back()
         })
       }
+    },
+    subZhongLiang(){
 
-
-
+      let a = 0,b = 0
+      this.mast_info.busSubmenuSaveDTOS.forEach((item)=>{
+        a += parseInt(item.submenuNumPackage)
+        b += parseFloat(item.roughWeight)
+      })
+      this.mast_info.mast_number = a
+      this.mast_info.mast_weight = b
     }
   }
 }

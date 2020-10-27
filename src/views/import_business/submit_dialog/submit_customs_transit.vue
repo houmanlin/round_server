@@ -118,7 +118,7 @@ export default {
       data.append("nodeType", 6)
       let file_name = ""
       let file_name1 = ""
-      this.clearanceData.file.forEach(file => {
+      this.clearanceData.file.forEach((file,index) => {
         data.append("file", file, file.name)
         file_name += this.clearanceData.file1.length != index + 1 ? `${file.name},` : `${file.name}`
       })

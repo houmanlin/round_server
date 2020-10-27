@@ -55,8 +55,8 @@ export function getMainOrderInfo(params) {
 export function MainOrderDel(params) {
     params = getParams(params)
     return request({
-        url: "/busMain/getMainUpdateInfoById",
-        method: "GET",
+        url: "/busMain/delete",
+        method: "DELETE",
         params,
     })
 }

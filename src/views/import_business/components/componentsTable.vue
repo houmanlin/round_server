@@ -14,6 +14,7 @@
               :data="props.row['busSubmenus']"
               :height="500"
               @cell-click="double_click"
+              @selection-change="handleSelectionChange2"
              >
 
             <template v-for="(items, indexs) in tableHeader" >
@@ -231,6 +232,9 @@ export default {
     },
     handleSelectionChange(data){
       this.$emit("onGetSelectData", data)
+    },
+    handleSelectionChange2(data){
+      this.$emit("onGetSelectMenuData", data)
     },
     getPostData(row,nodetype){
       let that = this;
