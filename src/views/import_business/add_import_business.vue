@@ -123,7 +123,7 @@
           <el-form-item :label="mast_info.yewu_type == '1' ? '始发港' : '目的港'">
             <el-input :disabled="mainTypeSelected == '2' || mainTypeSelected == ''" v-model="mast_info.destination" :placeholder="mast_info.yewu_type == '1' ? '请输入始发港' : '请输入目的港'"></el-input>
           </el-form-item>
-          <el-form-item :label="mast_info.yewu_type == '3'? '境内监管中转' : '境内送货'" v-if="mast_info.yewu_type == '3' || mast_info.yewu_type == '2'">
+          <el-form-item :label="mast_info.yewu_type == '3'? '境内监管中转' : '境内送货'" v-if="mast_info.yewu_type == '3' || mast_info.yewu_type == '1'">
             <el-select filterable  v-model="mast_info.is_jingnei" :placeholder="'请选择' + mast_info.yewu_type == '3'? '境内监管中转' : '境内送货'" :disabled="mainTypeSelected == '2'">
               <el-option label="是" :value="1"></el-option>
               <el-option label="否" :value="0"></el-option>
