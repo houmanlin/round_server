@@ -60,14 +60,15 @@
       <el-form-item label="始发港:" class="info_item" v-show="businessType1">
           <div class="form_value">{{ orderInfo.departurePort }}</div>
       </el-form-item>
+      <el-form-item label="境内送货:" class="info_item" v-show="businessType1">
+        <div class="form_value">{{ orderInfo.domesticDelivery }}</div>
+      </el-form-item>
 
 
       <el-form-item label="目的港:" class="info_item" v-show="businessType2 | businessType3">
         <div class="form_value">{{ orderInfo.destinationPort }}</div>
       </el-form-item>
-      <el-form-item label="境内送货:" class="info_item" v-show="businessType2">
-        <div class="form_value">{{ orderInfo.domesticDelivery }}</div>
-      </el-form-item>
+
 
       <el-form-item label="转关单号:" class="info_item" v-show="businessType3">
         <div class="form_value">{{ orderInfo.transitNo }}</div>

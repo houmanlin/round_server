@@ -52,9 +52,6 @@
             v-model="clearanceData.dialog_destination"
         />
       </el-form-item>
-      <el-form-item label="转关单号" v-if="clearanceData.dialog_yewu_type == '3'">
-        <el-input v-model="clearanceData.dialog_zhuanguan_order" placeholder="请输入转关单号"></el-input>
-      </el-form-item>
       <el-form-item label="报关类型">
         <el-select
             :disabled="clearanceData.dialog_mainTypeSelected == '1'"
