@@ -11,7 +11,7 @@
       <el-table-column align="center" fixed="left" v-if="index==0" type="expand" >
         <template slot-scope="props">
           <el-table
-              :data="props.row['busSubmenus']"
+              :data="props.row['busNodeListVOS']"
               :height="500"
               @cell-click="double_click"
               @selection-change="handleSelectionChange2"

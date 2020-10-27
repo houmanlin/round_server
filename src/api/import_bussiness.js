@@ -11,6 +11,13 @@ export function getImportBussiness(params){
     })
 }
 
+export function getCount(){
+    return request({
+        url: "/busBilling/getCount",
+        methods:"GET",
+    })
+}
+
 
 export function addOrder(data) {
     //data = getParams(data)

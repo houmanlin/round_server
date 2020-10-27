@@ -6,7 +6,19 @@
     <!-----------  用户的增删改查按钮  ---------->
     <operatorGroup @onOperator="operator"/>
 
-    <el-button type="text" disabled>查验: 15</el-button>
+
+    <div class="count_container">
+      退单次数：<p v-text="countData.chargebackNum"></p>
+      查验次数：<p v-text="countData.checkNum"></p>
+      报关次数：<p v-text="countData.customsClearanceNum"></p>
+      转关：<p v-text="countData.customsTransitWeight"></p>
+      企业自理次数：<p v-text="countData.enterpriseOwnNum"></p>
+      进口提货：<p v-text="countData.importPickUpGoodsWeight"></p>
+      出库放行次数：<p v-text="countData.outboundClearanceNum"></p>
+      贸易代理次数：<p v-text="countData.tradeAgencyNum"></p>
+    </div>
+
+    
     <!------------- 数据表格  --------------->
     <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" :tableData="table_data" @onTableOperator="tableOperatorGroup" @onOperator="tableOperator" @onUploadMethod="uploadFile" @onGetSelectData="getSelectData" @onGetSelectMenuData="getSelectMenuData"/>
     <el-pagination
@@ -59,7 +71,7 @@ import customsTransitOperator from "@/views/import_business/submit_dialog/custom
 import submitReturnSale from "@/views/import_business/submit_dialog/submitReturnSale";
 import orderInfoDialog from "@/views/import_business/components/orderInfoDialog";
 import orderMaterialDialog from "@/views/import_business/components/orderMaterialDialog";
-import {getImportBussiness, houseOrderDel, MainOrderDel} from "@/api/import_bussiness";
+import {getCount, getImportBussiness, houseOrderDel, MainOrderDel} from "@/api/import_bussiness";
 import {getPages} from "@/utils/utils";
 export default {
   components:{ search,
@@ -83,6 +95,7 @@ export default {
   },
   data() {
     return {
+      countData:{},
       orderInfo: {},
       table_header            : IMPORT_BUSINESS_TABLE,      //表格表头信息
       house_bill_table_header : HOSE_BILL_TABLE,      //表格表头信息
@@ -135,6 +148,10 @@ export default {
         this.page_config = getPages(res.data)
         let { records } = res.data
         this.table_data = records
+      })
+
+      getCount().then(res=>{
+        this.countData = res.data
       })
     },
 
@@ -266,3 +283,18 @@ export default {
 }
 </script>
 
+<style lang="less" scoped>
+  .count_container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 14px;
+    width: 100%;
+    color: #909399;
+
+    p {
+      margin-right: 25px;
+    }
+  }
+
+</style>
