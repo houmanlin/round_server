@@ -78,7 +78,7 @@
           <el-option label="否" :value="0"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="费用" v-if="clearanceData.dialog_is_jingnei">
+      <el-form-item label="费用" v-if="clearanceData.dialog_is_jingnei && (clearanceData.dialog_yewu_type == '3' || clearanceData.dialog_yewu_type == '1')">
         <el-input
             placeholder="请输入分单毛重"
             v-model="clearanceData.dialog_feiyong"
