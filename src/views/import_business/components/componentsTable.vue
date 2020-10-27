@@ -15,6 +15,7 @@
               :height="500"
               style="width:calc(100% - 180px)"
               @cell-click="double_click"
+              @selection-change="handleSelectionChange2"
              >
 
             <template v-for="(items, indexs) in house_bill_header" >
@@ -182,6 +183,9 @@ export default {
     },
     handleSelectionChange(data){
       this.$emit("onGetSelectData", data)
+    },
+    handleSelectionChange2(data){
+      this.$emit("onGetSelectMenuData", data)
     },
     getPostData(row,nodetype){
       let that = this;

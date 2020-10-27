@@ -28,9 +28,9 @@
     <el-button class="operator_button" type="warning" @click="operatorUser('customsTransitOperator')">转关操作</el-button>
     <el-button class="operator_button" type="warning" @click="operatorUser('submitReturnSale')">提交退单</el-button>
     <el-button class="operator_button" type="warning" @click="operatorUser('mainNoRemove')"
-               v-if="name =='张雪' ||name =='zhangxue' || name =='贾彬' || name =='jiabin' || name =='苏纪闽'|| name =='sujimin'">主单删除</el-button>
+               v-if="name =='张雪' ||name =='zhangxue' || name =='贾彬' || name =='jiabin' || name =='苏纪闽'|| name =='sujimin' || name == 'admin'">主单删除</el-button>
     <el-button class="operator_button" type="warning" @click="operatorUser('houseNoRemove')"
-               v-if="name =='张雪' ||name =='zhangxue' || name =='贾彬' || name =='jiabin' || name =='苏纪闽'|| name =='sujimin'">分单删除</el-button>
+               v-if="name =='张雪' ||name =='zhangxue' || name =='贾彬' || name =='jiabin' || name =='苏纪闽'|| name =='sujimin' || name == 'admin'">分单删除</el-button>
   </div>
 </template>
 

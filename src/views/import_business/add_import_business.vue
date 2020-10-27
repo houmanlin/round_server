@@ -554,7 +554,7 @@ export default {
       this.$delete(houseNoInfo, 'yewu_type')
       this.$set(this.mast_info.busSubmenuSaveDTOS, index, houseNoInfo)
       this.$set(this.mast_info.busSubmenuSaveDTOS[index], "static_old_submenuNo", houseNoInfo.static_old_submenuNo)
-      debugger
+      this.subZhongLiang()
       this.$refs["houseInfoDialog"]["dialogVisible"] = false
     },
     /**
@@ -747,9 +747,16 @@ export default {
           this.$router.back()
         })
       }
+    },
+    subZhongLiang(){
 
-
-
+      let a = 0,b = 0
+      this.mast_info.busSubmenuSaveDTOS.forEach((item)=>{
+        a += parseInt(item.submenuNumPackage)
+        b += parseFloat(item.roughWeight)
+      })
+      this.mast_info.mast_number = a
+      this.mast_info.mast_weight = b
     }
   }
 }

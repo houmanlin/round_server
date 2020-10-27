@@ -159,8 +159,9 @@ export default {
       }
       getMainOrder(data).then(res=>{
         // 提交报关
-        this.order_flow[0].marks = res.data.commitCustomsDate;
+        this.order_flow[0].marks = res.data.commitCustomsRemark;
         this.order_flow[0].operater_time = res.data.commitCustomsDate;
+        this.order_flow[0].download[0].title = `下载附件(${res.data.commitCustomsDate})`;
         // 提交查验
         this.order_flow[1].operater_time = res.data.commitCheckDate;
         // 查验操作
