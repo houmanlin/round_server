@@ -13,15 +13,16 @@
           <el-table
               :data="props.row['busSubmenus']"
               :height="500"
-              style="width:calc(100% - 180px)"
               @cell-click="double_click"
              >
 
-            <template v-for="(items, indexs) in house_bill_header" >
-              <el-table-column
+            <template v-for="(items, indexs) in tableHeader" >
+
+             <el-table-column
                   v-if="indexs == 0"
                   type="selection"
-                  width="100">
+                  align="center"
+                  width="103">
               </el-table-column>
               <el-table-column
                   v-if="indexs == 0"
@@ -29,8 +30,7 @@
                   label="序号"
                   align="center"
                   type="index"
-
-                  width="50">
+                  width="50"> 
               </el-table-column>
 
               <el-table-column
@@ -44,8 +44,7 @@
                   :label="items.label"/>
 
               <el-table-column align="center"
-                               :key="index"
-                               v-if="items.label == '主单号/分单号'"
+                               v-else-if="items.label == '主单号/分单号'"
                                :prop="items.prop"
                                fixed="left"
                                show-overflow-tooltip
@@ -56,6 +55,48 @@
                   <el-button type="text">{{scope.row.mainNo}}</el-button>
                 </template>
               </el-table-column>
+
+              <el-table-column
+                  align="center"
+                  :key="indexs"
+                  v-else-if="items.label == '操作'"
+                  fixed="right"
+                  label="操作"
+                  width="180">
+                <template slot-scope="scope">
+                  <template v-if="items.label == '操作'">
+
+                    <el-upload
+                        class="upload-demo"
+                        ref="upload"
+                        v-for="(operator_item, idx) in items.prop"
+                        :key="idx"
+                        v-if="operator_item == '上传' || operator_item == '上传文件'"
+                        :data="getPostData(scope.row,0)"
+                        multiple
+                        :action="uploadSingle"
+                        :file-list="fileList"
+                        :on-success="handleResultSuccess"
+                        :on-error="handleResultError"
+                        :show-file-list="false"
+                    >
+                      <el-button  type="text"
+                                  size="small"
+                                  >{{operator_item}}</el-button>
+                    </el-upload>
+                    <el-button 
+                        v-if="operator_item != '上传' && operator_item != '上传文件'" 
+                        v-for="(operator_item, indexs) in items.prop" 
+                        :key="indexs" 
+                        @click="checkOrderInfoSub(props.row, operator_item)" 
+                        type="text" 
+                        size="small">
+                        {{operator_item}}
+                    </el-button>
+                  </template>
+                </template>
+              </el-table-column>
+
             </template>
 
           </el-table>
@@ -139,11 +180,16 @@
                 :on-success="handleResultSuccess"
                 :on-error="handleResultError"
                 :show-file-list="false"
+                :disabled="scope.row.mainType !== '直单'"
             >
               <el-button  type="text"
-                          size="small">{{operator_item}}</el-button>
+                          size="small"
+                          :disabled="scope.row.mainType !== '直单'"
+                          >{{operator_item}}</el-button>
             </el-upload>
-            <el-button v-if="operator_item != '上传' && operator_item != '上传文件'" v-for="(operator_item, indexs) in item.prop" :key="indexs" @click="checkOrderInfo(scope.row, operator_item)" type="text" size="small">{{operator_item}}</el-button>
+            <el-button 
+            :disabled="scope.row.mainType !== '直单'"
+            v-if="operator_item != '上传' && operator_item != '上传文件'" v-for="(operator_item, indexs) in item.prop" :key="indexs" @click="checkOrderInfo(scope.row, operator_item)" type="text" size="small">{{operator_item}}</el-button>
 
           </template>
 
@@ -165,6 +211,9 @@ export default {
     }
   },
   methods:{
+    checkOrderInfoSub(row, key){
+      this.$emit("onTableOperator", {table_data:row, operator_key:key})
+    },
     checkOrderInfo(row, key){
       this.$emit("onTableOperator", {table_data:row, operator_key:key})
     },
