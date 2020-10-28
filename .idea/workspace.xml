@@ -7,9 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="上传文件修改---上传文件名">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/business_billing/components/searchComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/business_billing/components/searchComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/business_billing/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/business_billing/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/import_business/components/orderMaterialDialog.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,21 +102,7 @@
       <workItem from="1603762188498" duration="7836000" />
       <workItem from="1603804932048" duration="3723000" />
       <workItem from="1603862476382" duration="3527000" />
-      <workItem from="1603882760985" duration="305000" />
-    </task>
-    <task id="LOCAL-00001" summary="init">
-      <created>1602261146043</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1602261146043</updated>
-    </task>
-    <task id="LOCAL-00002" summary="init">
-      <created>1602267753162</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1602267753162</updated>
+      <workItem from="1603882760985" duration="2721000" />
     </task>
     <task id="LOCAL-00003" summary="init">
       <created>1602273250626</created>
@@ -449,7 +433,21 @@
       <option name="project" value="LOCAL" />
       <updated>1603769184144</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="上传文件修改---上传文件名">
+      <created>1603883092756</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1603883092757</updated>
+    </task>
+    <task id="LOCAL-00051" summary="上传文件修改---上传文件名">
+      <created>1603883306537</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1603883306537</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -556,11 +554,11 @@
       <screen x="0" y="0" width="1440" height="960" />
     </state>
     <state width="504" height="446" key="SwitcherDM/0.0.1440.960@0.0.1440.960" timestamp="1603435771921" />
-    <state x="313" y="214" key="Vcs.Push.Dialog.v2" timestamp="1603769185230">
+    <state x="313" y="214" key="Vcs.Push.Dialog.v2" timestamp="1603883307766">
       <screen x="0" y="0" width="1440" height="960" />
     </state>
     <state x="320" y="157" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1602569692480" />
-    <state x="313" y="214" key="Vcs.Push.Dialog.v2/0.0.1440.960@0.0.1440.960" timestamp="1603769185230" />
+    <state x="313" y="214" key="Vcs.Push.Dialog.v2/0.0.1440.960@0.0.1440.960" timestamp="1603883307766" />
     <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602686403018" />
     <state x="100" y="123" width="1240" height="599" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602517251833">
       <screen x="0" y="23" width="1440" height="799" />
@@ -570,16 +568,16 @@
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="511" y="163" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.23.1440.799@0.23.1440.799" timestamp="1602267768183" />
-    <state x="324" y="193" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603855251391">
+    <state x="324" y="193" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603883549847">
       <screen x="0" y="0" width="1440" height="960" />
     </state>
-    <state x="324" y="193" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.960@0.0.1440.960" timestamp="1603855251391" />
+    <state x="324" y="193" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.960@0.0.1440.960" timestamp="1603883549847" />
     <state x="521" y="343" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.799@0.23.1440.799" timestamp="1602501187031" />
-    <state x="479" y="93" width="652" height="769" key="find.popup" timestamp="1603851228238">
+    <state x="479" y="93" width="652" height="769" key="find.popup" timestamp="1603883214006">
       <screen x="0" y="0" width="1440" height="960" />
     </state>
     <state x="198" y="128" width="648" height="721" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1602568553896" />
-    <state x="479" y="93" width="652" height="769" key="find.popup/0.0.1440.960@0.0.1440.960" timestamp="1603851228238" />
+    <state x="479" y="93" width="652" height="769" key="find.popup/0.0.1440.960@0.0.1440.960" timestamp="1603883214006" />
     <state x="479" y="100" width="648" height="640" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602666991489" />
     <state x="494" y="318" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1602462175338">
       <screen x="0" y="23" width="1440" height="799" />
