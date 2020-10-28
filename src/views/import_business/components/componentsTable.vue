@@ -2,10 +2,11 @@
   <el-table
       :data="tableData"
       border
-      @cell-click="double_click"
       height="400"
       @selection-change="handleSelectionChange"
-      style="width: 100%">
+      style="width: 100%"
+      @row-click="double_click"
+      >
 
     <template v-for="(item, index) in tableHeader" >
       <el-table-column align="center" fixed="left" v-if="index==0" type="expand" >
@@ -42,7 +43,13 @@
                   show-overflow-tooltip
                   :min-width="items.label == '状态' || items.label == '业务类型' || items.label == '一级客户' ||  items.label == '二级客户' || items.label == '主单号/分单号' ? '131' : '200'"
                   :label="items.label">
-                  <template>
+                  <template v-if="items.label == '放行出库'">
+                    <el-button @click.native.stop="checkNodeDetaiList(props.row['busSubmenuListVOS'][scope.$index],3)" type="text">{{ props.row[items.prop] }}</el-button>
+                  </template>
+                  <template v-else-if="items.label == '查验操作'">
+                    <el-button @click.native.stop="checkNodeDetaiList(props.row['busSubmenuListVOS'][scope.$index],1)" type="text">{{ props.row[items.prop] }}</el-button>
+                  </template>
+                  <template v-else>
                     {{ props.row[items.prop] }}
                   </template>
               </el-table-column>
@@ -55,7 +62,7 @@
                                min-width="200"
                                :label="items.label">
                 <template slot-scope="scope">
-                  <el-button @click="checkOrderInfoSubmenu(props.row,scope.$index)" type="text">{{scope.row.mainNo}}</el-button>
+                  <el-button @click="checkOrderInfoSubmenu(props.row['busSubmenuListVOS'][scope.$index])" type="text">{{scope.row.mainNo}}</el-button>
                 </template>
               </el-table-column>
 
@@ -141,22 +148,26 @@
           show-overflow-tooltip
           :fixed="item.label == '序号' || item.label == '状态' || item.label == '业务类型' || item.label == '一级客户' ||  item.label == '二级客户' || item.label == '主单号/分单号' ? 'left' : false "
           :min-width="item.label == '序号' || item.label == '状态' || item.label == '业务类型' || item.label == '一级客户' ||  item.label == '二级客户' || item.label == '主单号/分单号' ? 130 : 200"
-          @click="checkOrderInfo(item)"
           :label="item.label"/>
+
       <el-table-column align="center"
           :key="index"
           v-else-if="item.label != '操作' && item.hase_status"
           :prop="item.prop"
           show-overflow-tooltip
           min-width="200"
-          @click="checkOrderInfo(item)"
+          
           :label="item.label">
         <template slot-scope="scope">
-            <div>
-<!--                {{ scope.row[item.prop] }}-->
-                <i class="el-icon-check" v-if="scope.row[item.prop]"/>
-
-            </div>
+            <template v-if="item.label == '放行出库'">
+              <el-button @click.native.stop="checkNodeDetaiList(scope.row,3)" type="text">{{ scope.row[item.prop] }}</el-button>
+            </template>
+            <template v-else-if="item.label == '查验操作'">
+              <el-button @click.native.stop="checkNodeDetaiList(scope.row,1)" type="text">{{ scope.row[item.prop] }}</el-button>
+            </template>
+            <template v-else>
+              {{ scope.row[item.prop] }}
+            </template>
         </template>
       </el-table-column>
 
@@ -214,8 +225,11 @@ export default {
     }
   },
   methods:{
-    checkOrderInfoSubmenu(row,idx, key){
-      this.$emit("onTableOperator", {table_data:row[scope.$index], operator_key:key})
+    checkNodeDetaiList(row, key){
+      this.$emit("onNodeDetailOperator", {table_data:row, operator_key:key})
+    },
+    checkOrderInfoSubmenu(row, key){
+      this.$emit("onTableOperator", {table_data:row, operator_key:key})
     },
     
     checkOrderInfoSub(row,key){

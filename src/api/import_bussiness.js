@@ -11,6 +11,15 @@ export function getImportBussiness(params){
     })
 }
 
+export function getBusNodeMulti(params){
+    params = getParams(params)
+    return request({
+        url: "/busNodeMulti/pageBusNodeMulti",
+        methods:"GET",
+        params
+    })
+}
+
 export function getOrderInfo(params){
     params = getParams(params)
     return request({
