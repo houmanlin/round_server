@@ -13,6 +13,13 @@
             v-model="clearanceData.mainNo"
             placeholder="可批量输入，通过换行符（回车）区分多条数据"/>
         </el-form-item>
+        <el-form-item label="分单号">
+          <el-input
+            type="textarea"
+            maxlength="10000"
+            v-model="clearanceData.submenuNo"
+            placeholder="可批量输入，通过换行符（回车）区分多条数据"/>
+        </el-form-item>
         <el-form-item label="报关日期">
           <el-date-picker
               v-model="clearanceData.customsDate"
@@ -49,6 +56,7 @@ export default {
     return{
       clearanceData:{
         mainNo                : "",                   // 操作员
+        submenuNo             : "",                   // 分单号
         customsDate           : "",                   // 报关日期
       },
       operator_type_list    : ORDER_TYPE_GROUP,       // 操作类型列表

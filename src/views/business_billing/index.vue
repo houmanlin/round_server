@@ -38,6 +38,7 @@ export default {
       dialog_status     : false,                       //提示面板状态
       page_config       : {},                          //分页配置
       table_data        : [],                          //表格数据
+      submenuNo         : "",                          //分单号
       customsDate       : "",
       mainNo            : "",
       upload_url        : `${process.env.VUE_APP_URL}/busUploadFile/uploadFileInfo`
@@ -54,6 +55,7 @@ export default {
         limit         : this.page_config.limit,
         page          : this.page_config.current,
         mainNo        : this.mainNo,
+        submenuNo     : this.submenuNo,
         customsDate   : this.customsDate,
       }
       getClearanceGoods(data).then(res=>{
@@ -86,8 +88,9 @@ export default {
      * @param data    过滤参数
      */
     getFiledData(data){
-      this.mainNo               = data.mainNo
-      this.customsDate          = data.customsDate
+      this.mainNo               = data.mainNo;
+      this.submenuNo            = data.submenuNo;
+      this.customsDate          = data.customsDate;
       this.page_config.current  = 1
       this.getData()
     },

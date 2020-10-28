@@ -20,7 +20,7 @@
                     </el-col>
                     <el-col :span="12" class="down_group">{{ item.title == '转关异常' ? '异常原因' : '备注' }}: {{item.marks}}</el-col>
                     <el-col :span="24" class="down_group">
-                      <el-button  @click="DownLoad(items.url['fileType'], items.url['nodeType'])" size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}</el-button>
+                      <el-button  @click="DownLoad(items.fileType, items.nodeType)" size="small" type="primary" v-for="(items, index) in item.download" :key="index">{{ items.title }}</el-button>
                     </el-col>
 
                   </el-row>
@@ -158,27 +158,11 @@ export default {
         mainNo: this.orderInfo.mainNo,
         submenuNo: this.orderInfo.submenuNo
       }
+      if (!this.orderInfo.submenuNo){
+        delete data.submenuNo
+      }
       getMainOrder(data).then(res=>{
-        // 提交报关
-        this.order_flow[0].marks = res.data.commitCustomsRemark;
-        this.order_flow[0].operater_time = res.data.commitCustomsDate;
-        this.order_flow[0].download[0].title = `下载附件(${res.data.commitCustomsDate})`;
-        // 提交查验
-        this.order_flow[1].operater_time = res.data.commitCheckDate;
-        // 查验操作
-        this.order_flow[2].operater_time = res.data.commitPermitDate;
-        // 提交放行
-        this.order_flow[3].operater_time = res.data.commitPermitDate;
-        // 放行出库
-        this.order_flow[4].operater_time = res.data.commitPermitDate;
-        // 提交转关
-        this.order_flow[5].operater_time = res.data.commitCustomsTransitDate;
-        // 提货操作
-        this.order_flow[6].operater_time = res.data.pickUpOperationDate
-        // 提货操作
-        this.order_flow[7].operater_time = res.data.commitChargebackDate;
-        // 退库完成
-        this.order_flow[7].operater_time = res.data.cancellingStocksDate;
+        this.order_flow = res.data
 
       })
     },
