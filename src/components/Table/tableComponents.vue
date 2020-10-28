@@ -72,7 +72,7 @@
 <script>
 export default {
   props: ["tableHeader", "tableData", "upload_url"],
-  name:"table",
+  name:"123table",
 
   methods: {
     handleClick(row, operator_key) {
