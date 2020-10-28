@@ -33,19 +33,19 @@
 
     <!--  各种对话框  -->
 
-    <clearanceGoods ref="clearanceGoods" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
-    <inspect ref="inspect" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
-    <returnSale ref="returnSale" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
-    <returnSaleSucc ref="returnSaleSucc" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
-    <returnWorkhouse ref="returnWorkhouse" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
-    <greenLight ref="greenLight" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
-    <domesticDeliveryGoods ref="domesticDeliveryGoods" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
-    <domesticDelivery ref="domesticDelivery" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <clearanceGoods ref="clearanceGoods" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
+    <inspect ref="inspect" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
+    <returnSale ref="returnSale" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
+    <returnSaleSucc ref="returnSaleSucc" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
+    <returnWorkhouse ref="returnWorkhouse" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
+    <greenLight ref="greenLight" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
+    <domesticDeliveryGoods ref="domesticDeliveryGoods" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
+    <domesticDelivery ref="domesticDelivery" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
     <greenLightReturnWorkhouse ref="greenLightReturnWorkhouse" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
-    <submitCarInfo ref="submitCarInfo" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
-    <submitCustomsTransit ref="submitCustomsTransit" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
-    <customsTransitOperator ref="customsTransitOperator" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
-    <submitReturnSale ref="submitReturnSale" :mainNo="orderInfo.mainNo" @onUploadSuccess="uploadSuccess"/>
+    <submitCarInfo ref="submitCarInfo" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
+    <submitCustomsTransit ref="submitCustomsTransit" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
+    <customsTransitOperator ref="customsTransitOperator" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
+    <submitReturnSale ref="submitReturnSale" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
     <orderInfoDialog ref="orderInfoDialog" :orderInfo="orderInfo" />
     <orderMaterialDialog v-if="orderMater" :orderInfo="orderInfo" @onCloseDialog="closeDialog"/>
   </div>
@@ -152,6 +152,7 @@ export default {
           if(item.busSubmenuListVOS && item.busSubmenuListVOS.length > 0){
             for(let subItem of item.busSubmenuListVOS){
               this.$set(subItem, "mainNo", item.mainNo)
+              this.$set(subItem, "id", item.id)
             }
           }
         }
@@ -250,7 +251,7 @@ export default {
 
       if(operator.operator_key == "下载"){
         window.open(
-            `${process.env.VUE_APP_URL}/busUploadFile/downloadFile?fileType=0&mainNo=${table_data.mainNo}&nodeType=0`)
+            `${process.env.VUE_APP_URL}/busUploadFile/downloadFile?fileType=0&mainNo=${table_data.mainNo}&submenuNo=${table_data.submenuNo}&nodeType=0`)
       }
       if(operator.operator_key == "编辑"){
         this.$router.push(`add_import_business?id=${table_data.id}`)

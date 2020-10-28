@@ -55,7 +55,7 @@
                                min-width="200"
                                :label="items.label">
                 <template slot-scope="scope">
-                  <el-button @click="checkOrderInfo(items)" type="text">{{scope.row.mainNo}}</el-button>
+                  <el-button @click="checkOrderInfoSubmenu(props.row,scope.$index)" type="text">{{scope.row.mainNo}}</el-button>
                 </template>
               </el-table-column>
 
@@ -75,7 +75,7 @@
                         v-for="(operator_item, idx) in items.prop"
                         :key="idx"
                         v-if="operator_item == '上传' || operator_item == '上传文件'"
-                        :data="getPostData(props.row,0)"
+                        :data="getPostDataSub(props.row['busSubmenuListVOS'][scope.$index],0)"
                         multiple
                         :action="uploadSingle"
                         :file-list="fileList"
@@ -168,7 +168,7 @@
           label="操作"
           width="180">
         <template slot-scope="scope">
-          <template v-if="item.label == '操作'">
+          <template v-if="item.label == '操作' && scope.row.mainType === 1">
 
             <el-upload
                 class="upload-demo"
@@ -214,8 +214,11 @@ export default {
     }
   },
   methods:{
-    checkOrderInfoSub(row, key){
-      debugger
+    checkOrderInfoSubmenu(row,idx, key){
+      this.$emit("onTableOperator", {table_data:row[scope.$index], operator_key:key})
+    },
+    
+    checkOrderInfoSub(row,key){
       this.$emit("onTableOperator", {table_data:row, operator_key:key})
     },
     checkOrderInfo(row, key){
@@ -238,6 +241,17 @@ export default {
     },
     handleSelectionChange2(data){
       this.$emit("onGetSelectMenuData", data)
+    },
+    getPostDataSub(row,nodetype){
+      let that = this;
+
+      let uploadJson={
+        mainNo:row.mainNo,
+        submenuNo:row.submenuNo,
+        nodeType:nodetype,
+      }
+      console.log("uploadJson",uploadJson);
+      return uploadJson
     },
     getPostData(row,nodetype){
       let that = this;

@@ -155,7 +155,8 @@ export default {
     getData(){
       this.mainNo = this.orderInfo.mainNo
       let data = {
-        mainNo: this.orderInfo.mainNo
+        mainNo: this.orderInfo.mainNo,
+        submenuNo: this.orderInfo.submenuNo
       }
       getMainOrder(data).then(res=>{
         // 提交报关
