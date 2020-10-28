@@ -133,12 +133,15 @@ const CLIENT_MANAGE_TABLE = [
     },
 ]
 
-
 // 业务计费表格头
 const BUSINESS_BILLING_TABLE = [
     {
         label: "主单号",
         prop: "mainNo"
+    },
+    {
+        label: "分单号",
+        prop: "submenuNo"
     },
     {
         label: "报关日期",
@@ -156,30 +159,29 @@ const BUSINESS_BILLING_TABLE = [
         label: "二级客户",
         prop: "customerNameTwo"
     },
-
     {
         label: "监管方式",
-        prop: "supervise"
+        prop: "superviseMethod"
     },
     {
         label: "通关单号",
-        prop: "transportExist"
-    },
-    {
-        label: "查验",
-        prop: "checkNum"
+        prop: "customsNo"
     },
     {
         label: "品名数量",
         prop: "descriptionNum"
     },
     {
-        label: "分单项/次",
-        prop: "submenuNum"
+        label: "报关次数/次",
+        prop: "customsClearanceNum"
     },
     {
-        label: "计费重量/kg",
-        prop: "chargedWeight"
+        label: "贸易代理次数/次",
+        prop: "tradeAgencyNum"
+    },
+    {
+        label: "企业自理次数/次",
+        prop: "enterpriseOwnNum"
     },
     {
         label: "查验/次",
@@ -190,16 +192,16 @@ const BUSINESS_BILLING_TABLE = [
         prop: "chargebackNum"
     },
     {
-        label: "转关/次",
-        prop: "customsTransitNum"
+        label: "转关",
+        prop: "customsTransitWeight"
     },
     {
-        label: "运输（有境内监管）/次",
-        prop: "transportExist"
+        label: "出库放行/次",
+        prop: "outboundClearanceNum"
     },
     {
-        label: "运输（无境内监管）/次",
-        prop: "transportNothing"
+        label: "进口提货",
+        prop: "enterpriseOwnNum"
     },
     {
         label: "操作",

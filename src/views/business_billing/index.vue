@@ -74,8 +74,11 @@ export default {
       let { table_data ,operator_key } = operator
 
       if (operator_key == "下载文件"){
-        window.open(
-            `${process.env.VUE_APP_URL}/busUploadFile/downloadFile?fileType=0&mainNo=${table_data.mainNo}&nodeType=16`)
+        let download = `${process.env.VUE_APP_URL}/busUploadFile/downloadFile?fileType=0&mainNo=${table_data.mainNo}&nodeType=16`
+        if(table_data.submenuNo){
+          download += `&submenuNo=${table_data.submenuNo}`
+        }
+        window.open(download)
       }
     },
     /**

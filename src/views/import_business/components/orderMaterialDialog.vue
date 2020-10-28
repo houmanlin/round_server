@@ -180,8 +180,6 @@ export default {
         // 退库完成
         this.order_flow[7].operater_time = res.data.cancellingStocksDate;
 
-
-
       })
     },
     getDownLoadUrl(fileType, nodeType){

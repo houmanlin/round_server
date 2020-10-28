@@ -92,6 +92,7 @@ export default {
 
       let uploadJson={
         mainNo:row.mainNo,
+        submenuNo:row.submenuNo,
         nodeType:nodetype,
       }
       return uploadJson
