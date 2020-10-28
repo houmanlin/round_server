@@ -247,7 +247,7 @@ export default {
 
       let uploadJson={
         mainNo:row.mainNo,
-        submenuNo:row.submenuNo,
+        submenuNo:row.submenuNo?row.submenuNo:'',
         nodeType:nodetype,
       }
       console.log("uploadJson",uploadJson);
@@ -258,7 +258,6 @@ export default {
 
       let uploadJson={
         mainNo:row.mainNo,
-        submenuNo:row.submenuNo,
         nodeType:nodetype,
       }
       console.log("uploadJson",uploadJson);

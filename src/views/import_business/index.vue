@@ -46,7 +46,8 @@
     <submitCustomsTransit ref="submitCustomsTransit" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
     <customsTransitOperator ref="customsTransitOperator" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
     <submitReturnSale ref="submitReturnSale" :mainNo="orderInfo.mainNo" :submenuNo="orderInfo.submenuNo" @onUploadSuccess="uploadSuccess"/>
-    <orderInfoDialog ref="orderInfoDialog" :orderInfo="orderInfo" />
+    <orderInfoDialog ref="orderInfoDialog" :orderInfo="orderInfoDetail" />
+    <subOrderInfoDialog ref="subOrderInfoDialog" :orderInfo="orderInfoDetail" />
     <orderMaterialDialog v-if="orderMater" :orderInfo="orderInfo" @onCloseDialog="closeDialog"/>
   </div>
 </template>
@@ -70,8 +71,9 @@ import submitCustomsTransit from "@/views/import_business/submit_dialog/submit_c
 import customsTransitOperator from "@/views/import_business/submit_dialog/customsTransitOperator";
 import submitReturnSale from "@/views/import_business/submit_dialog/submitReturnSale";
 import orderInfoDialog from "@/views/import_business/components/orderInfoDialog";
+import subOrderInfoDialog from "@/views/import_business/components/subOrderInfoDialog";
 import orderMaterialDialog from "@/views/import_business/components/orderMaterialDialog";
-import {getCount, getImportBussiness, houseOrderDel, MainOrderDel} from "@/api/import_bussiness";
+import {getCount,getOrderInfo, getImportBussiness, houseOrderDel, MainOrderDel} from "@/api/import_bussiness";
 import {getPages} from "@/utils/utils";
 export default {
   components:{ search,
@@ -91,12 +93,14 @@ export default {
     submitReturnSale,
     domesticDeliveryGoods,
     orderInfoDialog,
+    subOrderInfoDialog,
     orderMaterialDialog
   },
   data() {
     return {
       countData:{},
       orderInfo: {},
+      orderInfoDetail:{},
       table_header            : IMPORT_BUSINESS_TABLE,      //表格表头信息
       house_bill_table_header : HOSE_BILL_TABLE,      //表格表头信息
       page_config             : {},
@@ -173,8 +177,21 @@ export default {
      * 提交重置
      */
     tableOperator(row, operator_key){
+      debugger
       this.orderInfo = row[0]
-      this.$refs["orderInfoDialog"].dialogVisible = true
+      let data = {
+        mainNo:this.orderInfo.mainNo,
+        submenuNo:this.orderInfo.submenuNo?this.orderInfo.submenuNo:''
+      }
+      getOrderInfo(data).then(res=>{
+        this.orderInfoDetail = res.data
+        if(this.orderInfo.submenuNo){
+          this.$refs["subOrderInfoDialog"].dialogVisible = true  
+        } else {
+          this.$refs["orderInfoDialog"].dialogVisible = true
+        }
+      })
+      
     },
     /**
      * 添加用户

@@ -111,7 +111,7 @@ export default {
 
 
       data.append("mainNo", this.mainNo)
-      data.append("submenuNo", this.submenuNo)
+      data.append("submenuNo", this.submenuNo?this.submenuNo:'')
       data.append("commitCustomsTransitNo", this.clearanceData.zhaunguan_danhao)
       data.append("commitCustomsTransitModelCar", this.clearanceData.car_type)
       data.append("commitCustomsTransitLPN", this.clearanceData.license_plate_number)

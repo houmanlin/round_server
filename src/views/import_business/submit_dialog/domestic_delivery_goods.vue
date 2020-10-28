@@ -117,7 +117,7 @@ export default {
 
 
       data.append("mainNo", this.mainNo)
-      data.append("submenuNo", this.submenuNo)
+      data.append("submenuNo", this.submenuNo?this.submenuNo:'')
       data.append("incountryModelCar", this.clearanceData.car_type)
       data.append("incountryLPN", this.clearanceData.license_plate_number)
       data.append("incountryETA", this.clearanceData.delivery_time)

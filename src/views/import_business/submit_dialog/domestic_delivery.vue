@@ -128,7 +128,7 @@ export default {
 
 
       data.append("mainNo", this.mainNo)
-      data.append("submenuNo", this.submenuNo)
+      data.append("submenuNo", this.submenuNo?this.submenuNo:'')
       data.append("goodsDeliveredRemark", this.clearanceData.mark)
       data.append("nodeType", 10)
       let vehiclePictureFileNames = ""

@@ -76,7 +76,7 @@ export default {
 
 
       data.append("mainNo", this.mainNo)
-      data.append("submenuNo", this.submenuNo)
+      data.append("submenuNo", this.submenuNo?this.submenuNo:'')
       data.append("nodeType", 7)
       data.append("customsTransitOperationRemark", this.clearanceData.mark)
 

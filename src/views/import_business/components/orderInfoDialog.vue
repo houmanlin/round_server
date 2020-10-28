@@ -6,7 +6,7 @@
     <el-row style="margin-bottom: 20px">
       <el-col :span="8"> 主单号：{{ orderInfo.mainNo }}</el-col>
       <el-col :span="8">主单类型：{{ orderInfo.mainType == 1?'直单':'一主多分' }}</el-col>
-      <el-col :span="8">业务类型：{{ orderInfo.businessType }}</el-col>
+      <el-col :span="8">业务类型：{{ orderInfo.businessType == 1?'统一版进口':(orderInfo.businessType == 1?'统一版出口':'转关') }}</el-col>
     </el-row>
     <el-form label-position="left" ref="form" :inline="true" :model="clearanceData" label-width="110px" class="order_info_list">
 <!--      <el-form-item label="主单号:" class="info_item">-->
@@ -42,26 +42,26 @@
       </el-form-item>
       
       <el-form-item label="品名数量:" class="info_item" v-show="mainTypeShow">
-        <div class="form_value">{{ orderInfo.mainChargedWeight }}</div>
+        <div class="form_value">{{ orderInfo.nameNum }}</div>
       </el-form-item>
       <el-form-item label="报关代理:" class="info_item" v-show="mainTypeShow">
-        <div class="form_value">{{ orderInfo.mainChargedWeight }}</div>
+        <div class="form_value">{{ orderInfo.customsBroker }}</div>
       </el-form-item>
       <el-form-item label="生产销售单位:" class="info_item" v-show="mainTypeShow">
-        <div class="form_value">{{ orderInfo.mainChargedWeight }}</div>
+        <div class="form_value">{{ orderInfo.productionSaleUnit }}</div>
       </el-form-item>
       <el-form-item label="报关类型:" class="info_item" v-show="mainTypeShow">
-        <div class="form_value">{{ orderInfo.mainChargedWeight }}</div>
+        <div class="form_value">{{ orderInfo.customsDeclareType == 1?'贸易代理': (orderInfo.customsDeclareType == 2?'报关代理':'企业自理') }}</div>
       </el-form-item>
       <el-form-item label="监管方式:" class="info_item" v-show="mainTypeShow">
-        <div class="form_value">{{ orderInfo.mainChargedWeight }}</div>
+        <div class="form_value">{{ orderInfo.supervisionMethod }}</div>
       </el-form-item>
 
       <el-form-item label="始发港:" class="info_item" v-show="businessType1">
           <div class="form_value">{{ orderInfo.departurePort }}</div>
       </el-form-item>
       <el-form-item label="境内送货:" class="info_item" v-show="businessType1">
-        <div class="form_value">{{ orderInfo.domesticDelivery }}</div>
+        <div class="form_value">{{ orderInfo.domesticDelivery == 1?'是':'否' }}</div>
       </el-form-item>
 
 
@@ -77,7 +77,7 @@
         <div class="form_value">{{ orderInfo.destinationPort }}</div>
       </el-form-item>
       <el-form-item label="境内监管中转:" class="info_item" v-show="businessType3">
-        <div class="form_value">{{ orderInfo.domesticSuperviseTransit }}</div>
+        <div class="form_value">{{ orderInfo.domesticSuperviseTransit == 1?'是':'否' }}</div>
       </el-form-item>
 
       <el-form-item label="货值:" class="info_item">
@@ -105,8 +105,11 @@
 </template>
 
 <script>
+// import {getOrderInfo} from "@/api/import_bussiness";
+
 export default {
-  props:["orderInfo"],
+
+  props: ["orderInfo"],
   name: "clearance_goods",
   
   data(){
@@ -120,7 +123,7 @@ export default {
       mainTypeShow:false,
       businessType1:false,
       businessType2:false,
-      businessType3:false,
+      businessType3:false
     }
   },
   methods:{
@@ -128,7 +131,15 @@ export default {
       this.dialogVisible = false
     }
   },
-  created() {},
+  created() {
+    // let data = {
+    //   mainNo:this.mainNo,
+    //   submenuNo:this.submenuNo
+    // }
+    // getOrderInfo(data).then(res=>{
+    //     this.orderInfo = res.data
+    //   })
+  },
   mounted() {},
   watch:{
     orderInfo(val){

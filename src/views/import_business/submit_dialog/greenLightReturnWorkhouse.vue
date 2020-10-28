@@ -125,7 +125,7 @@ export default {
       let filename2 = ""
 
       data.append("mainNo", this.mainNo)
-      data.append("submenuNo", this.submenuNo)
+      data.append("submenuNo", this.submenuNo?this.submenuNo:'')
       data.append("commitPermitRemark", this.clearanceData.mark)
       data.append("nodeType", 5)
       this.clearanceData.file.forEach((file,index) => {
