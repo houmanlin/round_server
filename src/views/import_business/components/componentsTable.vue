@@ -369,9 +369,7 @@ export default {
   margin-right: 10px;
 }
 
-/deep/ .el-table .row-expand-cover .cell .el-table__expand-icon {
-	display: none;
-}
+
 
 /deep/ .el-table td, .el-table th {
   text-align: center;
@@ -403,4 +401,10 @@ export default {
   transform:rotate(0deg);
 }
 
+</style>
+
+<style >
+.el-table .row-expand-cover .cell .el-table__expand-icon {
+	display: none !important;
+}
 </style>
