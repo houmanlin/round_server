@@ -24,6 +24,8 @@
     :table-header="table_header" 
     :house_bill_header="house_bill_table_header" 
     :tableData="table_data" 
+    
+    @onShowOrderInfo="showOrderInfo"
     @onTableOperator="tableOperatorGroup" 
     @onOperator="tableOperator" 
     @onUploadMethod="uploadFile" 
@@ -195,6 +197,25 @@ export default {
       this.$refs["nodeDetailListDialog"].dialogVisible = true
     },
 
+    /**
+     * 查看订单详情
+     */
+    showOrderInfo(operator){
+      this.orderInfo = operator.table_data
+      let data = {
+        mainNo:this.orderInfo.mainNo,
+        submenuNo:this.orderInfo.submenuNo?this.orderInfo.submenuNo:''
+      }
+      getOrderInfo(data).then(res=>{
+        this.orderInfoDetail = res.data
+        if(this.orderInfo.submenuNo){
+          this.$refs["subOrderInfoDialog"].dialogVisible = true  
+        } else {
+          this.$refs["orderInfoDialog"].dialogVisible = true
+        }
+      })
+    },
+
     /***
      * 提交重置
      */
@@ -218,6 +239,7 @@ export default {
      * 添加用户
      */
     operator(operator_key){
+      debugger
       let ids = ""
       let menu_ids = ""
       this.selectTableData.forEach((item, index)=>{

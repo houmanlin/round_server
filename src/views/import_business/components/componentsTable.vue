@@ -5,7 +5,7 @@
       height="400"
       @selection-change="handleSelectionChange"
       style="width: 100%"
-      @row-click="double_click"
+      :row-class-name="getRowClass"
       >
 
     <template v-for="(item, index) in tableHeader" >
@@ -14,7 +14,6 @@
           <el-table
               :data="props.row['busSubmenuListVOS']"
               :height="500"
-              @cell-click="double_click"
               @selection-change="handleSelectionChange2"
              >
 
@@ -38,21 +37,39 @@
               <el-table-column
                   :key="indexs"
                   align="center"
-                  v-if="items.label != '操作' && items.label != '主单号/分单号'"
+                  v-if="items.label != '操作' && items.label != '主单号/分单号' && !items.hase_status"
                   :fixed="item.label == '状态' || item.label == '业务类型' || item.label == '一级客户' ||  item.label == '二级客户' || item.label == '主单号/分单号' ? 'left' : false "
                   show-overflow-tooltip
                   :min-width="items.label == '状态' || items.label == '业务类型' || items.label == '一级客户' ||  items.label == '二级客户' || items.label == '主单号/分单号' ? '131' : '200'"
-                  :label="items.label">
-                  <template v-if="items.label == '放行出库'">
-                    <el-button @click.native.stop="checkNodeDetaiList(props.row['busSubmenuListVOS'][scope.$index],3)" type="text">{{ props.row[items.prop] }}</el-button>
-                  </template>
-                  <template v-else-if="items.label == '查验操作'">
-                    <el-button @click.native.stop="checkNodeDetaiList(props.row['busSubmenuListVOS'][scope.$index],1)" type="text">{{ props.row[items.prop] }}</el-button>
-                  </template>
-                  <template v-else>
+                  :label="items.label"
+                  >
+                  <template >
                     {{ props.row[items.prop] }}
                   </template>
+
               </el-table-column>
+
+
+              <el-table-column 
+                align="center"
+                :key="indexs"
+                v-if="items.label != '操作' && items.hase_status"
+                show-overflow-tooltip
+                min-width="200"
+                :label="items.label"
+                >
+              <template>
+                  <template v-if="items.label == '放行出库'">
+                    <el-button class="has-status-red" @click.native.stop="checkNodeDetaiList(props.row,3)" type="text">{{ props.row[items.prop] }}</el-button>
+                  </template>
+                  <template v-else-if="items.label == '查验操作'">
+                    <el-button class="has-status-red" @click.native.stop="checkNodeDetaiList(props.row,1)" type="text">{{ props.row[items.prop] }}</el-button>
+                  </template>
+                  <template v-else>
+                    <p class="has-status-red">{{ props.row[items.prop] }}</p>
+                  </template>
+              </template>
+            </el-table-column>
 
               <el-table-column align="center"
                                v-else-if="items.label == '主单号/分单号'"
@@ -60,9 +77,9 @@
                                fixed="left"
                                show-overflow-tooltip
                                min-width="200"
-                               :label="items.label">
+                               label="分单号">
                 <template slot-scope="scope">
-                  <el-button @click="checkOrderInfoSubmenu(props.row['busSubmenuListVOS'][scope.$index])" type="text">{{scope.row.mainNo}}</el-button>
+                  <el-button @click="showOrderInfo(props.row['busSubmenuListVOS'][scope.$index],'sub')" type="text">{{scope.row.submenuNo}}</el-button>
                 </template>
               </el-table-column>
 
@@ -114,10 +131,12 @@
       </el-table-column>
 
 
-      <el-table-column align="center"
+      <el-table-column 
+          align="center"
           v-if="index == 0"
           fixed="left"
           type="selection"
+          :selectable="checkSelectable"
           width="55">
       </el-table-column>
       <el-table-column
@@ -135,10 +154,9 @@
                        fixed="left"
                        show-overflow-tooltip
                        min-width="200"
-                       @click="checkOrderInfo(item)"
-                       :label="item.label">
+                       label="主单号">
         <template slot-scope="scope">
-          <el-button type="text">{{scope.row.mainNo}}</el-button>
+          <el-button @click="showOrderInfo(scope.row,'main')" type="text">{{scope.row.mainNo}}</el-button>
         </template>
       </el-table-column>
       <el-table-column align="center"
@@ -156,17 +174,17 @@
           :prop="item.prop"
           show-overflow-tooltip
           min-width="200"
-          
-          :label="item.label">
+          :label="item.label"
+          >
         <template slot-scope="scope">
             <template v-if="item.label == '放行出库'">
-              <el-button @click.native.stop="checkNodeDetaiList(scope.row,3)" type="text">{{ scope.row[item.prop] }}</el-button>
+              <el-button class="has-status-red" @click.native.stop="checkNodeDetaiList(scope.row,3)" type="text">{{ scope.row[item.prop] }}</el-button>
             </template>
             <template v-else-if="item.label == '查验操作'">
-              <el-button @click.native.stop="checkNodeDetaiList(scope.row,1)" type="text">{{ scope.row[item.prop] }}</el-button>
+              <el-button class="has-status-red" @click.native.stop="checkNodeDetaiList(scope.row,1)" type="text">{{ scope.row[item.prop] }}</el-button>
             </template>
             <template v-else>
-              {{ scope.row[item.prop] }}
+              <p class="has-status-red">{{ scope.row[item.prop] }}</p>
             </template>
         </template>
       </el-table-column>
@@ -225,6 +243,26 @@ export default {
     }
   },
   methods:{
+    getRowClass (row, rowIndex) {
+      if (row.row.mainType == 1) {
+        return 'row-expand-cover'
+      } else {
+        return ''
+      }
+    },
+
+    checkSelectable(row,index){
+      if(row.mainType==1){
+        return 1
+      } else {
+        return 0
+      }
+    },
+
+    showOrderInfo(row,key){
+      this.$emit("onShowOrderInfo",{table_data:row, operator_key:key})
+    },
+
     checkNodeDetaiList(row, key){
       this.$emit("onNodeDetailOperator", {table_data:row, operator_key:key})
     },
@@ -243,6 +281,7 @@ export default {
       if (!column.label || column.label == "操作"){
         return
       }
+      debugger
       this.$emit("onOperator", arguments)
     },
     load(row, treeNode, resolve){
@@ -309,6 +348,10 @@ export default {
 </script>
 
 <style scoped>
+.has-status-red{
+  color: #FF0000;
+}
+
 .demo-table-expand {
   font-size: 0;
 }
@@ -326,6 +369,9 @@ export default {
   margin-right: 10px;
 }
 
+/deep/ .el-table .row-expand-cover .cell .el-table__expand-icon {
+	display: none;
+}
 
 /deep/ .el-table td, .el-table th {
   text-align: center;

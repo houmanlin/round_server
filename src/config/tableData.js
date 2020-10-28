@@ -133,15 +133,12 @@ const CLIENT_MANAGE_TABLE = [
     },
 ]
 
+
 // 业务计费表格头
 const BUSINESS_BILLING_TABLE = [
     {
         label: "主单号",
         prop: "mainNo"
-    },
-    {
-        label: "分单号",
-        prop: "submenuNo"
     },
     {
         label: "报关日期",
@@ -159,29 +156,30 @@ const BUSINESS_BILLING_TABLE = [
         label: "二级客户",
         prop: "customerNameTwo"
     },
+
     {
         label: "监管方式",
-        prop: "superviseMethod"
+        prop: "supervise"
     },
     {
         label: "通关单号",
-        prop: "customsNo"
+        prop: "transportExist"
+    },
+    {
+        label: "查验",
+        prop: "checkNum"
     },
     {
         label: "品名数量",
         prop: "descriptionNum"
     },
     {
-        label: "报关次数/次",
-        prop: "customsClearanceNum"
+        label: "分单项/次",
+        prop: "submenuNum"
     },
     {
-        label: "贸易代理次数/次",
-        prop: "tradeAgencyNum"
-    },
-    {
-        label: "企业自理次数/次",
-        prop: "enterpriseOwnNum"
+        label: "计费重量/kg",
+        prop: "chargedWeight"
     },
     {
         label: "查验/次",
@@ -192,16 +190,16 @@ const BUSINESS_BILLING_TABLE = [
         prop: "chargebackNum"
     },
     {
-        label: "转关",
-        prop: "customsTransitWeight"
+        label: "转关/次",
+        prop: "customsTransitNum"
     },
     {
-        label: "出库放行/次",
-        prop: "outboundClearanceNum"
+        label: "运输（有境内监管）/次",
+        prop: "transportExist"
     },
     {
-        label: "进口提货",
-        prop: "enterpriseOwnNum"
+        label: "运输（无境内监管）/次",
+        prop: "transportNothing"
     },
     {
         label: "操作",
@@ -262,7 +260,8 @@ const IMPORT_BUSINESS_TABLE = [
     },
     {
         label: "提交报关",
-        prop: "commitCustoms"
+        prop: "commitCustoms",
+        hase_status: true
     },
     {
         label: "提交查验",
@@ -359,7 +358,7 @@ const HOSE_BILL_TABLE = [
     },
     {
         label: "件数",
-        prop: "mainNumPackage"
+        prop: "numCase"
     },
     {
         label: "毛重",
@@ -375,7 +374,8 @@ const HOSE_BILL_TABLE = [
     },
     {
         label: "提交报关",
-        prop: "productionSaleUnit"
+        prop: "productionSaleUnit",
+        hase_status: true
     },
     {
         label: "提交查验",
