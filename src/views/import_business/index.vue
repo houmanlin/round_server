@@ -20,7 +20,18 @@
 
     
     <!------------- 数据表格  --------------->
-    <components_table :table-header="table_header" :house_bill_header="house_bill_table_header" :tableData="table_data" @onTableOperator="tableOperatorGroup" @onOperator="tableOperator" @onUploadMethod="uploadFile" @onGetSelectData="getSelectData" @onGetSelectMenuData="getSelectMenuData"/>
+    <components_table 
+    :table-header="table_header" 
+    :house_bill_header="house_bill_table_header" 
+    :tableData="table_data" 
+    
+    @onShowOrderInfo="showOrderInfo"
+    @onTableOperator="tableOperatorGroup" 
+    @onOperator="tableOperator" 
+    @onUploadMethod="uploadFile" 
+    @onGetSelectData="getSelectData" 
+    @onGetSelectMenuData="getSelectMenuData"
+    @onNodeDetailOperator="getNodeDetailList"/>
     <el-pagination
         class="pagination"
         :pagerCount="21"
@@ -49,6 +60,8 @@
     <orderInfoDialog ref="orderInfoDialog" :orderInfo="orderInfoDetail" />
     <subOrderInfoDialog ref="subOrderInfoDialog" :orderInfo="orderInfoDetail" />
     <orderMaterialDialog v-if="orderMater" :orderInfo="orderInfo" @onCloseDialog="closeDialog"/>
+    <nodeDetailListDialog ref="nodeDetailListDialog" :orderInfo="nodeOrderInfo" />
+    
   </div>
 </template>
 
@@ -73,6 +86,7 @@ import submitReturnSale from "@/views/import_business/submit_dialog/submitReturn
 import orderInfoDialog from "@/views/import_business/components/orderInfoDialog";
 import subOrderInfoDialog from "@/views/import_business/components/subOrderInfoDialog";
 import orderMaterialDialog from "@/views/import_business/components/orderMaterialDialog";
+import nodeDetailListDialog from "@/views/import_business/components/nodeDetailListDialog";
 import {getCount,getOrderInfo, getImportBussiness, houseOrderDel, MainOrderDel} from "@/api/import_bussiness";
 import {getPages} from "@/utils/utils";
 export default {
@@ -94,10 +108,12 @@ export default {
     domesticDeliveryGoods,
     orderInfoDialog,
     subOrderInfoDialog,
-    orderMaterialDialog
+    orderMaterialDialog,
+    nodeDetailListDialog
   },
   data() {
     return {
+      nodeOrderInfo:{mainNo:"",submenuNo:"",nodeOperationType:""},
       countData:{},
       orderInfo: {},
       orderInfoDetail:{},
@@ -171,13 +187,39 @@ export default {
       this.getData();
     },
 
+    /***
+     * 查看节点详细（查验操作、放行出库）
+     */
+    getNodeDetailList(operator){
+      console.log(operator)
+      this.nodeOrderInfo = operator.table_data
+      this.$set(this.nodeOrderInfo, "nodeOperationType", operator.operator_key)
+      this.$refs["nodeDetailListDialog"].dialogVisible = true
+    },
 
+    /**
+     * 查看订单详情
+     */
+    showOrderInfo(operator){
+      this.orderInfo = operator.table_data
+      let data = {
+        mainNo:this.orderInfo.mainNo,
+        submenuNo:this.orderInfo.submenuNo?this.orderInfo.submenuNo:''
+      }
+      getOrderInfo(data).then(res=>{
+        this.orderInfoDetail = res.data
+        if(this.orderInfo.submenuNo){
+          this.$refs["subOrderInfoDialog"].dialogVisible = true  
+        } else {
+          this.$refs["orderInfoDialog"].dialogVisible = true
+        }
+      })
+    },
 
     /***
      * 提交重置
      */
     tableOperator(row, operator_key){
-      debugger
       this.orderInfo = row[0]
       let data = {
         mainNo:this.orderInfo.mainNo,
@@ -197,6 +239,7 @@ export default {
      * 添加用户
      */
     operator(operator_key){
+      debugger
       let ids = ""
       let menu_ids = ""
       this.selectTableData.forEach((item, index)=>{
