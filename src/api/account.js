@@ -39,7 +39,7 @@ export function GetAccountInfo(params) {
     })
 }
 
-
+// 修改用户信息
 export function EditAccount(data){
     data = getParams(data)
     return request({
@@ -50,6 +50,7 @@ export function EditAccount(data){
 }
 
 
+// 删除用户信息
 export function DelAccount(data){
     data = getParams(data)
     return request({
