@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand />
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb8f565d-182e-4de0-a241-8ebe321044d2" name="Default Changelist" comment="上传文件修改---上传文件名">
+      <change beforePath="$PROJECT_DIR$/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/business_billing/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/business_billing/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/account.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/tools.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/tools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/venue.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/venue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Breadcrumb/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Breadcrumb/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/tableComponents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/tableComponents.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/account/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/account/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/venus/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/venus/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/components/Navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/getters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/modules/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/account/account_list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/account/account_list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/account/add_account.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/account/add_account.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/account/components/select_operator_group.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/account/components/select_operator_group.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/venues/add_venues.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/venues/add_venues.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/venues/components/select_operator_group.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/venues/components/select_operator_group.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/venues/venue_list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/venues/venue_list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +42,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -51,13 +76,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\project\customs-front-pc\src\views\import_business\submit_dialog" />
-      <recent name="$PROJECT_DIR$/src/assets/404_images" />
-      <recent name="$PROJECT_DIR$/src/utils" />
-      <recent name="$PROJECT_DIR$/tests" />
-      <recent name="$PROJECT_DIR$/src/views/user_manage/components" />
+      <recent name="D:\project\customs-front-pc\src\api" />
+      <recent name="D:\project\customs-front-pc\src\views" />
+      <recent name="D:\project\customs-front-pc\src\assets" />
+      <recent name="D:\project\customs-front-pc\src" />
+      <recent name="D:\project\customs-front-pc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\project\customs-front-pc\src\config\venus" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/views/dictionary/components" />
     </key>
@@ -103,13 +129,54 @@
       <workItem from="1603804932048" duration="3723000" />
       <workItem from="1603862476382" duration="3527000" />
       <workItem from="1603882760985" duration="2721000" />
-    </task>
-    <task id="LOCAL-00003" summary="init">
-      <created>1602273250626</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1602273250626</updated>
+      <workItem from="1603891402433" duration="709000" />
+      <workItem from="1603889191511" duration="4000" />
+      <workItem from="1603889209223" duration="797000" />
+      <workItem from="1603890502514" duration="830000" />
+      <workItem from="1604052319631" duration="4378000" />
+      <workItem from="1604277000012" duration="13093000" />
+      <workItem from="1604363962994" duration="73000" />
+      <workItem from="1604481972746" duration="334000" />
+      <workItem from="1604498883176" duration="1203000" />
+      <workItem from="1604538679594" duration="3891000" />
+      <workItem from="1604627264358" duration="2459000" />
+      <workItem from="1604655762782" duration="303000" />
+      <workItem from="1604883420492" duration="12250000" />
+      <workItem from="1604970965288" duration="3814000" />
+      <workItem from="1605060822148" duration="8423000" />
+      <workItem from="1605142971598" duration="14035000" />
+      <workItem from="1605228789384" duration="8754000" />
+      <workItem from="1605489869070" duration="12093000" />
+      <workItem from="1605575695469" duration="595000" />
+      <workItem from="1605580583855" duration="598000" />
+      <workItem from="1605596576508" duration="1070000" />
+      <workItem from="1606116939935" duration="2327000" />
+      <workItem from="1606131790252" duration="1358000" />
+      <workItem from="1606198785474" duration="423000" />
+      <workItem from="1606267772350" duration="3331000" />
+      <workItem from="1606287660785" duration="1678000" />
+      <workItem from="1606351662568" duration="1189000" />
+      <workItem from="1606444303707" duration="1500000" />
+      <workItem from="1606726914071" duration="2354000" />
+      <workItem from="1606785448231" duration="613000" />
+      <workItem from="1606821912587" duration="920000" />
+      <workItem from="1606828710271" duration="69000" />
+      <workItem from="1606889473142" duration="985000" />
+      <workItem from="1606958386251" duration="6179000" />
+      <workItem from="1606976358712" duration="1537000" />
+      <workItem from="1607000822446" duration="213000" />
+      <workItem from="1607002497115" duration="290000" />
+      <workItem from="1607006100942" duration="2263000" />
+      <workItem from="1607045907870" duration="9000" />
+      <workItem from="1607046329447" duration="3810000" />
+      <workItem from="1607160635890" duration="43000" />
+      <workItem from="1607677101408" duration="1580000" />
+      <workItem from="1609741825154" duration="7544000" />
+      <workItem from="1609754512956" duration="10974000" />
+      <workItem from="1609851493190" duration="29000" />
+      <workItem from="1609852478548" duration="186000" />
+      <workItem from="1609898456579" duration="13356000" />
+      <workItem from="1609979816800" duration="3342000" />
     </task>
     <task id="LOCAL-00004" summary="init">
       <created>1602273319479</created>
@@ -447,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603883306537</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="上传文件修改---上传文件名">
+      <created>1603891426731</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1603891426731</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,10 +606,12 @@
     </state>
     <state x="53" y="31" width="1152" height="796" key="DiffContextDialog/0.0.1440.960@0.0.1440.960" timestamp="1603691497878" />
     <state x="117" y="92" key="DiffContextDialog/0.23.1440.799@0.23.1440.799" timestamp="1602575546401" />
-    <state x="114" y="232" key="FileChooserDialogImpl" timestamp="1603805115845">
-      <screen x="0" y="0" width="1440" height="960" />
+    <state x="114" y="225" key="FileChooserDialogImpl" timestamp="1609852662311">
+      <screen x="0" y="0" width="1440" height="929" />
     </state>
-    <state x="114" y="232" key="FileChooserDialogImpl/0.0.1440.960@0.0.1440.960" timestamp="1603805115845" />
+    <state x="114" y="225" key="FileChooserDialogImpl/0.0.1440.929@0.0.1440.929" timestamp="1609852662311" />
+    <state x="114" y="232" key="FileChooserDialogImpl/0.0.1440.960@0.0.1440.960" timestamp="1606118644419" />
+    <state x="114" y="256" key="FileChooserDialogImpl/0.31.1440.929@0.31.1440.929" timestamp="1606792479837" />
     <state x="137" y="79" key="MergeDialog" timestamp="1602814769083">
       <screen x="0" y="0" width="1440" height="960" />
     </state>
@@ -554,11 +630,11 @@
       <screen x="0" y="0" width="1440" height="960" />
     </state>
     <state width="504" height="446" key="SwitcherDM/0.0.1440.960@0.0.1440.960" timestamp="1603435771921" />
-    <state x="313" y="214" key="Vcs.Push.Dialog.v2" timestamp="1603883307766">
+    <state x="313" y="214" key="Vcs.Push.Dialog.v2" timestamp="1603891431876">
       <screen x="0" y="0" width="1440" height="960" />
     </state>
     <state x="320" y="157" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1602569692480" />
-    <state x="313" y="214" key="Vcs.Push.Dialog.v2/0.0.1440.960@0.0.1440.960" timestamp="1603883307766" />
+    <state x="313" y="214" key="Vcs.Push.Dialog.v2/0.0.1440.960@0.0.1440.960" timestamp="1603891431876" />
     <state x="320" y="162" key="Vcs.Push.Dialog.v2/0.23.1440.799@0.23.1440.799" timestamp="1602686403018" />
     <state x="100" y="123" width="1240" height="599" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1602517251833">
       <screen x="0" y="23" width="1440" height="799" />
@@ -573,28 +649,33 @@
     </state>
     <state x="324" y="193" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.960@0.0.1440.960" timestamp="1603883549847" />
     <state x="521" y="343" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.799@0.23.1440.799" timestamp="1602501187031" />
-    <state x="479" y="93" width="652" height="769" key="find.popup" timestamp="1603883214006">
-      <screen x="0" y="0" width="1440" height="960" />
+    <state x="479" y="90" width="652" height="745" key="find.popup" timestamp="1609983452109">
+      <screen x="0" y="0" width="1440" height="929" />
     </state>
     <state x="198" y="128" width="648" height="721" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1602568553896" />
-    <state x="479" y="93" width="652" height="769" key="find.popup/0.0.1440.960@0.0.1440.960" timestamp="1603883214006" />
+    <state x="479" y="90" width="652" height="745" key="find.popup/0.0.1440.929@0.0.1440.929" timestamp="1609983452109" />
+    <state x="479" y="93" width="652" height="769" key="find.popup/0.0.1440.960@0.0.1440.960" timestamp="1605162078334" />
     <state x="479" y="100" width="648" height="640" key="find.popup/0.23.1440.799@0.23.1440.799" timestamp="1602666991489" />
-    <state x="494" y="318" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1602462175338">
-      <screen x="0" y="23" width="1440" height="799" />
+    <state x="479" y="121" width="652" height="745" key="find.popup/0.31.1440.929@0.31.1440.929" timestamp="1606825147625" />
+    <state x="494" y="343" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1609982974333">
+      <screen x="0" y="0" width="1440" height="929" />
     </state>
+    <state x="494" y="343" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1440.929@0.0.1440.929" timestamp="1609982974333" />
     <state x="494" y="318" key="git4idea.remote.GitConfigureRemotesDialog/0.23.1440.799@0.23.1440.799" timestamp="1602462175338" />
     <state x="0" y="23" width="1438" height="797" key="recent.locations.popup" timestamp="1602502269413">
       <screen x="0" y="23" width="1440" height="799" />
     </state>
     <state x="0" y="23" width="1438" height="797" key="recent.locations.popup/0.23.1440.799@0.23.1440.799" timestamp="1602502269413" />
-    <state x="377" y="221" key="run.anything.popup" timestamp="1603691712281">
-      <screen x="0" y="0" width="1440" height="960" />
+    <state x="377" y="214" key="run.anything.popup" timestamp="1609747998179">
+      <screen x="0" y="0" width="1440" height="929" />
     </state>
-    <state x="377" y="221" key="run.anything.popup/0.0.1440.960@0.0.1440.960" timestamp="1603691712281" />
-    <state x="385" y="147" width="672" height="813" key="search.everywhere.popup" timestamp="1603851219464">
-      <screen x="0" y="0" width="1440" height="960" />
+    <state x="377" y="214" key="run.anything.popup/0.0.1440.929@0.0.1440.929" timestamp="1609747998179" />
+    <state x="377" y="221" key="run.anything.popup/0.0.1440.960@0.0.1440.960" timestamp="1605527489470" />
+    <state x="385" y="142" width="672" height="787" key="search.everywhere.popup" timestamp="1609763472819">
+      <screen x="0" y="0" width="1440" height="929" />
     </state>
-    <state x="385" y="147" width="672" height="813" key="search.everywhere.popup/0.0.1440.960@0.0.1440.960" timestamp="1603851219464" />
+    <state x="385" y="142" width="672" height="787" key="search.everywhere.popup/0.0.1440.929@0.0.1440.929" timestamp="1609763472819" />
+    <state x="385" y="147" width="672" height="813" key="search.everywhere.popup/0.0.1440.960@0.0.1440.960" timestamp="1605526819489" />
     <state x="385" y="146" width="670" height="676" key="search.everywhere.popup/0.23.1440.799@0.23.1440.799" timestamp="1602513613981" />
     <state x="450" y="266" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1602405587095">
       <screen x="0" y="23" width="1440" height="799" />

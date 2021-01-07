@@ -10,3 +10,10 @@ export default {
 }
 </script>
 
+
+<style>
+  #container{
+    width: 96%;
+    margin: 20px auto;
+  }
+</style>

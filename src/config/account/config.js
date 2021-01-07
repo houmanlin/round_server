@@ -1,8 +1,4 @@
-// 场馆Select数据
-export let VenueOption = [
-  { label:"全部场馆", select_value:0},
-  { label:"RoundBoxing拳击健身", select_value: 1}
-]
+
 
 
 // 员工表格头
@@ -13,7 +9,7 @@ export let TableHeader = [
   },
   {
     title: "性别",
-    field: "account_sex",
+    field: "sex_text",
   },
   {
     title: "电话",
@@ -29,16 +25,33 @@ export let TableHeader = [
   },
   {
     title: "登录",
-    field: "account_is_show",
+    field: "allow_login_text",
   },
   {
     title: "状态",
-    field: "account_is_show",
+    field: "status_text",
   },
   {
     title: "操作",
     field: ['check','edit','remove'],
   },
-
-
 ]
+
+
+
+
+// 添加验证表
+export const ROLES = {
+  account_name: [
+    { required: true, message: '请填写用户名', trigger: 'blur' }
+  ],
+  account_sex: [
+    { required: true, message: '请选择性别', trigger: 'blur' }
+  ],
+  account_phone: [
+    {required: true, message: '请填写电话号', trigger: 'blur' }
+  ],
+  account_belong_venus: [
+    {required: true, message: '请选择所属场馆', trigger: 'blur' }
+  ]
+}

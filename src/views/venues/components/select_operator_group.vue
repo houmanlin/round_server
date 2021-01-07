@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { VenueOption } from "@/config/account/config";
+
 
 export default {
   name: "select_operator_group",
@@ -75,7 +75,7 @@ export default {
     }
   },
   created() {
-    this.venueOption = VenueOption
+    this.venueOption = []
 
   },
   methods:{

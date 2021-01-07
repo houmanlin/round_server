@@ -21,7 +21,7 @@
               修改密码
             </el-dropdown-item>
           </router-link>
-          <el-dropdown-item divided @click.native="logout">
+          <el-dropdown-item divided @click.native="logoutButton">
             <span style="display:block;">退出</span>
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -34,6 +34,7 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
+import {DelVenue} from "@/api/venue";
 
 export default {
   components: {
@@ -50,7 +51,19 @@ export default {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
     },
+    logoutButton(){
+      this.$confirm("是否退出登录","退出登录",{
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        callback: action => {
+          if (action === 'confirm') {
+            this.logout()
+          }
+        }
+      })
+    },
     async logout() {
+
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     }

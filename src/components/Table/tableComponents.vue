@@ -1,134 +1,88 @@
 <template>
-  <el-table
-      :data="tableData"
-      border
-      :height="500"
-      @selection-change="handleSelectionChange"
-      style="width: 100%">
+  <div>
+    <el-table
+        :data="tableDataModel"
+        border
+        :min-height="500"
+        stripe
+        style="width: 100%">
 
-    <template v-for="(item, index) in tableHeader" >
-      <el-table-column
-          v-if="index == 0"
-          type="selection"
-          width="55">
-      </el-table-column>
-      <el-table-column align="center"
-          v-if="index == 0"
-          fixed="left"
-          label="序号"
-          type="index"
-          @click="checkOrderInfo(item)"
-          width="50">
-      </el-table-column>
+      <template v-for="(item, index) in tableHeader" >
+        <el-table-column align="center"
+            fixed="left"
+            v-if="index === 0"
+            label="序号"
+            type="index"
+            width="50">
+        </el-table-column>
+        <el-table-column
+            align="center"
+            :key="index"
+            v-if="item.title !== '操作'"
+            :prop="item.field"
+            show-overflow-tooltip
 
-
-      <el-table-column
-          align="center"
-          :key="index"
-          v-if="item.label != '操作'"
-          :prop="item.prop"
-          show-overflow-tooltip
-          min-width="180"
-          @click="checkOrderInfo(item)"
-          :label="item.label"/>
-      <el-table-column
-          align="center"
-          :key="index"
-          v-else
-          fixed="right"
-          label="操作"
-          width="150">
-        <template slot-scope="scope">
-          <template v-if="item.label == '操作'">
-            <el-upload
-                class="upload-demo"
-                ref="upload"
-                v-for="(operator_item, indexs) in item.prop"
-                :key="indexs"
-                v-if="operator_item == '上传' || operator_item == '上传文件'"
-                :data="getPostData(scope.row,0)"
-                multiple
-                :action="upload_url"
-                :file-list="fileList"
-                :on-success="handleResultSuccess"
-                :on-error="handleResultError"
-                :show-file-list="false"
-
-            >
-              <el-button  type="text"
-                          size="small">{{operator_item}}</el-button>
-            </el-upload>
-            <el-button v-if="operator_item != '上传' && operator_item != '上传文件'" v-for="(operator_item, indexs) in item.prop" :key="indexs" @click="handleClick(scope.row, operator_item)" type="text" size="small">{{operator_item}}</el-button>
-
+            :label="item.title"/>
+        <el-table-column
+            align="center"
+            v-if="item.title === '操作'"
+            fixed="right"
+            :key="index"
+            prop="item.field"
+            show-overflow-tooltip
+            min-width="100"
+            :label="item.title">
+          <template slot-scope="scope">
+            <el-button v-for="(icon, iconIndex) in item.field" :key="iconIndex" :class="'icon_item el-icon-' + icon" @click="handleClick(scope.row, icon)" type="text"/>
           </template>
+        </el-table-column>
+      </template>
 
-        </template>
-      </el-table-column>
-    </template>
-
-  </el-table>
+    </el-table>
+    <el-pagination
+        v-if="pageConfig.page_total"
+        layout="total, sizes, prev, pager, next, jumper"
+        :page-sizes="[10, 20, 30, 40]"
+        class="pagination"
+        :page-size="pageConfig.limit"
+        :current-page="pageConfig.current_page"
+        :page-count="pageConfig.page_total"
+        :total="pageConfig.total_num"
+        :pager-count="5"
+        @size-change="handleSizeChange"
+        @current-change="handleChange"
+       >
+    </el-pagination>
+  </div>
 </template>
 
 <script>
 export default {
-  props: ["tableHeader", "tableData", "upload_url"],
-  name:"123table",
-
-  methods: {
-    handleClick(row, operator_key) {
-      this.$emit("onOperator", {
-        table_data: row,
-        operator_key
-      })
-    },
-    checkOrderInfo(row){
-      this.$emit("onCheck", row)
-    },
-    handleSelectionChange(data){
-      this.$emit("onSelectData", data)
-    },
-    getPostData(row,nodetype){
-      let that = this;
-
-      let uploadJson={
-        mainNo:row.mainNo,
-        submenuNo:row.submenuNo,
-        nodeType:nodetype,
-      }
-      return uploadJson
-    },
-    uploadRequest(scope){
-      this.$emit("onUploadMethod", scope)
-    },
-    handleResultSuccess(response, file, fileList){
-      if(response.code == 99999){
-        this.$message.error('上传失败！');
-      }else{
-        this.$message({
-          message: '上传成功！',
-          type: 'success'
-        });
-
-      }
-      // console.log('fileList',fileList);
-      //   if (response) {
-      //     console.log('response',response);
-      //   } else {
-      //     this.$confirm(`上传成功！`);
-      //   }
-    },
-    handleResultError(response, file, fileList){
-      this.$message.error('上传失败！');
-      // console.log('fileList',fileList);
-      // console.log('response',response);
-    },
-  },
-
+  props: ["tableHeaderModel", "tableDataModel", "pageConfigModel", "edit"],
+  name:"tableComponents",
   data() {
     return {
-      fileList: []
+      pageConfig: this.pageConfigModel,
+      tableData:this.tableDataModel,
+      tableHeader:this.tableHeaderModel,
     }
   },
+  methods: {
+    handleChange(data){
+      this.pageConfig.current = data
+      this.$emit("onPageHandle", this.pageConfig)
+    },
+    handleSizeChange(data){
+      this.pageConfig.limit = data
+      this.$emit("onPageHandle", this.pageConfig)
+    },
+    handleClick(data, operatorKey){
+      this.$emit("onOperatorHandle", {data, operatorKey})
+    }
+
+  },
+
+
 }
 </script>
 
@@ -137,6 +91,14 @@ export default {
     display: inline-block;
     margin-right: 10px;
   }
-
+  .pagination{
+    float: right;
+    margin-top: 10px;
+  }
+  .icon_item{
+    font-size: 16px;
+    margin:0 5px;
+    padding: 0 5px;
+  }
 
 </style>

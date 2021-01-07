@@ -3,7 +3,7 @@ import {getParams} from "@/utils/utils";
 
 export function login(data) {
   return request({
-    url: '/sysAccount/login',
+    url: '/sys_account/login',
     method: 'post',
     data
   })
@@ -18,19 +18,13 @@ export function getInfoById(params) {
   })
 }
 export function getInfo(params) {
-
-  return
-}
-
-export function updateInfo(data) {
-  data = getParams(data)
+  params = getParams(params)
   return request({
-    url: '/sysAccount/update',
-    method: 'PUT',
-    data
+    url: '/sysAccount/getUpdateInfo',
+    method: 'get',
+    params
   })
 }
-
 export function logout(data) {
   data = getParams(data)
   return request({
@@ -40,14 +34,6 @@ export function logout(data) {
   })
 }
 
-export function registerUser(data) {
-  data = getParams(data)
-  return request({
-    url: '/sysAccount/register',
-    method: 'post',
-    data
-  })
-}
 
 export function getUserList(data) {
   data = getParams(data)
@@ -55,42 +41,5 @@ export function getUserList(data) {
     url: '/sysAccount/list',
     method: 'GET',
     params: data
-  })
-}
-
-export function userCheckEnable(data) {
-  data = getParams(data)
-  return request({
-    url: '/sysAccount/isEnable',
-    method: 'POST',
-    data
-  })
-}
-
-
-export function resetUserPass(data) {
-  data = getParams(data)
-  return request({
-    url: '/sysAccount/resetPassword',
-    method: 'POST',
-    data
-  })
-}
-
-export function removeUserPass(data) {
-  data = getParams(data)
-  return request({
-    url: '/sysAccount/delete',
-    method: 'DELETE',
-    data
-  })
-}
-
-export function editUserPass(data) {
-  data = getParams(data)
-  return request({
-    url: '/sysAccount/changePassword',
-    method: 'POST',
-    data
   })
 }

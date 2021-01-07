@@ -7,3 +7,6 @@ const getters = {
   promise_name: state => state.user.promise_name
 }
 export default getters
+
+
+

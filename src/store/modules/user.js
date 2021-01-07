@@ -37,12 +37,11 @@ const actions = {
   // user login
   login({ commit }, userInfo) {
     return new Promise((resolve, reject) => {
-
       login(getParams(userInfo)).then(response => {
         const { data } = response
-        commit('SET_TOKEN', data.token)
+        commit('SET_TOKEN', data.account_token)
         commit('SET_PROMISE_NAME', userInfo.username)
-        setToken(data.token)
+        setToken(data.account_token)
         resolve()
       }).catch(error => {
         reject(error)
@@ -95,17 +94,11 @@ const actions = {
   // user logout
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-      let data = {
-        token: state.token
-      }
-      logout(data).then(() => {
-        removeToken() // must remove  token  first
-        resetRouter()
-        commit('RESET_STATE')
-        resolve()
-      }).catch(error => {
-        reject(error)
-      })
+      removeToken() // must remove  token  first
+      resetRouter()
+      commit('RESET_STATE')
+      resolve()
+
     })
   },
 

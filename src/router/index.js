@@ -19,119 +19,52 @@ export const constantRoutes = [
     hidden: true
   },
 
-  // {
-  //   path: '/',
-  //   component: Layout,
-  //   redirect: '/dashboard',
-  //   children: [{
-  //     path: 'dashboard',
-  //     name: 'Dashboard',
-  //     component: () => import('@/views/dashboard/index'),
-  //     meta: { title: '报表', icon: 'dashboard' }
-  //   }]
-  // },
   {
     path: '/',
     component: Layout,
-    redirect: '/import_business',
-    name: 'import_business_manage',
-    meta: { title: '进出口业务管理', icon: 'el-icon-box' },
+    redirect: '/account',
+    name: 'index',
+    meta: { title: '员工设置', icon: 'el-icon-s-custom' },
     children: [
       {
-        path: 'import_business',
-        name: 'import_business',
-        component: () => import('@/views/import_business/index'),
-        meta: { title: '进出口业务' }
+        path: 'account',
+        name: 'account',
+        component: () => import('@/views/account/account_list'),
+        meta: { title: '员工管理' }
       },
       {
-        path: 'add_import_business',
-        name: 'add_import_business',
-        component: () => import('@/views/import_business/add_import_business'),
-        meta: { title: '进出口业务' },
-        hidden: true
-      },
-      {
-        path: 'business_billing',
-        name: 'business_billing',
-        component: () => import('@/views/business_billing/index'),
-        meta: { title: '业务统计' },
-
+        path: 'add_account',
+        name: 'add_account',
+        hidden:true,
+        component: () => import('@/views/account/add_account'),
+        meta: { title: '添加员工' }
       },
     ]
   },
   {
-    path: '/system_manages',
+    path: '/venue',
     component: Layout,
-    redirect: '/system_manages/system_log',
-    name: 'system_settings',
-    meta: { title: '系统管理', icon: 'el-icon-setting' },
+    redirect: '/venue',
+    name: 'venue',
+    meta: { title: '场馆设置', icon: 'el-icon-s-custom' },
     children: [
       {
-        path: 'system_log',
-        name: 'system_log',
-        component: () => import('@/views/system_log/index'),
-        meta: { title: '系统日志' }
+        path: '/venue_list',
+        name: 'venue_list',
+        component: () => import('@/views/venues/venue_list'),
+        meta: { title: '场馆编辑' }
       },
       {
-        path: 'user_manage',
-        name: 'user_manage',
-        component: () => import('@/views/user_manage/index'),
-        meta: { title: '账户管理'},
+        path: '/add_venue',
+        name: 'add_venue',
+        component: () => import('@/views/venues/add_venues'),
+        meta: { title: '添加场馆' }
       },
-      {
-        path: 'edit_password',
-        name: 'edit_password',
-        component: () => import('@/views/user_manage/edit_password'),
-        meta: { title: '修改密码'},
-        hidden: true
-      },
-      {
-        path: 'add_user',
-        name: 'add_user',
-        component: () => import('@/views/user_manage/add_user'),
-        meta: { title: '添加用户' },
-        hidden: true
-      },
-
-      {
-        path: 'dictionary_config',
-        name: 'dictionary_config',
-        component: () => import('@/views/dictionary/index'),
-        meta: { title: '字典管理'},
-      },
-      {
-        path: 'add_dictionary',
-        name: 'add_dictionary',
-        component: () => import('@/views/dictionary/add_dictionary'),
-        meta: { title: '添加字典' },
-        hidden: true
-      },
-      {
-        path: 'client_manage',
-        name: 'client_manage',
-        component: () => import('@/views/client/index'),
-        meta: { title: '客户管理' },
-      },
-      {
-        path: 'add_client',
-        name: 'add_client',
-        component: () => import('@/views/client/add_client'),
-        meta: { title: '添加客户' },
-        hidden: true
-      },
-      // {
-      //   path: 'expense',
-      //   name: 'expense',
-      //   component: () => import('@/views/expense/index'),
-      //   meta: { title: '费用配置' },
-      //
-      // },
     ]
   },
 
 
-  // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+  // { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({
