@@ -39,6 +39,20 @@ export const constantRoutes = [
         component: () => import('@/views/account/add_account'),
         meta: { title: '添加员工' }
       },
+      {
+        path: 'account_info',
+        name: 'account_info',
+        hidden:true,
+        component: () => import('@/views/account/account_info'),
+        meta: { title: '员工詳情' }
+      },
+      {
+        path: 'edit_account',
+        name: 'edit_account',
+        hidden:true,
+        component: () => import('@/views/account/add_account'),
+        meta: { title: '修改员工' }
+      },
     ]
   },
   {

@@ -4,7 +4,8 @@ import {getParams} from "@/utils/utils";
 let ADD_ACCOUNT = "/account/add_account"
 let GET_ACCOUNT_INFO = "/account/get_account_by_id"
 let ACCOUNT_LIST = "/account/get_account_list"
-let EDIT_ACCOUNT = ""
+let EDIT_ACCOUNT = "/account/edit_account"
+let DEL_ACCOUNT = "/account/del_account"
 
 // 添加用户
 export function AddAccount(data) {
@@ -43,6 +44,16 @@ export function EditAccount(data){
     data = getParams(data)
     return request({
         url: EDIT_ACCOUNT,
+        method:"POST",
+        data
+    })
+}
+
+
+export function DelAccount(data){
+    data = getParams(data)
+    return request({
+        url: DEL_ACCOUNT,
         method:"POST",
         data
     })

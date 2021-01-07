@@ -23,7 +23,7 @@
 import select_operator_group from "./components/select_operator_group";
 import tableComponents from "@/components/Table/tableComponents";
 import {TableHeader} from "@/config/account/config";
-import {GetAccount} from "@/api/account";
+import {DelAccount, GetAccount} from "@/api/account";
 import {getPages} from "@/utils/utils";
 import {DelVenue} from "@/api/venue";
 
@@ -51,7 +51,12 @@ export default {
     getData(){
       let params = this.search_data_params
       let params__venue = this.search_data_params.venue
+      if (params__venue == ''){
+
+        params__venue = []
+      }
       this.search_data_params.venue = params__venue.join(",")
+
       params["current_page"]  = this.pageConfig.current
       params["page_size"]     = this.pageConfig.limit
       GetAccount(params).then(res=>{
@@ -73,9 +78,10 @@ export default {
     operatorHandle(data, operator_key){
       let path;
       if (data.operatorKey === "check") {
-        return
+        path = "account_info"
+
       } else if (data.operatorKey === "edit") {
-        path = "/add_account";
+        path = "/edit_account";
       } else {
 
         this.$confirm('是否确认停用当前账户','确认停用' , {
@@ -84,16 +90,16 @@ export default {
           callback: action => {
             if (action === 'confirm') {
               let params = {
-                id: data.data.id
+                account_id: data.data.id
               }
-              DelVenue(params).then(res=>{
+              DelAccount(params).then(res=>{
+
 
                 this.getData()
               })
             }
           }
         })
-        path = "";
       }
       this.$router.push({ path, query: {id: data.data.id} })
     }
