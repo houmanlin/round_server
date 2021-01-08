@@ -199,6 +199,8 @@ export default {
         this.account.account_introduce      = res.data.account_introduce;                     // 简介
         this.account.account_is_show        = res.data.account_is_show ? true : false;        // 是否展示
         this.account.account_allow_login    = res.data.account_allow_login ? true : false;    // 是否登录
+        this.account.status                 = res.data.status == 1 ? true : false;            // 状态
+        debugger
         this.account.user_name              = res.data.account_user_name;                     // 登录账号
         this.account.password               = res.data.account_password;                      // 登录密码
 
