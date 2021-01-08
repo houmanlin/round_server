@@ -88,7 +88,7 @@ export default {
 
         path = "";
       } else {
-        path = "/add_venue";
+        path = "/edit_venue";
       }
       this.$router.push({ path, query: {id: data.data.id} })
     }

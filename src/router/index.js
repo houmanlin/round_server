@@ -74,6 +74,12 @@ export const constantRoutes = [
         component: () => import('@/views/venues/add_venues'),
         meta: { title: '添加场馆' }
       },
+      {
+        path: '/edit_venue',
+        name: 'edit_venue',
+        component: () => import('@/views/venues/add_venues'),
+        meta: { title: '修改场馆' }
+      },
     ]
   },
 
